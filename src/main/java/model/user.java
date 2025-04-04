@@ -24,6 +24,7 @@ public class user {
         this.birthDate=birthDate;
         this.password=paswword;
         this.address=address;
+        this.role=role;
     }
     public int getId(){
         return id;
@@ -59,6 +60,7 @@ public class user {
     public String getAddress(){
         return address;
     }
+
     public String getRole(){
         return role;
     }
