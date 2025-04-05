@@ -1,9 +1,8 @@
 package model;
-import java.nio.file.attribute.UserPrincipal;
 import java.sql.Date;
 
-public class user {
-    private int id;
+public class Costumer {
+    private int costumerId;
     private String firstName;
     private String lastName;
     private String email;
@@ -12,10 +11,10 @@ public class user {
     private Date birthDate;
     private String password;
     private String address;
-    private String role;
 
-    protected user(int id ,String firstName, String lastName,int telephoneNumber, String email,String gender,Date birthDate,String paswword,String address , String role){
-        this.id=id;
+
+    protected Costumer(int costumerId ,String firstName, String lastName,int telephoneNumber, String email,String gender,Date birthDate,String paswword,String address ){
+        this.costumerId=costumerId;
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
@@ -24,11 +23,12 @@ public class user {
         this.birthDate=birthDate;
         this.password=paswword;
         this.address=address;
-        this.role=role;
+
     }
-    public int getId(){
-        return id;
+    public int getCostumerId(){
+        return costumerId;
     }
+
     public String getFirstName(){
         return firstName;
 
@@ -54,15 +54,11 @@ public class user {
 
     public String getPassword(){
 
-         return password;
+        return password;
 
     }
     public String getAddress(){
         return address;
-    }
-
-    public String getRole(){
-        return role;
     }
 
 
