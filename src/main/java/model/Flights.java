@@ -1,6 +1,6 @@
 package model;
 
-public class flights {
+public class Flights {
     private int flightNumber;
     private int airlineid;
     private int planeid;
@@ -11,7 +11,7 @@ public class flights {
     private String duration;
     private String status;
 
-    protected flights(int flightNumber, int airlineid, int planeid, String departureAirport, String arrivalAirport, String departureTime, String arrivalTime, String duration, String status) {
+    protected Flights(int flightNumber, int airlineid, int planeid, String departureAirport, String arrivalAirport, String departureTime, String arrivalTime, String duration, String status) {
         this.flightNumber = flightNumber;
         this.airlineid = airlineid;
         this.planeid = planeid;
