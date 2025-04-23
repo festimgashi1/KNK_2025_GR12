@@ -18,5 +18,43 @@ public class CreateBookingDto {
         this.cmimi = cmimi;
     }
 
+    public Long getCostumerId() {
+        return costumerId;
+    }
 
+    public void setCostumerId(Long costumerId) {
+        this.costumerId = costumerId;
+    }
+
+    public Long getFlightsNumber() {
+        return flightsNumber;
+    }
+
+    public void setFlightsNumber(Long flightsNumber) {
+        this.flightsNumber = flightsNumber;
+    }
+
+    public LocalDateTime getDataENisjes() {
+        return dataENisjes;
+    }
+
+    public void setDataENisjes(LocalDateTime dataENisjes) {
+        this.dataENisjes = dataENisjes;
+    }
+
+    public String getDestinacioni() {
+        return destinacioni;
+    }
+
+    public void setDestinacioni(String destinacioni) {
+        this.destinacioni = destinacioni;
+    }
+
+    public Double getCmimi() {
+        return cmimi;
+    }
+
+    public void setCmimi(Double cmimi) {
+        this.cmimi = cmimi;
+    }
 }
