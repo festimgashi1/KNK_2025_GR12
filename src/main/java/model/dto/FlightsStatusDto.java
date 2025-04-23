@@ -18,4 +18,52 @@ public class FlightsStatusDto {
         this.aeroportiNisjes = aeroportiNisjes;
         this.aeroportiArritjes = aeroportiArritjes;
     }
+
+    public Long getFlightsId() {
+        return flightsId;
+    }
+
+    public void setFlightsId(Long flightsId) {
+        this.flightsId = flightsId;
+    }
+
+    public String getStatusi() {
+        return statusi;
+    }
+
+    public void setStatusi(String statusi) {
+        this.statusi = statusi;
+    }
+
+    public LocalDateTime getDataNisjes() {
+        return dataNisjes;
+    }
+
+    public void setDataNisjes(LocalDateTime dataNisjes) {
+        this.dataNisjes = dataNisjes;
+    }
+
+    public LocalDateTime getDataArritjes() {
+        return dataArritjes;
+    }
+
+    public void setDataArritjes(LocalDateTime dataArritjes) {
+        this.dataArritjes = dataArritjes;
+    }
+
+    public String getAeroportiNisjes() {
+        return aeroportiNisjes;
+    }
+
+    public void setAeroportiNisjes(String aeroportiNisjes) {
+        this.aeroportiNisjes = aeroportiNisjes;
+    }
+
+    public String getAeroportiArritjes() {
+        return aeroportiArritjes;
+    }
+
+    public void setAeroportiArritjes(String aeroportiArritjes) {
+        this.aeroportiArritjes = aeroportiArritjes;
+    }
 }
