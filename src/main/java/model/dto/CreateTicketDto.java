@@ -1,21 +1,40 @@
 package model.dto;
 
 public class CreateTicketDto {
+    private int flightId;
+    private int passengerId;
     private String seatNumber;
     private double price;
-    private String status;
 
-    // Default constructor
-    public UpdateTicketDto() {}
 
-    // Constructor për UpdateTicketDto
-    public UpdateTicketDto(String seatNumber, double price, String status) {
-        this.seatNumber = seatNumber;
-        this.price = price;
-        this.status = status;
+    public CreateTicketDto() {
     }
 
-    // Getters and Setters
+
+    public CreateTicketDto(int flightId, int passengerId, String seatNumber, double price) {
+        this.flightId = flightId;
+        this.passengerId = passengerId;
+        this.seatNumber = seatNumber;
+        this.price = price;
+    }
+
+
+    public int getFlightId() {
+        return flightId;
+    }
+
+    public void setFlightId(int flightId) {
+        this.flightId = flightId;
+    }
+
+    public int getPassengerId() {
+        return passengerId;
+    }
+
+    public void setPassengerId(int passengerId) {
+        this.passengerId = passengerId;
+    }
+
     public String getSeatNumber() {
         return seatNumber;
     }
@@ -30,13 +49,5 @@ public class CreateTicketDto {
 
     public void setPrice(double price) {
         this.price = price;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 }
