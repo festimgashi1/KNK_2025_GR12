@@ -1,10 +1,10 @@
 package model.dto;
 
 public class CreateTicketDto {
-    private int flightId; // ID i fluturimit
-    private int passengerId; // ID i pasagjerit
-    private String seatNumber; // Numri i vendit
-    private double price; // Çmimi i biletës
+    private int flightId;
+    private int passengerId;
+    private String seatNumber;
+    private double price;
 
 
     public CreateTicketDto() {

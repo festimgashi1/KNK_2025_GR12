@@ -1,9 +1,9 @@
 package model.dto;
 
 public class UpdateTicketDto {
-    private String seatNumber; // Numri i ri i vendit
-    private double price; // Çmimi i ri i biletës
-    private String status; // Statusi i ri i biletës (p.sh. "konfirmuar", "anuluar", etj.)
+    private String seatNumber;
+    private double price;
+    private String status;
 
 
     public UpdateTicketDto() {}
