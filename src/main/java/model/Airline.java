@@ -8,7 +8,7 @@ public class Airline {
     private String password;
     private String phoneNumber;
 
-    protected Airline(int airlineid, String airlinename, String country, int email, String password, String phoneNumber) {
+    public Airline(int airlineid, String airlinename, String country, int email, String password, String phoneNumber) {
         this.airlineid = airlineid;
         this.airlinename = airlinename;
         this.country = country;
