@@ -1,8 +1,9 @@
 package model;
 
-import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class admin {
+public class Admin {
     private int id;
     private String firstName;
     private String lastName;
@@ -11,7 +12,7 @@ public class admin {
     private String salt;
     private int addressId;
 
-    protected admin(int id, String firstName,String lastName, String email, String hashpass, String salt, int addressId){
+    protected Admin(int id, String firstName, String lastName, String email, String hashpass, String salt, int addressId){
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;
@@ -19,6 +20,17 @@ public class admin {
         this.hashpass=hashpass;
         this.salt=salt;
         this.addressId=addressId;
+    }
+
+    public static Admin getInstance (ResultSet result) throws SQLException {
+        int id = result.getInt("id");
+        String firstName = result.getString("firstName");
+        String lastName = result.getString("lastName");
+        String email = result.getString("email");
+        String hashpass = result.getString("hashpass");
+        String salt = result.getString("salt");
+        int addressId = result.getInt("addressId");
+        return new Admin(id,firstName,lastName,email,hashpass,salt,addressId);
     }
 
     public int getId(){
