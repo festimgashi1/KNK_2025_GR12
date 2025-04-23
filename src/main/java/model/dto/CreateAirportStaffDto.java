@@ -1,23 +1,29 @@
 package model.dto;
 
+public class CreateAirportStaffDto {
 
-public class UpdateClientDto {
 
         private String firstName;
 
-
         private String lastName;
-
 
         private String email;
 
+        private String phone;
 
-        private String phoneNumber;
+        private String position;
 
-        private String password; // eshte opsionale,vetem nese dojme me e ndrru fjalekalimin
+        private String password;
 
 
-
+    public CreateAirportStaffDto(String firstName, String lastName, String email, String phone, String position, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.position = position;
+        this.password = password;
+    }
 
         public String getFirstName() {
             return firstName;
@@ -43,12 +49,20 @@ public class UpdateClientDto {
             this.email = email;
         }
 
-        public String getPhoneNumber() {
-            return phoneNumber;
+        public String getPhone() {
+            return phone;
         }
 
-        public void setPhoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+        public String getPosition() {
+            return position;
+        }
+
+        public void setPosition(String position) {
+            this.position = position;
         }
 
         public String getPassword() {
@@ -59,6 +73,3 @@ public class UpdateClientDto {
             this.password = password;
         }
     }
-
-
-

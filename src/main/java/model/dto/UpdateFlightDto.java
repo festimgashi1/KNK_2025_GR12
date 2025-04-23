@@ -11,7 +11,7 @@ public class UpdateFlightDto {
     private double price;
 
 
-    public UpdateFlightDto() {}
+
 
 
     public UpdateFlightDto(String flightNumber, String origin, String destination, LocalDateTime departureTime, LocalDateTime arrivalTime, double price) {

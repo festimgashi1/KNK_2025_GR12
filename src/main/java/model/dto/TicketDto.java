@@ -9,7 +9,6 @@ public class TicketDto {
     private String status;
 
     // Default constructor
-    public TicketDto() {}
 
     // Constructor për TicketDto
     public TicketDto(int ticketId, String flightNumber, String passengerName, String seatNumber, double price, String status) {

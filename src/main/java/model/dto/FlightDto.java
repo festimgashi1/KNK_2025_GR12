@@ -12,7 +12,7 @@ public class FlightDto {
     private double price;
 
 
-    public FlightDto() {}
+
 
 
     public FlightDto(int flightId, String flightNumber, String origin, String destination, LocalDateTime departureTime, LocalDateTime arrivalTime, double price) {
@@ -25,7 +25,7 @@ public class FlightDto {
         this.price = price;
     }
 
-    // Getters and Setters
+
     public int getFlightId() {
         return flightId;
     }

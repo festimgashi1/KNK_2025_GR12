@@ -15,6 +15,7 @@ private String passportNumber;
 private String nationality;
 
 
+
     public CreateClientDto( String firstName, String lastName, String phoneNumber, String address, String city, String country, String postalClient, LocalDate registrationDate, String passportNumber, String nationality) {
 
         this.firstName = firstName;

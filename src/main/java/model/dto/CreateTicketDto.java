@@ -7,8 +7,6 @@ public class CreateTicketDto {
     private double price;
 
 
-    public CreateTicketDto() {
-    }
 
 
     public CreateTicketDto(int flightId, int passengerId, String seatNumber, double price) {

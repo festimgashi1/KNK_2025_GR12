@@ -11,7 +11,6 @@ public class CreateFlightDto {
     private double price;
 
 
-    public CreateFlightDto() {}
 
 
     public CreateFlightDto(String flightNumber, String origin, String destination, LocalDateTime departureTime, LocalDateTime arrivalTime, double price) {

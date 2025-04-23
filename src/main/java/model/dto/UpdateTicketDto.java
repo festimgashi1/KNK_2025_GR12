@@ -6,7 +6,7 @@ public class UpdateTicketDto {
     private String status;
 
 
-    public UpdateTicketDto() {}
+
 
 
     public UpdateTicketDto(String seatNumber, double price, String status) {

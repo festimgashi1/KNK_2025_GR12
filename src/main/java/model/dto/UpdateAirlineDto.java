@@ -7,8 +7,6 @@ public class UpdateAirlineDto {
     private String phoneNumber;
 
 
-    public UpdateAirlineDto() {}
-
 
     public UpdateAirlineDto(String airlinename, String country, String email, String phoneNumber) {
         this.airlinename = airlinename;

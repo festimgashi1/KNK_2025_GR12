@@ -1,7 +1,7 @@
 package model.dto;
 
 public class AirportStaffDto {
-    private int id;
+    private int AirportStaffId;
 
 
     private String firstName;
@@ -21,15 +21,13 @@ public class AirportStaffDto {
     private boolean isActive; // statusi i stafit (aktiv ose joaktiv)
 
 
-    public AirportStaffDto() {}
 
-    // Getters dhe Setters
     public int getId() {
-        return id;
+        return AirportStaffId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int AirportstaffId) {
+        this.AirportStaffId = AirportstaffId;
     }
 
     public String getFirstName() {
