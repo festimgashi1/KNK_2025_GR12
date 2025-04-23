@@ -9,6 +9,9 @@ public class CreateFlightsStatusDto {
     private String aeroportiNisjes;
     private String aeroportiArritjes;
 
+
+
+
     public CreateFlightsStatusDto(String statusi, LocalDateTime dataNisjes, LocalDateTime dataArritjes, String aeroportiNisjes, String aeroportiArritjes) {
         this.statusi = statusi;
         this.dataNisjes = dataNisjes;
