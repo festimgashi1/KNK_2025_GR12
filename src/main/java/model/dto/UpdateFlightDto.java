@@ -2,8 +2,7 @@ package model.dto;
 
 import java.time.LocalDateTime;
 
-public class FlightDto {
-    private int flightId;
+public class UpdateFlightDto {
     private String flightNumber;
     private String origin;
     private String destination;
@@ -12,11 +11,10 @@ public class FlightDto {
     private double price;
 
 
-    public FlightDto() {}
+    public UpdateFlightDto() {}
 
 
-    public FlightDto(int flightId, String flightNumber, String origin, String destination, LocalDateTime departureTime, LocalDateTime arrivalTime, double price) {
-        this.flightId = flightId;
+    public UpdateFlightDto(String flightNumber, String origin, String destination, LocalDateTime departureTime, LocalDateTime arrivalTime, double price) {
         this.flightNumber = flightNumber;
         this.origin = origin;
         this.destination = destination;
@@ -25,14 +23,6 @@ public class FlightDto {
         this.price = price;
     }
 
-    // Getters and Setters
-    public int getFlightId() {
-        return flightId;
-    }
-
-    public void setFlightId(int flightId) {
-        this.flightId = flightId;
-    }
 
     public String getFlightNumber() {
         return flightNumber;
