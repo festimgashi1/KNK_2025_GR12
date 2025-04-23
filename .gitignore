@@ -14,6 +14,11 @@ target/
 .idea/
 out/
 
+# Avoid tracking user-specific workspace settings
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+
 ### Eclipse ###
 .apt_generated
 .classpath
