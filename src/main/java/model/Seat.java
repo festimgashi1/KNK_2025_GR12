@@ -5,13 +5,15 @@ public class Seat {
     private String classType;
     private boolean isAvailable;
     private int flightNumber;
+    private int ticketId;
 
 
-    public Seat(String seatNumber, String classType, boolean isAvailable, int flightNumber) {
+    public Seat(String seatNumber, String classType, boolean isAvailable, int flightNumber, int ticketId) {
         this.seatNumber = seatNumber;
         this.classType = classType;
         this.isAvailable = isAvailable;
         this.flightNumber= flightNumber;
+        this.ticketId=ticketId;
     }
 
 
@@ -46,5 +48,9 @@ public class Seat {
     public void setFlightNumber(int flightNumber) {
         this.flightNumber = flightNumber;
     }
+
+    public int getTicketId() { return ticketId; }
+
+    public void setTicketId(int ticketId) { this.ticketId = ticketId; }
 
 }

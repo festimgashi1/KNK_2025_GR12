@@ -25,10 +25,10 @@ public class AirlineRepository {
 
     private void initializeSampleAirlines() {
 
-        addAirline(new Airline(1, "Adria Airways", "Slovenia", 1001, "adria123", "+38612345678"));
-        addAirline(new Airline(2, "Austrian Airlines", "Austria", 1002, "austrian456", "+4312345678"));
-        addAirline(new Airline(3, "Turkish Airlines", "Turkey", 1003, "turkish789", "+9012345678"));
-        addAirline(new Airline(4, "Lufthansa", "Germany", 1004, "lufthansa012", "+4912345678"));
+        addAirline(new Airline(1, "Adria Airways", "Slovenia", 1001, "adria123","blla" , "+38612345678"));
+        addAirline(new Airline(2, "Austrian Airlines", "Austria", 1002, "austrian456","blla", "+4312345678"));
+        addAirline(new Airline(3, "Turkish Airlines", "Turkey", 1003, "turkish789","blla", "+9012345678"));
+        addAirline(new Airline(4, "Lufthansa", "Germany", 1004, "lufthansa012","blla", "+4912345678"));
     }
 
 

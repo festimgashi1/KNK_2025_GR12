@@ -5,15 +5,13 @@ import java.sql.Date;
 public class CheckIn {
    private int id;
    private int ticketid;
-   private int flightid;
    private Date checkinTime;
    private String seatNumber;
    private String method;
 
-    public CheckIn(int id, int ticketid, int flightid, Date checkinTime, String seatNumber, String method) {
+    public CheckIn(int id, int ticketid, Date checkinTime, String seatNumber, String method) {
         this.id = id;
         this.ticketid = ticketid;
-        this.flightid = flightid;
         this.checkinTime = checkinTime;
         this.seatNumber = seatNumber;
         this.method = method;
@@ -25,10 +23,6 @@ public class CheckIn {
 
     public int getTicketid() {
         return ticketid;
-    }
-
-    public int getFlightid() {
-        return flightid;
     }
 
     public Date getCheckinTime() {
@@ -49,10 +43,6 @@ public class CheckIn {
 
     public void setTicketid(int ticketid) {
         this.ticketid = ticketid;
-    }
-
-    public void setFlightid(int flightid) {
-        this.flightid = flightid;
     }
 
     public void setCheckinTime(Date checkinTime) {

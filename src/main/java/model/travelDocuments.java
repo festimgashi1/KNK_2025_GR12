@@ -4,16 +4,16 @@ import java.util.Date;
 
 public class travelDocuments {
     private int documentId;
-    private int klientId;
+    private int clientId;
     private int bookingId;
     private Date issueDate;
     private Date expiryDate;
     private String isValid;
     private String fileAttachment;
 
-    public travelDocuments(int documentId, int klientId, int bookingId, Date issueDate, Date expiryDate, String isValid, String fileAttachment) {
+    public travelDocuments(int documentId, int clientId, int bookingId, Date issueDate, Date expiryDate, String isValid, String fileAttachment) {
         this.documentId = documentId;
-        this.klientId = klientId;
+        this.clientId = clientId;
         this.bookingId = bookingId;
         this.issueDate = issueDate;
         this.expiryDate = expiryDate;
@@ -26,7 +26,7 @@ public class travelDocuments {
     }
 
     public int getKlientId() {
-        return klientId;
+        return clientId;
     }
 
     public int getBookingId() {

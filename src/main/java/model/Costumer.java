@@ -9,11 +9,12 @@ public class Costumer {
     private int telephoneNumber;
     private String gender;
     private Date birthDate;
-    private String password;
+    private String hashpassword;
+    private String salt;
     private String address;
 
 
-    protected Costumer(int costumerId ,String firstName, String lastName,int telephoneNumber, String email,String gender,Date birthDate,String paswword,String address ){
+    protected Costumer(int costumerId ,String firstName, String lastName,int telephoneNumber, String email,String gender,Date birthDate,String hashpaswword, String salt ,String address ){
         this.costumerId=costumerId;
         this.firstName=firstName;
         this.lastName=lastName;
@@ -21,7 +22,8 @@ public class Costumer {
         this.telephoneNumber=telephoneNumber;
         this.gender=gender;
         this.birthDate=birthDate;
-        this.password=paswword;
+        this.hashpassword=hashpaswword;
+        this.salt=salt;
         this.address=address;
 
     }
@@ -54,9 +56,14 @@ public class Costumer {
 
     public String getPassword(){
 
-        return password;
+        return hashpassword;
 
     }
+
+    public String getSalt() {
+        return salt;
+    }
+
     public String getAddress(){
         return address;
     }

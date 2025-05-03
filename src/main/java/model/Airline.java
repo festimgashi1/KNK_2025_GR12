@@ -5,15 +5,17 @@ public class Airline {
     private String airlinename;
     private String country;
     private int email;
-    private String password;
+    private String hashpassword;
+    private String salt;
     private String phoneNumber;
 
-    public Airline(int airlineid, String airlinename, String country, int email, String password, String phoneNumber) {
+    public Airline(int airlineid, String airlinename, String country, int email, String hashpassword, String salt,String phoneNumber) {
         this.airlineid = airlineid;
         this.airlinename = airlinename;
         this.country = country;
         this.email = email;
-        this.password = password;
+        this.hashpassword = hashpassword;
+        this.salt=salt;
         this.phoneNumber = phoneNumber;
     }
 
@@ -34,8 +36,10 @@ public class Airline {
     }
 
     public String getPassword() {
-        return password;
+        return hashpassword;
     }
+
+    public String getSalt() { return salt; }
 
     public String getPhoneNumber() {
         return phoneNumber;
