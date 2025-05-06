@@ -1,6 +1,7 @@
 package services;
 
 import model.Costumer;
+import model.dto.CostumerDto;
 import model.dto.CreateCostumerDto;
 import repository.CostumerRepository;
 
@@ -25,13 +26,35 @@ public class CostumerService {
     }
 
     public Costumer create(CreateCostumerDto dto) throws Exception {
-        if (dto.getFirstName().isEmpty() || dto.getLastName().isEmpty() || dto.getEmail().isEmpty() || dto.getBirthDate() == null) {
+        if (dto.getFirstName().isEmpty() ||
+                dto.getLastName().isEmpty() ||
+                dto.getEmail().isEmpty() ||
+                dto.getPhoneNumber().isEmpty() ||
+                dto.getBirthDate() == null ||
+                dto.getPassword().isEmpty() ||
+                dto.getAddress().isEmpty() ||
+                dto.getConfirmPassword().isEmpty()) {
             throw new Exception("Provided information is not valid!");
         }
+        if(!(dto.getPassword().equals(dto.getConfirmPassword()))){
+            throw new Exception("Password should be the same as Confirm Password");
+        }
 
-        Costumer costumer = this.costumerRepository.create(dto);
-        if (costumer == null) {
-            throw new Exception("Customer was not created!");
+        Costumer costumerExist = this.costumerRepository.getByEmail(dto.getEmail());
+        if (costumerExist != null) {
+            throw new Exception("Email already exists!");
+        }
+
+        String salt=PasswordHasher.generateSalt();
+        String hashPass=PasswordHasher.generateSaltedHash(dto.getPassword(),salt);
+        // duhet me bo ni funksion qe ta kthen id e adrese nga adresa edhe me ja qu si parameter te dto e re
+        CostumerDto costumerDto=new CostumerDto(dto.getFirstName(),
+                dto.getLastName(), dto.getEmail(), 1,dto.getBirthDate(), salt,hashPass, dto.getPhoneNumber());
+
+
+        Costumer costumer =this.costumerRepository.create(costumerDto);
+        if(costumer == null){
+            throw new Exception("User is not created!");
         }
 
         return costumer;

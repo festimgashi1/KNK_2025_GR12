@@ -1,5 +1,7 @@
 package model;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Costumer {
     private int costumerId;

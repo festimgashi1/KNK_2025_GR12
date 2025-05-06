@@ -1,4 +1,4 @@
-package controllers;
+package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,9 +12,6 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class SignupController {
-
-    @FXML
-    private Button SignUp;
 
     @FXML
     private DatePicker dtBirthDate;

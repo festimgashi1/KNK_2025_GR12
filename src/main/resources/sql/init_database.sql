@@ -60,6 +60,8 @@ CREATE TABLE Costumer (
     addres_id INT REFERENCES Address(addressId)
 );
 
+ALTER TABLE Costumer DROP COLUMN gender;
+
 CREATE TABLE Delays (
     delayId SERIAL PRIMARY KEY,
     flightNumber INT REFERENCES Flights(flightNumber),
