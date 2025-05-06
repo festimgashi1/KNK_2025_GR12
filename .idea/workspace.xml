@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/SignupController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/BaseRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/CostumerRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/CostumerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Airline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Airline.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/CheckIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/CheckIn.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/model/Costumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Costumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Seat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Seat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tickets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tickets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/travelDocuments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/travelDocuments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dto/CreateClientDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dto/CreateCostumerDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dto/UpdateClientDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dto/UpdateCostumerDto.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,7 +1,7 @@
 package model.dto;
 
 
-public class UpdateClientDto {
+public class UpdateCostumerDto {
 
         private String firstName;
 

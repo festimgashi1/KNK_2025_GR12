@@ -68,6 +68,20 @@ public class Costumer {
         return address;
     }
 
+    public static Costumer getInstance(ResultSet rs) throws SQLException {
+        int costumerId = rs.getInt("COSTUMER_ID");
+        String firstName = rs.getString("FIRST_NAME");
+        String lastName = rs.getString("LAST_NAME");
+        int telephoneNumber = rs.getInt("TELEPHONE_NUMBER");
+        String email = rs.getString("EMAIL");
+        String gender = rs.getString("GENDER");
+        Date birthDate = rs.getDate("BIRTH_DATE");
+        String hashpassword = rs.getString("HASH_PASSWORD");
+        String salt = rs.getString("SALT");
+        String address = rs.getString("ADDRESS");
+
+        return new Costumer(costumerId, firstName, lastName, telephoneNumber, email, gender, birthDate, hashpassword, salt, address);
+    }
 
 }
 
