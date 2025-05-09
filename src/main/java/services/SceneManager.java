@@ -13,7 +13,7 @@ public class SceneManager {
     private String centerPanePath;
 
     private SceneManager(){
-        this.currentPath= "/Views/log_in.fxml";
+        this.currentPath= "/Views/client_interface.fxml";
         this.scene = this.initScene();
     }
 
