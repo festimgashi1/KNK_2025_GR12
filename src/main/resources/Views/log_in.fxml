@@ -95,7 +95,7 @@
             <Button fx:id="LogIn" layoutX="277.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleLogInButton" text="Log In" />
             <Text layoutX="33.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you don't have a account" />
             <Hyperlink fx:id="goSignUp" layoutX="192.0" layoutY="330.0" onAction="#goSignUp" text="Sign Up" />
-            <Hyperlink fx:id="guess" layoutX="554.0" layoutY="340.0" onAction="#goGuess" text="Guess" />
+            <Hyperlink fx:id="guess" layoutX="554.0" layoutY="340.0" text="Guess" />
             <Text layoutX="467.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Continoue as a" />
          </children>
     </AnchorPane>

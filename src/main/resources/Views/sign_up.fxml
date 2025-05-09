@@ -99,7 +99,7 @@
                 <PasswordField fx:id="pwdConfirmPass" layoutX="229.0" layoutY="310.0" promptText="Confirm Password" />
             <Text layoutX="24.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you already have a account," />
             <Hyperlink fx:id="goLogIn" layoutX="181.0" layoutY="404.0" onAction="#goLogIn" text="Log In" />
-            <Hyperlink fx:id="guess" layoutX="567.0" layoutY="404.0" onAction="#goGuess" text="Guess" />
+            <Hyperlink fx:id="guess" layoutX="567.0" layoutY="404.0" text="Guess" />
             <Text layoutX="488.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Continoue as a" />
             </children>
         </AnchorPane>
