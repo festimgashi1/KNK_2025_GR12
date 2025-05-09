@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import model.Costumer;
 import model.dto.CreateCostumerDto;
 import services.CostumerService;
+import services.SceneManager;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -78,4 +79,7 @@ public class SignupController {
         return new CreateCostumerDto(firstName,lastName ,email, phoneNumber,address,birthDate,password,confirmPass);
     }
 
+    public void goLogIn(ActionEvent actionEvent) {
+        SceneManager.getInstance().switchScene("/Views/log_in.fxml");
+    }
 }

@@ -66,8 +66,11 @@ public class CostumerRepository extends BaseRepository<Costumer, CostumerDto, Up
 
 
     public Costumer getByEmail(String email){
-        String query = "SELECT * FROM Costumer" + " WHERE email = ?";
+        String query = "SELECT * FROM Costumer WHERE email = ?";
         try{
+            if (this.connection == null) {
+                System.out.println("Database connection is null!");
+            }
             PreparedStatement pstm = this.connection.prepareStatement(
                     query);
             pstm.setString(1, email);

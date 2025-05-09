@@ -47,7 +47,6 @@ public class CostumerService {
 
         String salt=PasswordHasher.generateSalt();
         String hashPass=PasswordHasher.generateSaltedHash(dto.getPassword(),salt);
-        // duhet me bo ni funksion qe ta kthen id e adrese nga adresa edhe me ja qu si parameter te dto e re
         CostumerDto costumerDto=new CostumerDto(dto.getFirstName(),
                 dto.getLastName(), dto.getEmail(), dto.getAddress(),dto.getBirthDate(), salt,hashPass, dto.getPhoneNumber());
 
@@ -59,4 +58,23 @@ public class CostumerService {
 
         return costumer;
     }
+
+    public Costumer login(String email, String password) throws Exception {
+        if (email.isEmpty() || password.isEmpty()) {
+            throw new Exception("Email or password cannot be empty.");
+        }
+
+        Costumer user = this.costumerRepository.getByEmail(email);
+        if (user == null) {
+            throw new Exception("User with this email does not exist.");
+        }
+
+        boolean passwordMatches = PasswordHasher.compareSaltedHash(password, user.getSalt(), user.getPassword());
+        if (!passwordMatches) {
+            throw new Exception("Incorrect password.");
+        }
+
+        return user;
+    }
+
 }

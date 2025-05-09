@@ -13,7 +13,7 @@ public class SceneManager {
     private String centerPanePath;
 
     private SceneManager(){
-        this.currentPath= "/Views/sign_up.fxml";
+        this.currentPath= "/Views/log_in.fxml";
         this.scene = this.initScene();
     }
 
@@ -32,8 +32,7 @@ public class SceneManager {
     }
 
     private Parent getParent(String path) throws IOException{
-        return FXMLLoader.load(getClass().getResource("/Views/sign_up.fxml"));
-    }
+        return FXMLLoader.load(getClass().getResource(path));    }
     public Scene getScene(){
         return scene;
     }
