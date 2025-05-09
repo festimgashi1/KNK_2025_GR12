@@ -2,7 +2,7 @@ package model;
 
 import java.util.Date;
 
-public class travelDocuments {
+public class TravelDocuments {
     private int documentId;
     private int clientId;
     private int bookingId;
@@ -11,7 +11,7 @@ public class travelDocuments {
     private String isValid;
     private String fileAttachment;
 
-    public travelDocuments(int documentId, int clientId, int bookingId, Date issueDate, Date expiryDate, String isValid, String fileAttachment) {
+    public TravelDocuments(int documentId, int clientId, int bookingId, Date issueDate, Date expiryDate, String isValid, String fileAttachment) {
         this.documentId = documentId;
         this.clientId = clientId;
         this.bookingId = bookingId;

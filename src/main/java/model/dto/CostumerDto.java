@@ -7,13 +7,13 @@ public class CostumerDto {
     String firstName;
     String lastName;
     String email;
-    Integer address;
+    String address;
     LocalDate birthdate;
     String salt;
     String hashPass;
     String phoneNumber;
 
-    public CostumerDto(String firstName, String lastName, String email, Integer address, LocalDate birthdate, String salt, String hashPass, String phoneNumber) {
+    public CostumerDto(String firstName, String lastName, String email, String address, LocalDate birthdate, String salt, String hashPass, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -44,7 +44,7 @@ public class CostumerDto {
         return email;
     }
 
-    public Integer getAddress() {
+    public String getAddress() {
         return address;
     }
 
@@ -72,7 +72,7 @@ public class CostumerDto {
         this.email = email;
     }
 
-    public void setAddress(Integer address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 

@@ -49,7 +49,7 @@ public class CostumerService {
         String hashPass=PasswordHasher.generateSaltedHash(dto.getPassword(),salt);
         // duhet me bo ni funksion qe ta kthen id e adrese nga adresa edhe me ja qu si parameter te dto e re
         CostumerDto costumerDto=new CostumerDto(dto.getFirstName(),
-                dto.getLastName(), dto.getEmail(), 1,dto.getBirthDate(), salt,hashPass, dto.getPhoneNumber());
+                dto.getLastName(), dto.getEmail(), dto.getAddress(),dto.getBirthDate(), salt,hashPass, dto.getPhoneNumber());
 
 
         Costumer costumer =this.costumerRepository.create(costumerDto);

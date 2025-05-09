@@ -8,7 +8,7 @@ public class Costumer {
     private String firstName;
     private String lastName;
     private String email;
-    private int telephoneNumber;
+    private String telephoneNumber;
     private String gender;
     private Date birthDate;
     private String hashpassword;
@@ -16,7 +16,7 @@ public class Costumer {
     private String address;
 
 
-    protected Costumer(int costumerId ,String firstName, String lastName,int telephoneNumber, String email,String gender,Date birthDate,String hashpaswword, String salt ,String address ){
+    protected Costumer(int costumerId ,String firstName, String lastName,String telephoneNumber, String email,String gender,Date birthDate,String hashpaswword, String salt ,String address ){
         this.costumerId=costumerId;
         this.firstName=firstName;
         this.lastName=lastName;
@@ -43,7 +43,7 @@ public class Costumer {
     public String getEmail(){
         return email;
     }
-    public int getTelephoneNumber(){
+    public String  getTelephoneNumber(){
         return telephoneNumber;
     }
 
@@ -71,16 +71,16 @@ public class Costumer {
     }
 
     public static Costumer getInstance(ResultSet rs) throws SQLException {
-        int costumerId = rs.getInt("COSTUMER_ID");
-        String firstName = rs.getString("FIRST_NAME");
-        String lastName = rs.getString("LAST_NAME");
-        int telephoneNumber = rs.getInt("TELEPHONE_NUMBER");
-        String email = rs.getString("EMAIL");
-        String gender = rs.getString("GENDER");
-        Date birthDate = rs.getDate("BIRTH_DATE");
-        String hashpassword = rs.getString("HASH_PASSWORD");
-        String salt = rs.getString("SALT");
-        String address = rs.getString("ADDRESS");
+        int costumerId = rs.getInt("costumerId");
+        String firstName = rs.getString("firstname");
+        String lastName = rs.getString("lastname");
+        String telephoneNumber = rs.getString("telephoneNumber");
+        String email = rs.getString("email");
+        String gender = rs.getString("gender");
+        Date birthDate = rs.getDate("birthDate");
+        String hashpassword = rs.getString("hashpassword");
+        String salt = rs.getString("salt");
+        String address = rs.getString("address");
 
         return new Costumer(costumerId, firstName, lastName, telephoneNumber, email, gender, birthDate, hashpassword, salt, address);
     }

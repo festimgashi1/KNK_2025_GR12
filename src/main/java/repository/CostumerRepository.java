@@ -18,7 +18,7 @@ public class CostumerRepository extends BaseRepository<Costumer, CostumerDto, Up
 
     @Override
     public Costumer fromResultSet(ResultSet result) throws SQLException {
-        return Costumer.getInstance(result); // make sure you have this static method in your Costumer model
+        return Costumer.getInstance(result);
     }
 
 
@@ -26,8 +26,8 @@ public class CostumerRepository extends BaseRepository<Costumer, CostumerDto, Up
     @Override
     public Costumer create(CostumerDto createDto) {
         String query= """
-                insert into 
-                Costumer (firstName, lastName, email, telephoneNumber, birthDate, hashpassword, salt, addres_id)
+                insert into
+                Costumer (firstName, lastName, email, telephoneNumber, birthDate, hashpassword, salt, address)
                 values (?,?,?,?,?,?,?,?)
                 """;
 
@@ -43,7 +43,7 @@ public class CostumerRepository extends BaseRepository<Costumer, CostumerDto, Up
             pstm.setDate(5,java.sql.Date.valueOf(createDto.getBirthdate()));
             pstm.setString(6,createDto.getHashPass());
             pstm.setString(7,createDto.getSalt());
-            pstm.setInt(8,createDto.getAddress());
+            pstm.setString(8,createDto.getAddress());
 
             pstm.execute();
             ResultSet resultSet=pstm.getGeneratedKeys();
@@ -80,31 +80,5 @@ public class CostumerRepository extends BaseRepository<Costumer, CostumerDto, Up
         }
         return null;
     }
-
-//    @Override
-//    public Costumer update(UpdateCostumerDto dto) {
-//        String query = """
-//                UPDATE COSTUMERS
-//                SET EMAIL = ?, TELEPHONE_NUMBER = ?, ADDRESS = ?
-//                WHERE COSTUMER_ID = ?
-//                """;
-//        try {
-//            PreparedStatement pstm = this.connection.prepareStatement(query);
-//            pstm.setString(1, dto.getEmail());
-//            pstm.setInt(2, dto.getTelephoneNumber());
-//            pstm.setString(3, dto.getAddress());
-//            pstm.setInt(4, dto.getCostumerId());
-//
-//            int updated = pstm.executeUpdate();
-//            if (updated == 1) {
-//                return this.getById(dto.getCostumerId());
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return null;
-//    }
-
 
 }

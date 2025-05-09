@@ -9,4 +9,6 @@ module org.example.knk_2025_gr12 {
 
     opens org.example.knk_2025_gr12 to javafx.fxml;
     exports org.example.knk_2025_gr12;
+    exports App;
+    exports services;
 }

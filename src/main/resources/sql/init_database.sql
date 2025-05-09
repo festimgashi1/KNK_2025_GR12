@@ -156,3 +156,12 @@ CREATE TABLE Booking (
 
     FOREIGN KEY (seatNumber, flightNumber) REFERENCES Seat(seatNumber, flightNumber)
 );
+
+
+
+ALTER TABLE Costumer
+ALTER COLUMN hashpassword TYPE VARCHAR(256);
+
+ALTER TABLE Costumer
+ALTER COLUMN salt TYPE VARCHAR(128);
+

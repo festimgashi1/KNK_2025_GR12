@@ -14,7 +14,7 @@ public class UpdateCostumerDto {
 
         private String phoneNumber;
 
-        private String password; // eshte opsionale,vetem nese dojme me e ndrru fjalekalimin
+        private String password;
 
 
 
