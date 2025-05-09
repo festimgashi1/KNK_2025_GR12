@@ -28,6 +28,14 @@ CREATE TABLE AirlineStaff (
     role VARCHAR(50)
 );
 
+CREATE TABLE Address (
+    addressId SERIAL PRIMARY KEY,
+    county VARCHAR(100),
+    city VARCHAR(100),
+    street VARCHAR(100),
+    zipCode INT
+);
+
 CREATE TABLE AirportStaff (
     id SERIAL PRIMARY KEY,
     firstName VARCHAR(50),
@@ -37,14 +45,6 @@ CREATE TABLE AirportStaff (
     addressId INT REFERENCES Address(addressId),
     startedAt DATE,
     shift VARCHAR(50)
-);
-
-CREATE TABLE CheckIn (
-    id SERIAL PRIMARY KEY,
-    ticketid INT REFERENCES Tickets(ticketid),
-    checkinTime TIMESTAMP,
-    seatNumber VARCHAR(10),
-    method VARCHAR(20)
 );
 
 CREATE TABLE Costumer (
@@ -60,7 +60,34 @@ CREATE TABLE Costumer (
     addres_id INT REFERENCES Address(addressId)
 );
 
-ALTER TABLE Costumer DROP COLUMN gender;
+CREATE TABLE Flights (
+    flightNumber SERIAL PRIMARY KEY,
+    airlineid INT REFERENCES Airline(airlineid),
+    planeid INT,
+    departureAirport VARCHAR(100),
+    arrivalAirport VARCHAR(100),
+    departureTime TIMESTAMP,
+    arrivalTime TIMESTAMP,
+    duration INTERVAL,
+    status VARCHAR(50)
+);
+
+CREATE TABLE Tickets (
+    ticketid SERIAL PRIMARY KEY,
+    flightNumber INT REFERENCES Flights(flightNumber),
+    customerid INT REFERENCES Costumer(costumerId),
+    bookingdate DATE,
+    ticketprice DECIMAL(10,2),
+    paymentmethod VARCHAR(50)
+);
+
+CREATE TABLE CheckIn (
+    id SERIAL PRIMARY KEY,
+    ticketid INT REFERENCES Tickets(ticketid),
+    checkinTime TIMESTAMP,
+    seatNumber VARCHAR(10),
+    method VARCHAR(20)
+);
 
 CREATE TABLE Delays (
     delayId SERIAL PRIMARY KEY,
@@ -79,34 +106,11 @@ CREATE TABLE Feedback (
     status VARCHAR(50)
 );
 
-CREATE TABLE Flights (
-    flightNumber SERIAL PRIMARY KEY,
-    airlineid INT REFERENCES Airline(airlineid),
-    planeid INT,
-    departureAirport VARCHAR(100),
-    arrivalAirport VARCHAR(100),
-    departureTime TIMESTAMP,
-    arrivalTime TIMESTAMP,
-    duration INTERVAL,
-    status VARCHAR(50)
-);
-
 CREATE TABLE Gate(
     gateId SERIAL PRIMARY KEY,
     flightNumber INT REFERENCES Flights(flightNumber),
     gateNumber VARCHAR(10),
     status VARCHAR(50)
-);
-
-CREATE TABLE Refunds (
-    refundId SERIAL PRIMARY KEY,
-    paymentid INT,
-    bookingId INT REFERENCES Booking(bookingId),
-    flightId INT REFERENCES Flights(flightNumber),
-    refundAmount DECIMAL(10,2),
-    refundStatus VARCHAR(50),
-    refundReason VARCHAR(100),
-    transactionDate DATE
 );
 
 CREATE TABLE Seat (
@@ -116,33 +120,6 @@ CREATE TABLE Seat (
     flightNumber INT REFERENCES Flights(flightNumber),
 	ticketId INT REFERENCES Tickets(ticketid),
     PRIMARY KEY (seatNumber, flightNumber)
-);
-
-CREATE TABLE Address (
-    addressId SERIAL PRIMARY KEY,
-    county VARCHAR(100),
-    city VARCHAR(100),
-    street VARCHAR(100),
-    zipCode INT
-);
-
-CREATE TABLE Tickets (
-    ticketid SERIAL PRIMARY KEY,
-    flightNumber INT REFERENCES Flights(flightNumber),
-    customerid INT REFERENCES Costumer(costumerId),
-    bookingdate DATE,
-    ticketprice DECIMAL(10,2),
-    paymentmethod VARCHAR(50)
-);
-
-CREATE TABLE TravelDocuments (
-    documentId SERIAL PRIMARY KEY,
-    costumerId INT REFERENCES Costumer(costumerId),
-    bookingId INT REFERENCES Booking(bookingId),
-    issueDate DATE,
-    expiryDate DATE,
-    isValid VARCHAR(10),
-    fileAttachment TEXT
 );
 
 CREATE TABLE Booking (
@@ -156,6 +133,29 @@ CREATE TABLE Booking (
 
     FOREIGN KEY (seatNumber, flightNumber) REFERENCES Seat(seatNumber, flightNumber)
 );
+
+CREATE TABLE Refunds (
+    refundId SERIAL PRIMARY KEY,
+    paymentid INT,
+    bookingId INT REFERENCES Booking(bookingId),
+    flightId INT REFERENCES Flights(flightNumber),
+    refundAmount DECIMAL(10,2),
+    refundStatus VARCHAR(50),
+    refundReason VARCHAR(100),
+    transactionDate DATE
+);
+
+CREATE TABLE TravelDocuments (
+    documentId SERIAL PRIMARY KEY,
+    costumerId INT REFERENCES Costumer(costumerId),
+    bookingId INT REFERENCES Booking(bookingId),
+    issueDate DATE,
+    expiryDate DATE,
+    isValid VARCHAR(10),
+    fileAttachment TEXT
+);
+
+ALTER TABLE Costumer DROP COLUMN gender;
 
 ALTER TABLE Costumer
 ALTER COLUMN hashpassword TYPE VARCHAR(256);
