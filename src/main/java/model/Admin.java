@@ -10,16 +10,15 @@ public class Admin {
     private String email;
     private String hashpass;
     private String salt;
-    private int addressId;
 
-    protected Admin(int id, String firstName, String lastName, String email, String hashpass, String salt, int addressId){
+
+    protected Admin(int id, String firstName, String lastName, String email, String hashpass, String salt){
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
         this.hashpass=hashpass;
         this.salt=salt;
-        this.addressId=addressId;
     }
 
     public static Admin getInstance (ResultSet result) throws SQLException {
@@ -27,10 +26,9 @@ public class Admin {
         String firstName = result.getString("firstName");
         String lastName = result.getString("lastName");
         String email = result.getString("email");
-        String hashpass = result.getString("hashpass");
+        String hashpass = result.getString("hashpassword");
         String salt = result.getString("salt");
-        int addressId = result.getInt("addressId");
-        return new Admin(id,firstName,lastName,email,hashpass,salt,addressId);
+        return new Admin(id,firstName,lastName,email,hashpass,salt);
     }
 
     public int getId(){
@@ -50,8 +48,5 @@ public class Admin {
     }
     public String getSalt(){
         return salt;
-    }
-    public int getAddressId(){
-        return addressId;
     }
 }

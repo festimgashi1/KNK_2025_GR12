@@ -1,112 +1,69 @@
 package repository;
 
+import database.DBConnector;
 import model.Airline;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import model.dto.AirlineDto;
+
+import java.sql.*;
 
 public class AirlineRepository {
-    private List<Airline> airlines;
-    private static AirlineRepository instance;
+    protected Connection connection;
 
-
-    private AirlineRepository() {
-        this.airlines = new ArrayList<>();
-        initializeSampleAirlines();
+    public AirlineRepository(){
+        this.connection= DBConnector.getConnection();
     }
 
-    public static synchronized AirlineRepository getInstance() {
-        if (instance == null) {
-            instance = new AirlineRepository();
-        }
-        return instance;
+    public Airline fromResultSet(ResultSet result) throws SQLException {
+        return Airline.getInstance(result);
     }
 
-    private void initializeSampleAirlines() {
+    public Airline create(AirlineDto createDto) {
+        String query= """
+                insert into
+                Airline (airlinename, country, email, hashpassword, salt, telephoneNumber)
+                values (?,?,?,?,?,?,?,?)
+                """;
 
-        addAirline(new Airline(1, "Adria Airways", "Slovenia", 1001, "adria123","blla" , "+38612345678"));
-        addAirline(new Airline(2, "Austrian Airlines", "Austria", 1002, "austrian456","blla", "+4312345678"));
-        addAirline(new Airline(3, "Turkish Airlines", "Turkey", 1003, "turkish789","blla", "+9012345678"));
-        addAirline(new Airline(4, "Lufthansa", "Germany", 1004, "lufthansa012","blla", "+4912345678"));
-    }
+        try{
+            PreparedStatement pstm=
+                    this.connection.prepareStatement(
+                            query, Statement.RETURN_GENERATED_KEYS);
+            pstm.setString(1, createDto.getAirlinename());
+            pstm.setString(2,createDto.getCountry());
+            pstm.setString(3,createDto.getEmail());
+            pstm.setString(4,createDto.getHashpass());
+            pstm.setString(6,createDto.getSalt());
+            pstm.setString(8,createDto.getPhoneNumber());
 
-
-
-    public List<Airline> getAllAirlines() {
-        return new ArrayList<>(airlines);
-    }
-
-    public Optional<Airline> getAirlineById(int airlineid) {
-        return airlines.stream()
-                .filter(a -> a.getAirlineid() == airlineid)
-                .findFirst();
-    }
-
-    public List<Airline> getAirlinesByCountry(String country) {
-        return airlines.stream()
-                .filter(a -> a.getCountry().equalsIgnoreCase(country))
-                .collect(Collectors.toList());
-    }
-
-    public Optional<Airline> getAirlineByEmail(int email) {
-        return airlines.stream()
-                .filter(a -> a.getEmail() == email)
-                .findFirst();
-    }
-
-    public boolean addAirline(Airline airline) {
-        if (airline == null ||
-                airline.getAirlinename() == null ||
-                airline.getCountry() == null ||
-                airline.getPhoneNumber() == null) {
-            return false;
-        }
-
-
-        boolean exists = airlines.stream()
-                .anyMatch(a -> a.getAirlineid() == airline.getAirlineid() ||
-                        a.getEmail() == airline.getEmail());
-
-        if (!exists) {
-            return airlines.add(airline);
-        }
-        return false;
-    }
-
-    public boolean updateAirline(Airline updatedAirline) {
-        if (updatedAirline == null) {
-            return false;
-        }
-
-        for (int i = 0; i < airlines.size(); i++) {
-            if (airlines.get(i).getAirlineid() == updatedAirline.getAirlineid()) {
-                airlines.set(i, updatedAirline);
-                return true;
+            pstm.execute();
+            ResultSet resultSet=pstm.getGeneratedKeys();
+            if(resultSet.next()){
+                return this.fromResultSet(resultSet);
             }
+        }catch (SQLException e){
+            e.printStackTrace();
         }
-        return false;
+
+        return null;
     }
 
-    public boolean deleteAirline(int airlineid) {
-        return airlines.removeIf(a -> a.getAirlineid() == airlineid);
-    }
+    public Airline getEmail(String email){
+        String query = "SELECT * FROM Airline WHERE email = ?";
+        try{
+            if(this.connection == null){
+                System.out.println("Database connection failed!");
+                return null;
+            }
+            PreparedStatement pstm = this.connection.prepareStatement(query);
+            pstm.setString(1,email);
+            ResultSet result = pstm.executeQuery();
 
-
-    public Optional<Airline> authenticate(int email, String password) {
-        return airlines.stream()
-                .filter(a -> a.getEmail() == email && a.getPassword().equals(password))
-                .findFirst();
-    }
-
-
-    public boolean phoneNumberExists(String phoneNumber) {
-        return airlines.stream()
-                .anyMatch(a -> a.getPhoneNumber().equals(phoneNumber));
-    }
-
-    public boolean emailExists(int email) {
-        return airlines.stream()
-                .anyMatch(a -> a.getEmail() == email);
+            if(result.next()){
+                return Airline.getInstance(result);
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -176,3 +176,12 @@ ALTER TABLE AirportStaff
 ADD COLUMN address VARCHAR(255);
 
 DROP TABLE Address;
+
+ALTER TABLE Admin
+ALTER COLUMN salt TYPE VARCHAR(300);
+
+ALTER TABLE Admin
+ALTER COLUMN hashpassword TYPE VARCHAR(300);
+
+insert into Admin(id, firstName,lastName, email, salt , hashpassword)
+values(1, 'Festim', 'Gashi', 'admin@gmail.com', '+lxY0OuuRfNBzP0qvrd1Jq7Z4lspDmH57EZrt0OhteE=' , '2b6c7859304f757552664e427a503071767264314a71375a346c7370446d483537455a7274304f687465453d9600cc448737ec409df22929e8410c31db52b046d525d93dd72367a416a5e3a8');

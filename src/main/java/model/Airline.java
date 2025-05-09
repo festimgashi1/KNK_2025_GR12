@@ -1,15 +1,18 @@
 package model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 public class Airline {
     private int airlineid;
     private String airlinename;
     private String country;
-    private int email;
+    private String email;
     private String hashpassword;
     private String salt;
     private String phoneNumber;
 
-    public Airline(int airlineid, String airlinename, String country, int email, String hashpassword, String salt,String phoneNumber) {
+    public Airline(int airlineid, String airlinename, String country, String email, String hashpassword, String salt,String phoneNumber) {
         this.airlineid = airlineid;
         this.airlinename = airlinename;
         this.country = country;
@@ -17,6 +20,17 @@ public class Airline {
         this.hashpassword = hashpassword;
         this.salt=salt;
         this.phoneNumber = phoneNumber;
+    }
+
+    public static Airline getInstance(ResultSet result) throws SQLException{
+        int airlineid = result.getInt("airlindeid");
+        String airlinename = result.getString("airlinename");
+        String country = result.getString("country");
+        String email = result.getString("email");
+        String hashpassword = result.getString("hashpassword");
+        String salt = result.getString("salt");
+        String phonenumber = result.getString("phonenumber");
+        return new Airline(airlineid,airlinename,country,email,hashpassword,salt,phonenumber);
     }
 
     public int getAirlineid() {
@@ -31,7 +45,7 @@ public class Airline {
         return country;
     }
 
-    public int getEmail() {
+    public String getEmail() {
         return email;
     }
 

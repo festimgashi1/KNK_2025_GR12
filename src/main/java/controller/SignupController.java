@@ -1,16 +1,15 @@
 package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import model.Costumer;
 import model.dto.CreateCostumerDto;
-import services.CostumerService;
+import services.LoginService;
 import services.SceneManager;
+import services.SignupService;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 public class SignupController {
 
@@ -38,20 +37,24 @@ public class SignupController {
     @FXML
     private TextField txtPhoneNumber;
 
-    private CostumerService costumerService;
+    private LoginService loginService;
+    private final SignupService signupService;
 
     public SignupController(){
-        this.costumerService = new CostumerService();
+        this.loginService = new LoginService();
+        this.signupService = new SignupService();
     }
 
     @FXML
     void handleSignUpButton(ActionEvent event) {
 
         try{
-            Costumer user = this.costumerService.create(this.getCostumerInputData());
+            Costumer user = this.signupService.create(this.getCostumerInputData());
             System.out.println("User inserted successfully!");
             System.out.println("User Id: " + user.getCostumerId());
             this.cleanFields();
+            SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
+            System.out.println("Welcome to the home page!");
         }catch (Exception e){
             System.out.println("Error inserting user. " + e.getMessage());
         }
@@ -80,6 +83,11 @@ public class SignupController {
     }
 
     public void goLogIn(ActionEvent actionEvent) {
+
         SceneManager.getInstance().switchScene("/Views/log_in.fxml");
+    }
+    @FXML
+    public void handleGuest(ActionEvent event) {
+        SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
     }
 }

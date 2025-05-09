@@ -6,12 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/App/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/SignupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/SignupController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/CostumerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/CostumerRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/CostumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/CostumerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/SceneManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Admin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Airline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Airline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/dto/AirlineDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/dto/AirlineDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/CostumerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/log_in.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/log_in.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Views/sign_up.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/sign_up.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,41 +98,5 @@
       <updated>1743286107654</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/services/CostumerService.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/services/CostumerService.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/services/CostumerService.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/services/CostumerService.java</url>
-          <line>19</line>
-          <option name="timeStamp" value="38" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/services/CostumerService.java</url>
-          <line>20</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/services/CostumerService.java</url>
-          <line>21</line>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -1,21 +1,14 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import model.Admin;
+import model.Airline;
 import model.Costumer;
-import model.dto.CostumerDto;
-import repository.CostumerRepository;
-import services.CostumerService;
-import javafx.event.ActionEvent;
+import services.LoginService;
 import services.SceneManager;
-
-import java.io.IOException;
 
 public class LogInController {
 
@@ -25,10 +18,10 @@ public class LogInController {
     @FXML
     private PasswordField pwId;
 
-    private CostumerService costumerService;
+    private LoginService loginService;
 
-    public LogInController(){
-        this.costumerService = new CostumerService();
+    public LogInController() {
+        this.loginService = new LoginService();
     }
 
     @FXML
@@ -37,11 +30,27 @@ public class LogInController {
         String password = pwId.getText();
 
         try {
-            Costumer user = this.costumerService.login(email, password);
-            System.out.println("You have successfully logged in, welcome " + user.getFirstName());
+            Object user = this.loginService.login(email, password);
             this.cleanFields();
+
+            if (user instanceof Admin) {
+                System.out.println("Welcome admin: " + ((Admin) user).getFirstName());
+                SceneManager.getInstance().switchScene("/Views/admin.fxml");
+
+            } else if (user instanceof Airline) {
+                System.out.println("Welcome airline: " + ((Airline) user).getAirlinename());
+                SceneManager.getInstance().switchScene("/Views/airline.fxml");
+
+            } else if (user instanceof Costumer) {
+                System.out.println("Welcome customer: " + ((Costumer) user).getFirstName());
+                SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
+
+            } else {
+                System.out.println("Unknown user type.");
+            }
+
         } catch (Exception e) {
-            System.out.println("Error while logging: " + e.getMessage());
+            System.out.println("Error while logging in: " + e.getMessage());
         }
     }
 
@@ -53,5 +62,10 @@ public class LogInController {
     @FXML
     public void goSignUp(ActionEvent event) {
         SceneManager.getInstance().switchScene("/Views/sign_up.fxml");
+    }
+
+    @FXML
+    public void handleGuest(ActionEvent event) {
+        SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
     }
 }
