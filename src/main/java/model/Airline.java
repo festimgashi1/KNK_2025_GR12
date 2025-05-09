@@ -23,7 +23,7 @@ public class Airline {
     }
 
     public static Airline getInstance(ResultSet result) throws SQLException{
-        int airlineid = result.getInt("airlindeid");
+        int airlineid = result.getInt("airlineid");
         String airlinename = result.getString("airlinename");
         String country = result.getString("country");
         String email = result.getString("email");

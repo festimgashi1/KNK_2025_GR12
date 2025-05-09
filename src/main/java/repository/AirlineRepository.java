@@ -20,8 +20,8 @@ public class AirlineRepository {
     public Airline create(AirlineDto createDto) {
         String query= """
                 insert into
-                Airline (airlinename, country, email, hashpassword, salt, telephoneNumber)
-                values (?,?,?,?,?,?,?,?)
+                Airline (airlinename, country, email, hashpassword, salt, phoneNumber)
+                values (?,?,?,?,?,?)
                 """;
 
         try{
@@ -32,8 +32,8 @@ public class AirlineRepository {
             pstm.setString(2,createDto.getCountry());
             pstm.setString(3,createDto.getEmail());
             pstm.setString(4,createDto.getHashpass());
-            pstm.setString(6,createDto.getSalt());
-            pstm.setString(8,createDto.getPhoneNumber());
+            pstm.setString(5,createDto.getSalt());
+            pstm.setString(6,createDto.getPhoneNumber());
 
             pstm.execute();
             ResultSet resultSet=pstm.getGeneratedKeys();
