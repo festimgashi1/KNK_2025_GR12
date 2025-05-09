@@ -3,6 +3,7 @@ package services;
 import model.Costumer;
 import model.dto.AirlineDto;
 import model.dto.CostumerDto;
+import model.dto.CreateAirlineDto;
 import model.dto.CreateCostumerDto;
 import repository.AirlineRepository;
 import repository.CostumerRepository;
@@ -11,7 +12,6 @@ import model.Airline;
 public class SignupService {
     private final CostumerRepository costumerRepository = new CostumerRepository();
     private final AirlineRepository airlineRepository = new AirlineRepository();
-
 
     public Costumer create(CreateCostumerDto dto) throws Exception {
         if (dto.getFirstName().isEmpty() ||
@@ -55,12 +55,19 @@ public class SignupService {
 
         return costumer;
     }
-    public Airline createAirline(AirlineDto dto) throws Exception {
+
+    public Airline createAirline(CreateAirlineDto dto) throws Exception {
         if (dto.getAirlinename().isEmpty() ||
+                dto.getCountry().isEmpty() ||
                 dto.getEmail().isEmpty() ||
                 dto.getPhoneNumber().isEmpty() ||
-                dto.getHashpass().isEmpty()) {
+                dto.getPassword().isEmpty() ||
+                dto.getConfirmPassword().isEmpty()) {
             throw new Exception("Provided information is not valid!");
+        }
+
+        if (!dto.getPassword().equals(dto.getConfirmPassword())) {
+            throw new Exception("Password should be the same as Confirm Password");
         }
 
         Airline existing = airlineRepository.getEmail(dto.getEmail());
@@ -69,11 +76,18 @@ public class SignupService {
         }
 
         String salt = PasswordHasher.generateSalt();
-        String hashPass = PasswordHasher.generateSaltedHash(dto.getHashpass(), salt);
-        dto.setSalt(salt);
-        dto.setHashpass(hashPass);
+        String hashPass = PasswordHasher.generateSaltedHash(dto.getPassword(), salt);
 
-        Airline airline = airlineRepository.create(dto);
+        AirlineDto airlineDto = new AirlineDto(
+                dto.getAirlinename(),
+                dto.getCountry(),
+                dto.getEmail(),
+                hashPass,
+                salt,
+                dto.getPhoneNumber()
+        );
+
+        Airline airline = airlineRepository.create(airlineDto);
         if (airline == null) {
             throw new Exception("Airline is not created!");
         }
@@ -81,3 +95,4 @@ public class SignupService {
         return airline;
     }
 }
+

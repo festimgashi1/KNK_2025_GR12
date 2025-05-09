@@ -5,15 +5,17 @@ public class CreateAirlineDto {
     private String country;
     private String email;
     private String password;
+    private String confirmPassword;
     private String phoneNumber;
 
     public CreateAirlineDto() {}
 
-    public CreateAirlineDto(String airlinename, String country, String email, String password, String phoneNumber) {
+    public CreateAirlineDto(String airlinename, String country, String email, String password, String confirmPassword, String phoneNumber) {
         this.airlinename = airlinename;
         this.country = country;
         this.email = email;
         this.password = password;
+        this.confirmPassword = confirmPassword;
         this.phoneNumber = phoneNumber;
     }
 
@@ -56,5 +58,13 @@ public class CreateAirlineDto {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 }

@@ -39,7 +39,7 @@ public class LogInController {
 
             } else if (user instanceof Airline) {
                 System.out.println("Welcome airline: " + ((Airline) user).getAirlinename());
-                SceneManager.getInstance().switchScene("/Views/airline.fxml");
+                SceneManager.getInstance().switchScene("/Views/airline_interface.fxml");
 
             } else if (user instanceof Costumer) {
                 System.out.println("Welcome customer: " + ((Costumer) user).getFirstName());
@@ -59,6 +59,10 @@ public class LogInController {
         this.pwId.setText("");
     }
 
+    @FXML
+    public void goLogIn(ActionEvent event) {
+        SceneManager.getInstance().switchScene("/Views/log_in.fxml");
+    }
     @FXML
     public void goSignUp(ActionEvent event) {
         SceneManager.getInstance().switchScene("/Views/sign_up.fxml");
