@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.dto.CreateAirlineDto;
+import model.dto.PendingAirlineDto;
 import services.SceneManager;
 import services.SignupService;
 
@@ -22,7 +23,7 @@ public class AirlineSignUpController {
     @FXML
     public void handleSignUpButton(ActionEvent event) {
         try {
-            CreateAirlineDto dto = new CreateAirlineDto(
+            PendingAirlineDto dto = new PendingAirlineDto(
                     txtFirstName.getText(),
                     txtAddress.getText(),
                     txtEmail.getText(),
@@ -31,8 +32,8 @@ public class AirlineSignUpController {
                     txtPhoneNumber.getText()
             );
             signupService.createAirline(dto);
-            System.out.println("Airline registered: " + txtFirstName.getText());
-            SceneManager.getInstance().switchScene("/Views/airline.fxml");
+            System.out.println("Waiting for admin's approval...");
+            SceneManager.getInstance().switchScene("/Views/pending_airline.fxml");
         } catch (Exception e) {
             System.out.println("Airline signup failed: " + e.getMessage());
         }
@@ -53,8 +54,7 @@ public class AirlineSignUpController {
         SceneManager.getInstance().switchScene("/Views/airline_signup.fxml");
     }
 
-    @FXML
-    public void handleGuest(ActionEvent event) {
+    public void goHome(ActionEvent event) {
         SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
     }
 }

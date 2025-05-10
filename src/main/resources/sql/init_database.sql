@@ -18,6 +18,18 @@ CREATE TABLE Airline (
     phoneNumber VARCHAR(20)
 );
 
+CREATE TABLE pending_airlines (
+    id SERIAL PRIMARY KEY,
+    airline_name VARCHAR(100) NOT NULL,
+    country VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    phone_number VARCHAR(20) NOT NULL,
+    password_hash TEXT NOT NULL,
+    salt TEXT NOT NULL,
+    request_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(10) DEFAULT 'PENDING'
+);
+
 CREATE TABLE AirlineStaff (
     staffId SERIAL PRIMARY KEY,
     airlineId INT REFERENCES Airline(airlineid),
@@ -154,6 +166,8 @@ CREATE TABLE TravelDocuments (
     isValid VARCHAR(10),
     fileAttachment TEXT
 );
+
+
 
 ALTER TABLE Costumer DROP COLUMN gender;
 

@@ -1,17 +1,17 @@
 package services;
 
 import model.Costumer;
-import model.dto.AirlineDto;
-import model.dto.CostumerDto;
-import model.dto.CreateAirlineDto;
-import model.dto.CreateCostumerDto;
+import model.PendingAirline;
+import model.dto.*;
 import repository.AirlineRepository;
 import repository.CostumerRepository;
 import model.Airline;
+import repository.PendingAirlineRepository;
 
 public class SignupService {
     private final CostumerRepository costumerRepository = new CostumerRepository();
     private final AirlineRepository airlineRepository = new AirlineRepository();
+    private final PendingAirlineRepository pendingAirlineRepository = new PendingAirlineRepository();
 
     public Costumer create(CreateCostumerDto dto) throws Exception {
         if (dto.getFirstName().isEmpty() ||
@@ -72,7 +72,7 @@ public class SignupService {
         return costumer;
     }
 
-    public Airline createAirline(CreateAirlineDto dto) throws Exception {
+    public PendingAirline createAirline(PendingAirlineDto dto) throws Exception {
         if (dto.getAirlinename().isEmpty() ||
                 dto.getCountry().isEmpty() ||
                 dto.getEmail().isEmpty() ||
@@ -94,7 +94,7 @@ public class SignupService {
         String salt = PasswordHasher.generateSalt();
         String hashPass = PasswordHasher.generateSaltedHash(dto.getPassword(), salt);
 
-        AirlineDto airlineDto = new AirlineDto(
+        CreatePendingAirlineDto createPendingAirlineDto = new CreatePendingAirlineDto(
                 dto.getAirlinename(),
                 dto.getCountry(),
                 dto.getEmail(),
@@ -103,12 +103,12 @@ public class SignupService {
                 dto.getPhoneNumber()
         );
 
-        Airline airline = airlineRepository.create(airlineDto);
-        if (airline == null) {
+        PendingAirline pendingAirline = pendingAirlineRepository.create(createPendingAirlineDto);
+        if (pendingAirline == null) {
             throw new Exception("Airline is not created!");
         }
 
-        return airline;
+        return pendingAirline;
     }
 }
 

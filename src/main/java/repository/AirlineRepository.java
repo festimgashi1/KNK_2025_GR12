@@ -2,13 +2,13 @@ package repository;
 
 import database.DBConnector;
 import model.Airline;
+import model.PendingAirline;
 import model.dto.AirlineDto;
 
 import java.sql.*;
 
 public class AirlineRepository {
     protected Connection connection;
-
     public AirlineRepository(){
         this.connection= DBConnector.getConnection();
     }
@@ -17,6 +17,28 @@ public class AirlineRepository {
         return Airline.getInstance(result);
     }
 
+    public boolean createFromPending(PendingAirline pendingAirline) {
+        String query = """
+                INSERT INTO Airline (airlinename, country, email, hashpassword, salt, phoneNumber)
+                VALUES (?, ?, ?, ?, ?, ?)
+                """;
+
+        try {
+            PreparedStatement pstm = this.connection.prepareStatement(query);
+            pstm.setString(1, pendingAirline.getAirlineName());
+            pstm.setString(2, pendingAirline.getCountry());
+            pstm.setString(3, pendingAirline.getEmail());
+            pstm.setString(4, pendingAirline.getHashpassword());
+            pstm.setString(5, pendingAirline.getSalt());
+            pstm.setString(6, pendingAirline.getPhoneNumber());
+
+            int rowsAffected = pstm.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     public Airline create(AirlineDto createDto) {
         String query= """
                 insert into

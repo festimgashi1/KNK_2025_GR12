@@ -6,7 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AirlineSignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AirlineSignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/SignupService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/SignupService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/admin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/admin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/airline_interface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/airline_interface.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Views/log_in.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/log_in.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
