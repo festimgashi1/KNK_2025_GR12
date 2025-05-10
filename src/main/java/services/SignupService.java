@@ -82,8 +82,20 @@ public class SignupService {
             throw new Exception("Provided information is not valid!");
         }
 
+        if(dto.getAirlinename().matches("^[A-Z][a-zA-Z]$")){
+            throw new Exception("Name should only contain letters, and start with upper case.");
+        }
+        if (!dto.getEmail().matches("^[\\w-.]+@[\\w-]+\\.[a-z]{2,}$")) {
+            throw new Exception("Email format is not valid.");
+        }
+        if (!dto.getPhoneNumber().matches("^\\+\\d{10,14}$")) {
+            throw new Exception("Phone number must start with '+' and contain 10 to 14 digits.");
+        }
         if (!dto.getPassword().equals(dto.getConfirmPassword())) {
             throw new Exception("Password should be the same as Confirm Password");
+        }
+        if(dto.getPassword().length()<8){
+            throw new Exception("Password should be 8 or more characters.");
         }
 
         Airline existing = airlineRepository.getEmail(dto.getEmail());
