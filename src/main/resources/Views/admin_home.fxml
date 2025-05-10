@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminHomeController">
+    <children>
+
+        <VBox>
+            <children>
+                <Line endX="800" endY="0" startX="0" startY="0" stroke="#ADD8E6" strokeWidth="2" />
+                <Line endX="800" endY="50" startX="0" startY="50" stroke="#ADD8E6" strokeWidth="1" />
+                <Line endX="800" endY="100" startX="0" startY="100" stroke="#ADD8E6" strokeWidth="1" />
+            </children>
+        </VBox>
+
+        <VBox prefHeight="600.0" prefWidth="800.0" spacing="10">
+            <children>
+
+                <MenuBar>
+                    <Menu text="Home">
+                        <items>
+                            <MenuItem text="Go to Home" onAction="#goHome" />
+                        </items>
+                    </Menu>
+                    <Menu text="Flights">
+                        <items>
+                            <MenuItem text="Manage Flights" onAction="#goFlights" />
+                        </items>
+                    </Menu>
+                    <Menu text="Reservations">
+                        <items>
+                            <MenuItem text="View Reservations" onAction="#goReservations" />
+                        </items>
+                    </Menu>
+                    <Menu text="Airlines">
+                        <items>
+                            <MenuItem text="Airlines List" onAction="#goAirlines" />
+                        </items>
+                    </Menu>
+                    <Menu text="Profile">
+                        <items>
+                            <MenuItem text="Go to LogIn" onAction="#goLogIn" />
+                        </items>
+                    </Menu>
+                </MenuBar>
+
+                <HBox alignment="CENTER">
+                    <children>
+                        <Text style="-fx-font-size: 24px;" text="Welcome to the Admin Interface" />
+                    </children>
+                </HBox>
+
+                <HBox alignment="CENTER">
+                    <children>
+                        <ImageView fitWidth="600" preserveRatio="true">
+                            <image>
+<!--                                <Image url="@Views/Pristina-Airport-pp.jpg" />-->
+                            </image>
+                        </ImageView>
+                    </children>
+                </HBox>
+
+            </children>
+        </VBox>
+
+    </children>
+</StackPane>

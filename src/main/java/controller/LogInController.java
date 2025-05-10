@@ -35,7 +35,7 @@ public class LogInController {
 
             if (user instanceof Admin) {
                 System.out.println("Welcome admin: " + ((Admin) user).getFirstName());
-                SceneManager.getInstance().switchScene("/Views/admin.fxml");
+                SceneManager.getInstance().switchScene("/Views/admin_home.fxml");
 
             } else if (user instanceof Airline) {
                 System.out.println("Welcome airline: " + ((Airline) user).getAirlinename());
