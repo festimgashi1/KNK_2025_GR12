@@ -52,8 +52,8 @@
             <Button fx:id="LogIn" layoutX="277.0" layoutY="249.0" mnemonicParsing="false" onAction="#handleLogInButton" text="Log In" />
             <Text layoutX="33.0" layoutY="347.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you don't have a account" />
             <Hyperlink fx:id="goSignUp" layoutX="192.0" layoutY="330.0" onAction="#goSignUp" text="Sign Up" />
-            <Hyperlink fx:id="guess" layoutX="554.0" layoutY="340.0" onAction="#handleGuest" text="Guest" />
-            <Text layoutX="467.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Continoue as a" />
+            <Hyperlink fx:id="guess" layoutX="548.0" layoutY="338.0" onAction="#handleGuest" text="Guest" />
+            <Text layoutX="467.0" layoutY="357.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Continue as a" />
          </children>
     </AnchorPane>
   </children>
