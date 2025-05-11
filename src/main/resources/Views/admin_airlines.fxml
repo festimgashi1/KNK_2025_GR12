@@ -69,6 +69,10 @@
                         <TableColumn fx:id="colPhoneNumber" prefWidth="119.20001220703125" text="Phone Number" />
                     </columns>
                 </TableView>
+                <HBox spacing="10">
+                    <Button onAction="#handleApprove" text="Approve" />
+                    <Button onAction="#handleDeny" text="Deny" />
+                </HBox>
 
                 <Text style="-fx-font-size: 18px;" text="Registered Airlines" />
                 <TableView fx:id="registeredAirlinesTable" VBox.vgrow="ALWAYS">
@@ -80,11 +84,6 @@
                     </columns>
                 </TableView>
 
-                <HBox spacing="10">
-                    <Button onAction="#handleApprove" text="Approve" />
-                    <Button onAction="#handleDeny" text="Deny" />
-                    <Button mnemonicParsing="false" onAction="#goLogIn" text="Profile" />
-                </HBox>
             </children>
         </VBox>
     </center>

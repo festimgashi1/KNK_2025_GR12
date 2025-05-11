@@ -62,6 +62,7 @@ public class AdminAirlinesRequestController {
         List<Airline> approved = approvedAirlines.getAllApproved();
         registeredAirlinesTable.setItems(FXCollections.observableArrayList(approved));
 
+        loadApprovedAirlines();
     }
 
     private void loadPendingAirlines() {
@@ -79,7 +80,10 @@ public class AdminAirlinesRequestController {
                 boolean updated = pendingAirlineRepository.updateStatusToApproved(selectedAirline.getId());
                 if (updated) {
                     pendingAirlineRepository.deleteByEmail(selectedAirline.getEmail());
+
                     loadPendingAirlines();
+                    loadApprovedAirlines();
+
                     showAlert("Approval Successful", "The airline has been approved and added to the system.");
                 } else {
                     showAlert("Error", "An error occurred while updating the status to approved.");
@@ -91,6 +95,7 @@ public class AdminAirlinesRequestController {
             showAlert("No Selection", "Please select a pending airline to approve.");
         }
     }
+
 
 
     @FXML
@@ -124,24 +129,8 @@ public class AdminAirlinesRequestController {
     public void goLogIn(ActionEvent event) {
         SceneManager.getInstance().switchScene("/Views/log_in.fxml");
     }
-
-    @FXML
-    public void goHome(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/admin_home.fxml");
-    }
-
-    @FXML
-    public void goFlights(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/flights.fxml");
-    }
-
-    @FXML
-    public void goReservations(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/reservations.fxml");
-    }
-
-    @FXML
-    public void goAirlines(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/airlines.fxml");
+    private void loadApprovedAirlines() {
+        List<Airline> approved = approvedAirlines.getAllApproved();
+        registeredAirlinesTable.setItems(FXCollections.observableArrayList(approved));
     }
 }
