@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.AdminFlightsController">
+
+    <left>
+        <fx:include source="admin_dashboard.fxml"/>
+    </left>
+
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Flight Management" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+            <TableView fx:id="flightsTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colFlightNumber" text="Flight #" prefWidth="80"/>
+                    <TableColumn fx:id="colAirlineId" text="Airline ID" prefWidth="100"/>
+                    <TableColumn fx:id="colPlaneId" text="Plane ID" prefWidth="100"/>
+                    <TableColumn fx:id="colDepartureAirport" text="From" prefWidth="100"/>
+                    <TableColumn fx:id="colArrivalAirport" text="To" prefWidth="100"/>
+                    <TableColumn fx:id="colDepartureTime" text="Departure Time" prefWidth="150"/>
+                    <TableColumn fx:id="colArrivalTime" text="Arrival Time" prefWidth="150"/>
+                    <TableColumn fx:id="colDuration" text="Duration" prefWidth="100"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="Delete Flight" onAction="#handleDeleteFlight"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

@@ -11,9 +11,12 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminHomeController">
-    <children>
-
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminHomeController">
+    <left>
+        <fx:include source="admin_dashboard.fxml" />
+    </left>
+    <center>
         <VBox>
             <children>
                 <Line endX="800" endY="0" startX="0" startY="0" stroke="#ADD8E6" strokeWidth="2" />
@@ -28,27 +31,27 @@
                 <MenuBar>
                     <Menu text="Home">
                         <items>
-                            <MenuItem text="Go to Home" onAction="#goHome" />
+                            <MenuItem onAction="#goHome" text="Go to Home" />
                         </items>
                     </Menu>
                     <Menu text="Flights">
                         <items>
-                            <MenuItem text="Manage Flights" onAction="#goFlights" />
+                            <MenuItem onAction="#goFlights" text="Manage Flights" />
                         </items>
                     </Menu>
                     <Menu text="Reservations">
                         <items>
-                            <MenuItem text="View Reservations" onAction="#goReservations" />
+                            <MenuItem onAction="#goReservations" text="View Reservations" />
                         </items>
                     </Menu>
                     <Menu text="Airlines">
                         <items>
-                            <MenuItem text="Airlines List" onAction="#goAirlines" />
+                            <MenuItem onAction="#goAirlines" text="Airlines List" />
                         </items>
                     </Menu>
                     <Menu text="Profile">
                         <items>
-                            <MenuItem text="Go to LogIn" onAction="#goLogIn" />
+                            <MenuItem onAction="#goLogIn" text="Go to LogIn" />
                         </items>
                     </Menu>
                 </MenuBar>
@@ -59,18 +62,7 @@
                     </children>
                 </HBox>
 
-                <HBox alignment="CENTER">
-                    <children>
-                        <ImageView fitWidth="600" preserveRatio="true">
-                            <image>
-<!--                                <Image url="@Views/Pristina-Airport-pp.jpg" />-->
-                            </image>
-                        </ImageView>
-                    </children>
-                </HBox>
-
             </children>
         </VBox>
-
-    </children>
-</StackPane>
+    </center>
+</BorderPane>

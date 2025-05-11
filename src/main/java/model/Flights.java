@@ -11,7 +11,7 @@ public class Flights {
     private String duration;
     private String status;
 
-    protected Flights(int flightNumber, int airlineid, int planeid, String departureAirport, String arrivalAirport, String departureTime, String arrivalTime, String duration, String status) {
+    public Flights(int flightNumber, int airlineid, int planeid, String departureAirport, String arrivalAirport, String departureTime, String arrivalTime, String duration, String status) {
         this.flightNumber = flightNumber;
         this.airlineid = airlineid;
         this.planeid = planeid;

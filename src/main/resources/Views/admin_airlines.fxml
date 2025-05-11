@@ -44,8 +44,12 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<StackPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminAirlinesRequestController">
-    <children>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminAirlinesRequestController">
+    <left>
+        <fx:include source="admin_dashboard.fxml" />
+    </left>
+    <center>
         <VBox>
             <children>
                 <Line endX="800" endY="0" startX="0" startY="0" stroke="#ADD8E6" strokeWidth="2" />
@@ -57,7 +61,6 @@
         <VBox prefHeight="600.0" prefWidth="800.0" spacing="10">
             <children>
 
-                <!-- Navbar -->
                 <MenuBar>
                     <menus>
                         <Menu text="Home">
@@ -107,6 +110,5 @@
                 </HBox>
             </children>
         </VBox>
-
-    </children>
-</StackPane>
+    </center>
+</BorderPane>
