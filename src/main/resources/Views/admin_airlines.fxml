@@ -60,41 +60,7 @@
 
         <VBox prefHeight="600.0" prefWidth="800.0" spacing="10">
             <children>
-
-                <MenuBar>
-                    <menus>
-                        <Menu text="Home">
-                            <items>
-                                <MenuItem text="Go to Home" onAction="#goHome" />
-                            </items>
-                        </Menu>
-                        <Menu text="Flights">
-                            <items>
-                                <MenuItem text="Manage Flights" onAction="#goFlights" />
-                            </items>
-                        </Menu>
-                        <Menu text="Reservations">
-                            <items>
-                                <MenuItem text="View Reservations" onAction="#goReservations" />
-                            </items>
-                        </Menu>
-                        <Menu text="Airlines">
-                            <items>
-                                <MenuItem text="Airlines List" onAction="#goAirlines" />
-                            </items>
-                        </Menu>
-                        <Menu text="Profile">
-                            <items>
-                                <MenuItem text="Go to LogIn" onAction="#goLogIn" />
-                            </items>
-                        </Menu>
-                    </menus>
-                </MenuBar>
-                <HBox alignment="CENTER">
-                    <children>
-                        <Text style="-fx-font-size: 24px;" text="ADMIN INTERFACE" />
-                    </children>
-                </HBox>
+                <Text style="-fx-font-size: 18px;" text="Pending Airlines" />
                 <TableView fx:id="pendingAirlinesTable" VBox.vgrow="ALWAYS">
                     <columns>
                         <TableColumn fx:id="colAirlineName" prefWidth="91.99999845027924" text="Airline Name" />
@@ -103,6 +69,17 @@
                         <TableColumn fx:id="colPhoneNumber" prefWidth="119.20001220703125" text="Phone Number" />
                     </columns>
                 </TableView>
+
+                <Text style="-fx-font-size: 18px;" text="Registered Airlines" />
+                <TableView fx:id="registeredAirlinesTable" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colRegisteredName" prefWidth="91.0" text="Airline Name" />
+                        <TableColumn fx:id="colRegisteredCountry" prefWidth="87.0" text="Country" />
+                        <TableColumn fx:id="colRegisteredEmail" prefWidth="93.0" text="Email" />
+                        <TableColumn fx:id="colRegisteredPhone" prefWidth="119.0" text="Phone Number" />
+                    </columns>
+                </TableView>
+
                 <HBox spacing="10">
                     <Button onAction="#handleApprove" text="Approve" />
                     <Button onAction="#handleDeny" text="Deny" />

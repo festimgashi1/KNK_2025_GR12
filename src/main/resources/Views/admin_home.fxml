@@ -3,15 +3,16 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminHomeController">
     <left>
         <fx:include source="admin_navbar.fxml" />
@@ -28,34 +29,16 @@
         <VBox prefHeight="600.0" prefWidth="800.0" spacing="10">
             <children>
 
-                <MenuBar>
-                    <Menu text="Home">
-                        <items>
-                            <MenuItem onAction="#goHome" text="Go to Home" />
-                        </items>
-                    </Menu>
-                    <Menu text="Flights">
-                        <items>
-                            <MenuItem onAction="#goFlights" text="Manage Flights" />
-                        </items>
-                    </Menu>
-                    <Menu text="Reservations">
-                        <items>
-                            <MenuItem onAction="#goReservations" text="View Reservations" />
-                        </items>
-                    </Menu>
-                    <Menu text="Airlines">
-                        <items>
-                            <MenuItem onAction="#goAirlines" text="Airlines List" />
-                        </items>
-                    </Menu>
-                    <Menu text="Profile">
-                        <items>
-                            <MenuItem onAction="#goLogIn" text="Go to LogIn" />
-                        </items>
-                    </Menu>
-                </MenuBar>
+                <PieChart fx:id="reservationPieChart" prefHeight="250" prefWidth="600" title="Reservation Status Distribution" />
 
+                <BarChart fx:id="flightsBarChart" prefHeight="300" prefWidth="600" title="Flights per Airline">
+                    <xAxis>
+                        <CategoryAxis label="Airline" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Number of Flights" />
+                    </yAxis>
+                </BarChart>
                 <HBox alignment="CENTER">
                     <children>
                         <Text style="-fx-font-size: 24px;" text="Welcome to the Admin Interface" />

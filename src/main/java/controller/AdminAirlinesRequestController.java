@@ -1,12 +1,16 @@
 package controller;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.Airline;
 import model.PendingAirline;
+import repository.ApprovedAirlinesRepository;
 import repository.PendingAirlineRepository;
 import repository.AirlineRepository;
 import services.SceneManager;
@@ -30,8 +34,16 @@ public class AdminAirlinesRequestController {
     @FXML
     private TableColumn<PendingAirline, String> colPhoneNumber;
 
+    @FXML private TableView<Airline> registeredAirlinesTable;
+    @FXML private TableColumn<Airline, String> colRegisteredName;
+    @FXML private TableColumn<Airline, String> colRegisteredCountry;
+    @FXML private TableColumn<Airline, String> colRegisteredEmail;
+    @FXML private TableColumn<Airline, String> colRegisteredPhone;
+
+
     private final PendingAirlineRepository pendingAirlineRepository = new PendingAirlineRepository();
     private final AirlineRepository airlineRepository = new AirlineRepository();
+    private final ApprovedAirlinesRepository approvedAirlines = new ApprovedAirlinesRepository();
 
     @FXML
     public void initialize() {
@@ -41,6 +53,15 @@ public class AdminAirlinesRequestController {
         colPhoneNumber.setCellValueFactory(cellData -> cellData.getValue().phoneNumberProperty());
 
         loadPendingAirlines();
+
+        colRegisteredName.setCellValueFactory(new PropertyValueFactory<>("airlinename"));
+        colRegisteredCountry.setCellValueFactory(new PropertyValueFactory<>("country"));
+        colRegisteredEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        colRegisteredPhone.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+
+        List<Airline> approved = approvedAirlines.getAllApproved();
+        registeredAirlinesTable.setItems(FXCollections.observableArrayList(approved));
+
     }
 
     private void loadPendingAirlines() {
