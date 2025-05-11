@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminHomeController">
     <left>
-        <fx:include source="admin_dashboard.fxml" />
+        <fx:include source="admin_navbar.fxml" />
     </left>
     <center>
         <VBox>

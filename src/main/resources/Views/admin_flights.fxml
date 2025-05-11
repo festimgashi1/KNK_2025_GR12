@@ -9,7 +9,7 @@
             fx:controller="controller.AdminFlightsController">
 
     <left>
-        <fx:include source="admin_dashboard.fxml"/>
+        <fx:include source="admin_navbar.fxml"/>
     </left>
 
     <center>
