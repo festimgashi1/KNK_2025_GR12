@@ -127,7 +127,7 @@ public class AdminAirlinesRequestController {
     }
     @FXML
     public void goLogIn(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/log_in.fxml");
+        SceneManager.getInstance().switchScene("/Views/login.fxml");
     }
     private void loadApprovedAirlines() {
         List<Airline> approved = approvedAirlines.getAllApproved();

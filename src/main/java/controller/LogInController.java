@@ -61,11 +61,11 @@ public class LogInController {
 
     @FXML
     public void goLogIn(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/log_in.fxml");
+        SceneManager.getInstance().switchScene("/Views/login.fxml");
     }
     @FXML
     public void goSignUp(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/sign_up.fxml");
+        SceneManager.getInstance().switchScene("/Views/signup.fxml");
     }
 
     @FXML
