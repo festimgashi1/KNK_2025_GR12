@@ -5,6 +5,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -15,7 +16,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.control.PasswordField?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CostumerSignUpController">
    <children>
       <ImageView fitHeight="504.0" fitWidth="920.0" pickOnBounds="true" preserveRatio="true">
@@ -39,10 +39,10 @@
             <TextField fx:id="txtFirstName" accessibleText="First name" layoutX="87.0" layoutY="87.0" prefHeight="27.0" prefWidth="213.0" promptText="First Name" style="-fx-border-color: white;" />
             <TextField fx:id="txtLastName" layoutX="85.0" layoutY="124.0" prefHeight="27.0" prefWidth="213.0" promptText="Last name" style="-fx-border-color: white;" />
             <TextField fx:id="txtEmail" layoutX="85.0" layoutY="162.0" prefHeight="27.0" prefWidth="213.0" promptText="Email" style="-fx-border-color: white;" />
-            <PasswordField  fx:id="pwdPassword" layoutX="85.0" layoutY="324.0" prefHeight="25.0" prefWidth="213.0" promptText="Password" style="-fx-border-color: white;" />
+            <PasswordField fx:id="pwdPassword" layoutX="85.0" layoutY="324.0" prefHeight="25.0" prefWidth="213.0" promptText="Password" style="-fx-border-color: white;" />
             <PasswordField fx:id="pwdConfirmPass" layoutX="85.0" layoutY="364.0" prefHeight="27.0" prefWidth="213.0" promptText="Confirm Password" style="-fx-border-color: white;" />
             <DatePicker fx:id="dtBirthDate" layoutX="87.0" layoutY="242.0" prefHeight="25.0" prefWidth="213.0" promptText="Date of Birth" style="-fx-border-color: white;" />
-            <Button layoutX="225.0" layoutY="28.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" style="-fx-background-radius: 10; -fx-background-color: #e0e1da; -fx-border-radius: 10;" text="Airline" textFill="#757474" onAction="#goAirline">
+            <Button layoutX="225.0" layoutY="28.0" mnemonicParsing="false" onAction="#goAirline" prefHeight="25.0" prefWidth="67.0" style="-fx-background-radius: 10; -fx-background-color: #e0e1da; -fx-border-radius: 10;" text="Airline" textFill="#757474">
                <effect>
                   <DropShadow height="16.12" radius="24.78" width="85.0">
                      <color>
@@ -51,7 +51,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Button layoutX="300.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: #e0e1da; -fx-border-radius: 10;" text="Costumer" textFill="#757474" onAction="#goSignUp">
+            <Button layoutX="300.0" layoutY="28.0" mnemonicParsing="false" onAction="#goSignUp" style="-fx-background-radius: 10; -fx-background-color: #e0e1da; -fx-border-radius: 10;" text="Costumer" textFill="#757474">
                <effect>
                   <DropShadow height="42.74" radius="24.2275" width="56.17">
                      <color>
@@ -63,7 +63,7 @@
             <TextField fx:id="txtAddress" layoutX="87.0" layoutY="200.0" prefHeight="27.0" prefWidth="213.0" promptText="Address" style="-fx-border-color: white;" />
             <TextField fx:id="txtPhoneNumber" layoutX="85.0" layoutY="284.0" prefHeight="25.0" prefWidth="213.0" promptText="Phone Number" style="-fx-border-color: white;" />
             <Text layoutX="176.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you already have a account, " />
-            <Hyperlink onAction="#goLogIn" layoutX="334.0" layoutY="452.0" text="Log In" />
+            <Hyperlink layoutX="334.0" layoutY="452.0" onAction="#goLogIn" text="Log In" />
          </children>
          <effect>
             <DropShadow height="14.28" radius="11.25" width="32.72">

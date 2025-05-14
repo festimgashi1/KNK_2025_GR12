@@ -45,6 +45,7 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.geometry.Insets?>
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminAirlinesRequestController">
     <left>
         <fx:include source="admin_navbar.fxml" />
@@ -59,6 +60,9 @@
         </VBox>
 
         <VBox prefHeight="600.0" prefWidth="800.0" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
             <children>
                 <Text style="-fx-font-size: 18px;" text="Pending Airlines" />
                 <TableView fx:id="pendingAirlinesTable" VBox.vgrow="ALWAYS">

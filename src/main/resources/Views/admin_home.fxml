@@ -39,11 +39,6 @@
                         <NumberAxis label="Number of Flights" />
                     </yAxis>
                 </BarChart>
-                <HBox alignment="CENTER">
-                    <children>
-                        <Text style="-fx-font-size: 24px;" text="Welcome to the Admin Interface" />
-                    </children>
-                </HBox>
 
             </children>
         </VBox>
