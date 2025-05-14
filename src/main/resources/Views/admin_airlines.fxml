@@ -87,6 +87,9 @@
                         <TableColumn fx:id="colRegisteredPhone" prefWidth="119.0" text="Phone Number" />
                     </columns>
                 </TableView>
+                <HBox spacing="10">
+                    <Button onAction="#handleDelete" text="Delete Airline" />
+                </HBox>
 
             </children>
         </VBox>

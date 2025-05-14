@@ -39,6 +39,20 @@ public class AirlineRepository {
         }
         return false;
     }
+    
+    public boolean deleteById(int id) {
+        String sql = "DELETE FROM Airline WHERE airlineid = ?";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            int affected = stmt.executeUpdate();
+            return affected > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     public Airline create(AirlineDto createDto) {
         String query= """
                 insert into

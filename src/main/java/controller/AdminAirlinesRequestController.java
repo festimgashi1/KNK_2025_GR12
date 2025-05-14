@@ -133,4 +133,31 @@ public class AdminAirlinesRequestController {
         List<Airline> approved = approvedAirlines.getAllApproved();
         registeredAirlinesTable.setItems(FXCollections.observableArrayList(approved));
     }
+
+    @FXML
+    public void handleDelete() {
+        Airline selectedAirline = registeredAirlinesTable.getSelectionModel().getSelectedItem();
+
+        if (selectedAirline != null) {
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,
+                    "Are you sure you want to delete the selected airline?",
+                    ButtonType.YES, ButtonType.NO);
+            confirm.setTitle("Confirm Deletion");
+            confirm.showAndWait();
+
+            if (confirm.getResult() == ButtonType.YES) {
+                boolean deleted = airlineRepository.deleteById(selectedAirline.getAirlineid());
+
+                if (deleted) {
+                    loadApprovedAirlines();
+                    showAlert("Deletion Successful", "The airline has been deleted from the system.");
+                } else {
+                    showAlert("Error", "An error occurred while deleting the airline.");
+                }
+            }
+        } else {
+            showAlert("No Selection", "Please select a registered airline to delete.");
+        }
+    }
+
 }
