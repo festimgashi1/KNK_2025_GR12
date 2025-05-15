@@ -56,12 +56,28 @@ public class ManageFlightsController {
 
     private void addActionButtons() {
         colActions.setCellFactory(col -> new TableCell<Flights, Void>() {
-            private final Button btnEdit = new Button("✏");
+            private final Button btnEdit = new Button("✎");
             private final Button btnDelete = new Button("🗑");
 
             {
-                btnEdit.setStyle("-fx-background-color: orange; -fx-text-fill: white; -fx-cursor: hand;");
-                btnDelete.setStyle("-fx-background-color: red; -fx-text-fill: white; -fx-cursor: hand;");
+                btnEdit.setStyle("""
+                -fx-background-color: #3498db;
+                -fx-text-fill: white;
+                -fx-font-weight: bold;
+                -fx-background-radius: 8;
+                -fx-padding: 4 10;
+                -fx-cursor: hand;
+            """);
+
+                btnDelete.setStyle("""
+                -fx-background-color: #e74c3c;
+                -fx-text-fill: white;
+                -fx-font-weight: bold;
+                -fx-background-radius: 8;
+                -fx-padding: 4 10;
+                -fx-cursor: hand;
+            """);
+
                 btnEdit.setOnAction(e -> handleEdit(getTableView().getItems().get(getIndex())));
                 btnDelete.setOnAction(e -> handleDelete(getTableView().getItems().get(getIndex())));
             }
@@ -72,7 +88,8 @@ public class ManageFlightsController {
                 if (empty) {
                     setGraphic(null);
                 } else {
-                    HBox box = new HBox(5, btnEdit, btnDelete);
+                    HBox box = new HBox(8, btnEdit, btnDelete);
+                    box.setStyle("-fx-alignment: center;");
                     setGraphic(box);
                 }
             }
@@ -102,15 +119,28 @@ public class ManageFlightsController {
     }
 
     private void handleDelete(Flights flight) {
-        boolean success = flightService.deleteFlightById(flight.getFlightNumber());
-        if (success) {
-            flightsData.remove(flight);
-            lblMessage.setText("Fluturimi u fshi me sukses.");
-            lblMessage.setStyle("-fx-text-fill: green;");
-        } else {
-            lblMessage.setText("Fshirja deshtoi. Provo përsëri.");
-            lblMessage.setStyle("-fx-text-fill: red;");
-        }
-        lblMessage.setVisible(true);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm Delete");
+        alert.setHeaderText("Are you sure?");
+        alert.setContentText("Are you sure you want to delete this flight?");
+
+        ButtonType confirmBtn = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancelBtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(confirmBtn, cancelBtn);
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == confirmBtn) {
+                boolean success = flightService.deleteFlightById(flight.getFlightNumber());
+                if (success) {
+                    flightsData.remove(flight);
+                    lblMessage.setText("Fluturimi u fshi me sukses.");
+                    lblMessage.setStyle("-fx-text-fill: green;");
+                } else {
+                    lblMessage.setText("Fshirja deshtoi. Provo përsëri.");
+                    lblMessage.setStyle("-fx-text-fill: red;");
+                }
+                lblMessage.setVisible(true);
+            }
+        });
     }
 }
