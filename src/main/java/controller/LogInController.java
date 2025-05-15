@@ -9,6 +9,7 @@ import model.Airline;
 import model.Costumer;
 import services.LoginService;
 import services.SceneManager;
+import session.CustomerSession;
 import session.AirlineSession;
 
 public class LogInController {
@@ -19,7 +20,7 @@ public class LogInController {
     @FXML
     private PasswordField pwId;
 
-    private LoginService loginService;
+    private final LoginService loginService;
 
     public LogInController() {
         this.loginService = new LoginService();
@@ -44,7 +45,11 @@ public class LogInController {
                 SceneManager.getInstance().switchScene("/Views/add_flight.fxml");
 
             } else if (user instanceof Costumer) {
-                System.out.println("Welcome customer: " + ((Costumer) user).getFirstName());
+                Costumer costumer = (Costumer) user;
+                System.out.println("Welcome customer: " + costumer.getFirstName());
+
+                CustomerSession.getInstance().setCurrentCostumer(costumer);
+
                 SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
 
             } else {
@@ -65,6 +70,7 @@ public class LogInController {
     public void goLogIn(ActionEvent event) {
         SceneManager.getInstance().switchScene("/Views/login.fxml");
     }
+
     @FXML
     public void goSignUp(ActionEvent event) {
         SceneManager.getInstance().switchScene("/Views/signup.fxml");

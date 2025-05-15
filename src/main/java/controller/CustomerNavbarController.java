@@ -1,0 +1,39 @@
+package controller;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import services.SceneManager;
+import session.CustomerSession;
+
+public class CustomerNavbarController {
+
+    @FXML
+    public void showFlights(ActionEvent event) {
+        SceneManager.getInstance().switchScene("/Views/flights.fxml");
+    }
+
+    @FXML
+    public void showReservation(ActionEvent event) {
+        SceneManager.getInstance().switchScene("/Views/reservations.fxml");
+    }
+
+    @FXML
+    public void showFeedback(ActionEvent event) {
+        SceneManager.getInstance().switchScene("/Views/feedback.fxml");
+    }
+
+    @FXML
+    public void goLogIn(ActionEvent event) {
+        if (CustomerSession.getInstance().getCurrentCostumer() != null) {
+            SceneManager.getInstance().switchScene("/Views/costumer_profile.fxml");
+        } else {
+            SceneManager.getInstance().switchScene("/Views/login.fxml");
+        }
+    }
+    @FXML
+    public void handleSignOut(ActionEvent event) {
+        session.CustomerSession.getInstance().clear();  // remove session
+        SceneManager.getInstance().switchScene("/Views/login.fxml");  // go to login
+    }
+
+}
