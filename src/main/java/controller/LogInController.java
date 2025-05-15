@@ -39,7 +39,7 @@ public class LogInController {
 
             } else if (user instanceof Airline) {
                 System.out.println("Welcome airline: " + ((Airline) user).getAirlinename());
-                SceneManager.getInstance().switchScene("/Views/airline_interface.fxml");
+                SceneManager.getInstance().switchScene("/Views/add_flight.fxml");
 
             } else if (user instanceof Costumer) {
                 System.out.println("Welcome customer: " + ((Costumer) user).getFirstName());

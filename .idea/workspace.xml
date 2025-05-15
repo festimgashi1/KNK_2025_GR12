@@ -5,10 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddFlightController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AirlineNav.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/FlightRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/FlightService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/Airline_Dash.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/add_flight.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminAirlinesRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminAirlinesRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/admin_airlines.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/admin_airlines.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AirlineController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/airline_interface.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +25,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
