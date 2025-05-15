@@ -5,11 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/Views/customer_navbar.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Views/client_interface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/client_interface.fxml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/CostumerFlightsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/CreateBoardingPassController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/BoardingPass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/dto/CreateBoardingPassDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/BoardingPassRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/CostumerFlightRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/BoardingPassService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/CostumerFlightsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/customer_flights.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminHomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminHomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CostumerSignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CostumerSignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Costumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Costumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Tickets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Tickets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddFlightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddFlightController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/add_flight.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/add_flight.fxml" afterDir="false" />
+>>>>>>> 10739e242b198c92643e99d7d044553670818756
+>>>>>>> bc38af2d1a292ed2e11ef97772a534a1125456e7
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

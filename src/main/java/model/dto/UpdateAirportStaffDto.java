@@ -17,7 +17,7 @@ public class UpdateAirportStaffDto {
         this.position = position;
         this.password = password;
     }
-    
+
 
         public String getFirstName() {
             return firstName;

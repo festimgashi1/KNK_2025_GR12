@@ -67,6 +67,14 @@
                                 style="-fx-background-color: #2c89e8; -fx-text-fill: white;
                                        -fx-background-radius: 8; -fx-padding: 10 20;
                                        -fx-font-weight: bold;" />
+
+                        <Label fx:id="lblError" text="Formati i dates nuk eshte shkruar mire"
+                               GridPane.rowIndex="9" GridPane.columnIndex="1"
+                               style="-fx-text-fill: red; -fx-font-style: italic;" visible="false"/>
+
+                        <Label fx:id="lblSuccess" text="Flight added successfully." visible="false"
+                               style="-fx-text-fill: green;" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+
                     </children>
                 </GridPane>
             </children>

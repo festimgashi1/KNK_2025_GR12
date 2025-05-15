@@ -1,0 +1,58 @@
+package controller;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.*;
+
+public class CostumerFlightsController {
+
+    @FXML private ToggleGroup tripTypeGroup;
+    @FXML private RadioButton returnRadio;
+    @FXML private RadioButton oneWayRadio;
+
+    @FXML private TextField txtDeparture;
+    @FXML private TextField txtDestination;
+    @FXML private DatePicker dpDepartureDate;
+    @FXML private DatePicker dpReturnDate;
+
+    @FXML private Button btnAddPassenger;
+    @FXML private Button btnPassengerCount;
+    @FXML private Button btnSearch;
+
+    private int passengerCount = 1;
+
+    @FXML
+    private void initialize() {
+        // Mund të bësh disable fushën e Return Date kur zgjidhet "One way"
+        tripTypeGroup.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> {
+            if (tripTypeGroup.getSelectedToggle() != null) {
+                String trip = ((RadioButton) tripTypeGroup.getSelectedToggle()).getText();
+                dpReturnDate.setDisable(trip.equals("One way"));
+            }
+        });
+
+        // Inicimisht disable Return Date nëse është zgjedhur One way
+        dpReturnDate.setDisable(oneWayRadio.isSelected());
+    }
+
+    @FXML
+    private void increasePassengerCount() {
+        passengerCount++;
+        btnPassengerCount.setText(String.valueOf(passengerCount));
+    }
+
+    @FXML
+    private void handleSearchClick() {
+        String tripType = ((RadioButton) tripTypeGroup.getSelectedToggle()).getText();
+        String departure = txtDeparture.getText();
+        String destination = txtDestination.getText();
+        String departureDate = dpDepartureDate.getValue() != null ? dpDepartureDate.getValue().toString() : "";
+        String returnDate = dpReturnDate.getValue() != null ? dpReturnDate.getValue().toString() : "";
+
+        System.out.println("Trip type: " + tripType);
+        System.out.println("From: " + departure);
+        System.out.println("To: " + destination);
+        System.out.println("Departure date: " + departureDate);
+        System.out.println("Return date: " + returnDate);
+        System.out.println("Passengers: " + passengerCount);
+    }
+}

@@ -90,7 +90,8 @@ CREATE TABLE Tickets (
     customerid INT REFERENCES Costumer(costumerId),
     bookingdate DATE,
     ticketprice DECIMAL(10,2),
-    paymentmethod VARCHAR(50)
+    paymentmethod VARCHAR(50),
+    passengers INT
 );
 
 CREATE TABLE CheckIn (
@@ -167,6 +168,22 @@ CREATE TABLE TravelDocuments (
     fileAttachment TEXT
 );
 
+CREATE TABLE BoardingPass (
+    reservationId SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    from_location VARCHAR(100) NOT NULL,
+    to_location VARCHAR(100) NOT NULL,
+    flight_date DATE NOT NULL,
+    flight_code VARCHAR(20) NOT NULL,
+    gate VARCHAR(10) NOT NULL,
+    boarding_time VARCHAR(10) NOT NULL,
+    seat VARCHAR(10) NOT NULL
+);
+SELECT t.* FROM tickets t
+JOIN flights f ON t.flightNumber = f.flightNumber
+WHERE f.departure = ? AND f.destination = ? AND f.departure_date = ?
+
+
 
 
 ALTER TABLE Costumer DROP COLUMN gender;
@@ -203,9 +220,16 @@ ALTER COLUMN hashpassword TYPE VARCHAR(300);
 ALTER TABLE Airline
 ALTER COLUMN salt TYPE VARCHAR(300);
 
+
+
 insert into Admin(id, firstName,lastName, email, salt , hashpassword)
 values(1, 'Festim', 'Gashi', 'admin@gmail.com', '+lxY0OuuRfNBzP0qvrd1Jq7Z4lspDmH57EZrt0OhteE=' , '2b6c7859304f757552664e427a503071767264314a71375a346c7370446d483537455a7274304f687465453d9600cc448737ec409df22929e8410c31db52b046d525d93dd72367a416a5e3a8');
 
+<<<<<<< HEAD
+ALTER TABLE Tickets
+ADD COLUMN passengers INT;
+=======
 ALTER TABLE flights
 ALTER COLUMN duration TYPE VARCHAR(50)
 USING duration::VARCHAR;
+>>>>>>> 10739e242b198c92643e99d7d044553670818756
