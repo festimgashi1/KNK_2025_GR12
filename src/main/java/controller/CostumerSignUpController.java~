@@ -51,6 +51,6 @@ public class CostumerSignUpController {
 
     @FXML
     public void handleGuest(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
+        SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
     }
 }
