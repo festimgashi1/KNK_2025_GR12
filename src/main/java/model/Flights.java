@@ -58,4 +58,33 @@ public class Flights {
     public String getStatus() {
         return status;
     }
+
+    public void setPlaneid(int planeid) {
+        this.planeid = planeid;
+    }
+
+    public void setDepartureAirport(String departureAirport) {
+        this.departureAirport = departureAirport;
+    }
+
+    public void setArrivalAirport(String arrivalAirport) {
+        this.arrivalAirport = arrivalAirport;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
+    }
+
+    public void setArrivalTime(String arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

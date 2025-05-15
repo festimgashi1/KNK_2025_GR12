@@ -4,11 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import model.Tickets;
+import services.CostumerFlightService;
 import services.SceneManager;
-import services.TicketFlightService;
 
 import java.time.LocalDate;
-import java.util.Optional;
+import java.util.List;
 
 public class CostumerFlightsController {
 
@@ -27,16 +27,14 @@ public class CostumerFlightsController {
 
     private int passengerCount = 1;
 
-    private final TicketFlightService ticketFlightService = new TicketFlightService();
+    private final CostumerFlightService ticketFlightService = new CostumerFlightService();
 
     @FXML
     private void initialize() {
-        // Vendos ToggleGroup manualisht
         tripTypeGroup = new ToggleGroup();
         returnRadio.setToggleGroup(tripTypeGroup);
         oneWayRadio.setToggleGroup(tripTypeGroup);
 
-        // Listener për të aktivizuar/deaktivuar returnDate
         tripTypeGroup.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> {
             if (tripTypeGroup.getSelectedToggle() != null) {
                 String trip = ((RadioButton) tripTypeGroup.getSelectedToggle()).getText();
@@ -70,18 +68,20 @@ public class CostumerFlightsController {
         System.out.println("From: " + departure + " To: " + destination);
         System.out.println("Date: " + departureDate + " | Passengers: " + passengerCount);
 
-        Optional<Tickets> foundTicket = ticketFlightService.findMatchingTicket(
+        // Kërko të gjitha biletat që përputhen
+        List<Tickets> matchingTickets = ticketFlightService.findMatchingTickets(
                 departure, destination, departureDate, passengerCount
         );
 
-        if (foundTicket.isPresent()) {
-            Tickets ticket = foundTicket.get();
+        if (!matchingTickets.isEmpty()) {
+            Tickets ticket = matchingTickets.get(0); // Merr të parën për demonstrim
 
-            // Ruaj biletën dhe kalo në rezervim
+            // Ruaj biletën në SceneManager dhe kaloni te rezervimi
             SceneManager.getInstance().setData("selectedTicket", ticket);
             SceneManager.getInstance().switchScene("/Views/reserve_ticket.fxml");
+
         } else {
-            System.out.println("No matching flight found.");
+            System.out.println("No matching tickets found.");
         }
     }
 }

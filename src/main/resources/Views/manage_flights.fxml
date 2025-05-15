@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.ManageFlightsController"
+            style="-fx-background-color: #f9fbfd;">
+
+    <!-- Sidebar -->
+    <left>
+        <fx:include source="Airline_Dash.fxml"/>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="20" alignment="TOP_CENTER" style="-fx-background-color: white; -fx-padding: 30 50; -fx-background-radius: 12; -fx-effect: dropshadow(gaussian, #ccc, 10, 0.1, 0, 4);">
+            <Label text="✈ Manage Your Flights"
+                   style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <TableView fx:id="flightsTable" prefHeight="420" prefWidth="820"
+                       style="-fx-background-color: white; -fx-border-color: #dce1e7; -fx-border-radius: 10;
+                  -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, #ccc, 8, 0.1, 0, 4);">
+                <columns>
+                    <TableColumn fx:id="colFlightNumber" text="Flight #" prefWidth="80"/>
+                    <TableColumn fx:id="colDeparture" text="From" prefWidth="100"/>
+                    <TableColumn fx:id="colArrival" text="To" prefWidth="100"/>
+                    <TableColumn fx:id="colDepartureTime" text="Departure Time" prefWidth="130"/>
+                    <TableColumn fx:id="colArrivalTime" text="Arrival Time" prefWidth="130"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                    <TableColumn fx:id="colActions" text="Actions" prefWidth="140"/>
+                </columns>
+
+
+            </TableView>
+
+            <stylesheets>
+                <URL value="@styles/manage_flights.css"/>
+            </stylesheets>
+
+            <Label fx:id="lblMessage" text="Zgjidh një fluturim për të modifikuar ose fshirë."
+                   visible="false"
+                   style="-fx-text-fill: #27ae60; -fx-font-style: italic; -fx-padding: 10 0 0 0;"/>
+        </VBox>
+    </center>
+</BorderPane>
