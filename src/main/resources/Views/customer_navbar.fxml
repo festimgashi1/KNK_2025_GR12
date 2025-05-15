@@ -21,11 +21,14 @@
 
         <Button onAction="#goLogIn" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="👤 Profile" />
 
+<<<<<<< Updated upstream
         <Button text="🚪 Sign Out"
                 onAction="#handleSignOut"
                 prefWidth="160"
                 style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #c0392b; -fx-cursor: hand;" />
 
 
+=======
+>>>>>>> Stashed changes
     </children>
 </VBox>

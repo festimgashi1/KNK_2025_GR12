@@ -3,7 +3,10 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import services.SceneManager;
+<<<<<<< Updated upstream
 import session.CustomerSession;
+=======
+>>>>>>> Stashed changes
 
 public class CustomerNavbarController {
 
@@ -24,6 +27,7 @@ public class CustomerNavbarController {
 
     @FXML
     public void goLogIn(ActionEvent event) {
+<<<<<<< Updated upstream
         if (CustomerSession.getInstance().getCurrentCostumer() != null) {
             SceneManager.getInstance().switchScene("/Views/costumer_profile.fxml");
         } else {
@@ -36,4 +40,8 @@ public class CustomerNavbarController {
         SceneManager.getInstance().switchScene("/Views/login.fxml");  // go to login
     }
 
+=======
+        SceneManager.getInstance().switchScene("/Views/login.fxml");
+    }
+>>>>>>> Stashed changes
 }

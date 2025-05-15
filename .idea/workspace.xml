@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
+<<<<<<< Updated upstream
 <<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/resources/Views/customer_navbar.fxml" afterDir="false" />
@@ -34,6 +35,10 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/Views/add_flight.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/add_flight.fxml" afterDir="false" />
 >>>>>>> 10739e242b198c92643e99d7d044553670818756
 >>>>>>> bc38af2d1a292ed2e11ef97772a534a1125456e7
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/client_interface.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/client_interface.fxml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
