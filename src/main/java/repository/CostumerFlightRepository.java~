@@ -1,0 +1,47 @@
+package repository;
+
+import database.DBConnector;
+import model.Tickets;
+import java.sql.*;
+import java.time.LocalDate;
+import java.util.List;
+
+public class CostumerFlightRepository {
+
+    public List<Tickets> searchAvailableTicket(String departure, String destination, LocalDate departureDate, int passengers) {
+        String query = """
+            SELECT t.* FROM tickets t
+            JOIN flights f ON t.flightNumber = f.flightNumber
+            WHERE f.departure = ? AND f.destination = ? AND f.departure_date = ? AND t.passengers >= ?
+            LIMIT 1
+        """;
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setString(1, departure);
+            stmt.setString(2, destination);
+            stmt.setDate(3, Date.valueOf(departureDate));
+            stmt.setInt(4, passengers);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Tickets ticket = new Tickets(
+                        rs.getInt("ticketid"),
+                        rs.getInt("flightNumber"),
+                        rs.getInt("customerid"),
+                        rs.getDate("bookingdate"),
+                        rs.getDouble("ticketprice"),
+                        rs.getString("paymentmethod"),
+                        rs.getInt("passengers")
+                );
+                return List.of(ticket);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return List.empty();
+    }
+}
