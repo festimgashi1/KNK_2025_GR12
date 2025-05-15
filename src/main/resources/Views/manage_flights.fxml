@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.ManageFlightsController">
+
+
+    <left>
+        <fx:include source="Airline_Dash.fxml"/>
+    </left>
+
+
+    <center>
+        <VBox spacing="15" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="30" left="40" right="40" bottom="20"/>
+            </padding>
+
+            <Label text="✈ Manage Your Flights"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <TableView fx:id="flightsTable" prefHeight="400" prefWidth="700">
+                <columns>
+                    <TableColumn fx:id="colFlightNumber" text="Flight #" prefWidth="80"/>
+                    <TableColumn fx:id="colDeparture" text="From" prefWidth="100"/>
+                    <TableColumn fx:id="colArrival" text="To" prefWidth="100"/>
+                    <TableColumn fx:id="colDepartureTime" text="Departure Time" prefWidth="130"/>
+                    <TableColumn fx:id="colArrivalTime" text="Arrival Time" prefWidth="130"/>
+                    <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                    <TableColumn fx:id="colActions" text="Actions" prefWidth="140"/>
+                </columns>
+            </TableView>
+
+            <Label fx:id="lblMessage" text="Zgjidh një fluturim për të modifikuar ose fshirë."
+                   visible="false" style="-fx-text-fill: green;"/>
+        </VBox>
+    </center>
+</BorderPane>
+
