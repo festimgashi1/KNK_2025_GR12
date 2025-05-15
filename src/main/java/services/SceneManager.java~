@@ -3,21 +3,21 @@ package services;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class SceneManager {
     private static SceneManager sceneManager;
     private Scene scene;
     private String currentPath;
     private String centerPanePath;
-
-
     private final Map<String, Object> data = new HashMap<>();
 
     private SceneManager(){
-        this.currentPath = "/Views/client_interface.fxml";
+        this.currentPath= "/Views/client_interface.fxml";
         this.scene = this.initScene();
     }
 
@@ -26,20 +26,17 @@ public class SceneManager {
             sceneManager = new SceneManager();
         return sceneManager;
     }
-
     private Scene initScene(){
         try{
             return new Scene(this.getParent(currentPath));
         } catch(Exception e){
-            e.printStackTrace();
-            return null;
+                e.printStackTrace();
+                return null;
         }
     }
 
     private Parent getParent(String path) throws IOException{
-        return FXMLLoader.load(getClass().getResource(path));
-    }
-
+        return FXMLLoader.load(getClass().getResource(path));    }
     public Scene getScene(){
         return scene;
     }
@@ -53,16 +50,15 @@ public class SceneManager {
             e.printStackTrace();
         }
     }
-
     public void setCenterPanePath(String fxmlPath){
         this.centerPanePath = fxmlPath;
     }
+}
+public void setData(String key, Object value) {
+    data.put(key, value);
+}
 
-    public void setData(String key, Object value) {
-        data.put(key, value);
-    }
-
-    public Object getData(String key) {
-        return data.get(key);
-    }
+public Object getData(String key) {
+    return data.get(key);
+}
 }

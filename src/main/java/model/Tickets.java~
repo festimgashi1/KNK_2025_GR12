@@ -11,7 +11,7 @@ public class Tickets {
     private String paymentmethod;
     private int passengers;
 
-    public Tickets(int ticketid, int flightNumber, int customerid, Date bookingdate, double ticketprice, String paymentmethod, int passengers) {
+    protected Tickets(int ticketid, int flightNumber, int customerid, Date bookingdate, double ticketprice, String paymentmethod,int passengers) {
         this.ticketid = ticketid;
         this.flightNumber = flightNumber;
         this.customerid = customerid;

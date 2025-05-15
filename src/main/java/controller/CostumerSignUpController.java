@@ -31,7 +31,7 @@ public class CostumerSignUpController {
             );
             Costumer user = signupService.create(dto);
             System.out.println("Customer registered: " + user.getFirstName());
-            SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
+            SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
         } catch (Exception e) {
             System.out.println("Signup failed: " + e.getMessage());
         }

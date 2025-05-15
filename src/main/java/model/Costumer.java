@@ -9,20 +9,18 @@ public class Costumer {
     private String lastName;
     private String email;
     private String telephoneNumber;
-    private String gender;
     private Date birthDate;
     private String hashpassword;
     private String salt;
     private String address;
 
 
-    protected Costumer(int costumerId ,String firstName, String lastName,String telephoneNumber, String email,String gender,Date birthDate,String hashpaswword, String salt ,String address ){
+    protected Costumer(int costumerId ,String firstName, String lastName,String telephoneNumber, String email,Date birthDate,String hashpaswword, String salt ,String address ){
         this.costumerId=costumerId;
         this.firstName=firstName;
         this.lastName=lastName;
         this.email=email;
         this.telephoneNumber=telephoneNumber;
-        this.gender=gender;
         this.birthDate=birthDate;
         this.hashpassword=hashpaswword;
         this.salt=salt;
@@ -47,10 +45,6 @@ public class Costumer {
         return telephoneNumber;
     }
 
-    public String getGender(){
-        return gender;
-
-    }
     public java.sql.Date getBirthDate(){
         return (java.sql.Date) birthDate;
     }
@@ -76,13 +70,12 @@ public class Costumer {
         String lastName = rs.getString("lastname");
         String telephoneNumber = rs.getString("telephoneNumber");
         String email = rs.getString("email");
-        String gender = rs.getString("gender");
         Date birthDate = rs.getDate("birthDate");
         String hashpassword = rs.getString("hashpassword");
         String salt = rs.getString("salt");
         String address = rs.getString("address");
 
-        return new Costumer(costumerId, firstName, lastName, telephoneNumber, email, gender, birthDate, hashpassword, salt, address);
+        return new Costumer(costumerId, firstName, lastName, telephoneNumber, email,birthDate, hashpassword, salt, address);
     }
 
 }

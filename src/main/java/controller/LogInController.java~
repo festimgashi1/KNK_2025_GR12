@@ -9,8 +9,6 @@ import model.Airline;
 import model.Costumer;
 import services.LoginService;
 import services.SceneManager;
-import session.CustomerSession;
-import session.AirlineSession;
 
 public class LogInController {
 
@@ -20,7 +18,7 @@ public class LogInController {
     @FXML
     private PasswordField pwId;
 
-    private final LoginService loginService;
+    private LoginService loginService;
 
     public LogInController() {
         this.loginService = new LoginService();
@@ -41,21 +39,11 @@ public class LogInController {
 
             } else if (user instanceof Airline) {
                 System.out.println("Welcome airline: " + ((Airline) user).getAirlinename());
-                AirlineSession.setAirlineId(((Airline) user).getAirlineid());
-                SceneManager.getInstance().switchScene("/Views/add_flight.fxml");
+                SceneManager.getInstance().switchScene("/Views/airline_interface.fxml");
 
             } else if (user instanceof Costumer) {
-<<<<<<< HEAD
-                Costumer costumer = (Costumer) user;
-                System.out.println("Welcome customer: " + costumer.getFirstName());
-
-                CustomerSession.getInstance().setCurrentCostumer(costumer);
-
-                SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
-=======
                 System.out.println("Welcome customer: " + ((Costumer) user).getFirstName());
-                SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
->>>>>>> bc38af2d1a292ed2e11ef97772a534a1125456e7
+                SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
 
             } else {
                 System.out.println("Unknown user type.");
@@ -73,12 +61,11 @@ public class LogInController {
 
     @FXML
     public void goLogIn(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/login.fxml");
+        SceneManager.getInstance().switchScene("/Views/log_in.fxml");
     }
-
     @FXML
     public void goSignUp(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/signup.fxml");
+        SceneManager.getInstance().switchScene("/Views/sign_up.fxml");
     }
 
     @FXML
