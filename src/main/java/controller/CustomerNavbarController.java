@@ -9,7 +9,7 @@ public class CustomerNavbarController {
 
     @FXML
     public void showFlights(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/flights.fxml");
+        SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
     }
 
     @FXML
