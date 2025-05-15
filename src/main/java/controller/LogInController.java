@@ -45,17 +45,17 @@ public class LogInController {
                 SceneManager.getInstance().switchScene("/Views/add_flight.fxml");
 
             } else if (user instanceof Costumer) {
-<<<<<<< HEAD
+
                 Costumer costumer = (Costumer) user;
                 System.out.println("Welcome customer: " + costumer.getFirstName());
 
                 CustomerSession.getInstance().setCurrentCostumer(costumer);
 
                 SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
-=======
+
                 System.out.println("Welcome customer: " + ((Costumer) user).getFirstName());
                 SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
->>>>>>> bc38af2d1a292ed2e11ef97772a534a1125456e7
+
 
             } else {
                 System.out.println("Unknown user type.");

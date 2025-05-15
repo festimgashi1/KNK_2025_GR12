@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/EditFlightController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ManageFlightsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/EditFlight.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/manage_flights.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/styles/manage_flights.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/database/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/database/DBConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Flights.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Flights.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/FlightRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/FlightRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/FlightService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/FlightService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/customer_navbar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/customer_navbar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/manage_flights.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/manage_flights.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
