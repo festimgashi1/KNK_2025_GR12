@@ -9,6 +9,7 @@ import model.Airline;
 import model.Costumer;
 import services.LoginService;
 import services.SceneManager;
+import session.AirlineSession;
 
 public class LogInController {
 
@@ -39,6 +40,7 @@ public class LogInController {
 
             } else if (user instanceof Airline) {
                 System.out.println("Welcome airline: " + ((Airline) user).getAirlinename());
+                AirlineSession.setAirlineId(((Airline) user).getAirlineid());
                 SceneManager.getInstance().switchScene("/Views/add_flight.fxml");
 
             } else if (user instanceof Costumer) {

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import model.Flights;
 import services.FlightService;
+import session.AirlineSession;
 
 public class AddFlightController {
 
@@ -17,6 +18,8 @@ public class AddFlightController {
     @FXML private TextField txtDuration;
     @FXML private TextField txtStatus;
 
+    int airlineId = AirlineSession.getAirlineId();
+
     private final FlightService flightService = new FlightService();
 
     @FXML
@@ -24,7 +27,7 @@ public class AddFlightController {
         try {
             Flights flight = new Flights(
                     Integer.parseInt(txtFlightNumber.getText()),
-                    Integer.parseInt(txtAirlineId.getText()),
+                    airlineId,
                     Integer.parseInt(txtPlaneId.getText()),
                     txtDepartureAirport.getText(),
                     txtArrivalAirport.getText(),
