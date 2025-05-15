@@ -9,6 +9,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminAirlinesRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminAirlinesRequestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Views/admin_airlines.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/admin_airlines.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/admin_flights.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/admin_flights.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/admin_home.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/admin_home.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/admin_navbar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/admin_navbar.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
