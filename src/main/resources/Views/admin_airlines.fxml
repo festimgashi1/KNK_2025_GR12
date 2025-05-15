@@ -1,97 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
-  All rights reserved. Use is subject to license terms.
-
-  This file is available and licensed under the following license:
-
-  Redistribution and use in source and binary forms, with or without
-  modification, are permitted provided that the following conditions
-  are met:
-
-  - Redistributions of source code must retain the above copyright
-    notice, this list of conditions and the following disclaimer.
-  - Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions and the following disclaimer in
-    the documentation and/or other materials provided with the distribution.
-  - Neither the name of Oracle Corporation nor the names of its
-    contributors may be used to endorse or promote products derived
-    from this software without specific prior written permission.
-
-  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
-  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
-  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
-  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
-  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
--->
-
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.geometry.Insets?>
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminAirlinesRequestController" style="-fx-background-color:white;">
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.AdminAirlinesRequestController"
+            style="-fx-background-color: #f8fbfd;">
     <left>
-        <fx:include source="admin_navbar.fxml" />
+        <fx:include source="admin_navbar.fxml"/>
     </left>
+
     <center>
-        <VBox>
-            <children>
-                <Line endX="800" endY="0" startX="0" startY="0" stroke="#ADD8E6" strokeWidth="2" />
-                <Line endX="800" endY="50" startX="0" startY="50" stroke="#ADD8E6" strokeWidth="1" />
-                <Line endX="800" endY="100" startX="0" startY="100" stroke="#ADD8E6" strokeWidth="1" />
-            </children>
-        </VBox>
-
-        <VBox prefHeight="600.0" prefWidth="800.0" spacing="10">
+        <VBox spacing="20">
             <padding>
-                <Insets top="20" right="20" bottom="20" left="20"/>
+                <Insets top="20" right="20" bottom="20" left="20" />
             </padding>
-            <children>
-                <Text style="-fx-font-size: 18px;" text="Pending Airlines" />
-                <TableView fx:id="pendingAirlinesTable" VBox.vgrow="ALWAYS">
-                    <columns>
-                        <TableColumn fx:id="colAirlineName" prefWidth="91.99999845027924" text="Airline Name" />
-                        <TableColumn fx:id="colCountry" prefWidth="87.20001983642578" text="Country" />
-                        <TableColumn fx:id="colEmail" prefWidth="93.5999755859375" text="Email" />
-                        <TableColumn fx:id="colPhoneNumber" prefWidth="119.20001220703125" text="Phone Number" />
-                    </columns>
-                </TableView>
-                <HBox spacing="10">
-                    <Button onAction="#handleApprove" text="Approve" />
-                    <Button onAction="#handleDeny" text="Deny" />
-                </HBox>
+            <Text text="✈ Pending Airlines" style="-fx-fill: #2c3e50;">
+                <font>
+                    <Font size="20.0" name="Arial Bold"/>
+                </font>
+            </Text>
 
-                <Text style="-fx-font-size: 18px;" text="Registered Airlines" />
-                <TableView fx:id="registeredAirlinesTable" VBox.vgrow="ALWAYS">
-                    <columns>
-                        <TableColumn fx:id="colRegisteredName" prefWidth="91.0" text="Airline Name" />
-                        <TableColumn fx:id="colRegisteredCountry" prefWidth="87.0" text="Country" />
-                        <TableColumn fx:id="colRegisteredEmail" prefWidth="93.0" text="Email" />
-                        <TableColumn fx:id="colRegisteredPhone" prefWidth="119.0" text="Phone Number" />
-                    </columns>
-                </TableView>
-                <HBox spacing="10">
-                    <Button onAction="#handleDelete" text="Delete Airline" />
-                </HBox>
+            <TableView fx:id="pendingAirlinesTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colAirlineName" text="Airline Name" prefWidth="150"/>
+                    <TableColumn fx:id="colCountry" text="Country" prefWidth="120"/>
+                    <TableColumn fx:id="colEmail" text="Email" prefWidth="180"/>
+                    <TableColumn fx:id="colPhoneNumber" text="Phone Number" prefWidth="140"/>
+                    <!-- 'Actions' column will be added dynamically in controller -->
+                </columns>
+            </TableView>
 
-            </children>
+            <Text text="✔ Registered Airlines" style="-fx-fill: #2c3e50;">
+                <font>
+                    <Font size="20.0" name="Arial Bold"/>
+                </font>
+            </Text>
+
+            <TableView fx:id="registeredAirlinesTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colRegisteredName" text="Airline Name" prefWidth="150"/>
+                    <TableColumn fx:id="colRegisteredCountry" text="Country" prefWidth="120"/>
+                    <TableColumn fx:id="colRegisteredEmail" text="Email" prefWidth="180"/>
+                    <TableColumn fx:id="colRegisteredPhone" text="Phone Number" prefWidth="140"/>
+                </columns>
+            </TableView>
+
+            <HBox spacing="10" alignment="CENTER_RIGHT">
+                <Button text="🗑 Delete Airline" onAction="#handleDelete"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            </HBox>
         </VBox>
     </center>
 </BorderPane>
