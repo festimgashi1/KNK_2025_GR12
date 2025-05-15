@@ -17,7 +17,7 @@ public class SceneManager {
     private final Map<String, Object> data = new HashMap<>();
 
     private SceneManager(){
-        this.currentPath = "/Views/client_interface.fxml";
+        this.currentPath = "/Views/customer_flights.fxml";
         this.scene = this.initScene();
     }
 

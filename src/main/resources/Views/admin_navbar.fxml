@@ -21,5 +21,7 @@
 
         <Button onAction="#goLogIn" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="👤 Profile" />
 
+        <Button text="🚪 Sign Out" onAction="#handleSignOut" style="-fx-background-color: transparent; -fx-text-fill: #c0392b;" />
+
     </children>
 </VBox>

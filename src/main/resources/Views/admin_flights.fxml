@@ -35,8 +35,11 @@
             </TableView>
 
             <HBox spacing="10" alignment="CENTER_RIGHT">
-                <Button text="Delete Flight" onAction="#handleDeleteFlight"/>
+                <Button text="🗑 Delete Flight"
+                        onAction="#handleDeleteFlight"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-cursor: hand; -fx-background-radius: 5;" />
             </HBox>
+
         </VBox>
     </center>
 </BorderPane>

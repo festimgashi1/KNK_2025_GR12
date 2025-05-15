@@ -4,57 +4,67 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="180.0" prefWidth="850.0" xmlns:fx="http://javafx.com/fxml/1"
-            xmlns="http://javafx.com/javafx/23.0.1"
-            fx:controller="controller.CostumerFlightsController">
-    <children>
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.CostumerFlightsController"
+            prefWidth="850.0" prefHeight="500.0">
 
-        <!-- Toggle Group for One Way / Return -->
-        <HBox layoutX="20" layoutY="20" spacing="10">
-            <RadioButton fx:id="returnRadio" text="Return" toggleGroup="$tripTypeGroup"/>
-            <RadioButton fx:id="oneWayRadio" text="One way" selected="true" toggleGroup="$tripTypeGroup"/>
-        </HBox>
+    <!-- ✅ Navbar në anën e majtë -->
+    <left>
+        <fx:include source="customer_navbar.fxml"/>
+    </left>
 
-        <!-- Labels and Input Fields -->
-        <HBox layoutX="20" layoutY="60" spacing="10">
+    <!-- ✅ Përmbajtja kryesore në qendër -->
+    <center>
+        <VBox spacing="20" alignment="TOP_LEFT" style="-fx-padding: 20;">
 
-            <!-- Departure -->
-            <VBox spacing="5">
-                <Label text="Departure"/>
-                <TextField fx:id="txtDeparture" prefHeight="26.0" prefWidth="158.0"/>
-            </VBox>
+            <!-- Toggle Group for One Way / Return -->
+            <HBox spacing="10">
+                <RadioButton fx:id="returnRadio" text="Return" toggleGroup="$tripTypeGroup"/>
+                <RadioButton fx:id="oneWayRadio" text="One way" selected="true" toggleGroup="$tripTypeGroup"/>
+            </HBox>
 
-            <!-- Destination -->
-            <VBox spacing="5">
-                <Label text="Destination"/>
-                <TextField fx:id="txtDestination" prefHeight="26.0" prefWidth="140.0"/>
-            </VBox>
+            <!-- Labels and Input Fields -->
+            <HBox spacing="10">
 
-            <!-- Departure Date -->
-            <VBox spacing="5">
-                <Label text="Departure date"/>
-                <DatePicker fx:id="dpDepartureDate" prefWidth="150"/>
-            </VBox>
+                <!-- Departure -->
+                <VBox spacing="5">
+                    <Label text="Departure"/>
+                    <TextField fx:id="txtDeparture" prefHeight="26.0" prefWidth="158.0"/>
+                </VBox>
 
-            <!-- Return Date -->
-            <VBox spacing="5">
-                <Label text="Return date"/>
-                <DatePicker fx:id="dpReturnDate" prefWidth="150"/>
-            </VBox>
+                <!-- Destination -->
+                <VBox spacing="5">
+                    <Label text="Destination"/>
+                    <TextField fx:id="txtDestination" prefHeight="26.0" prefWidth="140.0"/>
+                </VBox>
 
-            <!-- Passengers -->
-            <VBox spacing="5">
-                <Label text="Passengers"/>
-                <HBox spacing="5">
-                    <Text fx:id="passengerText" text="1"/>
-                    <Button fx:id="btnAddPassenger" text="+" onAction="#increasePassengerCount"/>
-                </HBox>
-            </VBox>
-        </HBox>
+                <!-- Departure Date -->
+                <VBox spacing="5">
+                    <Label text="Departure date"/>
+                    <DatePicker fx:id="dpDepartureDate" prefWidth="150"/>
+                </VBox>
 
-        <!-- Search Button -->
-        <Button fx:id="btnSearch" layoutX="757.0" layoutY="120.0" prefWidth="50"
-                style="-fx-background-color: #e5007d; -fx-text-fill: white;" text="🔍" onAction="#handleSearchClick"/>
+                <!-- Return Date -->
+                <VBox spacing="5">
+                    <Label text="Return date"/>
+                    <DatePicker fx:id="dpReturnDate" prefWidth="150"/>
+                </VBox>
 
-    </children>
-</AnchorPane>
+                <!-- Passengers -->
+                <VBox spacing="5">
+                    <Label text="Passengers"/>
+                    <HBox spacing="5">
+                        <Text fx:id="passengerText" text="1"/>
+                        <Button fx:id="btnAddPassenger" text="+" onAction="#increasePassengerCount"/>
+                    </HBox>
+                </VBox>
+            </HBox>
+
+            <!-- Search Button -->
+            <Button fx:id="btnSearch" prefWidth="50"
+                    style="-fx-background-color: #e5007d; -fx-text-fill: white;" text="🔍"
+                    onAction="#handleSearchClick"/>
+        </VBox>
+    </center>
+</BorderPane>

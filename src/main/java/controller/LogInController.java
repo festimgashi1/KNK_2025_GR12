@@ -36,26 +36,25 @@ public class LogInController {
             this.cleanFields();
 
             if (user instanceof Admin) {
-                System.out.println("Welcome admin: " + ((Admin) user).getFirstName());
+                Admin admin = (Admin) user;
+                session.AdminSession.getInstance().setCurrentAdmin(admin);
+                System.out.println("Welcome admin: " + admin.getFirstName());
                 SceneManager.getInstance().switchScene("/Views/admin_home.fxml");
-
-            } else if (user instanceof Airline) {
+            }
+            else if (user instanceof Airline) {
                 System.out.println("Welcome airline: " + ((Airline) user).getAirlinename());
                 AirlineSession.setAirlineId(((Airline) user).getAirlineid());
                 SceneManager.getInstance().switchScene("/Views/add_flight.fxml");
 
             } else if (user instanceof Costumer) {
-
                 Costumer costumer = (Costumer) user;
                 System.out.println("Welcome customer: " + costumer.getFirstName());
 
                 CustomerSession.getInstance().setCurrentCostumer(costumer);
 
                 SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
-
                 System.out.println("Welcome customer: " + ((Costumer) user).getFirstName());
                 SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
-
 
             } else {
                 System.out.println("Unknown user type.");

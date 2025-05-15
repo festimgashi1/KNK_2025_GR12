@@ -3,7 +3,9 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import services.SceneManager;
+
 import session.CustomerSession;
+
 
 public class CustomerNavbarController {
 
@@ -24,15 +26,18 @@ public class CustomerNavbarController {
 
     @FXML
     public void goLogIn(ActionEvent event) {
+
         if (CustomerSession.getInstance().getCurrentCostumer() != null) {
             SceneManager.getInstance().switchScene("/Views/costumer_profile.fxml");
         } else {
             SceneManager.getInstance().switchScene("/Views/login.fxml");
         }
     }
+
     @FXML
     public void handleSignOut(ActionEvent event) {
         session.CustomerSession.getInstance().clear();  // remove session
-        SceneManager.getInstance().switchScene("/Views/login.fxml");
+        SceneManager.getInstance().switchScene("/Views/login.fxml");  // go to login
     }
+
 }
