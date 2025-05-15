@@ -13,17 +13,18 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.PasswordField?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AirlineSignUpController">
    <children>
       <ImageView fitHeight="504.0" fitWidth="920.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Downloads/thumb_319f89bf-43ab-4bd7-ba64-c722259b5458_720x.png" />
+            <Image url="@../Photos/login_signup_pic.png" />
          </image>
       </ImageView>
       <Pane opacity="0.44" prefHeight="504.0" prefWidth="315.0" style="-fx-background-color: white;" />
       <Pane layoutX="149.0" layoutY="55.0" prefHeight="427.0" prefWidth="383.0" style="-fx-background-color: white;">
          <children>
-            <Button layoutX="151.0" layoutY="340.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="86.0" style="-fx-background-color: #0a0b12;" text="SIGN UP" textFill="WHITE">
+            <Button layoutX="151.0" layoutY="340.0" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="41.0" prefWidth="86.0" style="-fx-background-color: #0a0b12;" text="SIGN UP" textFill="WHITE">
                <effect>
                   <DropShadow height="0.0" radius="4.75" />
                </effect>
@@ -33,12 +34,12 @@
                   <Font name="System Bold" size="19.0" />
                </font>
             </Label>
-            <TextField accessibleText="First name" layoutX="87.0" layoutY="87.0" prefHeight="27.0" prefWidth="213.0" promptText="Airline Name" style="-fx-border-color: white;" />
-            <TextField layoutX="85.0" layoutY="124.0" prefHeight="27.0" prefWidth="213.0" promptText="Email" style="-fx-border-color: white;" />
-            <TextField layoutX="85.0" layoutY="162.0" prefHeight="27.0" prefWidth="213.0" promptText="Phone Number" style="-fx-border-color: white;" />
-            <TextField layoutX="85.0" layoutY="200.0" prefHeight="25.0" prefWidth="213.0" promptText="Address" style="-fx-border-color: white;" />
-            <TextField layoutX="85.0" layoutY="241.0" prefHeight="27.0" prefWidth="213.0" promptText="Password" style="-fx-border-color: white;" />
-            <Button layoutX="225.0" layoutY="28.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" style="-fx-background-radius: 10; -fx-background-color: #e0e1da; -fx-border-radius: 10;" text="Airline" textFill="#757474">
+            <TextField fx:id="txtFirstName" accessibleText="First name" layoutX="87.0" layoutY="87.0" prefHeight="27.0" prefWidth="213.0" promptText="Airline Name" style="-fx-border-color: white;" />
+            <TextField fx:id="txtEmail" layoutX="85.0" layoutY="124.0" prefHeight="27.0" prefWidth="213.0" promptText="Email" style="-fx-border-color: white;" />
+            <TextField fx:id="txtPhoneNumber" layoutX="85.0" layoutY="162.0" prefHeight="27.0" prefWidth="213.0" promptText="Phone Number" style="-fx-border-color: white;" />
+            <TextField fx:id="txtAddress" layoutX="85.0" layoutY="200.0" prefHeight="25.0" prefWidth="213.0" promptText="Address" style="-fx-border-color: white;" />
+            <PasswordField fx:id="pwdPassword" layoutX="85.0" layoutY="241.0" prefHeight="27.0" prefWidth="213.0" promptText="Password" style="-fx-border-color: white;" />
+            <Button layoutX="225.0" layoutY="28.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" style="-fx-background-radius: 10; -fx-background-color: #e0e1da; -fx-border-radius: 10;" text="Airline" textFill="#757474"  onAction="#goAirline">
                <effect>
                   <DropShadow height="16.12" radius="24.78" width="85.0">
                      <color>
@@ -47,7 +48,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Button layoutX="300.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: #e0e1da; -fx-border-radius: 10;" text="Costumer" textFill="#757474">
+            <Button  onAction="#goSignUp" layoutX="300.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: #e0e1da; -fx-border-radius: 10;" text="Costumer" textFill="#757474">
                <effect>
                   <DropShadow height="42.74" radius="24.2275" width="56.17">
                      <color>
@@ -56,8 +57,8 @@
                   </DropShadow>
                </effect>
             </Button>
-            <TextField layoutX="86.0" layoutY="285.0" prefHeight="25.0" prefWidth="213.0" promptText="Confirm Password" style="-fx-border-color: white;" />
-            <Hyperlink layoutX="334.0" layoutY="404.0" text="Log in" />
+            <PasswordField fx:id="pwdConfirmPass" layoutX="86.0" layoutY="285.0" prefHeight="25.0" prefWidth="213.0" promptText="Confirm Password" style="-fx-border-color: white;" />
+            <Hyperlink onAction="#goLogIn" layoutX="334.0" layoutY="404.0" text="Log in" />
             <Label layoutX="170.0" layoutY="407.0" prefHeight="17.0" prefWidth="164.0" text="If you already have an account" />
          </children>
          <effect>

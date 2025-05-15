@@ -3,7 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
@@ -12,18 +14,19 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="894.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CostumerSignUpController">
    <children>
       <ImageView fitHeight="504.0" fitWidth="920.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../Downloads/thumb_319f89bf-43ab-4bd7-ba64-c722259b5458_720x.png" />
+            <Image url="@../Photos/login_signup_pic.png" />
          </image>
       </ImageView>
       <Pane opacity="0.44" prefHeight="504.0" prefWidth="315.0" style="-fx-background-color: white;" />
-      <Pane layoutX="139.0" layoutY="45.0" prefHeight="427.0" prefWidth="383.0" style="-fx-background-color: white;">
+      <Pane layoutX="133.0" layoutY="13.0" prefHeight="478.0" prefWidth="383.0" style="-fx-background-color: white;">
          <children>
-            <Button layoutX="151.0" layoutY="340.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="86.0" style="-fx-background-color: #0a0b12;" text="SIGN UP" textFill="WHITE">
+            <Button layoutX="149.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleSignUpButton" prefHeight="41.0" prefWidth="86.0" style="-fx-background-color: #0a0b12;" text="SIGN UP" textFill="WHITE">
                <effect>
                   <DropShadow height="0.0" radius="4.75" />
                </effect>
@@ -33,13 +36,13 @@
                   <Font name="System Bold" size="19.0" />
                </font>
             </Label>
-            <TextField accessibleText="First name" layoutX="87.0" layoutY="87.0" prefHeight="27.0" prefWidth="213.0" promptText="First Name" style="-fx-border-color: white;" />
-            <TextField layoutX="85.0" layoutY="124.0" prefHeight="27.0" prefWidth="213.0" promptText="Last name" style="-fx-border-color: white;" />
-            <TextField layoutX="85.0" layoutY="162.0" prefHeight="27.0" prefWidth="213.0" promptText="Email" style="-fx-border-color: white;" />
-            <TextField layoutX="85.0" layoutY="200.0" prefHeight="25.0" prefWidth="213.0" promptText="Password" style="-fx-border-color: white;" />
-            <TextField layoutX="85.0" layoutY="241.0" prefHeight="27.0" prefWidth="213.0" promptText="Confirm Password" style="-fx-border-color: white;" />
-            <DatePicker layoutX="85.0" layoutY="285.0" prefHeight="25.0" prefWidth="213.0" promptText="Date of Birth" style="-fx-border-color: white;" />
-            <Button layoutX="225.0" layoutY="28.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="67.0" style="-fx-background-radius: 10; -fx-background-color: #e0e1da; -fx-border-radius: 10;" text="Airline" textFill="#757474">
+            <TextField fx:id="txtFirstName" accessibleText="First name" layoutX="87.0" layoutY="87.0" prefHeight="27.0" prefWidth="213.0" promptText="First Name" style="-fx-border-color: white;" />
+            <TextField fx:id="txtLastName" layoutX="85.0" layoutY="124.0" prefHeight="27.0" prefWidth="213.0" promptText="Last name" style="-fx-border-color: white;" />
+            <TextField fx:id="txtEmail" layoutX="85.0" layoutY="162.0" prefHeight="27.0" prefWidth="213.0" promptText="Email" style="-fx-border-color: white;" />
+            <PasswordField fx:id="pwdPassword" layoutX="85.0" layoutY="324.0" prefHeight="25.0" prefWidth="213.0" promptText="Password" style="-fx-border-color: white;" />
+            <PasswordField fx:id="pwdConfirmPass" layoutX="85.0" layoutY="364.0" prefHeight="27.0" prefWidth="213.0" promptText="Confirm Password" style="-fx-border-color: white;" />
+            <DatePicker fx:id="dtBirthDate" layoutX="87.0" layoutY="242.0" prefHeight="25.0" prefWidth="213.0" promptText="Date of Birth" style="-fx-border-color: white;" />
+            <Button layoutX="225.0" layoutY="28.0" mnemonicParsing="false" onAction="#goAirline" prefHeight="25.0" prefWidth="67.0" style="-fx-background-radius: 10; -fx-background-color: #e0e1da; -fx-border-radius: 10;" text="Airline" textFill="#757474">
                <effect>
                   <DropShadow height="16.12" radius="24.78" width="85.0">
                      <color>
@@ -48,7 +51,7 @@
                   </DropShadow>
                </effect>
             </Button>
-            <Button layoutX="300.0" layoutY="28.0" mnemonicParsing="false" style="-fx-background-radius: 10; -fx-background-color: #e0e1da; -fx-border-radius: 10;" text="Costumer" textFill="#757474">
+            <Button layoutX="300.0" layoutY="28.0" mnemonicParsing="false" onAction="#goSignUp" style="-fx-background-radius: 10; -fx-background-color: #e0e1da; -fx-border-radius: 10;" text="Costumer" textFill="#757474">
                <effect>
                   <DropShadow height="42.74" radius="24.2275" width="56.17">
                      <color>
@@ -57,6 +60,10 @@
                   </DropShadow>
                </effect>
             </Button>
+            <TextField fx:id="txtAddress" layoutX="87.0" layoutY="200.0" prefHeight="27.0" prefWidth="213.0" promptText="Address" style="-fx-border-color: white;" />
+            <TextField fx:id="txtPhoneNumber" layoutX="85.0" layoutY="284.0" prefHeight="25.0" prefWidth="213.0" promptText="Phone Number" style="-fx-border-color: white;" />
+            <Text layoutX="176.0" layoutY="469.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you already have a account, " />
+            <Hyperlink layoutX="334.0" layoutY="452.0" onAction="#goLogIn" text="Log In" />
          </children>
          <effect>
             <DropShadow height="14.28" radius="11.25" width="32.72">

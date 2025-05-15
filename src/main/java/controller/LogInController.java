@@ -9,6 +9,7 @@ import model.Airline;
 import model.Costumer;
 import services.LoginService;
 import services.SceneManager;
+import session.AirlineSession;
 
 public class LogInController {
 
@@ -39,7 +40,8 @@ public class LogInController {
 
             } else if (user instanceof Airline) {
                 System.out.println("Welcome airline: " + ((Airline) user).getAirlinename());
-                SceneManager.getInstance().switchScene("/Views/airline_interface.fxml");
+                AirlineSession.setAirlineId(((Airline) user).getAirlineid());
+                SceneManager.getInstance().switchScene("/Views/add_flight.fxml");
 
             } else if (user instanceof Costumer) {
                 System.out.println("Welcome customer: " + ((Costumer) user).getFirstName());
@@ -61,11 +63,11 @@ public class LogInController {
 
     @FXML
     public void goLogIn(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/log_in.fxml");
+        SceneManager.getInstance().switchScene("/Views/login.fxml");
     }
     @FXML
     public void goSignUp(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/sign_up.fxml");
+        SceneManager.getInstance().switchScene("/Views/signup.fxml");
     }
 
     @FXML

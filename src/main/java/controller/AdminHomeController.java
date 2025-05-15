@@ -22,7 +22,8 @@ public class AdminHomeController implements Initializable {
 
     @FXML
     public void goLogIn(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/log_in.fxml");
+        SceneManager.getInstance().switchScene("/Views/log" +
+                "in.fxml");
     }
 
 //    @FXML

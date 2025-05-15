@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_LEFT" prefWidth="200" spacing="15" style="-fx-background-color: #f4f8fc;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AirlineNav">
+
+    <padding>
+        <Insets bottom="20" left="10" right="10" top="20" />
+    </padding>
+
+    <children>
+
+        <Label style="-fx-font-size: 36px; -fx-text-fill: #4098d7;" text="✈ " />
+
+        <Button onAction="#goToAddFlight" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-font-size: 14;" text="Add Flight" />
+
+        <Button onAction="#goToManageFlights" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-font-size: 14;" text="Manage Flights" />
+
+        <Button text="All Flights" onAction="#goToAllFlights" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-font-size: 14;" />
+
+        <Button text="Add Tickets" onAction="#goToTickets" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-font-size: 14;" />
+
+        <Button onAction="#goToStatistics" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-font-size: 14;" text="Statistics" />
+
+        <Separator prefWidth="160" />
+
+
+        <Button onAction="#goToProfile" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: #333;" text="Profile" />
+
+    </children>
+</VBox>

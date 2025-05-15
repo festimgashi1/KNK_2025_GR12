@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Airline;
+import model.Flights;
 import model.PendingAirline;
 import repository.ApprovedAirlinesRepository;
 import repository.PendingAirlineRepository;
@@ -127,10 +128,28 @@ public class AdminAirlinesRequestController {
     }
     @FXML
     public void goLogIn(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/log_in.fxml");
+        SceneManager.getInstance().switchScene("/Views/login.fxml");
     }
     private void loadApprovedAirlines() {
         List<Airline> approved = approvedAirlines.getAllApproved();
         registeredAirlinesTable.setItems(FXCollections.observableArrayList(approved));
     }
+
+    @FXML
+    public void handleDelete() {
+            Airline selectedAirline = registeredAirlinesTable.getSelectionModel().getSelectedItem();
+            if (selectedAirline != null) {
+                boolean deleted = airlineRepository.deleteById(selectedAirline.getAirlineid());
+                if (deleted) {
+                    registeredAirlinesTable.getItems().remove(selectedAirline);
+                    showAlert("Airline deleted", "The airline has been successfully removed.");
+                } else {
+                    showAlert("Error", "Failed to delete airline.");
+                }
+            } else {
+                showAlert("No Selection", "Please select a airline to delete.");
+            }
+    }
+
+
 }

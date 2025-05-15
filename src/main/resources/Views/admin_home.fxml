@@ -13,7 +13,7 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminHomeController">
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminHomeController" style="-fx-background-color:white;">
     <left>
         <fx:include source="admin_navbar.fxml" />
     </left>
@@ -39,11 +39,6 @@
                         <NumberAxis label="Number of Flights" />
                     </yAxis>
                 </BarChart>
-                <HBox alignment="CENTER">
-                    <children>
-                        <Text style="-fx-font-size: 24px;" text="Welcome to the Admin Interface" />
-                    </children>
-                </HBox>
 
             </children>
         </VBox>

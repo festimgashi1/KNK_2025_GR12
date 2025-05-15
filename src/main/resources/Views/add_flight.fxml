@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.AddFlightController">
+
+    <!-- Sidebar -->
+    <left>
+        <fx:include source="Airline_Dash.fxml"/>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="25" alignment="TOP_LEFT">
+            <padding>
+                <Insets top="40" left="50" right="50" bottom="40"/>
+            </padding>
+            <children>
+
+                <Label text="✈ Add New Flight"
+                       style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+                <GridPane hgap="20" vgap="20">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="30"/>
+                        <ColumnConstraints percentWidth="70"/>
+                    </columnConstraints>
+
+                    <children>
+                        <Label text="Flight Number:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill: #444;" />
+                        <TextField fx:id="txtFlightNumber" promptText="e.g. W62001" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                                   style="-fx-background-radius: 6; -fx-padding: 6;" />
+
+                        <!-- Airline ID hidden or prefilled automatically -->
+                        <Label text="Plane ID:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: #444;" />
+                        <TextField fx:id="txtPlaneId" promptText="e.g. 123" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                                   style="-fx-background-radius: 6; -fx-padding: 6;" />
+
+                        <Label text="Departure Airport:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: #444;" />
+                        <TextField fx:id="txtDepartureAirport" promptText="e.g. JFK" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                                   style="-fx-background-radius: 6; -fx-padding: 6;" />
+
+                        <Label text="Arrival Airport:" GridPane.rowIndex="3" GridPane.columnIndex="0" style="-fx-text-fill: #444;" />
+                        <TextField fx:id="txtArrivalAirport" promptText="e.g. LHR" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                                   style="-fx-background-radius: 6; -fx-padding: 6;" />
+
+                        <Label text="Departure Time:" GridPane.rowIndex="4" GridPane.columnIndex="0" style="-fx-text-fill: #444;" />
+                        <TextField fx:id="txtDepartureTime" promptText="yyyy-MM-dd HH:mm" GridPane.rowIndex="4" GridPane.columnIndex="1"
+                                   style="-fx-background-radius: 6; -fx-padding: 6;" />
+
+                        <Label text="Arrival Time:" GridPane.rowIndex="5" GridPane.columnIndex="0" style="-fx-text-fill: #444;" />
+                        <TextField fx:id="txtArrivalTime" promptText="yyyy-MM-dd HH:mm" GridPane.rowIndex="5" GridPane.columnIndex="1"
+                                   style="-fx-background-radius: 6; -fx-padding: 6;" />
+
+                        <Label text="Duration:" GridPane.rowIndex="6" GridPane.columnIndex="0" style="-fx-text-fill: #444;" />
+                        <TextField fx:id="txtDuration" promptText="e.g. 2h 15min" GridPane.rowIndex="6" GridPane.columnIndex="1"
+                                   style="-fx-background-radius: 6; -fx-padding: 6;" />
+
+                        <Label text="Status:" GridPane.rowIndex="7" GridPane.columnIndex="0" style="-fx-text-fill: #444;" />
+                        <TextField fx:id="txtStatus" promptText="Scheduled / Delayed" GridPane.rowIndex="7" GridPane.columnIndex="1"
+                                   style="-fx-background-radius: 6; -fx-padding: 6;" />
+
+                        <Button text="➕ Add Flight" onAction="#handleSubmit"
+                                GridPane.rowIndex="8" GridPane.columnIndex="1"
+                                style="-fx-background-color: #2c89e8; -fx-text-fill: white;
+                                       -fx-background-radius: 8; -fx-padding: 10 20;
+                                       -fx-font-weight: bold;" />
+
+                        <Label fx:id="lblError" text="Formati i dates nuk eshte shkruar mire"
+                               GridPane.rowIndex="9" GridPane.columnIndex="1"
+                               style="-fx-text-fill: red; -fx-font-style: italic;" visible="false"/>
+
+                        <Label fx:id="lblSuccess" text="Flight added successfully." visible="false"
+                               style="-fx-text-fill: green;" GridPane.rowIndex="10" GridPane.columnIndex="1"/>
+
+                    </children>
+                </GridPane>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>
+

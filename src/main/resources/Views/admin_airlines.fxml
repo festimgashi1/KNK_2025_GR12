@@ -45,7 +45,8 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.scene.layout.BorderPane?>
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminAirlinesRequestController">
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminAirlinesRequestController" style="-fx-background-color:white;">
     <left>
         <fx:include source="admin_navbar.fxml" />
     </left>
@@ -59,6 +60,9 @@
         </VBox>
 
         <VBox prefHeight="600.0" prefWidth="800.0" spacing="10">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
             <children>
                 <Text style="-fx-font-size: 18px;" text="Pending Airlines" />
                 <TableView fx:id="pendingAirlinesTable" VBox.vgrow="ALWAYS">
@@ -83,6 +87,9 @@
                         <TableColumn fx:id="colRegisteredPhone" prefWidth="119.0" text="Phone Number" />
                     </columns>
                 </TableView>
+                <HBox spacing="10">
+                    <Button onAction="#handleDelete" text="Delete Airline" />
+                </HBox>
 
             </children>
         </VBox>
