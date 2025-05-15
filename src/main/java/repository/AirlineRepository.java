@@ -102,4 +102,16 @@ public class AirlineRepository {
         }
         return null;
     }
+
+    public boolean deleteAirline(int airlineid) {
+        String query = "DELETE FROM Airline WHERE airlineid = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setInt(1, airlineid);
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

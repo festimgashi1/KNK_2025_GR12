@@ -46,7 +46,7 @@
 
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.geometry.Insets?>
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminAirlinesRequestController">
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminAirlinesRequestController" style="-fx-background-color:white;">
     <left>
         <fx:include source="admin_navbar.fxml" />
     </left>

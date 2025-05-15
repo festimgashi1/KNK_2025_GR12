@@ -9,6 +9,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Airline;
+import model.Flights;
 import model.PendingAirline;
 import repository.ApprovedAirlinesRepository;
 import repository.PendingAirlineRepository;
@@ -136,28 +137,19 @@ public class AdminAirlinesRequestController {
 
     @FXML
     public void handleDelete() {
-        Airline selectedAirline = registeredAirlinesTable.getSelectionModel().getSelectedItem();
-
-        if (selectedAirline != null) {
-            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION,
-                    "Are you sure you want to delete the selected airline?",
-                    ButtonType.YES, ButtonType.NO);
-            confirm.setTitle("Confirm Deletion");
-            confirm.showAndWait();
-
-            if (confirm.getResult() == ButtonType.YES) {
+            Airline selectedAirline = registeredAirlinesTable.getSelectionModel().getSelectedItem();
+            if (selectedAirline != null) {
                 boolean deleted = airlineRepository.deleteById(selectedAirline.getAirlineid());
-
                 if (deleted) {
-                    loadApprovedAirlines();
-                    showAlert("Deletion Successful", "The airline has been deleted from the system.");
+                    registeredAirlinesTable.getItems().remove(selectedAirline);
+                    showAlert("Airline deleted", "The airline has been successfully removed.");
                 } else {
-                    showAlert("Error", "An error occurred while deleting the airline.");
+                    showAlert("Error", "Failed to delete airline.");
                 }
+            } else {
+                showAlert("No Selection", "Please select a airline to delete.");
             }
-        } else {
-            showAlert("No Selection", "Please select a registered airline to delete.");
-        }
     }
+
 
 }
