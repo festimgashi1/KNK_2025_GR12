@@ -11,18 +11,20 @@
     -fx-text-fill: #2c3e50;
 }
 
-/* HEADER */
+/* HEADER background me radius & ngjyrë */
 .table-view .column-header-background {
-    -fx-background-color: #f1f3f6;
-    -fx-border-radius: 12 12 0 0;
+    -fx-background-color: #1e3d59;
+    -fx-background-insets: 0;
+    -fx-background-radius: 12 12 0 0; /* radius vetëm sipër */
 }
 
+/* HEADER tekst & stil */
 .table-view .column-header, .table-view .filler {
     -fx-size: 40px;
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-font-weight: bold;
-    -fx-text-fill: #34495e;
+    -fx-text-fill: white; /* TEKST I BARDHË */
 }
 
 /* RRESHTAT ALTERNUES */
@@ -38,8 +40,13 @@
     -fx-background-color: #e3f2fd;
 }
 
-/* RRESHTI SELECTUAR */
+/* SELECTED ROW */
 .table-row-cell:filled:selected {
     -fx-background-color: #bbdefb;
     -fx-text-fill: black;
+}
+
+/* TEKSTI BRENDA HEADER-it */
+.table-view .column-header .label {
+    -fx-text-fill: white;
 }
