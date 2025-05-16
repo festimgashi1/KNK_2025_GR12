@@ -221,15 +221,27 @@ ALTER TABLE Airline
 ALTER COLUMN salt TYPE VARCHAR(300);
 
 
+ALTER TABLE Feedback
+DROP CONSTRAINT IF EXISTS feedback_rating_check;
+
+
+ALTER TABLE Feedback
+ALTER COLUMN rating TYPE VARCHAR(20);
+
+
+ALTER TABLE Feedback
+DROP COLUMN IF EXISTS status;
+
+ALTER TABLE Feedback
+ALTER COLUMN comments TYPE TEXT;
+
 
 insert into Admin(id, firstName,lastName, email, salt , hashpassword)
 values(1, 'Festim', 'Gashi', 'admin@gmail.com', '+lxY0OuuRfNBzP0qvrd1Jq7Z4lspDmH57EZrt0OhteE=' , '2b6c7859304f757552664e427a503071767264314a71375a346c7370446d483537455a7274304f687465453d9600cc448737ec409df22929e8410c31db52b046d525d93dd72367a416a5e3a8');
 
-<<<<<<< HEAD
 ALTER TABLE Tickets
 ADD COLUMN passengers INT;
-=======
+
 ALTER TABLE flights
 ALTER COLUMN duration TYPE VARCHAR(50)
 USING duration::VARCHAR;
->>>>>>> 10739e242b198c92643e99d7d044553670818756

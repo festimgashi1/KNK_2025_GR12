@@ -11,42 +11,43 @@
     -fx-text-fill: #2c3e50;
 }
 
-/* HEADER background me radius & ngjyrë */
+
 .table-view .column-header-background {
     -fx-background-color: #1e3d59;
     -fx-background-insets: 0;
-    -fx-background-radius: 12 12 0 0; /* radius vetëm sipër */
+    -fx-background-radius: 12 12 0 0;
 }
 
-/* HEADER tekst & stil */
+
 .table-view .column-header, .table-view .filler {
     -fx-size: 40px;
     -fx-background-color: transparent;
     -fx-border-color: transparent;
     -fx-font-weight: bold;
-    -fx-text-fill: white; /* TEKST I BARDHË */
+    -fx-text-fill: white;
 }
 
-/* RRESHTAT ALTERNUES */
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+}
+
+
 .table-row-cell:filled {
     -fx-background-color: white;
+    -fx-padding: 6 12 6 12;
 }
 .table-row-cell:filled:nth-child(even) {
-    -fx-background-color: #f8f9fa;
+    -fx-background-color: #f2f6fa;
 }
 
-/* HOVER EFFECT */
+
 .table-row-cell:filled:hover {
-    -fx-background-color: #e3f2fd;
+    -fx-background-color: #dceefc;
 }
 
-/* SELECTED ROW */
+
 .table-row-cell:filled:selected {
     -fx-background-color: #bbdefb;
     -fx-text-fill: black;
-}
-
-/* TEKSTI BRENDA HEADER-it */
-.table-view .column-header .label {
-    -fx-text-fill: white;
 }

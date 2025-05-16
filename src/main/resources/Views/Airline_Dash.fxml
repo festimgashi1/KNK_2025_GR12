@@ -4,9 +4,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_LEFT" prefWidth="200" spacing="15" style="-fx-background-color: #f4f8fc;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AirlineNav">
+<VBox alignment="TOP_LEFT" prefWidth="200" spacing="15"
+      style="-fx-background-color: #f4f8fc;"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.AirlineNav"
+      stylesheets="@styles/navAirline.css"
+      fx:id="navBox">
 
     <padding>
         <Insets bottom="20" left="10" right="10" top="20" />
@@ -14,22 +21,27 @@
 
     <children>
 
-        <Label style="-fx-font-size: 36px; -fx-text-fill: #4098d7;" text="✈ " />
 
-        <Button onAction="#goToAddFlight" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-font-size: 14;" text="Add Flight" />
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label style="-fx-font-size: 36px; -fx-text-fill: #4098d7;" text="✈ " />
+            <Label fx:id="lblAirlineName"
+                   style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;"
+                   text="Airline Name"/>
+        </HBox>
 
-        <Button onAction="#goToManageFlights" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-font-size: 14;" text="Manage Flights" />
+        <Button onAction="#goToAddFlight" prefWidth="180" text="Add Flight" styleClass="nav-button"/>
 
-        <Button text="All Flights" onAction="#goToAllFlights" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-font-size: 14;" />
+        <Button onAction="#goToManageFlights" prefWidth="180" text="Manage Flights" styleClass="nav-button"/>
 
-        <Button text="Add Tickets" onAction="#goToTickets" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-font-size: 14;" />
+        <Button onAction="#goToAllFlights" prefWidth="180" text="All Flights" styleClass="nav-button"/>
 
-        <Button onAction="#goToStatistics" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: #333; -fx-font-size: 14;" text="Statistics" />
+        <Button onAction="#goToTickets" prefWidth="180" text="Add Tickets" styleClass="nav-button"/>
+
+        <Button onAction="#goToStatistics" prefWidth="180" text="Statistics" styleClass="nav-button"/>
 
         <Separator prefWidth="160" />
 
-
-        <Button onAction="#goToProfile" prefWidth="180" style="-fx-background-color: transparent; -fx-text-fill: #333;" text="Profile" />
+        <Button onAction="#goToProfile" prefWidth="180" text="Profile" styleClass="nav-button"/>
 
     </children>
 </VBox>
