@@ -8,14 +8,11 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.BoardingPassController"
-            prefWidth="900" prefHeight="500">
+<BorderPane prefHeight="500" prefWidth="413.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BoardingPassController">
 
 
     <left>
@@ -25,7 +22,7 @@
 <AnchorPane prefHeight="684.0" prefWidth="400.0" style="-fx-background-color: white;">
     <ImageView fitHeight="550.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
         <image>
-            <Image url="@../../../../../../../Downloads/nikola-utXyLQwgvVg-unsplash.jpg" />
+            <Image url="@../Photos/airplane.jpg" />
         </image>
     </ImageView>
 
@@ -99,7 +96,7 @@
     <AnchorPane layoutX="53.0" layoutY="618.0" prefHeight="98.0" prefWidth="71.0" />
     <ImageView fitHeight="97.0" fitWidth="306.0" layoutX="137.0" layoutY="619.0" pickOnBounds="true" preserveRatio="true">
         <image>
-            <Image url="@../../../../../../../Downloads/qrcode_206695823_dd2107ee7c850f9753c0413d5851f6c9.png" />
+            <Image url="@../Photos/qrcode.png" />
         </image>
     </ImageView>
 </AnchorPane>
