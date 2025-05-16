@@ -20,14 +20,14 @@
     <center>
         <AnchorPane prefWidth="800" prefHeight="500">
             <children>
-                <!-- Background Image -->
+
                 <ImageView fitHeight="434.0" fitWidth="932.0" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../Photos/feedback.jpg" />
                     </image>
                 </ImageView>
 
-                <!-- Feedback Question -->
+
                 <Label layoutX="166.0" layoutY="60.0" prefHeight="148.0" prefWidth="484.0"
                        text="How was your airport check-in experience?" textFill="WHITE">
                     <font>
@@ -35,7 +35,7 @@
                     </font>
                 </Label>
 
-                <!-- Rating Buttons -->
+
                 <ToggleButton fx:id="btnVeryGood" layoutX="46.0" layoutY="345.0" prefHeight="54.0" prefWidth="126.0"
                               text="VERY GOOD" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-text-fill: #333;">
                     <effect>
@@ -71,11 +71,11 @@
                     </effect>
                 </ToggleButton>
 
-                <!-- Comment Box -->
+
                 <TextField fx:id="txtComment" layoutX="165.0" layoutY="420.0" prefHeight="54.0" prefWidth="518.0"
                            promptText="Leave a feedback!" style="-fx-border-color: grey; -fx-padding: 10;" />
 
-                <!-- Send Button -->
+
                 <Button fx:id="btnSend" layoutX="700.0" layoutY="425.0" prefHeight="41.0" prefWidth="103.0"
                         text="SEND" textFill="WHITE" onAction="#handleSendFeedback"
                         style="-fx-background-radius: 30; -fx-background-color: black;">
