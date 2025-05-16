@@ -245,3 +245,8 @@ ADD COLUMN passengers INT;
 ALTER TABLE flights
 ALTER COLUMN duration TYPE VARCHAR(50)
 USING duration::VARCHAR;
+
+SELECT t.ticketid, t.flightNumber, t.bookingdate, t.ticketprice, t.passengers,
+       f.departureAirport, f.arrivalAirport, f.departureTime, f.arrivalTime, f.status
+FROM Tickets t
+JOIN Flights f ON t.flightNumber = f.flightNumber;
