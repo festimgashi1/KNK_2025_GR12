@@ -2,12 +2,13 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import model.dto.CreateAirlineDto;
 import model.dto.PendingAirlineDto;
 import services.SceneManager;
 import services.SignupService;
+import model.dto.CreateAirlineDto;
 
 public class AirlineSignUpController {
 
@@ -17,11 +18,27 @@ public class AirlineSignUpController {
     @FXML private TextField txtAddress;
     @FXML private PasswordField pwdPassword;
     @FXML private PasswordField pwdConfirmPass;
+    @FXML private Label errorLabel;
 
     private final SignupService signupService = new SignupService();
 
     @FXML
     public void handleSignUpButton(ActionEvent event) {
+        errorLabel.setText("");
+
+        // Validimi i inputeve
+        if (txtFirstName.getText().isEmpty() || txtEmail.getText().isEmpty() ||
+                txtPhoneNumber.getText().isEmpty() || txtAddress.getText().isEmpty() ||
+                pwdPassword.getText().isEmpty() || pwdConfirmPass.getText().isEmpty()) {
+            errorLabel.setText("Please fill in all fields.");
+            return;
+        }
+
+        if (!pwdPassword.getText().equals(pwdConfirmPass.getText())) {
+            errorLabel.setText("Passwords do not match.");
+            return;
+        }
+
         try {
             PendingAirlineDto dto = new PendingAirlineDto(
                     txtFirstName.getText(),
@@ -35,6 +52,7 @@ public class AirlineSignUpController {
             System.out.println("Waiting for admin's approval...");
             SceneManager.getInstance().switchScene("/Views/pending_airline.fxml");
         } catch (Exception e) {
+            errorLabel.setText("Signup failed: " + e.getMessage());
             System.out.println("Airline signup failed: " + e.getMessage());
         }
     }
@@ -54,8 +72,8 @@ public class AirlineSignUpController {
         SceneManager.getInstance().switchScene("/Views/airlinesignup.fxml");
     }
 
+    @FXML
     public void goHome(ActionEvent event) {
         SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
     }
 }
-

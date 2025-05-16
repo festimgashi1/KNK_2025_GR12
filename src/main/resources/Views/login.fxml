@@ -57,6 +57,8 @@
                </color>
             </DropShadow>
          </effect>
+         <Label fx:id="errorLabel" layoutX="45.0" layoutY="265.0"
+                text="" textFill="red" style="-fx-font-size: 13px;" />
       </Pane>
    </children>
 </AnchorPane>

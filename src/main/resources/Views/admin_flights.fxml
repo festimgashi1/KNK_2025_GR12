@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
 <BorderPane style="-fx-background-color:white;" xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.AdminFlightsController">
@@ -11,14 +12,17 @@
     <left>
         <fx:include source="admin_navbar.fxml"/>
     </left>
-
+    <stylesheets>
+        <URL value="@styles/manage_flights.css"/>
+    </stylesheets>
     <center>
         <VBox spacing="15">
             <padding>
                 <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>
 
-            <Label text="Flight Management" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+            <Label text="Flight Management"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
 
             <TableView fx:id="flightsTable" VBox.vgrow="ALWAYS">
                 <columns>
@@ -39,6 +43,10 @@
                         onAction="#handleDeleteFlight"
                         style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-cursor: hand; -fx-background-radius: 5;" />
             </HBox>
+
+            <Label fx:id="statusLabel"
+                   text=""
+                   style="-fx-font-size: 14px; -fx-padding: 5 0 0 5;" />
 
         </VBox>
     </center>

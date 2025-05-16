@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.Admin;
@@ -9,10 +10,14 @@ import model.Airline;
 import model.Costumer;
 import services.LoginService;
 import services.SceneManager;
+import session.AdminSession;
 import session.CustomerSession;
 import session.AirlineSession;
 
 public class LogInController {
+
+    @FXML
+    private Label errorLabel;
 
     @FXML
     private TextField emailTxt;
@@ -33,35 +38,33 @@ public class LogInController {
 
         try {
             Object user = this.loginService.login(email, password);
-            this.cleanFields();
 
             if (user instanceof Admin) {
                 Admin admin = (Admin) user;
-                session.AdminSession.getInstance().setCurrentAdmin(admin);
-                System.out.println("Welcome admin: " + admin.getFirstName());
+                AdminSession.getInstance().setCurrentAdmin(admin);
+                errorLabel.setText("");
                 SceneManager.getInstance().switchScene("/Views/admin_home.fxml");
-            }
-            else if (user instanceof Airline) {
-                System.out.println("Welcome airline: " + ((Airline) user).getAirlinename());
-                AirlineSession.setAirlineId(((Airline) user).getAirlineid());
+
+            } else if (user instanceof Airline) {
+                Airline airline = (Airline) user;
+                AirlineSession.setAirlineId(airline.getAirlineid());
+                errorLabel.setText("");
                 SceneManager.getInstance().switchScene("/Views/add_flight.fxml");
 
             } else if (user instanceof Costumer) {
                 Costumer costumer = (Costumer) user;
-                System.out.println("Welcome customer: " + costumer.getFirstName());
-
                 CustomerSession.getInstance().setCurrentCostumer(costumer);
-
-                SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
-                System.out.println("Welcome customer: " + ((Costumer) user).getFirstName());
+                errorLabel.setText("");
                 SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
 
             } else {
-                System.out.println("Unknown user type.");
+                errorLabel.setText("Unknown user type.");
             }
 
+            cleanFields();
+
         } catch (Exception e) {
-            System.out.println("Error while logging in: " + e.getMessage());
+            errorLabel.setText("Email or password is incorrect.");
         }
     }
 

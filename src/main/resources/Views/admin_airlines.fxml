@@ -10,6 +10,8 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import java.net.URL?>
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.AdminAirlinesRequestController"
@@ -17,12 +19,15 @@
     <left>
         <fx:include source="admin_navbar.fxml"/>
     </left>
-
+    <stylesheets>
+        <URL value="@styles/manage_flights.css"/>
+    </stylesheets>
     <center>
         <VBox spacing="20">
             <padding>
                 <Insets top="20" right="20" bottom="20" left="20" />
             </padding>
+
             <Text text="✈ Pending Airlines" style="-fx-fill: #2c3e50;">
                 <font>
                     <Font size="20.0" name="Arial Bold"/>
@@ -35,7 +40,6 @@
                     <TableColumn fx:id="colCountry" text="Country" prefWidth="120"/>
                     <TableColumn fx:id="colEmail" text="Email" prefWidth="180"/>
                     <TableColumn fx:id="colPhoneNumber" text="Phone Number" prefWidth="140"/>
-                    <!-- 'Actions' column will be added dynamically in controller -->
                 </columns>
             </TableView>
 
@@ -54,10 +58,14 @@
                 </columns>
             </TableView>
 
+            <!-- Butoni Delete -->
             <HBox spacing="10" alignment="CENTER_RIGHT">
                 <Button text="🗑 Delete Airline" onAction="#handleDelete"
                         style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;"/>
             </HBox>
+
+            <Label fx:id="statusLabel" text="" style="-fx-text-fill: #2ecc71; -fx-font-size: 14px;"/>
         </VBox>
+
     </center>
 </BorderPane>

@@ -75,6 +75,14 @@
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
+         <Label fx:id="errorLabel"
+                layoutX="85.0" layoutY="395.0"
+                prefWidth="213.0"
+                text=""
+                textFill="#e74c3c"
+                style="-fx-font-size: 12px; -fx-font-weight: bold;" />
+
+
       </Pane>
    </children>
 </AnchorPane>

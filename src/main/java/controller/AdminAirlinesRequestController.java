@@ -19,6 +19,9 @@ import java.util.List;
 public class AdminAirlinesRequestController {
 
     @FXML
+    private Label statusLabel;
+
+    @FXML
     private TableView<PendingAirline> pendingAirlinesTable;
     @FXML
     private TableColumn<PendingAirline, String> colAirlineName, colCountry, colEmail, colPhoneNumber;
@@ -97,21 +100,22 @@ public class AdminAirlinesRequestController {
                 pendingAirlineRepository.deleteByEmail(selectedAirline.getEmail());
                 loadPendingAirlines();
                 loadApprovedAirlines();
-                showAlert("Approved", "Airline approved successfully.");
+                setStatus("✅ Airline approved successfully.", "#2ecc71");
             } else {
-                showAlert("Error", "Approval failed.");
+                setStatus("❌ Approval failed.", "#e74c3c");
             }
         }
     }
 
     private void handleDeny(PendingAirline selectedAirline) {
         if (selectedAirline != null) {
-            if (pendingAirlineRepository.updateStatusToDenied(selectedAirline.getId()) &&
-                    pendingAirlineRepository.deleteByEmail(selectedAirline.getEmail())) {
+            boolean denied = pendingAirlineRepository.updateStatusToDenied(selectedAirline.getId()) &&
+                    pendingAirlineRepository.deleteByEmail(selectedAirline.getEmail());
+            if (denied) {
                 loadPendingAirlines();
-                showAlert("Denied", "Airline denied successfully.");
+                setStatus("🚫 Airline denied and removed.", "#f39c12");
             } else {
-                showAlert("Error", "Denial failed.");
+                setStatus("❌ Denial failed.", "#e74c3c");
             }
         }
     }
@@ -122,12 +126,12 @@ public class AdminAirlinesRequestController {
         if (selected != null) {
             if (airlineRepository.deleteById(selected.getAirlineid())) {
                 loadApprovedAirlines();
-                showAlert("Deleted", "Airline deleted successfully.");
+                setStatus("🗑 Airline deleted successfully.", "#c0392b");
             } else {
-                showAlert("Error", "Failed to delete airline.");
+                setStatus("❌ Failed to delete airline.", "#e74c3c");
             }
         } else {
-            showAlert("No Selection", "Please select an airline to delete.");
+            setStatus("⚠ Please select an airline to delete.", "#e67e22");
         }
     }
 
@@ -139,10 +143,9 @@ public class AdminAirlinesRequestController {
         registeredAirlinesTable.setItems(FXCollections.observableArrayList(approvedAirlines.getAllApproved()));
     }
 
-    private void showAlert(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, message, ButtonType.OK);
-        alert.setTitle(title);
-        alert.showAndWait();
+    private void setStatus(String message, String color) {
+        statusLabel.setText(message);
+        statusLabel.setStyle("-fx-text-fill: " + color + "; -fx-font-size: 14px;");
     }
 
     @FXML
