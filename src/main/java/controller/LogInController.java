@@ -85,6 +85,6 @@ public class LogInController {
 
     @FXML
     public void handleGuest(ActionEvent event) {
-        SceneManager.getInstance().switchScene("/Views/client_interface.fxml");
+        SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
     }
 }
