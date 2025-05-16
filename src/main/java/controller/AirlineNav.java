@@ -48,7 +48,7 @@ public class AirlineNav {
     @FXML
     public void goToTickets(ActionEvent event) {
         setActiveButton((Button) event.getSource());
-        SceneManager.getInstance().switchScene("/Views/tickets.fxml");
+        SceneManager.getInstance().switchScene("/Views/add_tickets.fxml");
     }
 
     @FXML

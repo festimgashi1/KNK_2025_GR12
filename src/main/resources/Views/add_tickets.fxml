@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.input.MouseEvent?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.AddTicketController">
+
+    <!-- Sidebar -->
+    <left>
+        <fx:include source="Airline_Dash.fxml"/>
+    </left>
+
+    <!-- Main Content -->
+    <center>
+        <VBox spacing="25" alignment="TOP_LEFT">
+            <padding>
+                <Insets top="40" left="50" right="50" bottom="40"/>
+            </padding>
+            <children>
+
+                <Label text="✈ Add New Ticket"
+                       style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+                <!-- Form for adding tickets -->
+                <GridPane hgap="20" vgap="20">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="30"/>
+                        <ColumnConstraints percentWidth="70"/>
+                    </columnConstraints>
+
+                    <children>
+                        <Label text="Flight Number:" GridPane.rowIndex="0" GridPane.columnIndex="0" style="-fx-text-fill: #444;" />
+                        <TextField fx:id="txtFlightNumber" promptText="e.g. W62001" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                                   style="-fx-background-radius: 6; -fx-padding: 6;" />
+
+                        <Label text="Ticket Price:" GridPane.rowIndex="1" GridPane.columnIndex="0" style="-fx-text-fill: #444;" />
+                        <TextField fx:id="txtTicketPrice" promptText="e.g. 250.00" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                                   style="-fx-background-radius: 6; -fx-padding: 6;" />
+
+                        <Label text="Max Passengers:" GridPane.rowIndex="2" GridPane.columnIndex="0" style="-fx-text-fill: #444;" />
+                        <TextField fx:id="txtMaxPassengers" promptText="e.g. 150" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                                   style="-fx-background-radius: 6; -fx-padding: 6;" />
+
+                        <Button text="➕ Add Ticket" onAction="#handleSubmit"
+                                GridPane.rowIndex="3" GridPane.columnIndex="1"
+                                style="-fx-background-color: #2c89e8; -fx-text-fill: white;
+                                       -fx-background-radius: 8; -fx-padding: 10 20;
+                                       -fx-font-weight: bold;" />
+
+                        <Label fx:id="lblError" text="Invalid input format"
+                               GridPane.rowIndex="4" GridPane.columnIndex="1"
+                               style="-fx-text-fill: red; -fx-font-style: italic;" visible="false"/>
+
+                        <Label fx:id="lblSuccess" text="Ticket added successfully."
+                               style="-fx-text-fill: green;" GridPane.rowIndex="5" GridPane.columnIndex="1" visible="false"/>
+                    </children>
+                </GridPane>
+
+                <!-- TableView for displaying tickets -->
+                <Label text="Tickets Information" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <TableView fx:id="ticketTable"  style="-fx-background-color: #f0f0f0; -fx-padding: 20;">
+                    <columns>
+                        <TableColumn fx:id="colFlightNumber" text="Flight Number" prefWidth="150"/>
+                        <TableColumn fx:id="colTicketPrice" text="Ticket Price" prefWidth="150"/>
+                        <TableColumn fx:id="colMaxPassengers" text="Max Passengers" prefWidth="150"/>
+                        <TableColumn fx:id="colActions" text="Actions" prefWidth="100" />
+                    </columns>
+                </TableView>
+
+            </children>
+        </VBox>
+    </center>
+</BorderPane>
