@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.text.Font?>
+<<<<<<< Updated upstream
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.DropShadow?>
 
@@ -12,6 +13,21 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.FeedbackController"
             prefWidth="932" prefHeight="507">
+=======
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.FeedbackController"
+            prefWidth="900" prefHeight="500">
+
+   <left>
+      <fx:include source="customer_navbar.fxml" />
+   </left>
+
+<AnchorPane prefHeight="507.0" prefWidth="932.0">
+>>>>>>> Stashed changes
 
    <left>
       <fx:include source="customer_navbar.fxml"/>
@@ -59,6 +75,7 @@
             <TextField fx:id="txtComment" layoutX="165.0" layoutY="437.0" prefHeight="54.0" prefWidth="518.0"
                        promptText="Leave a feedback!" style="-fx-border-color: grey; -fx-padding: 10;" />
 
+<<<<<<< Updated upstream
             <Button fx:id="btnSend" layoutX="772.0" layoutY="443.0" prefHeight="41.0" prefWidth="103.0"
                     text="SEND" textFill="WHITE" onAction="#handleSendFeedback"
                     style="-fx-background-radius: 30; -fx-background-color: black;">
@@ -68,3 +85,29 @@
       </AnchorPane>
    </center>
 </BorderPane>
+=======
+      <ToggleButton fx:id="btnBad" layoutX="572.0" layoutY="345.0" prefHeight="54.0" prefWidth="126.0"
+                    text="BAD" style="-fx-background-radius: 20; -fx-border-radius: 20;">
+         <effect><DropShadow /></effect>
+      </ToggleButton>
+
+      <ToggleButton fx:id="btnVeryBad" layoutX="748.0" layoutY="345.0" prefHeight="54.0" prefWidth="126.0"
+                    text="VERY BAD" style="-fx-background-radius: 20; -fx-border-radius: 20;">
+         <effect><DropShadow /></effect>
+      </ToggleButton>
+
+
+      <TextField fx:id="txtComment" layoutX="165.0" layoutY="437.0" prefHeight="54.0" prefWidth="518.0"
+                 promptText="Leave a feedback!" style="-fx-border-color: grey; -fx-padding: 10;" />
+
+
+      <Button fx:id="btnSend" layoutX="772.0" layoutY="443.0" prefHeight="41.0" prefWidth="103.0"
+              text="SEND" textFill="WHITE" onAction="#handleSendFeedback"
+              style="-fx-background-radius: 30; -fx-background-color: black;">
+         <effect><DropShadow /></effect>
+      </Button>
+
+   </children>
+</AnchorPane>
+</BorderPane>
+>>>>>>> Stashed changes

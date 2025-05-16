@@ -1,6 +1,7 @@
 package services;
 
 import model.BoardingPass;
+import model.dto.CreateBoardingPassDto;
 import repository.BoardingPassRepository;
 
 public class BoardingPassService {
@@ -11,7 +12,7 @@ public class BoardingPassService {
         this.repository = new BoardingPassRepository();
     }
 
-    public BoardingPass getBoardingPass(int reservationId) {
-        return repository.getBoardingPassByReservationId(reservationId);
+    public BoardingPass create(CreateBoardingPassDto dto) throws Exception {
+        return repository.save(dto);
     }
 }
