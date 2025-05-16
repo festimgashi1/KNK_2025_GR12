@@ -5,6 +5,7 @@ import model.Costumer;
 import model.dto.CostumerDto;
 import model.dto.CreateCostumerDto;
 import model.dto.UpdateCostumerDto;
+import services.PasswordHasher;
 
 import java.sql.*;
 
@@ -21,8 +22,6 @@ public class CostumerRepository extends BaseRepository<Costumer, CostumerDto, Up
         return Costumer.getInstance(result);
     }
 
-
-
     @Override
     public Costumer create(CostumerDto createDto) {
         String query= """
@@ -30,9 +29,7 @@ public class CostumerRepository extends BaseRepository<Costumer, CostumerDto, Up
                 Costumer (firstName, lastName, email, telephoneNumber, birthDate, hashpassword, salt, address)
                 values (?,?,?,?,?,?,?,?)
                 """;
-
         try{
-
             PreparedStatement pstm=
                     this.connection.prepareStatement(
                             query,Statement.RETURN_GENERATED_KEYS);
@@ -59,11 +56,8 @@ public class CostumerRepository extends BaseRepository<Costumer, CostumerDto, Up
 
     @Override
     public Costumer update(UpdateCostumerDto updateDto) {
-
-
         return null;
     }
-
 
     public Costumer getByEmail(String email){
         String query = "SELECT * FROM Costumer WHERE email = ?";
@@ -83,5 +77,40 @@ public class CostumerRepository extends BaseRepository<Costumer, CostumerDto, Up
         }
         return null;
     }
+    public boolean updatePassword(int costumerId, String currentPassword, String newPassword) {
+        try (Connection conn = DBConnector.getConnection()) {
+            String checkQuery = "SELECT hashpassword, salt FROM costumer WHERE costumerid = ?";
+            PreparedStatement checkStmt = conn.prepareStatement(checkQuery);
+            checkStmt.setInt(1, costumerId);
+            ResultSet rs = checkStmt.executeQuery();
+
+            if (rs.next()) {
+                String storedHash = rs.getString("hashpassword");
+                String storedSalt = rs.getString("salt");
+
+                if (!PasswordHasher.compareSaltedHash(currentPassword.trim(), storedSalt, storedHash)) {
+                    return false;
+                }
+            }
+
+            String newSalt = PasswordHasher.generateSalt();
+            String newHash = PasswordHasher.generateSaltedHash(newPassword.trim(), newSalt);
+
+            String updateQuery = "UPDATE costumer SET hashpassword = ?, salt = ? WHERE costumerid = ?";
+            PreparedStatement updateStmt = conn.prepareStatement(updateQuery);
+            updateStmt.setString(1, newHash);
+            updateStmt.setString(2, newSalt);
+            updateStmt.setInt(3, costumerId);
+            updateStmt.executeUpdate();
+
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+
 
 }

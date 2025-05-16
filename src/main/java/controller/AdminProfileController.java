@@ -4,8 +4,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import model.Admin;
+import services.SceneManager;
 import session.AdminSession;
 
+import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -24,4 +26,9 @@ public class AdminProfileController implements Initializable {
             lblEmail.setText(admin.getEmail());
         }
     }
+    @FXML
+    public void goToChangePassword(ActionEvent event) {
+        SceneManager.getInstance().switchScene("/Views/change_password.fxml");
+    }
+
 }

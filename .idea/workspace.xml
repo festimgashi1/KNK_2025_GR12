@@ -6,17 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminAirlinesRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminAirlinesRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminFlightsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminFlightsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AdminProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AdminProfileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AirlineSignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AirlineSignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CostumerSignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CostumerSignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/AdminRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AdminRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/CostumerRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/CostumerRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/PasswordHasher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/PasswordHasher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Views/admin_airlines.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/admin_airlines.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Views/admin_flights.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/admin_flights.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/admin_profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/admin_profile.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Views/airlinesignup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/airlinesignup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/costumer_profile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/costumer_profile.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

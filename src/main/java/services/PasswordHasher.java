@@ -6,8 +6,8 @@ import java.security.SecureRandom;
 import java.util.Base64;
 
 public class PasswordHasher {
-    private static final int SALT_LENGTH = 32; // length of salt in bytes
-    private static final int HASH_LENGTH = 256; // length of hash in bytes
+    private static final int SALT_LENGTH = 32;
+    private static final int HASH_LENGTH = 256;
     private static final String HASH_ALGORITHM = "SHA-256";
 
     public static String generateSalt() {
@@ -20,7 +20,6 @@ public class PasswordHasher {
     public static String generateSaltedHash(String password, String salt) {
         byte[] hash = hashWithSalt(password, salt);
 
-        // Combine salt and hash into a single string
         StringBuilder sb = new StringBuilder(SALT_LENGTH + HASH_LENGTH);
 
         byte [] saltBytes = salt.getBytes();

@@ -13,7 +13,7 @@
         <fx:include source="admin_navbar.fxml"/>
     </left>
     <stylesheets>
-        <URL value="@styles/manage_flights.css"/>
+        <URL value="@styles/manage_airlines.css"/>
     </stylesheets>
     <center>
         <VBox spacing="15">

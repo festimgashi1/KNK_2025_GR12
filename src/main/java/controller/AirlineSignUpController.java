@@ -19,6 +19,7 @@ public class AirlineSignUpController {
     @FXML private PasswordField pwdPassword;
     @FXML private PasswordField pwdConfirmPass;
     @FXML private Label errorLabel;
+    @FXML private Label waitingLabel;
 
     private final SignupService signupService = new SignupService();
 
@@ -26,7 +27,6 @@ public class AirlineSignUpController {
     public void handleSignUpButton(ActionEvent event) {
         errorLabel.setText("");
 
-        // Validimi i inputeve
         if (txtFirstName.getText().isEmpty() || txtEmail.getText().isEmpty() ||
                 txtPhoneNumber.getText().isEmpty() || txtAddress.getText().isEmpty() ||
                 pwdPassword.getText().isEmpty() || pwdConfirmPass.getText().isEmpty()) {
@@ -49,8 +49,8 @@ public class AirlineSignUpController {
                     txtPhoneNumber.getText()
             );
             signupService.createAirline(dto);
-            System.out.println("Waiting for admin's approval...");
-            SceneManager.getInstance().switchScene("/Views/pending_airline.fxml");
+            waitingLabel.setText("Waiting for admin's approval.");
+
         } catch (Exception e) {
             errorLabel.setText("Signup failed: " + e.getMessage());
             System.out.println("Airline signup failed: " + e.getMessage());

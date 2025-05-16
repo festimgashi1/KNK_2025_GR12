@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -9,62 +13,56 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import java.net.URL?>
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.AdminAirlinesRequestController"
-            style="-fx-background-color: #f8fbfd;">
+<BorderPane style="-fx-background-color: #f8fbfd;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminAirlinesRequestController">
     <left>
-        <fx:include source="admin_navbar.fxml"/>
+        <fx:include source="admin_navbar.fxml" />
     </left>
     <stylesheets>
-        <URL value="@styles/manage_flights.css"/>
+        <URL value="@styles/manage_airlines.css" />
     </stylesheets>
     <center>
         <VBox spacing="20">
             <padding>
-                <Insets top="20" right="20" bottom="20" left="20" />
+                <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
 
-            <Text text="✈ Pending Airlines" style="-fx-fill: #2c3e50;">
+            <Text style="-fx-fill: #2c3e50;" text="✈ Pending Airlines">
                 <font>
-                    <Font size="20.0" name="Arial Bold"/>
+                    <Font name="Arial Bold" size="20.0" />
                 </font>
             </Text>
 
             <TableView fx:id="pendingAirlinesTable" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn fx:id="colAirlineName" text="Airline Name" prefWidth="150"/>
-                    <TableColumn fx:id="colCountry" text="Country" prefWidth="120"/>
-                    <TableColumn fx:id="colEmail" text="Email" prefWidth="180"/>
-                    <TableColumn fx:id="colPhoneNumber" text="Phone Number" prefWidth="140"/>
+                    <TableColumn fx:id="colAirlineName" prefWidth="150" text="Airline Name" />
+                    <TableColumn fx:id="colCountry" prefWidth="120" text="Country" />
+                    <TableColumn fx:id="colEmail" prefWidth="180" text="Email" />
+                    <TableColumn fx:id="colPhoneNumber" prefWidth="140" text="Phone Number" />
                 </columns>
             </TableView>
+         <Separator prefHeight="10.0" prefWidth="608.0" />
 
-            <Text text="✔ Registered Airlines" style="-fx-fill: #2c3e50;">
+            <Text style="-fx-fill: #2c3e50;" text="✔ Registered Airlines">
                 <font>
-                    <Font size="20.0" name="Arial Bold"/>
+                    <Font name="Arial Bold" size="20.0" />
                 </font>
             </Text>
 
             <TableView fx:id="registeredAirlinesTable" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn fx:id="colRegisteredName" text="Airline Name" prefWidth="150"/>
-                    <TableColumn fx:id="colRegisteredCountry" text="Country" prefWidth="120"/>
-                    <TableColumn fx:id="colRegisteredEmail" text="Email" prefWidth="180"/>
-                    <TableColumn fx:id="colRegisteredPhone" text="Phone Number" prefWidth="140"/>
+                    <TableColumn fx:id="colRegisteredName" prefWidth="150" text="Airline Name" />
+                    <TableColumn fx:id="colRegisteredCountry" prefWidth="120" text="Country" />
+                    <TableColumn fx:id="colRegisteredEmail" prefWidth="180" text="Email" />
+                    <TableColumn fx:id="colRegisteredPhone" prefWidth="140" text="Phone Number" />
                 </columns>
             </TableView>
 
             <!-- Butoni Delete -->
-            <HBox spacing="10" alignment="CENTER_RIGHT">
-                <Button text="🗑 Delete Airline" onAction="#handleDelete"
-                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;"/>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button onAction="#handleDelete" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" text="🗑 Delete Airline" />
             </HBox>
 
-            <Label fx:id="statusLabel" text="" style="-fx-text-fill: #2ecc71; -fx-font-size: 14px;"/>
+            <Label fx:id="statusLabel" style="-fx-text-fill: #2ecc71; -fx-font-size: 14px;" text="" />
         </VBox>
 
     </center>

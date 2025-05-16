@@ -12,7 +12,7 @@ public class Admin {
     private String salt;
 
 
-    protected Admin(int id, String firstName, String lastName, String email, String hashpass, String salt){
+    public Admin(int id, String firstName, String lastName, String email, String hashpass, String salt){
         this.id=id;
         this.firstName=firstName;
         this.lastName=lastName;

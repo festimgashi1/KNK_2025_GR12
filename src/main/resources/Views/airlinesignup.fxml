@@ -41,6 +41,14 @@
                    text=""
                    textFill="#e74c3c"
                    style="-fx-font-size: 12px; -fx-font-weight: bold;" />
+            <Label fx:id="waitingLabel"
+                   layoutX="85.0"
+                   layoutY="315.0"
+                   prefWidth="213.0"
+                   text=""
+                   textFill="#36EC60"
+                   style="-fx-font-size: 12px; -fx-font-weight: bold;" />
+
 
             <TextField fx:id="txtFirstName" accessibleText="First name" layoutX="87.0" layoutY="87.0" prefHeight="27.0" prefWidth="213.0" promptText="Airline Name" style="-fx-border-color: white;" />
             <TextField fx:id="txtEmail" layoutX="85.0" layoutY="124.0" prefHeight="27.0" prefWidth="213.0" promptText="Email" style="-fx-border-color: white;" />

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import model.Costumer;
+import services.SceneManager;
 import session.CustomerSession;
 
 import java.net.URL;
@@ -36,4 +37,9 @@ public class CustomerProfileController implements Initializable {
             System.out.println("No customer is logged in.");
         }
     }
+    @FXML
+    public void goToChangePassword() {
+        SceneManager.getInstance().switchScene("/Views/change_customer_password.fxml");
+    }
+
 }
