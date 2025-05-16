@@ -3,12 +3,15 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import services.SceneManager;
+import session.AirlineSession;
 
 public class AirlineNav {
 
     @FXML private VBox navBox;
+    @FXML private Label lblAirlineName; // ➕ për emrin e airline-it
 
     private void setActiveButton(Button clickedButton) {
         for (var node : navBox.getChildren()) {
@@ -17,6 +20,11 @@ public class AirlineNav {
             }
         }
         clickedButton.getStyleClass().add("nav-button-active");
+    }
+
+    @FXML
+    public void initialize() {
+        lblAirlineName.setText(AirlineSession.getAirlineName()); // ➕ vendos emrin
     }
 
     @FXML

@@ -44,6 +44,7 @@ public class LogInController {
             else if (user instanceof Airline) {
                 System.out.println("Welcome airline: " + ((Airline) user).getAirlinename());
                 AirlineSession.setAirlineId(((Airline) user).getAirlineid());
+                AirlineSession.setAirlineName(((Airline) user).getAirlinename());
                 SceneManager.getInstance().switchScene("/Views/add_flight.fxml");
 
             } else if (user instanceof Costumer) {
