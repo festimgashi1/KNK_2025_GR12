@@ -31,17 +31,35 @@ public class AddFlightController {
     int airlineId = AirlineSession.getAirlineId();
     private final FlightService flightService = new FlightService();
 
+
     @FXML
     public void handleSubmit() {
-        String departureTime = txtDepartureTime.getText();
-        String arrivalTime = txtArrivalTime.getText();
-
-        // Fshij mesazhet fillimisht
+        // Fshij mesazhet ekzistuese
         lblError.setVisible(false);
         lblSuccess.setVisible(false);
 
+        // Kontroll nëse ka ndonjë fushë bosh
+        if (
+                txtFlightNumber.getText().isEmpty() ||
+                        txtPlaneId.getText().isEmpty() ||
+                        txtDepartureAirport.getText().isEmpty() ||
+                        txtArrivalAirport.getText().isEmpty() ||
+                        txtDepartureTime.getText().isEmpty() ||
+                        txtArrivalTime.getText().isEmpty() ||
+                        txtDuration.getText().isEmpty() ||
+                        txtStatus.getText().isEmpty()
+        ) {
+            lblError.setText("⚠ Please fill in all required fields.");
+            lblError.setVisible(true);
+            return;
+        }
+
+        // Kontroll për formatin e datës
+        String departureTime = txtDepartureTime.getText();
+        String arrivalTime = txtArrivalTime.getText();
+
         if (!isValidDateTime(departureTime) || !isValidDateTime(arrivalTime)) {
-            lblError.setText("The date format is not written correctly. Use YYYY-MM-DD HH:mm");
+            lblError.setText("⚠ The date format is not correct. Use YYYY-MM-DD HH:mm");
             lblError.setVisible(true);
             return;
         }
@@ -61,12 +79,12 @@ public class AddFlightController {
 
             flightService.createFlight(flight);
 
-            lblSuccess.setText("Flight added successfully!");
+            lblSuccess.setText("✔ Flight added successfully!");
             lblSuccess.setVisible(true);
-            clearForm(); // pastro fushat pas suksesit
+            clearForm(); // pastron pas suksesit
 
         } catch (NumberFormatException e) {
-            lblError.setText("The numbers (Flight Number / Plane ID) are in the wrong format.");
+            lblError.setText("⚠ Flight Number and Plane ID must be numbers.");
             lblError.setVisible(true);
         }
     }
