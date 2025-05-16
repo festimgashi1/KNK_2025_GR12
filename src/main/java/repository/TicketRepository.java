@@ -15,7 +15,7 @@ public class TicketRepository {
         this.connection = DBConnector.getConnection();
     }
 
-    // Funksioni për të shtuar biletën me të dhënat e nevojshme
+
     public void addTicket(Tickets ticket) {
         String query = """
             INSERT INTO Tickets (flightnumber, ticketprice, passengers, bookingdate, paymentmethod, customerid)
@@ -27,12 +27,12 @@ public class TicketRepository {
 
             // Vendosim të dhënat për flightNumber, ticketPrice dhe passengers
             statement.setInt(1, ticket.getFlightNumber());  // flightnumber
-            statement.setDouble(2, ticket.getTicketprice());  // ticketprice
+            statement.setDouble(2, ticket.getTicketPrice());  // ticketprice
             statement.setInt(3, ticket.getPassengers());  // passengers
             statement.setDate(4, new java.sql.Date(ticket.getBookingdate().getTime()));  // bookingdate
 
-            // Ekzekutojmë query-n për shtimin e biletës
-            statement.executeUpdate();  // Execute the insert query
+
+            statement.executeUpdate();
             System.out.println("Ticket added successfully!");
 
         } catch (SQLException e) {
@@ -40,48 +40,76 @@ public class TicketRepository {
         }
     }
 
-    // Funksioni për të marrë biletat për një airline të caktuar
-    public List<Tickets> getTicketsByAirline(int airlineId) {
-        List<Tickets> ticketList = new ArrayList<>();
-        String query = """
-            SELECT t.ticketid, t.flightNumber, t.bookingdate, t.ticketprice, t.passengers,
-                   f.departureairport, f.arrivalairport, f.departuretime, f.arrivaltime, f.status
-            FROM Tickets t
-            JOIN Flights f ON t.flightnumber = f.flightnumber
-            WHERE f.airlineid = ?
-        """;
+    public List<Tickets> getTicketsByAirlineId(int airlineId) {
+        List<Tickets> tickets = new ArrayList<>();
 
-        try {
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, airlineId);  // Përdorim airlineId për të filtruar
-            ResultSet resultSet = statement.executeQuery();
+        String query = "SELECT t.ticketid, t.flightnumber, t.ticketprice, t.passengers, " +
+                "f.departureairport, f.arrivalairport, f.departuretime, f.arrivaltime, f.status " +
+                "FROM Tickets t " +
+                "JOIN Flights f ON t.flightnumber = f.flightnumber " +
+                "WHERE f.airlineid = ?";
 
-            while (resultSet.next()) {
-                // Krijo një objekt Tickets dhe mbush me të dhëna nga tabela
-                int ticketid = resultSet.getInt("ticketid");
-                int flightNumber = resultSet.getInt("flightnumber");
-                java.sql.Date bookingDate = resultSet.getDate("bookingdate");
-                double ticketPrice = resultSet.getDouble("ticketprice");
-                int passengers = resultSet.getInt("passengers");
-                String departureAirport = resultSet.getString("departureairport");
-                String arrivalAirport = resultSet.getString("arrivalairport");
-                java.sql.Timestamp departureTime = resultSet.getTimestamp("departuretime");
-                java.sql.Timestamp arrivalTime = resultSet.getTimestamp("arrivalime");
-                String status = resultSet.getString("status");
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
 
-                // Krijo një objekt Tickets dhe shto në listë
-                Tickets ticket = new Tickets(ticketid, flightNumber, 0, bookingDate, ticketPrice, "", passengers);
-                ticket.setDepartureAirport(departureAirport);
-                ticket.setArrivalAirport(arrivalAirport);
-                ticket.setDepartureTime(departureTime);
-                ticket.setArrivalTime(arrivalTime);
-                ticket.setStatus(status);
+            stmt.setInt(1, airlineId);
+            ResultSet rs = stmt.executeQuery();
 
-                ticketList.add(ticket);
+            while (rs.next()) {
+                Tickets ticket = new Tickets(
+                        rs.getInt("ticketid"),
+                        rs.getInt("flightnumber"),
+                        0,                     // customerid
+                        null,                  // bookingdate
+                        rs.getDouble("ticketprice"),
+                        "",                    // paymentmethod
+                        rs.getInt("passengers")
+                );
+
+                // Mbush fushat shtesë nga flights
+                ticket.setDepartureAirport(rs.getString("departureairport"));
+                ticket.setArrivalAirport(rs.getString("arrivalairport"));
+                ticket.setDepartureTime(rs.getTimestamp("departuretime"));
+                ticket.setArrivalTime(rs.getTimestamp("arrivaltime"));
+                ticket.setStatus(rs.getString("status"));
+
+                tickets.add(ticket);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        return ticketList;
+
+        return tickets;
+    }
+
+    public void deleteTicket(int ticketId) {
+        String query = "DELETE FROM Tickets WHERE ticketid = ?";
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, ticketId);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateTicket(Tickets ticket) {
+        String query = "UPDATE tickets SET ticketprice = ?, passengers = ? WHERE ticketid = ?";
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setDouble(1, ticket.getTicketPrice());
+            stmt.setInt(2, ticket.getPassengers());
+            stmt.setInt(3, ticket.getTicketid());
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

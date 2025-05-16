@@ -28,6 +28,8 @@ public class Tickets {
         this.passengers = passengers;
     }
 
+
+
     // Getters dhe setters për të dhënat e fluturimit
     public String getDepartureAirport() {
         return departureAirport;
@@ -86,7 +88,7 @@ public class Tickets {
         return bookingdate;
     }
 
-    public double getTicketprice() {
+    public double getTicketPrice() {
         return ticketprice;
     }
 
@@ -97,4 +99,16 @@ public class Tickets {
     public int getPassengers() {
         return passengers;
     }
+
+    public void setTicketPrice(double ticketPrice) {
+        this.ticketprice = ticketPrice;
+    }
+
+    public void setPassengers(int passengers) {
+        this.passengers = passengers;
+    }
+
+
+
+
 }

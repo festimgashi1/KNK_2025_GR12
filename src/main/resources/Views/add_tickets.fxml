@@ -5,15 +5,16 @@
 <?import javafx.scene.input.MouseEvent?>
 <?import javafx.scene.text.Font?>
 
+<?import java.net.URL?>
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.AddTicketController">
 
-    <!-- Sidebar -->
+
     <left>
         <fx:include source="Airline_Dash.fxml"/>
     </left>
 
-    <!-- Main Content -->
+
     <center>
         <VBox spacing="25" alignment="TOP_LEFT">
             <padding>
@@ -61,14 +62,25 @@
 
                 <!-- TableView for displaying tickets -->
                 <Label text="Tickets Information" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
-                <TableView fx:id="ticketTable"  style="-fx-background-color: #f0f0f0; -fx-padding: 20;">
+                <TableView fx:id="ticketTable" style="-fx-background-color: #f0f0f0;">
                     <columns>
-                        <TableColumn fx:id="colFlightNumber" text="Flight Number" prefWidth="150"/>
-                        <TableColumn fx:id="colTicketPrice" text="Ticket Price" prefWidth="150"/>
-                        <TableColumn fx:id="colMaxPassengers" text="Max Passengers" prefWidth="150"/>
-                        <TableColumn fx:id="colActions" text="Actions" prefWidth="100" />
+                        <TableColumn fx:id="colFlightNumber" text="Flight Number" prefWidth="120"/>
+                        <TableColumn fx:id="colTicketPrice" text="Ticket Price" prefWidth="100"/>
+                        <TableColumn fx:id="colMaxPassengers" text="Max Passengers" prefWidth="120"/>
+                        <TableColumn fx:id="colDepartureAirport" text="From" prefWidth="100"/>
+                        <TableColumn fx:id="colArrivalAirport" text="To" prefWidth="100"/>
+                        <TableColumn fx:id="colDepartureTime" text="Departure Time" prefWidth="150"/>
+                        <TableColumn fx:id="colArrivalTime" text="Arrival Time" prefWidth="150"/>
+                        <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                        <TableColumn fx:id="colActions" text="Actions" prefWidth="180"/>
                     </columns>
+
+                    <stylesheets>
+                        <URL value="@styles/manage_flights.css"/>
+                    </stylesheets>
                 </TableView>
+
+
 
             </children>
         </VBox>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="20"
+      alignment="CENTER"
+      style="-fx-background-color: #f9fbfd; -fx-border-radius: 10; -fx-background-radius: 10;"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.EditTicketController">
+
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <Label text="✏️ Edit Ticket"
+           style="-fx-font-size: 24px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
+
+    <VBox spacing="10" prefWidth="250">
+
+        <Label text="🎫 Ticket Price:" style="-fx-text-fill: #555;" />
+        <TextField fx:id="txtPrice"
+                   promptText="Enter new price"
+                   style="-fx-background-radius: 8; -fx-padding: 8;"/>
+
+        <Label text="👥 Max Passengers:" style="-fx-text-fill: #555;" />
+        <TextField fx:id="txtPassengers"
+                   promptText="Enter new max passengers"
+                   style="-fx-background-radius: 8; -fx-padding: 8;"/>
+
+    </VBox>
+
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="💾 Save"
+                onAction="#handleSave"
+                style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16;" />
+
+        <Button text="❌ Cancel"
+                onAction="#handleCancel"
+                style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16;" />
+    </HBox>
+
+    <Label fx:id="lblError"
+           textFill="red"
+           visible="false"
+           style="-fx-font-size: 12px; -fx-font-style: italic;" />
+</VBox>
