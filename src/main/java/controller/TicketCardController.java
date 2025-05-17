@@ -36,7 +36,7 @@ public class TicketCardController {
         lblTo.setText(ticket.getArrivalAirport());
         lblDepartureTime.setText(timeFormat.format(ticket.getDepartureTime()));
         lblArrivalTime.setText(timeFormat.format(ticket.getArrivalTime()));
-        lblDuration.setText(ticket.getDuration());
+       
         lblStatus.setText(ticket.getStatus());
     }
 

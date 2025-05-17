@@ -12,8 +12,9 @@ import java.util.Date;
         private String destination;
         private double price;
         private String seatId;
+        private String seatNumber;
 
-        protected Booking(int bookingId, int costumerId, int flightNumber, Date departureDate, String destination, double price, String seatId) {
+        protected Booking(int bookingId, int costumerId, int flightNumber, Date departureDate, String destination, double price, String seatId, String seatNumber) {
             this.bookingId = bookingId;
             this.costumerId = costumerId;
             this.flightNumber = flightNumber;
@@ -21,6 +22,7 @@ import java.util.Date;
             this.destination = destination;
             this.price = price;
             this.seatId = seatId;
+            this.seatNumber = seatNumber;
         }
 
         public static Booking getInstance(ResultSet result) throws SQLException {
@@ -31,8 +33,9 @@ import java.util.Date;
             String destination = result.getString("destination");
             double price = result.getDouble("price");
             String seatId = result.getString("seatId");
+            String seatNumber = result.getString("seatnumber");
 
-            return new Booking(bookingId, costumerId, flightNumber, departureDate, destination, price, seatId);
+            return new Booking(bookingId, costumerId, flightNumber, departureDate, destination, price, seatId, seatNumber);
         }
 
         public int getBookingId() {
@@ -62,4 +65,6 @@ import java.util.Date;
         public String getSeatId() {
             return seatId;
         }
+
+        public String getSeatNumber() {return seatNumber; }
     }

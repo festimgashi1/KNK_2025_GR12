@@ -17,7 +17,7 @@ public class BookingRepository {
 
             stmt.setInt(1, booking.getCostumerId());
             stmt.setInt(2, booking.getFlightNumber());
-            stmt.setDate(3, java.sql.Date.valueOf(booking.getDepartureDate()));
+            stmt.setDate(3, new java.sql.Date(booking.getDepartureDate().getTime()));
             stmt.setString(4, booking.getDestination());
             stmt.setDouble(5, booking.getPrice());
             stmt.setString(6, booking.getSeatNumber());
