@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+<?import javafx.fxml.FXMLLoader?>
+<?import javafx.scene.control.Button?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.AirlineProfileController"
+            prefWidth="900" prefHeight="500">
+
+    <left>
+        <fx:include source="Airline_Dash.fxml" />
+    </left>
+
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: #f4f9fc;">
+            <padding>
+                <Insets top="40" left="40" right="40" bottom="40" />
+            </padding>
+
+            <Label text="✈ Airline Profile" style="-fx-text-fill: #2c3e50;">
+                <font>
+                    <Font name="Arial Black" size="24" />
+                </font>
+            </Label>
+
+            <VBox spacing="18"
+                  alignment="CENTER_LEFT"
+                  style="-fx-background-color: white; -fx-border-radius: 10px; -fx-background-radius: 10px;">
+                <padding>
+                    <Insets top="25" left="30" right="30" bottom="25" />
+                </padding>
+                <effect>
+                    <DropShadow radius="10" offsetX="0" offsetY="4">
+                        <color>
+                            <Color fx:constant="GRAY"/>
+                        </color>
+                    </DropShadow>
+                </effect>
+
+                <Label text="Airline Name" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+                <Label fx:id="lblAirlineName" style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
+
+                <Label text="Company Email" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+                <Label fx:id="lblEmail" style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
+
+                <Label text="Contact Number" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+                <Label fx:id="lblPhone" style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
+
+                <Label text="Address" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+                <Label fx:id="lblAddress" style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
+
+                <Button text="Change Password"
+                        onAction="#goToChangePassword"
+                        style="-fx-background-color: #1e3d59; -fx-text-fill: white; -fx-background-radius: 8px; -fx-padding: 8 16;" />
+
+            </VBox>
+        </VBox>
+    </center>
+
+</BorderPane>
