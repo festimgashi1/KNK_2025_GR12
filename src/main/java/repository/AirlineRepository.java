@@ -4,6 +4,7 @@ import database.DBConnector;
 import model.Airline;
 import model.PendingAirline;
 import model.dto.AirlineDto;
+import services.PasswordHasher;
 
 import java.sql.*;
 
@@ -39,7 +40,7 @@ public class AirlineRepository {
         }
         return false;
     }
-    
+
     public boolean deleteById(int id) {
         String sql = "DELETE FROM Airline WHERE airlineid = ?";
         try (Connection conn = DBConnector.getConnection();
@@ -113,5 +114,57 @@ public class AirlineRepository {
             e.printStackTrace();
             return false;
         }
+    }
+    public Airline findById(int airlineId) {
+        String query = "SELECT * FROM Airline WHERE airlineid = ?";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, airlineId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return Airline.getInstance(rs);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public boolean changePassword(int airlineId, String oldPassword, String newPassword) {
+        String selectQuery = "SELECT hashpassword, salt FROM Airline WHERE airlineid = ?";
+        String updateQuery = "UPDATE Airline SET hashpassword = ?, salt = ? WHERE airlineid = ?";
+
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement selectStmt = conn.prepareStatement(selectQuery)) {
+
+            selectStmt.setInt(1, airlineId);
+            ResultSet rs = selectStmt.executeQuery();
+
+            if (rs.next()) {
+                String storedHash = rs.getString("hashpassword");
+                String storedSalt = rs.getString("salt");
+
+                boolean isCorrect = PasswordHasher.compareSaltedHash(oldPassword, storedSalt, storedHash);
+                if (!isCorrect) {
+                    return false;
+                }
+
+                String newSalt = PasswordHasher.generateSalt();
+                String newHashedPassword = PasswordHasher.generateSaltedHash(newPassword, newSalt);
+
+                try (PreparedStatement updateStmt = conn.prepareStatement(updateQuery)) {
+                    updateStmt.setString(1, newHashedPassword);
+                    updateStmt.setString(2, newSalt);
+                    updateStmt.setInt(3, airlineId);
+                    return updateStmt.executeUpdate() > 0;
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }
