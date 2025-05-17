@@ -60,6 +60,11 @@ public class AirlineNav {
     @FXML
     public void goToProfile(ActionEvent event) {
         setActiveButton((Button) event.getSource());
-        SceneManager.getInstance().switchScene("/Views/profile.fxml");
+        SceneManager.getInstance().switchScene("/Views/airline_profile.fxml");
     }
+    @FXML
+    private void handleSignOut() {
+        AirlineSession.clear();
+        SceneManager.getInstance().switchScene("/Views/login.fxml");    }
+
 }
