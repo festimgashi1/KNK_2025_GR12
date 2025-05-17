@@ -11,9 +11,9 @@ import java.util.Date;
         private Date departureDate;
         private String destination;
         private double price;
-        private String seatId;
+        private int seatId;
 
-        protected Booking(int bookingId, int costumerId, int flightNumber, Date departureDate, String destination, double price, String seatId) {
+        protected Booking(int bookingId, int costumerId, int flightNumber, Date departureDate, String destination, double price, int seatId) {
             this.bookingId = bookingId;
             this.costumerId = costumerId;
             this.flightNumber = flightNumber;
@@ -30,7 +30,7 @@ import java.util.Date;
             Date departureDate = result.getDate("departureDate");
             String destination = result.getString("destination");
             double price = result.getDouble("price");
-            String seatId = result.getString("seatId");
+            int seatId = result.getInt("seatId");
 
             return new Booking(bookingId, costumerId, flightNumber, departureDate, destination, price, seatId);
         }
@@ -59,7 +59,7 @@ import java.util.Date;
             return price;
         }
 
-        public String getSeatId() {
+        public int getSeatId() {
             return seatId;
         }
     }
