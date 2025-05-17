@@ -5,11 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AirlineProfileController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ChangeAirlinePasswordController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/AirlineService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/airline_profile.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/change_airline_password.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CostumerFlightsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CostumerFlightsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerAllFlightsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerAllFlightsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/customer_navbar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/customer_navbar.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AirlineNav.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AirlineNav.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/Airline_Dash.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/Airline_Dash.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,14 +23,26 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Getoar19"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/festimgashi1/KNK_2025_GR12.git",
+    "accountId": "a44f3b97-c8ac-43f2-8e8d-743e6a41b632"
+  }
+}]]></component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -83,6 +99,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -91,8 +115,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1743286107654</updated>
+      <workItem from="1747515285679" duration="641000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
