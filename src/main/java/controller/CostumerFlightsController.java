@@ -1,11 +1,16 @@
 package controller;
-
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import model.Tickets;
 import services.CostumerFlightService;
 import services.SceneManager;
+import java.io.IOException;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -92,5 +97,17 @@ public class CostumerFlightsController {
     @FXML
     private void handleGoToAllFlights() {
 
+    }
+
+    @FXML
+    private void handleGoToAllFlights(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/customer_all_flights.fxml"));
+            Parent root = loader.load();
+            Scene currentScene = ((Button) event.getSource()).getScene();
+            currentScene.setRoot(root);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

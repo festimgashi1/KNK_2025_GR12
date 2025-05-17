@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="" />
+    <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CostumerFlightsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CostumerFlightsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerAllFlightsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerAllFlightsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/customer_navbar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/customer_navbar.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

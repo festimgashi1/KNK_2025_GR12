@@ -35,4 +35,9 @@ public class CustomerNavbarController {
         session.CustomerSession.getInstance().clear();  // remove session
         SceneManager.getInstance().switchScene("/Views/login.fxml");
     }
+
+    @FXML
+    public void showAllFlights(ActionEvent event) {
+        SceneManager.getInstance().switchScene("/Views/customer_all_flights.fxml");
+    }
 }

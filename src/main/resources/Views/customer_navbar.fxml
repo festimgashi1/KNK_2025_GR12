@@ -11,7 +11,9 @@
         <Label prefHeight="35.0" prefWidth="85.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 20 0 10 0;" text="Welcome to Pristina's Airport" textFill="#2c3e50" />
         <Separator prefWidth="160" />
 
-        <Button onAction="#showFlights" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="🛫 Flights" />
+        <Button onAction="#showFlights" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="🛫 Find Flights" />
+
+        <Button layoutX="31.0" layoutY="101.0" onAction="#showAllFlights" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="🛫 All Flights" />
 
         <Button onAction="#showReservation" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="📝 Reservation's" />
 
@@ -21,10 +23,7 @@
 
         <Button onAction="#goLogIn" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="👤 Profile" />
 
-        <Button text="🚪 Sign Out"
-                onAction="#handleSignOut"
-                prefWidth="160"
-                style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #c0392b; -fx-cursor: hand;" />
+        <Button onAction="#handleSignOut" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #c0392b; -fx-cursor: hand;" text="🚪 Sign Out" />
 
     </children>
 </VBox>
