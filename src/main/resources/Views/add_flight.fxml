@@ -7,12 +7,12 @@
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.AddFlightController">
 
-    <!-- Sidebar -->
+
     <left>
         <fx:include source="Airline_Dash.fxml"/>
     </left>
 
-    <!-- Main Content -->
+
     <center>
         <VBox spacing="25" alignment="TOP_LEFT">
             <padding>
@@ -20,7 +20,7 @@
             </padding>
             <children>
 
-                <Label text="✈ Add New Flight"
+                <Label text="Add New Flight"
                        style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
 
                 <GridPane hgap="20" vgap="20">
@@ -31,49 +31,49 @@
 
                     <children>
 
-                        <Label text="Flight Number:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                        <Label text="🔢 Flight Number:" GridPane.rowIndex="0" GridPane.columnIndex="0"
                                style="-fx-text-fill: #444;" />
                         <TextField fx:id="txtFlightNumber" promptText="e.g. W62001"
                                    GridPane.rowIndex="0" GridPane.columnIndex="1"
                                    style="-fx-background-radius: 6; -fx-padding: 6;" />
 
-                        <Label text="Plane ID:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                        <Label text="✈️ Plane ID:" GridPane.rowIndex="1" GridPane.columnIndex="0"
                                style="-fx-text-fill: #444;" />
                         <TextField fx:id="txtPlaneId" promptText="e.g. 123"
                                    GridPane.rowIndex="1" GridPane.columnIndex="1"
                                    style="-fx-background-radius: 6; -fx-padding: 6;" />
 
-                        <Label text="Departure Airport:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                        <Label text="🛫 Departure Airport:" GridPane.rowIndex="2" GridPane.columnIndex="0"
                                style="-fx-text-fill: #444;" />
                         <TextField fx:id="txtDepartureAirport" promptText="e.g. JFK"
                                    GridPane.rowIndex="2" GridPane.columnIndex="1"
                                    style="-fx-background-radius: 6; -fx-padding: 6;" />
 
-                        <Label text="Arrival Airport:" GridPane.rowIndex="3" GridPane.columnIndex="0"
+                        <Label text="🛬 Arrival Airport:" GridPane.rowIndex="3" GridPane.columnIndex="0"
                                style="-fx-text-fill: #444;" />
                         <TextField fx:id="txtArrivalAirport" promptText="e.g. LHR"
                                    GridPane.rowIndex="3" GridPane.columnIndex="1"
                                    style="-fx-background-radius: 6; -fx-padding: 6;" />
 
-                        <Label text="Departure Time:" GridPane.rowIndex="4" GridPane.columnIndex="0"
+                        <Label text="🕓 Departure Time:" GridPane.rowIndex="4" GridPane.columnIndex="0"
                                style="-fx-text-fill: #444;" />
                         <TextField fx:id="txtDepartureTime" promptText="yyyy-MM-dd HH:mm"
                                    GridPane.rowIndex="4" GridPane.columnIndex="1"
                                    style="-fx-background-radius: 6; -fx-padding: 6;" />
 
-                        <Label text="Arrival Time:" GridPane.rowIndex="5" GridPane.columnIndex="0"
+                        <Label text="🕗 Arrival Time:" GridPane.rowIndex="5" GridPane.columnIndex="0"
                                style="-fx-text-fill: #444;" />
                         <TextField fx:id="txtArrivalTime" promptText="yyyy-MM-dd HH:mm"
                                    GridPane.rowIndex="5" GridPane.columnIndex="1"
                                    style="-fx-background-radius: 6; -fx-padding: 6;" />
 
-                        <Label text="Duration:" GridPane.rowIndex="6" GridPane.columnIndex="0"
+                        <Label text="⏱ Duration:" GridPane.rowIndex="6" GridPane.columnIndex="0"
                                style="-fx-text-fill: #444;" />
                         <TextField fx:id="txtDuration" promptText="e.g. 2h 15min"
                                    GridPane.rowIndex="6" GridPane.columnIndex="1"
                                    style="-fx-background-radius: 6; -fx-padding: 6;" />
 
-                        <Label text="Status:" GridPane.rowIndex="7" GridPane.columnIndex="0"
+                        <Label text="📋 Status:" GridPane.rowIndex="7" GridPane.columnIndex="0"
                                style="-fx-text-fill: #444;" />
                         <TextField fx:id="txtStatus" promptText="Scheduled / Delayed"
                                    GridPane.rowIndex="7" GridPane.columnIndex="1"

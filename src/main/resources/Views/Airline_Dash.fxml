@@ -35,7 +35,7 @@
 
         <Button onAction="#goToAllFlights" prefWidth="180" text="All Flights" styleClass="nav-button"/>
 
-        <Button onAction="#goToTickets" prefWidth="180" text="Add Tickets" styleClass="nav-button"/>
+        <Button onAction="#goToTickets" prefWidth="180" text="Tickets" styleClass="nav-button"/>
 
         <Button onAction="#goToStatistics" prefWidth="180" text="Statistics" styleClass="nav-button"/>
 

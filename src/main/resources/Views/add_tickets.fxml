@@ -22,7 +22,7 @@
             </padding>
             <children>
 
-                <Label text="✈ Add New Ticket"
+                <Label text="Add New Ticket"
                        style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
 
                 <!-- Form for adding tickets -->
@@ -61,7 +61,7 @@
                 </GridPane>
 
                 <!-- TableView for displaying tickets -->
-                <Label text="Tickets Information" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+                <Label text="Manage Tickets" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
                 <TableView fx:id="ticketTable" style="-fx-background-color: #f0f0f0;">
                     <columns>
                         <TableColumn fx:id="colFlightNumber" text="Flight Number" prefWidth="120"/>
