@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Booking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/BookingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/BookingRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerFlightBoardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/CustomerFlightBoardRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/customer_flightboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CostumerFlightsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CostumerFlightsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/customer_flights.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/customer_flights.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

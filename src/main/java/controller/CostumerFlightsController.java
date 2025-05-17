@@ -89,4 +89,8 @@ public class CostumerFlightsController {
             System.out.println("No matching tickets found.");
         }
     }
+    @FXML
+    private void handleGoToAllFlights() {
+
+    }
 }
