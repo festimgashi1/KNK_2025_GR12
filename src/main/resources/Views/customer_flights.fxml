@@ -7,61 +7,95 @@
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.CostumerFlightsController"
-            prefWidth="850.0" prefHeight="500.0">
-
+            prefWidth="1000.0" prefHeight="600.0">
 
     <left>
         <fx:include source="customer_navbar.fxml"/>
     </left>
 
-
     <center>
-        <VBox spacing="20" alignment="TOP_LEFT" style="-fx-padding: 20;">
+        <VBox alignment="TOP_CENTER" spacing="30" style="-fx-padding: 40;">
 
-
-            <HBox spacing="10">
-                <RadioButton fx:id="returnRadio" text="Return" toggleGroup="$tripTypeGroup"/>
-                <RadioButton fx:id="oneWayRadio" text="One way" selected="true" toggleGroup="$tripTypeGroup"/>
+            <!-- TITULLI ME IKONË -->
+            <HBox alignment="CENTER" spacing="10">
+                <Label text="✈" style="-fx-font-size: 28px; -fx-text-fill: #2c3e50;" />
+                <Label text="Flights" style="-fx-font-size: 28px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
             </HBox>
 
+            <!-- CONTAINER E BARDHË -->
+            <VBox spacing="20"
+                  alignment="TOP_CENTER"
+                  style="-fx-background-color: white;
+                         -fx-padding: 25;
+                         -fx-background-radius: 12;
+                         -fx-border-radius: 12;
+                         -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 10, 0.2, 0, 4);"
+                  VBox.vgrow="ALWAYS">
 
-            <HBox spacing="10">
+                <!-- Trip Type -->
+                <HBox spacing="10" alignment="CENTER_LEFT">
+                    <RadioButton fx:id="returnRadio" text="Return" toggleGroup="$tripTypeGroup"/>
+                    <RadioButton fx:id="oneWayRadio" text="One way" selected="true" toggleGroup="$tripTypeGroup"/>
+                </HBox>
 
+                <!-- FILTERS -->
+                <HBox spacing="15" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
 
-                <VBox spacing="5">
-                    <Label text="Departure"/>
-                    <TextField fx:id="txtDeparture" prefHeight="26.0" prefWidth="158.0"/>
-                </VBox>
+                    <!-- Departure -->
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Departure"/>
+                        <TextField fx:id="txtDeparture"
+                                   prefHeight="30.0"
+                                   style="-fx-background-radius: 6; -fx-border-radius: 6;" />
+                    </VBox>
 
-                <VBox spacing="5">
-                    <Label text="Destination"/>
-                    <TextField fx:id="txtDestination" prefHeight="26.0" prefWidth="140.0"/>
-                </VBox>
+                    <!-- Destination -->
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Destination"/>
+                        <TextField fx:id="txtDestination"
+                                   prefHeight="30.0"
+                                   style="-fx-background-radius: 6; -fx-border-radius: 6;" />
+                    </VBox>
 
-                <VBox spacing="5">
-                    <Label text="Departure date"/>
-                    <DatePicker fx:id="dpDepartureDate" prefWidth="150"/>
-                </VBox>
+                    <!-- Departure Date -->
+                    <VBox spacing="5">
+                        <Label text="Departure date"/>
+                        <DatePicker fx:id="dpDepartureDate"
+                                    prefHeight="30.0" prefWidth="150"
+                                    style="-fx-background-radius: 6; -fx-border-radius: 6;" />
+                    </VBox>
 
-                <VBox spacing="5">
-                    <Label text="Return date"/>
-                    <DatePicker fx:id="dpReturnDate" prefWidth="150"/>
-                </VBox>
+                    <!-- Return Date -->
+                    <VBox spacing="5">
+                        <Label text="Return date"/>
+                        <DatePicker fx:id="dpReturnDate"
+                                    prefHeight="30.0" prefWidth="150"
+                                    style="-fx-background-radius: 6; -fx-border-radius: 6;" />
+                    </VBox>
 
+                    <!-- Passengers -->
+                    <VBox spacing="5">
+                        <Label text="Passengers"/>
+                        <HBox spacing="5" alignment="CENTER">
+                            <Button fx:id="btnRemovePassenger" text="-" onAction="#decreasePassengerCount"
+                                    style="-fx-background-color: #f4f4f4; -fx-background-radius: 5;" />
+                            <Text fx:id="passengerText" text="1"/>
+                            <Button fx:id="btnAddPassenger" text="+" onAction="#increasePassengerCount"
+                                    style="-fx-background-color: #f4f4f4; -fx-background-radius: 5;" />
+                        </HBox>
+                    </VBox>
 
-                <VBox spacing="5">
-                    <Label text="Passengers"/>
-                    <HBox spacing="5">
-                        <Text fx:id="passengerText" text="1"/>
-                        <Button fx:id="btnAddPassenger" text="+" onAction="#increasePassengerCount"/>
-                    </HBox>
-                </VBox>
-            </HBox>
-
-
-            <Button fx:id="btnSearch" prefWidth="50"
-                    style="-fx-background-color: #e5007d; -fx-text-fill: white;" text="🔍"
-                    onAction="#handleSearchClick"/>
+                    <!-- Search Button -->
+                    <VBox spacing="5" alignment="BOTTOM_CENTER">
+                        <Label text=" "/> <!-- Spacer -->
+                        <Button fx:id="btnSearch"
+                                text="🔍"
+                                style="-fx-background-color: #e5007d; -fx-text-fill: white; -fx-background-radius: 30;"
+                                prefWidth="50" prefHeight="30"
+                                onAction="#handleSearchClick"/>
+                    </VBox>
+                </HBox>
+            </VBox>
         </VBox>
     </center>
 </BorderPane>

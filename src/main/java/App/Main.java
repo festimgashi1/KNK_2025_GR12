@@ -1,5 +1,7 @@
 package App;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import services.PasswordHasher;
@@ -16,5 +18,8 @@ public class Main extends Application{
         String passhash=PasswordHasher.generateSaltedHash("admin123",salt);
         System.out.println(salt);
         System.out.println(passhash);
+
+
+
     }
 }

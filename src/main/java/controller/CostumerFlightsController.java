@@ -22,6 +22,7 @@ public class CostumerFlightsController {
     @FXML private DatePicker dpReturnDate;
 
     @FXML private Button btnAddPassenger;
+    @FXML private Button btnRemovePassenger;
     @FXML private Text passengerText;
     @FXML private Button btnSearch;
 
@@ -53,6 +54,14 @@ public class CostumerFlightsController {
     }
 
     @FXML
+    private void decreasePassengerCount() {
+        if (passengerCount > 1) {
+            passengerCount--;
+            passengerText.setText(String.valueOf(passengerCount));
+        }
+    }
+
+    @FXML
     private void handleSearchClick() {
         String departure = txtDeparture.getText();
         String destination = txtDestination.getText();
@@ -68,18 +77,14 @@ public class CostumerFlightsController {
         System.out.println("From: " + departure + " To: " + destination);
         System.out.println("Date: " + departureDate + " | Passengers: " + passengerCount);
 
-        // Kërko të gjitha biletat që përputhen
         List<Tickets> matchingTickets = ticketFlightService.findMatchingTickets(
                 departure, destination, departureDate, passengerCount
         );
 
         if (!matchingTickets.isEmpty()) {
-            Tickets ticket = matchingTickets.get(0); // Merr të parën për demonstrim
-
-            // Ruaj biletën në SceneManager dhe kaloni te rezervimi
+            Tickets ticket = matchingTickets.get(0);
             SceneManager.getInstance().setData("selectedTicket", ticket);
             SceneManager.getInstance().switchScene("/Views/reserve_ticket.fxml");
-
         } else {
             System.out.println("No matching tickets found.");
         }
