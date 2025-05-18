@@ -1,17 +1,18 @@
+
 package controller;
+
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import model.Tickets;
 import services.CostumerFlightService;
-import services.SceneManager;
-import java.io.IOException;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -20,19 +21,16 @@ public class CostumerFlightsController {
     @FXML private ToggleGroup tripTypeGroup;
     @FXML private RadioButton returnRadio;
     @FXML private RadioButton oneWayRadio;
-
     @FXML private TextField txtDeparture;
     @FXML private TextField txtDestination;
     @FXML private DatePicker dpDepartureDate;
     @FXML private DatePicker dpReturnDate;
-
     @FXML private Button btnAddPassenger;
     @FXML private Button btnRemovePassenger;
     @FXML private Text passengerText;
     @FXML private Button btnSearch;
 
     private int passengerCount = 1;
-
     private final CostumerFlightService ticketFlightService = new CostumerFlightService();
 
     @FXML
@@ -74,13 +72,9 @@ public class CostumerFlightsController {
 
         if (departure == null || destination == null || departureDate == null ||
                 departure.isEmpty() || destination.isEmpty()) {
-            System.out.println("Please fill in all fields.");
+            showAlert(Alert.AlertType.WARNING, "Missing Fields", "Please fill all fields.");
             return;
         }
-
-        System.out.println("Searching flight for:");
-        System.out.println("From: " + departure + " To: " + destination);
-        System.out.println("Date: " + departureDate + " | Passengers: " + passengerCount);
 
         List<Tickets> matchingTickets = ticketFlightService.findMatchingTickets(
                 departure, destination, departureDate, passengerCount
@@ -88,17 +82,30 @@ public class CostumerFlightsController {
 
         if (!matchingTickets.isEmpty()) {
             Tickets ticket = matchingTickets.get(0);
-            SceneManager.getInstance().setData("selectedTicket", ticket);
-            SceneManager.getInstance().switchScene("/Views/reserve_ticket.fxml");
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/TicketCard.fxml"));
+                Parent root = loader.load();
+
+                controller.TicketCardController controller = loader.getController();
+                controller.setTicketData(ticket);
+
+                Stage stage = (Stage) btnSearch.getScene().getWindow();
+                stage.setScene(new Scene(root));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
-            System.out.println("No matching tickets found.");
+            showAlert(Alert.AlertType.INFORMATION, "No Flights", "No matching flights found.");
         }
     }
-    @FXML
-    private void handleGoToAllFlights() {
 
+    private void showAlert(Alert.AlertType type, String title, String message) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
-
     @FXML
     private void handleGoToAllFlights(ActionEvent event) {
         try {
