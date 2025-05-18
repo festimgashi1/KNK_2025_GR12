@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Tickets;
@@ -29,6 +30,8 @@ public class CostumerFlightsController {
     @FXML private Button btnRemovePassenger;
     @FXML private Text passengerText;
     @FXML private Button btnSearch;
+    @FXML private VBox ticketListContainer;
+
 
     private int passengerCount = 1;
     private final CostumerFlightService ticketFlightService = new CostumerFlightService();

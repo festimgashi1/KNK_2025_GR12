@@ -13,7 +13,6 @@
         <fx:include source="customer_navbar.fxml"/>
     </left>
 
-
     <center>
         <VBox alignment="TOP_CENTER" spacing="30" style="-fx-padding: 40;">
 
@@ -38,7 +37,7 @@
                 <Button text="Go To All Flights View"
                         prefWidth="300" prefHeight="35"
                         style="-fx-background-color: #2b5797; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 6;"
-                       onAction="#handleGoToAllFlights"/>
+                        onAction="#handleGoToAllFlights"/>
 
                 <!-- Trip Type -->
                 <HBox spacing="10" alignment="CENTER_LEFT">
@@ -103,6 +102,11 @@
                                 onAction="#handleSearchClick"/>
                     </VBox>
                 </HBox>
+
+                <!-- Rezultatet e biletave (shfaqen me rend) -->
+                <ScrollPane fitToWidth="true" prefHeight="400">
+                    <VBox fx:id="ticketListContainer" spacing="15" style="-fx-padding: 20;" />
+                </ScrollPane>
 
             </VBox>
         </VBox>
