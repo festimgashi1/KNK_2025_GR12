@@ -103,11 +103,6 @@
                     </VBox>
                 </HBox>
 
-                <!-- Rezultatet e biletave (shfaqen me rend) -->
-                <ScrollPane fitToWidth="true" prefHeight="400">
-                    <VBox fx:id="ticketListContainer" spacing="15" style="-fx-padding: 20;" />
-                </ScrollPane>
-
             </VBox>
         </VBox>
     </center>
