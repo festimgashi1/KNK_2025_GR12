@@ -26,12 +26,24 @@ public class TicketCardController {
     @FXML private TextField txtAirline;
     @FXML private Button btnBuy;
 
+
+
     private Tickets ticket;
     private final BookingService bookingService = new BookingService();
 
+    @FXML
+    private void initialize() {
+        Object data = SceneManager.getInstance().getData("selectedTicket");
+        if (data instanceof Tickets selectedTicket) {
+            this.ticket = selectedTicket;
+            setTicketData(ticket);
+        } else {
+            System.err.println("Ticket not found in SceneManager.");
+        }
+    }
+
     public void setTicketData(Tickets ticket) {
         this.ticket = ticket;
-
         txtPrice.setText(String.valueOf(ticket.getTicketPrice()));
         txtFrom.setText(ticket.getDepartureAirport());
         txtTo.setText(ticket.getArrivalAirport());
@@ -50,10 +62,7 @@ public class TicketCardController {
         }
 
         LocalDate departureDate = ticket.getDepartureTime()
-                .toInstant()
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate();
-
+                .toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
         String seatNumber = generateSeatNumber();
 
@@ -83,18 +92,9 @@ public class TicketCardController {
     }
 
     private String generateSeatNumber() {
-        int row = (int) (Math.random() * 30) + 1; // 1-30
-        char seat = (char) ('A' + (int) (Math.random() * 6)); // A-F
+        int row = (int) (Math.random() * 30) + 1; // rows 1–30
+        char seat = (char) ('A' + (int) (Math.random() * 6)); // seats A–F
         return row + String.valueOf(seat);
-    }
-
-    @FXML
-    public void initialize() {
-        Tickets ticket = (Tickets) SceneManager.getInstance().getData("selectedTicket");
-        if (ticket != null) {
-            setTicketData(ticket);
-        }
-
     }
 
 }

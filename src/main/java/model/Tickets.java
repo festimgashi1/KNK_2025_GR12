@@ -17,6 +17,8 @@ public class Tickets {
     private Date departureTime;
     private Date arrivalTime;
     private String status;
+    private String airlineName;
+    private String duration;
 
     public Tickets(int ticketid, int flightNumber, int customerid, Date bookingdate, double ticketprice, String paymentmethod, int passengers) {
         this.ticketid = ticketid;
@@ -71,7 +73,7 @@ public class Tickets {
         this.status = status;
     }
 
-    // Getters për të dhënat e tjera
+
     public int getTicketid() {
         return ticketid;
     }
@@ -108,6 +110,11 @@ public class Tickets {
         this.passengers = passengers;
     }
 
+    public String getAirlineName() { return airlineName; }
+    public void setAirlineName(String airlineName) { this.airlineName = airlineName; }
+
+    public String getDuration() { return duration; }
+    public void setDuration(String duration) { this.duration = duration; }
 
 
 
