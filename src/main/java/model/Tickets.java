@@ -11,7 +11,6 @@ public class Tickets {
     private String paymentmethod;
     private int passengers;
 
-    // Të dhënat e fluturimit që lidhen me Tickets
     private String departureAirport;
     private String arrivalAirport;
     private Date departureTime;
@@ -19,6 +18,9 @@ public class Tickets {
     private String status;
     private String airlineName;
     private String duration;
+
+    public Tickets() {
+    }
 
     public Tickets(int ticketid, int flightNumber, int customerid, Date bookingdate, double ticketprice, String paymentmethod, int passengers) {
         this.ticketid = ticketid;
@@ -30,9 +32,42 @@ public class Tickets {
         this.passengers = passengers;
     }
 
+    public int getTicketid() {
+        return ticketid;
+    }
 
+    public int getFlightNumber() {
+        return flightNumber;
+    }
 
-    // Getters dhe setters për të dhënat e fluturimit
+    public int getCustomerid() {
+        return customerid;
+    }
+
+    public Date getBookingdate() {
+        return bookingdate;
+    }
+
+    public double getTicketPrice() {
+        return ticketprice;
+    }
+
+    public String getPaymentmethod() {
+        return paymentmethod;
+    }
+
+    public int getPassengers() {
+        return passengers;
+    }
+
+    public void setTicketPrice(double ticketPrice) {
+        this.ticketprice = ticketPrice;
+    }
+
+    public void setPassengers(int passengers) {
+        this.passengers = passengers;
+    }
+
     public String getDepartureAirport() {
         return departureAirport;
     }
@@ -73,49 +108,39 @@ public class Tickets {
         this.status = status;
     }
 
-
-    public int getTicketid() {
-        return ticketid;
+    public String getAirlineName() {
+        return airlineName;
     }
 
-    public int getFlightNumber() {
-        return flightNumber;
+    public void setAirlineName(String airlineName) {
+        this.airlineName = airlineName;
     }
 
-    public int getCustomerid() {
-        return customerid;
+    public String getDuration() {
+        return duration;
     }
 
-    public Date getBookingdate() {
-        return bookingdate;
+    public void setDuration(String duration) {
+        this.duration = duration;
     }
 
-    public double getTicketPrice() {
-        return ticketprice;
+    public void setTicketid(int ticketid) {
+        this.ticketid = ticketid;
     }
 
-    public String getPaymentmethod() {
-        return paymentmethod;
+    public void setFlightNumber(int flightNumber) {
+        this.flightNumber = flightNumber;
     }
 
-    public int getPassengers() {
-        return passengers;
+    public void setCustomerid(int customerid) {
+        this.customerid = customerid;
     }
 
-    public void setTicketPrice(double ticketPrice) {
-        this.ticketprice = ticketPrice;
+    public void setBookingdate(Date bookingdate) {
+        this.bookingdate = bookingdate;
     }
 
-    public void setPassengers(int passengers) {
-        this.passengers = passengers;
+    public void setPaymentmethod(String paymentmethod) {
+        this.paymentmethod = paymentmethod;
     }
-
-    public String getAirlineName() { return airlineName; }
-    public void setAirlineName(String airlineName) { this.airlineName = airlineName; }
-
-    public String getDuration() { return duration; }
-    public void setDuration(String duration) { this.duration = duration; }
-
-
-
 }

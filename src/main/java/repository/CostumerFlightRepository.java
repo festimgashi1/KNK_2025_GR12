@@ -3,22 +3,36 @@ package repository;
 import database.DBConnector;
 import model.Tickets;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CostumerFlightRepository {
-    public List<Tickets> searchAvailableTickets(String departure, String destination, LocalDate departureDate, int passengers) {
+
+    public List<Tickets> searchAvailableTickets(String departure, String destination, LocalDate date, int passengers) {
         List<Tickets> tickets = new ArrayList<>();
+
         String query = """
-            SELECT t.ticketid, t.flightNumber, t.bookingdate, t.ticketprice, t.passengers,
-                   f.departureAirport, f.arrivalAirport, f.departureTime, f.arrivalTime, f.duration,
-                   a.airlinename
-            FROM Tickets t
-            JOIN Flights f ON t.flightNumber = f.flightNumber
-            JOIN Airline a ON f.airlineid = a.airlineid
-            WHERE f.departureAirport = ? AND f.arrivalAirport = ? AND DATE(f.departureTime) = ? AND t.passengers >= ?
+            SELECT t.flightnumber,
+                   f.departureairport,
+                   f.arrivalairport,
+                   f.departuretime,
+                   f.arrivaltime,
+                   f.status,
+                   f.duration,
+                   a.airlinename,
+                   t.ticketprice
+            FROM tickets t
+            JOIN flights f ON t.flightnumber = f.flightnumber
+            JOIN airline a ON f.airlineid = a.airlineid
+            WHERE f.departureairport = ?
+              AND f.arrivalairport = ?
+              AND DATE(f.departuretime) = ?
         """;
 
         try (Connection conn = DBConnector.getConnection();
@@ -26,33 +40,29 @@ public class CostumerFlightRepository {
 
             stmt.setString(1, departure);
             stmt.setString(2, destination);
-            stmt.setDate(3, Date.valueOf(departureDate));
-            stmt.setInt(4, passengers);
+            stmt.setDate(3, Date.valueOf(date));
 
             ResultSet rs = stmt.executeQuery();
+
             while (rs.next()) {
-                Tickets ticket = new Tickets(
-                        rs.getInt("ticketid"),
-                        rs.getInt("flightNumber"),
-                        0,
-                        rs.getDate("bookingdate"),
-                        rs.getDouble("ticketprice"),
-                        "",
-                        rs.getInt("passengers")
-                );
-                ticket.setDepartureAirport(rs.getString("departureAirport"));
-                ticket.setArrivalAirport(rs.getString("arrivalAirport"));
-                ticket.setDepartureTime(rs.getTimestamp("departureTime"));
-                ticket.setArrivalTime(rs.getTimestamp("arrivalTime"));
+                Tickets ticket = new Tickets();
+                ticket.setFlightNumber(rs.getInt("flightnumber"));
+                ticket.setDepartureAirport(rs.getString("departureairport"));
+                ticket.setArrivalAirport(rs.getString("arrivalairport"));
+                ticket.setDepartureTime(rs.getTimestamp("departuretime"));
+                ticket.setArrivalTime(rs.getTimestamp("arrivaltime"));
+                ticket.setStatus(rs.getString("status"));
                 ticket.setDuration(rs.getString("duration"));
                 ticket.setAirlineName(rs.getString("airlinename"));
+                ticket.setTicketPrice(rs.getDouble("ticketprice"));
+
                 tickets.add(ticket);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
         return tickets;
     }
 }
-

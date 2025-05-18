@@ -65,7 +65,6 @@
         <HBox alignment="CENTER_RIGHT">
             <Button fx:id="btnBuy"
                     text="Buy"
-                    onAction="#handleBuyClick"
                     style="-fx-background-color: #00C2CB; -fx-text-fill: white; -fx-background-radius: 10; -fx-font-weight: bold;"
                     prefWidth="100" prefHeight="35"/>
         </HBox>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ScrollPane?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.TicketListController"
+            fitToWidth="true">
+
+    <VBox fx:id="ticketListContainer" spacing="20" style="-fx-padding: 30;" />
+</ScrollPane>

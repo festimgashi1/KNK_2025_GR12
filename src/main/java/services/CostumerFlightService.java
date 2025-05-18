@@ -13,7 +13,7 @@ public class CostumerFlightService {
         this.repository = new CostumerFlightRepository();
     }
 
-    public List<Tickets> findMatchingTickets(String departure, String destination, LocalDate departureDate, int passengers) {
+    public List<Tickets> searchAvailableTickets(String departure, String destination, LocalDate departureDate, int passengers) {
         return repository.searchAvailableTickets(departure, destination, departureDate, passengers);
     }
 }

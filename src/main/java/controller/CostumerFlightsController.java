@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Tickets;
 import services.CostumerFlightService;
+import services.SceneManager;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -79,21 +80,22 @@ public class CostumerFlightsController {
             return;
         }
 
-        List<Tickets> matchingTickets = ticketFlightService.findMatchingTickets(
+        List<Tickets> matchingTickets = ticketFlightService.searchAvailableTickets(
                 departure, destination, departureDate, passengerCount
         );
 
         if (!matchingTickets.isEmpty()) {
-            Tickets ticket = matchingTickets.get(0);
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/TicketCard.fxml"));
-                Parent root = loader.load();
 
-                controller.TicketCardController controller = loader.getController();
-                controller.setTicketData(ticket);
+                SceneManager.getInstance().setData("matchingTickets", matchingTickets);
+
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/TicketList.fxml"));
+                Parent root = loader.load();
 
                 Stage stage = (Stage) btnSearch.getScene().getWindow();
                 stage.setScene(new Scene(root));
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -101,6 +103,8 @@ public class CostumerFlightsController {
             showAlert(Alert.AlertType.INFORMATION, "No Flights", "No matching flights found.");
         }
     }
+
+
 
     private void showAlert(Alert.AlertType type, String title, String message) {
         Alert alert = new Alert(type);

@@ -31,16 +31,7 @@ public class TicketCardController {
     private Tickets ticket;
     private final BookingService bookingService = new BookingService();
 
-    @FXML
-    private void initialize() {
-        Object data = SceneManager.getInstance().getData("selectedTicket");
-        if (data instanceof Tickets selectedTicket) {
-            this.ticket = selectedTicket;
-            setTicketData(ticket);
-        } else {
-            System.err.println("Ticket not found in SceneManager.");
-        }
-    }
+
 
     public void setTicketData(Tickets ticket) {
         this.ticket = ticket;
