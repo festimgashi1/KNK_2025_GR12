@@ -114,7 +114,7 @@ CREATE TABLE Feedback (
     fb_id SERIAL PRIMARY KEY,
     costumerId INT REFERENCES Costumer(costumerId),
     flightNumber INT REFERENCES Flights(flightNumber),
-    rating INT CHECK (rating >= 1 AND rating <= 5),
+    rating VARCHAR(50),
     comments VARCHAR(50),
     status VARCHAR(50)
 );

@@ -24,7 +24,7 @@ public class CustomerNavbarController {
 
     @FXML
     public void goLogIn(ActionEvent event) {
-        if (CustomerSession.getInstance().getCurrentCostumer() != null) {
+        if (CustomerSession.getInstance().getCurrentCustomer() != null) {
             SceneManager.getInstance().switchScene("/Views/costumer_profile.fxml");
         } else {
             SceneManager.getInstance().switchScene("/Views/login.fxml");

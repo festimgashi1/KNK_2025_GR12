@@ -1,22 +1,22 @@
 package model;
 
+
+
 public class Feedback {
     private int fb_id;
     private int costumerId;
-    private int flightNumber;
+    private Integer flightNumber;
     private String rating;
     private String comments;
 
-
-    public Feedback(int costumerId, int flightNumber, String rating, String comments) {
+    public Feedback(int costumerId, Integer flightNumber, String rating, String comments) {
         this.costumerId = costumerId;
         this.flightNumber = flightNumber;
         this.rating = rating;
         this.comments = comments;
     }
 
-
-    public Feedback(int fb_id, int costumerId, int flightNumber, String rating, String comments) {
+    public Feedback(int fb_id, int costumerId, Integer flightNumber, String rating, String comments) {
         this.fb_id = fb_id;
         this.costumerId = costumerId;
         this.flightNumber = flightNumber;
@@ -40,11 +40,11 @@ public class Feedback {
         this.costumerId = costumerId;
     }
 
-    public int getFlightNumber() {
+    public Integer getFlightNumber() {
         return flightNumber;
     }
 
-    public void setFlightNumber(int flightNumber) {
+    public void setFlightNumber(Integer flightNumber) {
         this.flightNumber = flightNumber;
     }
 

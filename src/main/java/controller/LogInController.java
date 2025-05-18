@@ -54,7 +54,7 @@ public class LogInController {
 
             } else if (user instanceof Costumer) {
                 Costumer costumer = (Costumer) user;
-                CustomerSession.getInstance().setCurrentCostumer(costumer);
+                CustomerSession.getInstance().setCurrentCustomer(costumer);
                 errorLabel.setText("");
                 SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
 

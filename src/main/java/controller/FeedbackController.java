@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import model.Feedback;
 import repository.FeedbackRepository;
+import session.CustomerSession;
 
 public class FeedbackController {
 
@@ -13,7 +14,6 @@ public class FeedbackController {
     @FXML private ToggleButton btnSomewhatGood;
     @FXML private ToggleButton btnBad;
     @FXML private ToggleButton btnVeryBad;
-
     @FXML private TextField txtComment;
     @FXML private Button btnSend;
 
@@ -31,35 +31,42 @@ public class FeedbackController {
 
     @FXML
     private void handleSendFeedback() {
-        Toggle selected = ratingGroup.getSelectedToggle();
+        Toggle selectedToggle = ratingGroup.getSelectedToggle();
 
-        if (selected == null) {
+        if (selectedToggle == null) {
             showAlert(AlertType.WARNING, "Please select a rating.");
             return;
         }
 
-        String rating = ((ToggleButton) selected).getText();
-        String comment = txtComment.getText();
+        String rating = ((ToggleButton) selectedToggle).getText();
+        String comment = txtComment.getText().trim();
 
+        if (comment.isEmpty()) {
+            showAlert(AlertType.WARNING, "Please write a comment.");
+            return;
+        }
 
-        int costumerId = 1;
-        int flightNumber = 1002;
+        if (CustomerSession.getInstance().getCurrentCustomer() == null) {
+            showAlert(AlertType.ERROR, "Session expired. Please log in again.");
+            return;
+        }
 
-        Feedback feedback = new Feedback(costumerId, flightNumber, rating, comment);
-        boolean inserted = feedbackRepo.saveFeedback(feedback);
+        int customerId = CustomerSession.getInstance().getCurrentCustomer().getCostumerId();
 
-        if (inserted) {
-            showAlert(AlertType.INFORMATION, "Thank you for your feedback!");
+        Feedback feedback = new Feedback(customerId, null, rating, comment);
+
+        boolean success = feedbackRepo.saveFeedback(feedback);
+        if (success) {
+            showAlert(AlertType.INFORMATION, "Feedback submitted successfully.");
             txtComment.clear();
-            ratingGroup.selectToggle(null);
+            ratingGroup.getToggles().forEach(t -> t.setSelected(false));
         } else {
-            showAlert(AlertType.ERROR, "Failed to submit feedback.");
+            showAlert(AlertType.ERROR, "Failed to submit feedback. Try again.");
         }
     }
 
     private void showAlert(AlertType type, String message) {
         Alert alert = new Alert(type);
-        alert.setTitle("Feedback");
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();

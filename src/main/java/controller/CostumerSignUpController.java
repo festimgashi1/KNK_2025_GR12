@@ -48,7 +48,7 @@ public class CostumerSignUpController {
 
             Costumer user = signupService.create(dto);
 
-            CustomerSession.getInstance().setCurrentCostumer(user);
+            CustomerSession.getInstance().setCurrentCustomer(user);
 
             System.out.println("Customer registered: " + user.getFirstName());
             errorLabel.setText("");

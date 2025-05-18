@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="" />
+    <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CostumerSignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CostumerSignUpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FeedbackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FeedbackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TicketCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TicketCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Feedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Feedback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/FeedbackRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/FeedbackRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/CustomerSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/CustomerSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/session/FlightSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/FlightSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -88,14 +102,6 @@
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

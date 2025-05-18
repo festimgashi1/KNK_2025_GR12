@@ -26,7 +26,7 @@ public class CustomerProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Costumer loggedIn = CustomerSession.getInstance().getCurrentCostumer();
+        Costumer loggedIn = CustomerSession.getInstance().getCurrentCustomer();
 
         if (loggedIn != null) {
             lblFirstName.setText(loggedIn.getFirstName());

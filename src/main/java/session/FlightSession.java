@@ -1,18 +1,29 @@
 package session;
 
+import model.Flights;
+
 public class FlightSession {
+    private static FlightSession instance;
+    private Flights currentFlight;
 
-    private static int flightNumber; // ose mundesh me e bo long nëse e ke të tillë në DB
+    private FlightSession() {}
 
-    public static void setFlightNumber(int number) {
-        flightNumber = number;
+    public static FlightSession getInstance() {
+        if (instance == null) {
+            instance = new FlightSession();
+        }
+        return instance;
     }
 
-    public static int getFlightNumber() {
-        return flightNumber;
+    public void setFlight(Flights flight) {
+        this.currentFlight = flight;
     }
 
-    public static void clearSession() {
-        flightNumber = 0;
+    public Flights getFlight() {
+        return currentFlight;
+    }
+
+    public void clear() {
+        this.currentFlight = null;
     }
 }

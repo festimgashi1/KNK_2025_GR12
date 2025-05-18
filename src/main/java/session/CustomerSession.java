@@ -1,10 +1,11 @@
 package session;
 
+
 import model.Costumer;
 
 public class CustomerSession {
     private static CustomerSession instance;
-    private Costumer currentCostumer;
+    private Costumer currentCustomer;
 
     private CustomerSession() {}
 
@@ -15,16 +16,17 @@ public class CustomerSession {
         return instance;
     }
 
-    public void setCurrentCostumer(Costumer costumer) {
-        this.currentCostumer = costumer;
+    public void setCurrentCustomer(Costumer customer) {
+        this.currentCustomer = customer;
     }
 
-    public Costumer getCurrentCostumer() {
-        return currentCostumer;
+    public Costumer getCurrentCustomer() {
+        return currentCustomer;
     }
 
     public void clear() {
-        this.currentCostumer = null;
+        this.currentCustomer = null;
     }
+
 
 }

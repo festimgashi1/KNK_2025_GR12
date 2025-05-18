@@ -9,7 +9,7 @@ public class CustomerService {
     private final CostumerRepository repo = new CostumerRepository();
 
     public boolean changePassword(String current, String newPass) {
-        Costumer costumer = CustomerSession.getInstance().getCurrentCostumer();
+        Costumer costumer = CustomerSession.getInstance().getCurrentCustomer();
         if (costumer == null) return false;
 
         return repo.updatePassword(costumer.getCostumerId(), current, newPass);

@@ -56,7 +56,7 @@ public class TicketCardController {
 
     @FXML
     private void handleBuyClick() {
-        if (ticket == null || CustomerSession.getInstance().getCurrentCostumer() == null) {
+        if (ticket == null || CustomerSession.getInstance().getCurrentCustomer() == null) {
             showAlert(Alert.AlertType.ERROR, "Error", "Missing ticket or customer session.");
             return;
         }
@@ -67,7 +67,7 @@ public class TicketCardController {
         String seatNumber = generateSeatNumber();
 
         CreateBookingDto dto = new CreateBookingDto(
-                CustomerSession.getInstance().getCurrentCostumer().getCostumerId(),
+                CustomerSession.getInstance().getCurrentCustomer().getCostumerId(),
                 ticket.getFlightNumber(),
                 departureDate,
                 ticket.getArrivalAirport(),
