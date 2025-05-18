@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.TicketCardController"
+            style="-fx-background-color: white; -fx-border-radius: 10; -fx-background-radius: 10; -fx-border-color: #dcdcdc;">
+
+    <VBox spacing="20" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
+          style="-fx-padding: 20;">
+
+        <!-- Header -->
+        <HBox style="-fx-background-color: #3498db; -fx-background-radius: 10; -fx-padding: 10;" alignment="CENTER_LEFT" spacing="15">
+            <Label text="✔ The right choice!" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            <Label text="The best compromise between price and comfort" style="-fx-text-fill: white;" />
+        </HBox>
+
+        <!-- Price -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <Label text="€" style="-fx-font-size: 24px; -fx-text-fill: #2c3e50;" />
+            <TextField fx:id="txtPrice"
+                       editable="false"
+                       style="-fx-font-size: 24px; -fx-font-weight: bold;"
+                       HBox.hgrow="ALWAYS"/>
+        </HBox>
+
+        <!-- Inline input fields -->
+        <HBox spacing="10" alignment="CENTER_LEFT">
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="From" style="-fx-text-fill: gray;" />
+                <TextField fx:id="txtFrom" editable="false" />
+            </VBox>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="To" style="-fx-text-fill: gray;" />
+                <TextField fx:id="txtTo" editable="false" />
+            </VBox>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Status" style="-fx-text-fill: gray;" />
+                <TextField fx:id="txtStatus" editable="false" />
+            </VBox>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Departure" style="-fx-text-fill: gray;" />
+                <TextField fx:id="txtDepartureTime" editable="false" />
+            </VBox>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Arrival" style="-fx-text-fill: gray;" />
+                <TextField fx:id="txtArrivalTime" editable="false" />
+            </VBox>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Duration" style="-fx-text-fill: gray;" />
+                <TextField fx:id="txtDuration" editable="false" />
+            </VBox>
+            <VBox spacing="5" HBox.hgrow="ALWAYS">
+                <Label text="Airline" style="-fx-text-fill: gray;" />
+                <TextField fx:id="txtAirline" editable="false" />
+            </VBox>
+        </HBox>
+
+        <Separator />
+
+        <!-- Button -->
+        <HBox alignment="CENTER_RIGHT">
+            <Button fx:id="btnBuy"
+                    text="Buy"
+                    onAction="#handleBuyClick"
+                    style="-fx-background-color: #00C2CB; -fx-text-fill: white; -fx-background-radius: 10; -fx-font-weight: bold;"
+                    prefWidth="100" prefHeight="35"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

@@ -1,60 +1,45 @@
 package model.dto;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class CreateBookingDto {
-    private Long costumerId;
+    private int costumerId;
+    private int flightNumber;
+    private LocalDate departureDate;
+    private String destination;
+    private double price;
+    private String seatNumber;
 
-    private Long flightsNumber;
-    private LocalDateTime dataENisjes;
-    private String destinacioni;
-    private Double cmimi;
-
-    public CreateBookingDto(Long costumerId, Long flightsNumber, LocalDateTime dataENisjes, String destinacioni, Double cmimi) {
+    public CreateBookingDto(int costumerId, int flightNumber, LocalDate departureDate, String destination, double price, String seatNumber) {
         this.costumerId = costumerId;
-        this.flightsNumber = flightsNumber;
-        this.dataENisjes = dataENisjes;
-        this.destinacioni = destinacioni;
-        this.cmimi = cmimi;
+        this.flightNumber = flightNumber;
+        this.departureDate = departureDate;
+        this.destination = destination;
+        this.price = price;
+        this.seatNumber = seatNumber;
     }
 
-    public Long getCostumerId() {
+    public int getCostumerId() {
         return costumerId;
     }
 
-    public void setCostumerId(Long costumerId) {
-        this.costumerId = costumerId;
+    public int getFlightNumber() {
+        return flightNumber;
     }
 
-    public Long getFlightsNumber() {
-        return flightsNumber;
+    public LocalDate getDepartureDate() {
+        return departureDate;
     }
 
-    public void setFlightsNumber(Long flightsNumber) {
-        this.flightsNumber = flightsNumber;
+    public String getDestination() {
+        return destination;
     }
 
-    public LocalDateTime getDataENisjes() {
-        return dataENisjes;
+    public double getPrice() {
+        return price;
     }
 
-    public void setDataENisjes(LocalDateTime dataENisjes) {
-        this.dataENisjes = dataENisjes;
-    }
-
-    public String getDestinacioni() {
-        return destinacioni;
-    }
-
-    public void setDestinacioni(String destinacioni) {
-        this.destinacioni = destinacioni;
-    }
-
-    public Double getCmimi() {
-        return cmimi;
-    }
-
-    public void setCmimi(Double cmimi) {
-        this.cmimi = cmimi;
+    public String getSeatNumber() {
+        return seatNumber;
     }
 }

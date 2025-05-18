@@ -1,62 +1,100 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import model.Tickets;
+import model.dto.CreateBookingDto;
 import services.SceneManager;
-
-import java.io.IOException;
-import java.text.SimpleDateFormat;
+import session.CustomerSession;
+import services.BookingService;
+import model.Tickets;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.UUID;
 
 public class TicketCardController {
 
-    @FXML private Label lblPrice;
-    @FXML private Label lblFrom;
-    @FXML private Label lblTo;
-    @FXML private Label lblDepartureTime;
-    @FXML private Label lblArrivalTime;
-    @FXML private Label lblDuration;
-    @FXML private Label lblStatus;
+    @FXML private TextField txtPrice;
+    @FXML private TextField txtFrom;
+    @FXML private TextField txtTo;
+    @FXML private TextField txtStatus;
+    @FXML private TextField txtDepartureTime;
+    @FXML private TextField txtArrivalTime;
+    @FXML private TextField txtDuration;
+    @FXML private TextField txtAirline;
+    @FXML private Button btnBuy;
+
+
 
     private Tickets ticket;
+    private final BookingService bookingService = new BookingService();
+
+    @FXML
+    private void initialize() {
+        Object data = SceneManager.getInstance().getData("selectedTicket");
+        if (data instanceof Tickets selectedTicket) {
+            this.ticket = selectedTicket;
+            setTicketData(ticket);
+        } else {
+            System.err.println("Ticket not found in SceneManager.");
+        }
+    }
 
     public void setTicketData(Tickets ticket) {
         this.ticket = ticket;
-
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-
-        lblPrice.setText("€" + ticket.getTicketPrice());
-        lblFrom.setText(ticket.getDepartureAirport());
-        lblTo.setText(ticket.getArrivalAirport());
-        lblDepartureTime.setText(timeFormat.format(ticket.getDepartureTime()));
-        lblArrivalTime.setText(timeFormat.format(ticket.getArrivalTime()));
-
-        lblStatus.setText(ticket.getStatus());
+        txtPrice.setText(String.valueOf(ticket.getTicketPrice()));
+        txtFrom.setText(ticket.getDepartureAirport());
+        txtTo.setText(ticket.getArrivalAirport());
+        txtStatus.setText(ticket.getStatus());
+        txtDepartureTime.setText(ticket.getDepartureTime().toString());
+        txtArrivalTime.setText(ticket.getArrivalTime().toString());
+        txtDuration.setText(ticket.getDuration());
+        txtAirline.setText(ticket.getAirlineName());
     }
 
     @FXML
     private void handleBuyClick() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/reserve_ticket.fxml"));
-            Parent root = loader.load();
+        if (ticket == null || CustomerSession.getInstance().getCurrentCostumer() == null) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Missing ticket or customer session.");
+            return;
+        }
 
-            // Kalo të dhënat e biletës te faqja tjetër nëse do
-            SceneManager.getInstance().setData("selectedTicket", ticket);
+        LocalDate departureDate = ticket.getDepartureTime()
+                .toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-            Stage stage = new Stage();
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.setTitle("Confirm Booking");
-            stage.setScene(new Scene(root));
-            stage.show();
+        String seatNumber = generateSeatNumber();
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        CreateBookingDto dto = new CreateBookingDto(
+                CustomerSession.getInstance().getCurrentCostumer().getCostumerId(),
+                ticket.getFlightNumber(),
+                departureDate,
+                ticket.getArrivalAirport(),
+                ticket.getTicketPrice(),
+                seatNumber
+        );
+
+        boolean success = bookingService.createBooking(dto);
+        if (success) {
+            showAlert(Alert.AlertType.INFORMATION, "Success", "Reservation completed successfully.");
+        } else {
+            showAlert(Alert.AlertType.ERROR, "Failure", "Reservation failed. Please try again.");
         }
     }
+
+    private void showAlert(Alert.AlertType type, String title, String message) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private String generateSeatNumber() {
+        int row = (int) (Math.random() * 30) + 1;
+        char seat = (char) ('A' + (int) (Math.random() * 6));
+        return row + String.valueOf(seat);
+    }
+
 }

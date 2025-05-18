@@ -1,13 +1,12 @@
 package services;
 
-import model.Booking;
+import model.dto.CreateBookingDto;
 import repository.BookingRepository;
 
 public class BookingService {
+    private final BookingRepository repository = new BookingRepository();
 
-    private final BookingRepository bookingRepository = new BookingRepository();
-
-    public boolean saveBooking(Booking booking) {
-        return bookingRepository.insertBooking(booking);
+    public boolean createBooking(CreateBookingDto dto) {
+        return repository.createBooking(dto);
     }
 }

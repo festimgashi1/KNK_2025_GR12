@@ -254,12 +254,12 @@ FROM Tickets t
 JOIN Flights f ON t.flightNumber = f.flightNumber;
 
 SELECT t.ticketid, t.flightNumber, t.bookingdate, t.ticketprice, t.passengers,
-        f.departureAirport, f.arrivalAirport, f.departureTime, f.arrivalTime, f.duration,
-        a.airlinename
- FROM Tickets t
- JOIN Flights f ON t.flightNumber = f.flightNumber
- JOIN Airline a ON f.airlineid = a.airlineid
- WHERE f.departureAirport = ?
-   AND f.arrivalAirport = ?
-   AND DATE(f.departureTime) = ?
-   AND t.passengers >= ?;
+       f.departureAirport, f.arrivalAirport, f.departureTime, f.arrivalTime, f.duration,
+       a.airlinename
+FROM Tickets t
+JOIN Flights f ON t.flightNumber = f.flightNumber
+JOIN Airline a ON f.airlineid = a.airlineid
+WHERE f.departureAirport = ?
+  AND f.arrivalAirport = ?
+  AND DATE(f.departureTime) = ?
+  AND t.passengers >= ?;
