@@ -19,11 +19,10 @@ public class CustomerFlightBoardRepository {
         List<Flights> flights = new ArrayList<>();
         String query = "SELECT flightnumber, departureairport, arrivalairport, departuretime, arrivaltime, status " +
                 "FROM flights " +
-                "WHERE arrivalAirport = ? AND departureAirport <> ? AND DATE(arrivalTime) = CURRENT_DATE";
+                "WHERE LOWER(arrivalAirport) IN ('prishtina', 'prishtine') AND LOWER(departureAirport) NOT IN ('prishtina', 'prishtine') " +
+                "AND DATE(arrivalTime) = CURRENT_DATE";
 
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, airport);
-            stmt.setString(2, airport);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -51,11 +50,10 @@ public class CustomerFlightBoardRepository {
         List<Flights> flights = new ArrayList<>();
         String query = "SELECT flightnumber, departureairport, arrivalairport, departuretime, arrivaltime, status " +
                 "FROM flights " +
-                "WHERE departureAirport = ? AND arrivalAirport <> ? AND DATE(departureTime) = CURRENT_DATE";
+                "WHERE LOWER(departureAirport) IN ('prishtina', 'prishtine') AND LOWER(arrivalAirport) NOT IN ('prishtina', 'prishtine') " +
+                "AND DATE(departureTime) = CURRENT_DATE";
 
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, airport);
-            stmt.setString(2, airport);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -83,11 +81,9 @@ public class CustomerFlightBoardRepository {
         List<Flights> flights = new ArrayList<>();
         String query = "SELECT flightnumber, departureairport, arrivalairport, departuretime, arrivaltime, status " +
                 "FROM flights " +
-                "WHERE arrivalAirport = ? AND departureAirport <> ?";
+                "WHERE LOWER(arrivalAirport) IN ('prishtina', 'prishtine') AND LOWER(departureAirport) NOT IN ('prishtina', 'prishtine')";
 
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, airport);
-            stmt.setString(2, airport);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -115,11 +111,9 @@ public class CustomerFlightBoardRepository {
         List<Flights> flights = new ArrayList<>();
         String query = "SELECT flightnumber, departureairport, arrivalairport, departuretime, arrivaltime, status " +
                 "FROM flights " +
-                "WHERE departureAirport = ? AND arrivalAirport <> ?";
+                "WHERE LOWER(departureAirport) IN ('prishtina', 'prishtine') AND LOWER(arrivalAirport) NOT IN ('prishtina', 'prishtine')";
 
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, airport);
-            stmt.setString(2, airport);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
