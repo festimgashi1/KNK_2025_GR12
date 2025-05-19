@@ -4,7 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import model.Admin;
 import services.SceneManager;
 import session.AdminSession;
 
@@ -34,7 +36,19 @@ public class AdminDashboardController {
         SceneManager.getInstance().switchScene("/Views/admin_airlines.fxml");
     }
 
-    // ▶️ Profile logic
+    @FXML
+    private Label lblAdminName;
+
+    @FXML
+    public void initialize() {
+        Admin admin = session.AdminSession.getInstance().getCurrentAdmin();
+        if (admin != null) {
+            lblAdminName.setText("✈ " + admin.getFirstName());
+        } else {
+            lblAdminName.setText("✈ Admin");
+        }
+    }
+
     @FXML
     public void goLogIn(ActionEvent event) {
         if (AdminSession.getInstance().getCurrentAdmin() != null) {

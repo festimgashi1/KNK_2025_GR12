@@ -5,6 +5,7 @@ import model.Admin;
 public class AdminSession {
     private static AdminSession instance;
     private Admin currentAdmin;
+    private static String adminName;
 
     private AdminSession() {}
 
@@ -21,6 +22,10 @@ public class AdminSession {
 
     public Admin getCurrentAdmin() {
         return currentAdmin;
+    }
+
+    public static String getAdminName() {
+        return adminName;
     }
 
     public void clear() {
