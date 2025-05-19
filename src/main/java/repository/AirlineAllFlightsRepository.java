@@ -24,10 +24,15 @@ public class AirlineAllFlightsRepository {
 
     public List<Flights> getArrivalsToday(String airport) {
         List<Flights> flights = new ArrayList<>();
-        String query = "SELECT flightnumber, departureairport, arrivalairport, departuretime, arrivaltime, status " +
-                "FROM flights " +
-                "WHERE LOWER(arrivalAirport) IN ('prishtina', 'prishtine') AND LOWER(departureAirport) NOT IN ('prishtina', 'prishtine') " +
-                "AND DATE(arrivalTime) = CURRENT_DATE";
+        String query = """
+            SELECT f.flightnumber, f.departureairport, f.arrivalairport,
+                   f.departuretime, f.arrivaltime, f.status, a.airlinename
+            FROM Flights f
+            JOIN Airline a ON f.airlineid = a.airlineid
+            WHERE LOWER(f.arrivalAirport) IN ('prishtina', 'prishtine')
+              AND LOWER(f.departureAirport) NOT IN ('prishtina', 'prishtine')
+              AND DATE(f.arrivalTime) = CURRENT_DATE
+        """;
 
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             ResultSet rs = stmt.executeQuery();
@@ -41,7 +46,7 @@ public class AirlineAllFlightsRepository {
                         rs.getString("arrivalairport"),
                         formatDateTime(rs.getTimestamp("departuretime")),
                         formatDateTime(rs.getTimestamp("arrivaltime")),
-                        null,
+                        rs.getString("airlinename"),
                         rs.getString("status")
                 );
                 flights.add(flight);
@@ -55,10 +60,15 @@ public class AirlineAllFlightsRepository {
 
     public List<Flights> getDeparturesToday(String airport) {
         List<Flights> flights = new ArrayList<>();
-        String query = "SELECT flightnumber, departureairport, arrivalairport, departuretime, arrivaltime, status " +
-                "FROM flights " +
-                "WHERE LOWER(departureAirport) IN ('prishtina', 'prishtine') AND LOWER(arrivalAirport) NOT IN ('prishtina', 'prishtine') " +
-                "AND DATE(departureTime) = CURRENT_DATE";
+        String query = """
+            SELECT f.flightnumber, f.departureairport, f.arrivalairport,
+                   f.departuretime, f.arrivaltime, f.status, a.airlinename
+            FROM Flights f
+            JOIN Airline a ON f.airlineid = a.airlineid
+            WHERE LOWER(f.departureAirport) IN ('prishtina', 'prishtine')
+              AND LOWER(f.arrivalAirport) NOT IN ('prishtina', 'prishtine')
+              AND DATE(f.departureTime) = CURRENT_DATE
+        """;
 
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             ResultSet rs = stmt.executeQuery();
@@ -72,7 +82,7 @@ public class AirlineAllFlightsRepository {
                         rs.getString("arrivalairport"),
                         formatDateTime(rs.getTimestamp("departuretime")),
                         formatDateTime(rs.getTimestamp("arrivaltime")),
-                        null,
+                        rs.getString("airlinename"),
                         rs.getString("status")
                 );
                 flights.add(flight);
@@ -86,9 +96,14 @@ public class AirlineAllFlightsRepository {
 
     public List<Flights> getAllArrivals(String airport) {
         List<Flights> flights = new ArrayList<>();
-        String query = "SELECT flightnumber, departureairport, arrivalairport, departuretime, arrivaltime, status " +
-                "FROM flights " +
-                "WHERE LOWER(arrivalAirport) IN ('prishtina', 'prishtine') AND LOWER(departureAirport) NOT IN ('prishtina', 'prishtine')";
+        String query = """
+            SELECT f.flightnumber, f.departureairport, f.arrivalairport,
+                   f.departuretime, f.arrivaltime, f.status, a.airlinename
+            FROM flights f
+            JOIN airline a ON f.airlineid = a.airlineid
+            WHERE LOWER(f.arrivalAirport) IN ('prishtina', 'prishtine')
+              AND LOWER(f.departureAirport) NOT IN ('prishtina', 'prishtine')
+        """;
 
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             ResultSet rs = stmt.executeQuery();
@@ -102,7 +117,7 @@ public class AirlineAllFlightsRepository {
                         rs.getString("arrivalairport"),
                         formatDateTime(rs.getTimestamp("departuretime")),
                         formatDateTime(rs.getTimestamp("arrivaltime")),
-                        null,
+                        rs.getString("airlinename"),
                         rs.getString("status")
                 );
                 flights.add(flight);
@@ -116,9 +131,14 @@ public class AirlineAllFlightsRepository {
 
     public List<Flights> getAllDepartures(String airport) {
         List<Flights> flights = new ArrayList<>();
-        String query = "SELECT flightnumber, departureairport, arrivalairport, departuretime, arrivaltime, status " +
-                "FROM flights " +
-                "WHERE LOWER(departureAirport) IN ('prishtina', 'prishtine') AND LOWER(arrivalAirport) NOT IN ('prishtina', 'prishtine')";
+        String query = """
+            SELECT f.flightnumber, f.departureairport, f.arrivalairport,
+                   f.departuretime, f.arrivaltime, f.status, a.airlinename
+            FROM flights f
+            JOIN airline a ON f.airlineid = a.airlineid
+            WHERE LOWER(f.departureAirport) IN ('prishtina', 'prishtine')
+              AND LOWER(f.arrivalAirport) NOT IN ('prishtina', 'prishtine')
+        """;
 
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             ResultSet rs = stmt.executeQuery();
@@ -132,7 +152,7 @@ public class AirlineAllFlightsRepository {
                         rs.getString("arrivalairport"),
                         formatDateTime(rs.getTimestamp("departuretime")),
                         formatDateTime(rs.getTimestamp("arrivaltime")),
-                        null,
+                        rs.getString("airlinename"),
                         rs.getString("status")
                 );
                 flights.add(flight);

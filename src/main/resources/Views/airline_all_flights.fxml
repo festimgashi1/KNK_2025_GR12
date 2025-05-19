@@ -42,24 +42,27 @@
             <!-- ARRIVALS Table -->
             <TableView fx:id="tableViewArrivals" prefHeight="220" prefWidth="600">
                 <columns>
-                    <TableColumn fx:id="colStaArrivals" text="Sta." prefWidth="130"/>
-                    <TableColumn fx:id="colEstArrivals" text="Est." prefWidth="130"/>
-                    <TableColumn fx:id="colFlightArrivals" text="Flight" prefWidth="90"/>
-                    <TableColumn fx:id="colFromArrivals" text="From" prefWidth="90"/>
-                    <TableColumn fx:id="colStatusArrivals" text="Status" prefWidth="90"/>
+                    <TableColumn fx:id="colStaArrivals" text="Sta." prefWidth="100"/>
+                    <TableColumn fx:id="colEstArrivals" text="Est." prefWidth="100"/>
+                    <TableColumn fx:id="colFlightArrivals" text="Flight" prefWidth="80"/>
+                    <TableColumn fx:id="colFromArrivals" text="From" prefWidth="80"/>
+                    <TableColumn fx:id="colStatusArrivals" text="Status" prefWidth="80"/>
+                    <TableColumn fx:id="colAirlineArrivals" text="Airline" prefWidth="120"/>
                 </columns>
             </TableView>
 
             <!-- DEPARTURES Table -->
             <TableView fx:id="tableViewDepartures" prefHeight="220" prefWidth="600">
                 <columns>
-                    <TableColumn fx:id="colStaDepartures" text="Sta." prefWidth="130"/>
-                    <TableColumn fx:id="colEstDepartures" text="Est." prefWidth="130"/>
-                    <TableColumn fx:id="colFlightDepartures" text="Flight" prefWidth="90"/>
-                    <TableColumn fx:id="colToDepartures" text="To" prefWidth="90"/>
-                    <TableColumn fx:id="colStatusDepartures" text="Status" prefWidth="90"/>
+                    <TableColumn fx:id="colStaDepartures" text="Sta." prefWidth="100"/>
+                    <TableColumn fx:id="colEstDepartures" text="Est." prefWidth="100"/>
+                    <TableColumn fx:id="colFlightDepartures" text="Flight" prefWidth="80"/>
+                    <TableColumn fx:id="colToDepartures" text="To" prefWidth="80"/>
+                    <TableColumn fx:id="colStatusDepartures" text="Status" prefWidth="80"/>
+                    <TableColumn fx:id="colAirlineDepartures" text="Airline" prefWidth="120"/>
                 </columns>
             </TableView>
+
         </VBox>
     </center>
 </BorderPane>

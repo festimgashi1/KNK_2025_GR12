@@ -11,31 +11,21 @@ import java.util.List;
 
 public class AirlineAllFlightsController {
 
-    @FXML
-    private TableView<Flights> tableViewArrivals;
-    @FXML
-    private TableColumn<Flights, String> colStaArrivals;
-    @FXML
-    private TableColumn<Flights, String> colEstArrivals;
-    @FXML
-    private TableColumn<Flights, String> colFlightArrivals;
-    @FXML
-    private TableColumn<Flights, String> colFromArrivals;
-    @FXML
-    private TableColumn<Flights, String> colStatusArrivals;
+    @FXML private TableView<Flights> tableViewArrivals;
+    @FXML private TableColumn<Flights, String> colStaArrivals;
+    @FXML private TableColumn<Flights, String> colEstArrivals;
+    @FXML private TableColumn<Flights, String> colFlightArrivals;
+    @FXML private TableColumn<Flights, String> colFromArrivals;
+    @FXML private TableColumn<Flights, String> colStatusArrivals;
+    @FXML private TableColumn<Flights, String> colAirlineArrivals;
 
-    @FXML
-    private TableView<Flights> tableViewDepartures;
-    @FXML
-    private TableColumn<Flights, String> colStaDepartures;
-    @FXML
-    private TableColumn<Flights, String> colEstDepartures;
-    @FXML
-    private TableColumn<Flights, String> colFlightDepartures;
-    @FXML
-    private TableColumn<Flights, String> colToDepartures;
-    @FXML
-    private TableColumn<Flights, String> colStatusDepartures;
+    @FXML private TableView<Flights> tableViewDepartures;
+    @FXML private TableColumn<Flights, String> colStaDepartures;
+    @FXML private TableColumn<Flights, String> colEstDepartures;
+    @FXML private TableColumn<Flights, String> colFlightDepartures;
+    @FXML private TableColumn<Flights, String> colToDepartures;
+    @FXML private TableColumn<Flights, String> colStatusDepartures;
+    @FXML private TableColumn<Flights, String> colAirlineDepartures;
 
     private final AirlineAllFlightsRepository flightRepo = new AirlineAllFlightsRepository();
     private final String CURRENT_AIRPORT = "Prishtina";
@@ -53,6 +43,7 @@ public class AirlineAllFlightsController {
         colFlightArrivals.setCellValueFactory(f -> new SimpleStringProperty("FL-" + f.getValue().getFlightNumber()));
         colFromArrivals.setCellValueFactory(new PropertyValueFactory<>("departureAirport"));
         colStatusArrivals.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colAirlineArrivals.setCellValueFactory(new PropertyValueFactory<>("airlineName"));
     }
 
     private void setupDepartureTable() {
@@ -61,6 +52,7 @@ public class AirlineAllFlightsController {
         colFlightDepartures.setCellValueFactory(f -> new SimpleStringProperty("FL-" + f.getValue().getFlightNumber()));
         colToDepartures.setCellValueFactory(new PropertyValueFactory<>("arrivalAirport"));
         colStatusDepartures.setCellValueFactory(new PropertyValueFactory<>("status"));
+        colAirlineDepartures.setCellValueFactory(new PropertyValueFactory<>("airlineName"));
     }
 
     @FXML

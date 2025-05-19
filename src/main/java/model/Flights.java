@@ -10,8 +10,11 @@ public class Flights {
     private String arrivalTime;
     private String duration;
     private String status;
+    private String airlineName;
 
-    public Flights(int flightNumber, int airlineid, int planeid, String departureAirport, String arrivalAirport, String departureTime, String arrivalTime, String duration, String status) {
+    public Flights(int flightNumber, int airlineid, int planeid, String departureAirport,
+                   String arrivalAirport, String departureTime, String arrivalTime,
+                   String airlineName, String status) {
         this.flightNumber = flightNumber;
         this.airlineid = airlineid;
         this.planeid = planeid;
@@ -19,7 +22,7 @@ public class Flights {
         this.arrivalAirport = arrivalAirport;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
-        this.duration = duration;
+        this.airlineName = airlineName;
         this.status = status;
     }
 
@@ -59,6 +62,10 @@ public class Flights {
         return status;
     }
 
+    public String getAirlineName() {
+        return airlineName;
+    }
+
     public void setPlaneid(int planeid) {
         this.planeid = planeid;
     }
@@ -87,4 +94,7 @@ public class Flights {
         this.status = status;
     }
 
+    public void setAirlineName(String airlineName) {
+        this.airlineName = airlineName;
+    }
 }
