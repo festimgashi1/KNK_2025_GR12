@@ -3,6 +3,8 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import model.Costumer;
 import model.dto.CreateCostumerDto;
 import services.SceneManager;
@@ -76,4 +78,13 @@ public class CostumerSignUpController {
     public void handleGuest(ActionEvent event) {
         SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
     }
+    @FXML private StackPane rootPane;
+    @FXML private ImageView bgImageView;
+
+    @FXML
+    public void initialize() {
+        bgImageView.fitWidthProperty().bind(rootPane.widthProperty());
+        bgImageView.fitHeightProperty().bind(rootPane.heightProperty());
+    }
+
 }

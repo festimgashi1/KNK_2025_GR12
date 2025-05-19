@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import model.dto.PendingAirlineDto;
 import services.SceneManager;
 import services.SignupService;
@@ -76,4 +78,14 @@ public class AirlineSignUpController {
     public void goHome(ActionEvent event) {
         SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
     }
+
+    @FXML private StackPane rootPane;
+    @FXML private ImageView bgImageView;
+
+    @FXML
+    public void initialize() {
+        bgImageView.fitWidthProperty().bind(rootPane.widthProperty());
+        bgImageView.fitHeightProperty().bind(rootPane.heightProperty());
+    }
+
 }
