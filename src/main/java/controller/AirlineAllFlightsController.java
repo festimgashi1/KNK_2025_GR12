@@ -70,4 +70,12 @@ public class AirlineAllFlightsController {
         tableViewArrivals.getItems().setAll(arrivals);
         tableViewDepartures.getItems().setAll(departures);
     }
+
+    @FXML
+    private void showAllFlights() {
+        List<Flights> arrivals = flightRepo.getAllArrivals(CURRENT_AIRPORT);
+        List<Flights> departures = flightRepo.getAllDepartures(CURRENT_AIRPORT);
+        tableViewArrivals.getItems().setAll(arrivals);
+        tableViewDepartures.getItems().setAll(departures);
+    }
 }

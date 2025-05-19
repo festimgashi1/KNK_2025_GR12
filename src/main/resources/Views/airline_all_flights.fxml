@@ -34,6 +34,9 @@
                 <Button text="Today" prefHeight="27" prefWidth="82"
                         onAction="#showToday"
                         style="-fx-background-color: #ADD8E6; -fx-border-color: white;"/>
+                <Button text="All Flights" prefHeight="27" prefWidth="86"
+                        onAction="#showAllFlights"
+                        style="-fx-background-color: #ADD8E6; -fx-border-color: white;"/>
             </HBox>
 
             <!-- ARRIVALS Table -->
