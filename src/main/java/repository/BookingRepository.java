@@ -5,10 +5,12 @@ import database.DBConnector;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class BookingRepository {
 
     public boolean createBooking(CreateBookingDto dto) {
+
         String query = """
             INSERT INTO Booking (costumerId, flightNumber, departureDate, destination, price, seatNumber)
             VALUES (?, ?, ?, ?, ?, ?)
@@ -24,9 +26,24 @@ public class BookingRepository {
             stmt.setDouble(5, dto.getPrice());
             stmt.setString(6, dto.getSeatNumber());
 
-            return stmt.executeUpdate() > 0;
+            System.out.println("🚀 Executing INSERT into Booking:");
+            System.out.println("→ costumerId = " + dto.getCostumerId());
+            System.out.println("→ flightNumber = " + dto.getFlightNumber());
+            System.out.println("→ departureDate = " + dto.getDepartureDate());
+            System.out.println("→ destination = " + dto.getDestination());
+            System.out.println("→ price = " + dto.getPrice());
+            System.out.println("→ seatNumber = " + dto.getSeatNumber());
 
+            int rows = stmt.executeUpdate();
+            System.out.println("✅ Rows affected: " + rows);
+            return rows > 0;
+
+        } catch (SQLException e) {
+            System.err.println(" SQL ERROR while inserting booking: " + e.getMessage());
+            e.printStackTrace();
+            return false;
         } catch (Exception e) {
+            System.err.println(" Unexpected ERROR while inserting booking: " + e.getMessage());
             e.printStackTrace();
             return false;
         }

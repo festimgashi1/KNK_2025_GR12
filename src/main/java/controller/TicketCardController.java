@@ -43,8 +43,27 @@ public class TicketCardController {
     @FXML
     private void handleBuyClick() {
         System.out.println("BUY CLICKED – ticket = " + ticket);
-        if (ticket == null || CustomerSession.getInstance().getCurrentCostumer() == null) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Missing ticket or customer session.");
+
+        // 🔐 Kontroll nëse klienti është i loguar
+        if (CustomerSession.getInstance().getCurrentCostumer() == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Authentication Required");
+            alert.setHeaderText("You must be logged in to purchase a ticket.");
+            alert.setContentText("Please log in to continue.");
+
+            ButtonType loginButton = new ButtonType("Go to Login", ButtonBar.ButtonData.OK_DONE);
+            alert.getButtonTypes().setAll(loginButton, ButtonType.CANCEL);
+
+            alert.showAndWait().ifPresent(response -> {
+                if (response == loginButton) {
+                    SceneManager.getInstance().switchScene("/Views/login.fxml");
+                }
+            });
+            return;
+        }
+
+        if (ticket == null) {
+            showAlert(Alert.AlertType.ERROR, "Error", "No ticket selected.");
             return;
         }
 

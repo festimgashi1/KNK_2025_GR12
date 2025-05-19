@@ -8,5 +8,6 @@ public class BookingService {
 
     public boolean createBooking(CreateBookingDto dto) {
         return repository.createBooking(dto);
+
     }
 }

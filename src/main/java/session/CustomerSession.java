@@ -2,6 +2,8 @@ package session;
 
 import model.Costumer;
 
+
+
 public class CustomerSession {
     private static CustomerSession instance;
     private Costumer currentCostumer;
@@ -28,3 +30,4 @@ public class CustomerSession {
     }
 
 }
+

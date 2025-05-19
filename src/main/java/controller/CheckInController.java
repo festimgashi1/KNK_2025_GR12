@@ -89,7 +89,7 @@ public class CheckInController {
 
 
             int clientId = Integer.parseInt(txtClientId.getText());
-            int bookingId = Integer.parseInt(txtBookingId.getText()); // optionally set manually or autofill
+            int bookingId = Integer.parseInt(txtBookingId.getText());
             LocalDate issueDate = dpIssueDate.getValue();
             LocalDate expiryDate = dpExpiryDate.getValue();
 
