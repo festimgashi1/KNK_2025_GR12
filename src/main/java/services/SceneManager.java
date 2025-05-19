@@ -12,9 +12,8 @@ import java.util.Map;
 public class SceneManager {
     private static SceneManager sceneManager;
     private Scene scene;
+    private Stage primaryStage;
     private String currentPath;
-    private String centerPanePath;
-
     private final Map<String, Object> data = new HashMap<>();
     private FXMLLoader lastLoader;
 
@@ -31,8 +30,8 @@ public class SceneManager {
 
     private Scene initScene() {
         try {
-            return new Scene(this.getParent(currentPath));
-        } catch (Exception e) {
+            return new Scene(getParent(currentPath));
+        } catch (IOException e) {
             e.printStackTrace();
             return null;
         }
@@ -49,30 +48,31 @@ public class SceneManager {
         return scene;
     }
 
+    public void setStage(Stage stage) {
+        this.primaryStage = stage;
+    }
+
     public void switchScene(String fxmlPath) {
         try {
             this.currentPath = fxmlPath;
             Parent root = getParent(fxmlPath);
+
             if (scene == null) {
                 scene = new Scene(root);
             } else {
                 scene.setRoot(root);
             }
 
-            Stage stage = (Stage) scene.getWindow();
-            if (stage != null) {
-                stage.setScene(scene);
+            if (primaryStage != null) {
+                primaryStage.setScene(scene);
+                primaryStage.show();
             } else {
-                System.out.println("Warning: stage is null");
+                System.out.println("Warning: primaryStage is null in SceneManager.");
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void setCenterPanePath(String fxmlPath) {
-        this.centerPanePath = fxmlPath;
     }
 
     public void setData(String key, Object value) {

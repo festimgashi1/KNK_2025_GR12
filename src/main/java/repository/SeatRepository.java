@@ -20,11 +20,20 @@ public class SeatRepository {
                 try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
                     insertStmt.setString(1, seatNumber);
                     insertStmt.setInt(2, flightNumber);
-                    insertStmt.executeUpdate();
+                    int rows = insertStmt.executeUpdate();
+
+                    if (rows > 0) {
+                        System.out.println("Seat inserted: " + seatNumber + " - Flight: " + flightNumber);
+                    } else {
+                        System.out.println("⚠Seat insert failed unexpectedly.");
+                    }
                 }
+            } else {
+                System.out.println("ℹ Seat already exists: " + seatNumber + " - Flight: " + flightNumber);
             }
 
         } catch (Exception e) {
+            System.err.println(" Error inserting seat: " + e.getMessage());
             e.printStackTrace();
             throw new RuntimeException("Seat check/insert failed: " + e.getMessage());
         }

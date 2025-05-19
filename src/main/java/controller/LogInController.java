@@ -50,13 +50,14 @@ public class LogInController {
             } else if (user instanceof Airline) {
                 Airline airline = (Airline) user;
                 AirlineSession.setAirlineId(airline.getAirlineid());
-                AirlineSession.setAirlineName(((Airline) user).getAirlinename());
+                AirlineSession.setAirlineName(airline.getAirlinename());
                 errorLabel.setText("");
                 SceneManager.getInstance().switchScene("/Views/add_flight.fxml");
 
             } else if (user instanceof Costumer) {
                 Costumer costumer = (Costumer) user;
                 CustomerSession.getInstance().setCurrentCostumer(costumer);
+                System.out.println("Customer logged in: " + costumer.getFirstName());
                 errorLabel.setText("");
                 SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
 
@@ -68,6 +69,7 @@ public class LogInController {
 
         } catch (Exception e) {
             errorLabel.setText("Email or password is incorrect.");
+            e.printStackTrace(); // ✅ për debug
         }
     }
 
@@ -88,6 +90,7 @@ public class LogInController {
 
     @FXML
     public void handleGuest(ActionEvent event) {
+        System.out.println("Guest mode is disabled. Please log in with a valid account.");
         SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
     }
 
