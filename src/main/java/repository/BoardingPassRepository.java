@@ -5,15 +5,42 @@ import model.BoardingPass;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class BoardingPassRepository {
 
+    public BoardingPass getBoardingPassByReservationId(int reservationId) {
+        String query = "SELECT * FROM BoardingPass WHERE reservationId = ?";
+        try (Connection conn = DBConnector.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setInt(1, reservationId);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return new BoardingPass(
+                        rs.getInt("reservationId"),
+                        rs.getString("name"),
+                        rs.getString("from_location"),
+                        rs.getString("to_location"),
+                        rs.getDate("flight_date").toLocalDate(),
+                        rs.getString("flight_code"),
+                        rs.getString("gate"),
+                        rs.getString("boarding_time"),
+                        rs.getString("seat")
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public void save(BoardingPass pass) {
-        String sql = "INSERT INTO BoardingPass (name, from_location, to_location, flight_date, flight_code, gate, boarding_time, seat) " +
+        String query = "INSERT INTO BoardingPass (name, from_location, to_location, flight_date, flight_code, gate, boarding_time, seat) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DBConnector.getConnection();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+             PreparedStatement stmt = conn.prepareStatement(query)) {
 
             stmt.setString(1, pass.getName());
             stmt.setString(2, pass.getFrom());
@@ -27,7 +54,7 @@ public class BoardingPassRepository {
             stmt.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException("Failed to save boarding pass: " + e.getMessage());
+            throw new RuntimeException("Failed to insert boarding pass: " + e.getMessage());
         }
     }
 }

@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AirlineProfileController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ChangeAirlinePasswordController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/AirlineService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/airline_profile.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/change_airline_password.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/session/TicketSession.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AirlineNav.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AirlineNav.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/AirlineRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/Airline_Dash.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/Airline_Dash.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CheckInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CheckInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TicketCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TicketCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/BoardingPassRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/BoardingPassRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/SceneManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/TicketCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/TicketCard.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,26 +21,26 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Getoar19"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Getoar19&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/festimgashi1/KNK_2025_GR12.git",
-    "accountId": "a44f3b97-c8ac-43f2-8e8d-743e6a41b632"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/festimgashi1/KNK_2025_GR12.git&quot;,
+    &quot;accountId&quot;: &quot;a44f3b97-c8ac-43f2-8e8d-743e6a41b632&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>

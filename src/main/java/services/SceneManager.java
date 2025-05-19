@@ -3,6 +3,8 @@ package services;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,48 +15,63 @@ public class SceneManager {
     private String currentPath;
     private String centerPanePath;
 
-
     private final Map<String, Object> data = new HashMap<>();
+    private FXMLLoader lastLoader;
 
-    private SceneManager(){
+    private SceneManager() {
         this.currentPath = "/Views/customer_flights.fxml";
         this.scene = this.initScene();
     }
 
-    public static SceneManager getInstance(){
-        if(sceneManager == null)
+    public static SceneManager getInstance() {
+        if (sceneManager == null)
             sceneManager = new SceneManager();
         return sceneManager;
     }
 
-    private Scene initScene(){
-        try{
+    private Scene initScene() {
+        try {
             return new Scene(this.getParent(currentPath));
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    private Parent getParent(String path) throws IOException{
-        return FXMLLoader.load(getClass().getResource(path));
+    private Parent getParent(String path) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        Parent root = loader.load();
+        lastLoader = loader;
+        return root;
     }
 
-    public Scene getScene(){
+    public Scene getScene() {
         return scene;
     }
 
-    public void switchScene(String fxmlPath){
-        try{
+    public void switchScene(String fxmlPath) {
+        try {
             this.currentPath = fxmlPath;
             Parent root = getParent(fxmlPath);
-            scene.setRoot(root);
+            if (scene == null) {
+                scene = new Scene(root);
+            } else {
+                scene.setRoot(root);
+            }
+
+            Stage stage = (Stage) scene.getWindow();
+            if (stage != null) {
+                stage.setScene(scene);
+            } else {
+                System.out.println("Warning: stage is null");
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void setCenterPanePath(String fxmlPath){
+    public void setCenterPanePath(String fxmlPath) {
         this.centerPanePath = fxmlPath;
     }
 
@@ -64,5 +81,9 @@ public class SceneManager {
 
     public Object getData(String key) {
         return data.get(key);
+    }
+
+    public <T> T getLastController() {
+        return lastLoader != null ? lastLoader.getController() : null;
     }
 }

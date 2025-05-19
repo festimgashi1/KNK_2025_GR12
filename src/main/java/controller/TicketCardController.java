@@ -1,18 +1,17 @@
 package controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import model.Tickets;
 import model.dto.CreateBookingDto;
 import services.SceneManager;
 import session.CustomerSession;
 import services.BookingService;
-import model.Tickets;
+import session.TicketSession;
+import repository.SeatRepository;
+
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.UUID;
 
 public class TicketCardController {
 
@@ -26,12 +25,8 @@ public class TicketCardController {
     @FXML private TextField txtAirline;
     @FXML private Button btnBuy;
 
-
-
     private Tickets ticket;
     private final BookingService bookingService = new BookingService();
-
-
 
     public void setTicketData(Tickets ticket) {
         this.ticket = ticket;
@@ -47,6 +42,7 @@ public class TicketCardController {
 
     @FXML
     private void handleBuyClick() {
+        System.out.println("BUY CLICKED – ticket = " + ticket);
         if (ticket == null || CustomerSession.getInstance().getCurrentCostumer() == null) {
             showAlert(Alert.AlertType.ERROR, "Error", "Missing ticket or customer session.");
             return;
@@ -56,6 +52,9 @@ public class TicketCardController {
                 .toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
         String seatNumber = generateSeatNumber();
+
+        SeatRepository seatRepo = new SeatRepository();
+        seatRepo.insertIfNotExists(seatNumber, ticket.getFlightNumber());
 
         CreateBookingDto dto = new CreateBookingDto(
                 CustomerSession.getInstance().getCurrentCostumer().getCostumerId(),
@@ -68,7 +67,9 @@ public class TicketCardController {
 
         boolean success = bookingService.createBooking(dto);
         if (success) {
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Reservation completed successfully.");
+            TicketSession.getInstance().setSelectedTicket(ticket);
+            TicketSession.getInstance().setSeatNumber(seatNumber);
+            SceneManager.getInstance().switchScene("/Views/CheckInView.fxml");
         } else {
             showAlert(Alert.AlertType.ERROR, "Failure", "Reservation failed. Please try again.");
         }
@@ -87,5 +88,4 @@ public class TicketCardController {
         char seat = (char) ('A' + (int) (Math.random() * 6));
         return row + String.valueOf(seat);
     }
-
 }

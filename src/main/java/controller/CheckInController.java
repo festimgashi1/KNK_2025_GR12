@@ -3,14 +3,15 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import model.Tickets;
 import model.BoardingPass;
 import model.TravelDocuments;
 import repository.BoardingPassRepository;
 import repository.TravelDocumentsRepository;
 import session.CustomerSession;
+import session.TicketSession;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class CheckInController {
@@ -30,7 +31,6 @@ public class CheckInController {
     @FXML private TextField txtBoardingTime;
     @FXML private TextField txtFlightCode;
 
-    @FXML private TextField txtDocumentId;
     @FXML private TextField txtClientId;
     @FXML private TextField txtBookingId;
     @FXML private DatePicker dpIssueDate;
@@ -48,10 +48,24 @@ public class CheckInController {
         rbMasterCard.setToggleGroup(paymentGroup);
         rbPaypal.setToggleGroup(paymentGroup);
 
-        // Autopopulate static values (normally passed from session/ticket)
-        txtSeat.setText(generateSeat());
-        txtGate.setText(generateGate());
-        txtClientId.setText(String.valueOf(CustomerSession.getInstance().getCurrentCostumer().getCostumerId()));
+
+        Tickets ticket = TicketSession.getInstance().getSelectedTicket();
+        String seatNumber = TicketSession.getInstance().getSeatNumber();
+
+        if (ticket != null && seatNumber != null) {
+            txtFromCode.setText(ticket.getDepartureAirport());
+            txtToCode.setText(ticket.getArrivalAirport());
+            txtFlightCode.setText(String.valueOf(ticket.getFlightNumber()));
+            dpFlightDate.setValue(ticket.getDepartureTime().toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalDate());
+            txtSeat.setText(seatNumber);
+            txtGate.setText(generateGate());
+
+            txtName.setText(CustomerSession.getInstance().getCurrentCostumer().getFirstName() + " " +
+                    CustomerSession.getInstance().getCurrentCostumer().getLastName());
+            txtClientId.setText(String.valueOf(CustomerSession.getInstance().getCurrentCostumer().getCostumerId()));
+        } else {
+            showError("Ticket or seat is missing.");
+        }
     }
 
     @FXML
@@ -69,25 +83,28 @@ public class CheckInController {
             RadioButton selectedPayment = (RadioButton) paymentGroup.getSelectedToggle();
             String paymentMethod = selectedPayment != null ? selectedPayment.getText() : "";
 
-            BoardingPass pass = new BoardingPass(name, from, to, flightDate, flightCode, gate, boardingTime, seat);
+
+            BoardingPass pass = new BoardingPass(0, name, from, to, flightDate, flightCode, gate, boardingTime, seat);
             boardingPassRepo.save(pass);
 
+
             int clientId = Integer.parseInt(txtClientId.getText());
-            int bookingId = Integer.parseInt(txtBookingId.getText());
+            int bookingId = Integer.parseInt(txtBookingId.getText()); // optionally set manually or autofill
             LocalDate issueDate = dpIssueDate.getValue();
             LocalDate expiryDate = dpExpiryDate.getValue();
 
-            TravelDocuments doc = new TravelDocuments(0, clientId, bookingId, java.sql.Date.valueOf(issueDate), java.sql.Date.valueOf(expiryDate), null, null);
+            TravelDocuments doc = new TravelDocuments(0, clientId, bookingId,
+                    java.sql.Date.valueOf(issueDate),
+                    java.sql.Date.valueOf(expiryDate),
+                    null, null);
             travelDocumentsRepo.save(doc);
 
             showSuccess("Check-In and Boarding Pass generated successfully!");
+
         } catch (Exception e) {
+            e.printStackTrace();
             showError("Error during check-in: " + e.getMessage());
         }
-    }
-
-    private String generateSeat() {
-        return "A" + (new Random().nextInt(30) + 1);
     }
 
     private String generateGate() {
