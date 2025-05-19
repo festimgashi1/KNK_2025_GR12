@@ -27,8 +27,6 @@
             <TableView fx:id="flightsTable" VBox.vgrow="ALWAYS">
                 <columns>
                     <TableColumn fx:id="colFlightNumber" text="Flight #" prefWidth="80"/>
-                    <TableColumn fx:id="colAirlineId" text="Airline ID" prefWidth="100"/>
-                    <TableColumn fx:id="colPlaneId" text="Plane ID" prefWidth="100"/>
                     <TableColumn fx:id="colDepartureAirport" text="From" prefWidth="100"/>
                     <TableColumn fx:id="colArrivalAirport" text="To" prefWidth="100"/>
                     <TableColumn fx:id="colDepartureTime" text="Departure Time" prefWidth="150"/>

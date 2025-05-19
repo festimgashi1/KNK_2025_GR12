@@ -14,8 +14,6 @@ public class CustomerAllFlightsController {
 
     @FXML private TableView<Flights> flightsTable;
     @FXML private TableColumn<Flights, Integer> colFlightNumber;
-    @FXML private TableColumn<Flights, Integer> colAirlineId;
-    @FXML private TableColumn<Flights, Integer> colPlaneId;
     @FXML private TableColumn<Flights, String> colDepartureAirport;
     @FXML private TableColumn<Flights, String> colArrivalAirport;
     @FXML private TableColumn<Flights, String> colDepartureTime;
@@ -30,8 +28,6 @@ public class CustomerAllFlightsController {
     @FXML
     public void initialize() {
         colFlightNumber.setCellValueFactory(data -> new javafx.beans.property.SimpleIntegerProperty(data.getValue().getFlightNumber()).asObject());
-        colAirlineId.setCellValueFactory(data -> new javafx.beans.property.SimpleIntegerProperty(data.getValue().getAirlineid()).asObject());
-        colPlaneId.setCellValueFactory(data -> new javafx.beans.property.SimpleIntegerProperty(data.getValue().getPlaneid()).asObject());
         colDepartureAirport.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getDepartureAirport()));
         colArrivalAirport.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getArrivalAirport()));
         colDepartureTime.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getDepartureTime()));

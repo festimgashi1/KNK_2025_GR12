@@ -37,16 +37,16 @@ public class CustomerFlightBoardController {
     }
 
     private void setupArrivalTable() {
-        colStaArrivals.setCellValueFactory(f -> new SimpleStringProperty(formatTime(f.getValue().getDepartureTime())));
-        colEstArrivals.setCellValueFactory(f -> new SimpleStringProperty(formatTime(f.getValue().getArrivalTime())));
+        colStaArrivals.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getDepartureTime()));
+        colEstArrivals.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getArrivalTime()));
         colFlightArrivals.setCellValueFactory(f -> new SimpleStringProperty("FL-" + f.getValue().getFlightNumber()));
         colFromArrivals.setCellValueFactory(new PropertyValueFactory<>("departureAirport"));
         colStatusArrivals.setCellValueFactory(new PropertyValueFactory<>("status"));
     }
 
     private void setupDepartureTable() {
-        colStaDepartures.setCellValueFactory(f -> new SimpleStringProperty(formatTime(f.getValue().getDepartureTime())));
-        colEstDepartures.setCellValueFactory(f -> new SimpleStringProperty(formatTime(f.getValue().getArrivalTime())));
+        colStaDepartures.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getDepartureTime()));
+        colEstDepartures.setCellValueFactory(f -> new SimpleStringProperty(f.getValue().getArrivalTime()));
         colFlightDepartures.setCellValueFactory(f -> new SimpleStringProperty("FL-" + f.getValue().getFlightNumber()));
         colToDepartures.setCellValueFactory(new PropertyValueFactory<>("arrivalAirport"));
         colStatusDepartures.setCellValueFactory(new PropertyValueFactory<>("status"));
@@ -67,15 +67,6 @@ public class CustomerFlightBoardController {
         tableViewArrivals.getItems().setAll(arrivals);
         tableViewDepartures.getItems().setAll(departures);
     }
-
-    private String formatTime(String timestamp) {
-        return (timestamp != null && timestamp.length() >= 16)
-                ? timestamp.substring(11, 16)
-                : "";
-    }
-
-
-
 
 }
 
