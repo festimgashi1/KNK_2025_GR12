@@ -70,7 +70,9 @@ public class FlightRepository {
                         rs.getTimestamp("departuretime").toLocalDateTime().format(FORMATTER),
                         rs.getTimestamp("arrivaltime").toLocalDateTime().format(FORMATTER),
                         rs.getString("duration"),
+                        null,
                         rs.getString("status")
+
                 );
                 flights.add(flight);
             }

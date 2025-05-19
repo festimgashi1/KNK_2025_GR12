@@ -13,7 +13,7 @@ public class Flights {
     private String airlineName;
 
     public Flights(int flightNumber, int airlineid, int planeid, String departureAirport,
-                   String arrivalAirport, String departureTime, String arrivalTime,
+                   String arrivalAirport, String departureTime, String arrivalTime, String duration,
                    String airlineName, String status) {
         this.flightNumber = flightNumber;
         this.airlineid = airlineid;
@@ -22,6 +22,7 @@ public class Flights {
         this.arrivalAirport = arrivalAirport;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
+        this.duration = duration;
         this.airlineName = airlineName;
         this.status = status;
     }

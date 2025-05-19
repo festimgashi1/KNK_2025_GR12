@@ -43,7 +43,9 @@ public class CustomerFlightBoardRepository {
                         formatDateTime(rs.getTimestamp("departuretime")),
                         formatDateTime(rs.getTimestamp("arrivaltime")),
                         null,
+                        null,
                         rs.getString("status")
+
                 );
                 flights.add(flight);
             }
@@ -74,7 +76,9 @@ public class CustomerFlightBoardRepository {
                         formatDateTime(rs.getTimestamp("departuretime")),
                         formatDateTime(rs.getTimestamp("arrivaltime")),
                         null,
+                        null,
                         rs.getString("status")
+
                 );
                 flights.add(flight);
             }
@@ -104,7 +108,9 @@ public class CustomerFlightBoardRepository {
                         formatDateTime(rs.getTimestamp("departuretime")),
                         formatDateTime(rs.getTimestamp("arrivaltime")),
                         null,
+                        null,
                         rs.getString("status")
+
                 );
                 flights.add(flight);
             }
@@ -134,7 +140,9 @@ public class CustomerFlightBoardRepository {
                         formatDateTime(rs.getTimestamp("departuretime")),
                         formatDateTime(rs.getTimestamp("arrivaltime")),
                         null,
+                        null,
                         rs.getString("status")
+
                 );
                 flights.add(flight);
             }

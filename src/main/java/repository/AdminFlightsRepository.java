@@ -32,7 +32,9 @@ public class AdminFlightsRepository {
                         rs.getString("departuretime"),
                         rs.getString("arrivaltime"),
                         rs.getString("duration"),
+                        null,
                         rs.getString("status")
+
                 );
                 flights.add(flight);
             }

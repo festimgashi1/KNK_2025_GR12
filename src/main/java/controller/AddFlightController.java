@@ -74,7 +74,9 @@ public class AddFlightController {
                     departureTime,
                     arrivalTime,
                     txtDuration.getText(),
+                    txtStatus.getText(),
                     txtStatus.getText()
+
             );
 
             flightService.createFlight(flight);
