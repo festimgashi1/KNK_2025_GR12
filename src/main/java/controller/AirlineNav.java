@@ -49,7 +49,7 @@ public class AirlineNav {
     @FXML
     public void goToAllFlights(ActionEvent event) {
         setActiveButton((Button) event.getSource());
-        SceneManager.getInstance().switchScene("/Views/all_flights.fxml");
+        SceneManager.getInstance().switchScene("/Views/airline_all_flights.fxml");
     }
 
     @FXML
