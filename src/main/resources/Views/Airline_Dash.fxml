@@ -33,9 +33,13 @@
         <Button onAction="#goToTickets" prefWidth="180" text="Tickets" styleClass="nav-button"/>
         <Button onAction="#goToStatistics" prefWidth="180" text="Statistics" styleClass="nav-button"/>
 
+
         <Separator prefWidth="160" />
 
         <Button onAction="#goToProfile" prefWidth="180" text="Profile" styleClass="nav-button"/>
+
+
+
 
         <Button onAction="#handleSignOut"
                 prefWidth="180"

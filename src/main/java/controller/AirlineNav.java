@@ -2,11 +2,18 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import services.SceneManager;
 import session.AirlineSession;
+
+import java.io.IOException;
 
 public class AirlineNav {
 
@@ -51,11 +58,13 @@ public class AirlineNav {
         SceneManager.getInstance().switchScene("/Views/add_tickets.fxml");
     }
 
+
     @FXML
-    public void goToStatistics(ActionEvent event) {
+    private void goToStatistics(ActionEvent event) {
         setActiveButton((Button) event.getSource());
-        SceneManager.getInstance().switchScene("/Views/statistics.fxml");
+        SceneManager.getInstance().switchScene("/Views/airline_statistics.fxml");
     }
+
 
     @FXML
     public void goToProfile(ActionEvent event) {

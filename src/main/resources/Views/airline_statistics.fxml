@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.AirlineStatisticsController"
+            prefWidth="1000" prefHeight="600">
+
+    <!-- Sidebar në të majtë -->
+    <left>
+        <VBox>
+            <fx:include source="Airline_Dash.fxml" />
+        </VBox>
+    </left>
+
+    <!-- Header horizontal në nivel me nav -->
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="📊 Airline Statistics"
+                   style="-fx-font-size: 26px; -fx-font-weight: bold;" />
+            <DatePicker fx:id="dpStart" promptText="Start Date"/>
+            <DatePicker fx:id="dpEnd" promptText="End Date"/>
+            <Button text="Filter" onAction="#handleFilter"/>
+            <Button text="Back" onAction="#handleBack"
+                    style="-fx-background-color: lightgray; -fx-font-weight: bold;" />
+        </HBox>
+    </top>
+
+    <!-- Statistikat në qendër, të balancuara -->
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="30">
+            <padding>
+                <Insets top="30" right="30" bottom="30" left="30"/>
+            </padding>
+
+            <GridPane hgap="20" vgap="15">
+                <Label text="Total Flights:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <Label fx:id="lblTotalFlights" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <Label text="Total Reservations:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <Label fx:id="lblTotalReservations" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <Label text="Total Passengers:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <Label fx:id="lblTotalPassengers" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            </GridPane>
+
+            <HBox spacing="50" alignment="CENTER">
+                <PieChart fx:id="reservationPieChart" prefWidth="400" prefHeight="300"/>
+                <BarChart fx:id="flightsBarChart" prefWidth="500" prefHeight="300">
+                    <xAxis><CategoryAxis label="Flight"/></xAxis>
+                    <yAxis><NumberAxis label="Passengers"/></yAxis>
+                </BarChart>
+            </HBox>
+
+        </VBox>
+    </center>
+</BorderPane>
