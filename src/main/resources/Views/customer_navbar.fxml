@@ -15,7 +15,7 @@
 
         <Button layoutX="31.0" layoutY="101.0" onAction="#showAllFlights" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="🛫 All Flights" />
 
-        <Button onAction="#showReservation" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="📝 Reservation's" />
+        <Button onAction="#showReservation" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="📝 Reservations" />
 
         <Button onAction="#showFeedback" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text=" 💬 Feedback " />
 
