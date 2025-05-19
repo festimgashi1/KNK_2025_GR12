@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
 import model.Admin;
 import model.Airline;
 import model.Costumer;
@@ -87,5 +89,18 @@ public class LogInController {
     @FXML
     public void handleGuest(ActionEvent event) {
         SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
+    }
+
+    @FXML
+    private ImageView bgImageView;
+
+    @FXML
+    private StackPane rootPane; // lidhe me fx:id="rootPane" te StackPane në FXML
+
+    @FXML
+    public void initialize() {
+        // Bëje background image të ndjekë madhësinë e dritares
+        bgImageView.fitWidthProperty().bind(rootPane.widthProperty());
+        bgImageView.fitHeightProperty().bind(rootPane.heightProperty());
     }
 }
