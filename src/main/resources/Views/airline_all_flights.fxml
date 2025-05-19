@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.AirlineAllFlightsController"
+            style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dcdcdc;">
+
+    <!-- Link stylesheet -->
+    <stylesheets>
+        <URL value="@styles/manage_airlines.css"/>
+    </stylesheets>
+
+    <!-- Include Airline Navigation Bar at the Top -->
+    <left>
+        <fx:include source="Airline_Dash.fxml"/>
+    </left>
+
+    <!-- Center Content (Filter + Tables) -->
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="20" maxWidth="650">
+            <!-- Filter Buttons -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label text="Display:" textFill="#a97a13">
+                    <font>
+                        <Font size="21.0"/>
+                    </font>
+                </Label>
+                <Button text="Today" prefHeight="27" prefWidth="82"
+                        onAction="#showToday"
+                        style="-fx-background-color: #ADD8E6; -fx-border-color: white;"/>
+            </HBox>
+
+            <!-- ARRIVALS Table -->
+            <TableView fx:id="tableViewArrivals" prefHeight="220" prefWidth="600">
+                <columns>
+                    <TableColumn fx:id="colStaArrivals" text="Sta." prefWidth="130"/>
+                    <TableColumn fx:id="colEstArrivals" text="Est." prefWidth="130"/>
+                    <TableColumn fx:id="colFlightArrivals" text="Flight" prefWidth="90"/>
+                    <TableColumn fx:id="colFromArrivals" text="From" prefWidth="90"/>
+                    <TableColumn fx:id="colStatusArrivals" text="Status" prefWidth="90"/>
+                </columns>
+            </TableView>
+
+            <!-- DEPARTURES Table -->
+            <TableView fx:id="tableViewDepartures" prefHeight="220" prefWidth="600">
+                <columns>
+                    <TableColumn fx:id="colStaDepartures" text="Sta." prefWidth="130"/>
+                    <TableColumn fx:id="colEstDepartures" text="Est." prefWidth="130"/>
+                    <TableColumn fx:id="colFlightDepartures" text="Flight" prefWidth="90"/>
+                    <TableColumn fx:id="colToDepartures" text="To" prefWidth="90"/>
+                    <TableColumn fx:id="colStatusDepartures" text="Status" prefWidth="90"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+</BorderPane>

@@ -5,13 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/session/TicketSession.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AirlineStatisticsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/AirlineAllFlightsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/repository/AirlineStatisticsRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/AirlineStatisticsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/airline_all_flights.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Views/airline_statistics.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CheckInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CheckInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TicketCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TicketCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/BoardingPassRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/BoardingPassRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/SceneManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/TicketCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/TicketCard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AirlineNav.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AirlineNav.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
