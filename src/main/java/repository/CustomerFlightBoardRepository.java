@@ -1,10 +1,10 @@
 package repository;
 
-
 import model.Flights;
 import database.DBConnector;
 
 import java.sql.*;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +13,13 @@ public class CustomerFlightBoardRepository {
 
     public CustomerFlightBoardRepository() {
         this.connection = DBConnector.getConnection();
+    }
+
+    private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+
+    private String formatDateTime(Timestamp timestamp) {
+        if (timestamp == null) return "";
+        return formatter.format(timestamp.toLocalDateTime());
     }
 
     public List<Flights> getArrivalsToday(String airport) {
@@ -32,8 +39,8 @@ public class CustomerFlightBoardRepository {
                         0,
                         rs.getString("departureairport"),
                         rs.getString("arrivalairport"),
-                        rs.getTimestamp("departuretime").toString(),
-                        rs.getTimestamp("arrivaltime").toString(),
+                        formatDateTime(rs.getTimestamp("departuretime")),
+                        formatDateTime(rs.getTimestamp("arrivaltime")),
                         null,
                         rs.getString("status")
                 );
@@ -63,8 +70,8 @@ public class CustomerFlightBoardRepository {
                         0,
                         rs.getString("departureairport"),
                         rs.getString("arrivalairport"),
-                        rs.getTimestamp("departuretime").toString(),
-                        rs.getTimestamp("arrivaltime").toString(),
+                        formatDateTime(rs.getTimestamp("departuretime")),
+                        formatDateTime(rs.getTimestamp("arrivaltime")),
                         null,
                         rs.getString("status")
                 );
@@ -93,8 +100,8 @@ public class CustomerFlightBoardRepository {
                         0,
                         rs.getString("departureairport"),
                         rs.getString("arrivalairport"),
-                        rs.getTimestamp("departuretime").toString(),
-                        rs.getTimestamp("arrivaltime").toString(),
+                        formatDateTime(rs.getTimestamp("departuretime")),
+                        formatDateTime(rs.getTimestamp("arrivaltime")),
                         null,
                         rs.getString("status")
                 );
@@ -123,8 +130,8 @@ public class CustomerFlightBoardRepository {
                         0,
                         rs.getString("departureairport"),
                         rs.getString("arrivalairport"),
-                        rs.getTimestamp("departuretime").toString(),
-                        rs.getTimestamp("arrivaltime").toString(),
+                        formatDateTime(rs.getTimestamp("departuretime")),
+                        formatDateTime(rs.getTimestamp("arrivaltime")),
                         null,
                         rs.getString("status")
                 );
@@ -137,4 +144,3 @@ public class CustomerFlightBoardRepository {
         return flights;
     }
 }
-

@@ -6,18 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CostumerSignUpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CostumerSignUpController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerNavbarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FeedbackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FeedbackController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/TicketCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/TicketCardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Feedback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Feedback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/FeedbackRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/FeedbackRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/CustomerSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/CustomerSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/session/FlightSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/session/FlightSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/sql/init_database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CustomerFlightBoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CustomerFlightBoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/repository/CustomerFlightBoardRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/CustomerFlightBoardRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/customer_flightboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/customer_flightboard.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -32,11 +32,11 @@
         <Label text="ARRIVALS ✈" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2b5797;" />
         <TableView fx:id="tableViewArrivals" prefHeight="220" prefWidth="600">
             <columns>
-                <TableColumn fx:id="colStaArrivals" text="Sta."/>
-                <TableColumn fx:id="colEstArrivals" text="Est."/>
-                <TableColumn fx:id="colFlightArrivals" text="Flight"/>
-                <TableColumn fx:id="colFromArrivals" text="From"/>
-                <TableColumn fx:id="colStatusArrivals" text="Status"/>
+                <TableColumn fx:id="colStaArrivals" text="Sta." prefWidth="150"/>
+                <TableColumn fx:id="colEstArrivals" text="Est." prefWidth="150"/>
+                <TableColumn fx:id="colFlightArrivals" text="Flight" prefWidth="100"/>
+                <TableColumn fx:id="colFromArrivals" text="From" prefWidth="100"/>
+                <TableColumn fx:id="colStatusArrivals" text="Status" prefWidth="100"/>
             </columns>
         </TableView>
     </VBox>
@@ -48,14 +48,12 @@
         <Label text="DEPARTURES ✈" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2b5797;" />
         <TableView fx:id="tableViewDepartures" prefHeight="220" prefWidth="600">
             <columns>
-                <TableColumn fx:id="colStaDepartures" text="Sta."/>
-                <TableColumn fx:id="colEstDepartures" text="Est."/>
-                <TableColumn fx:id="colFlightDepartures" text="Flight"/>
-                <TableColumn fx:id="colToDepartures" text="To"/>
-                <TableColumn fx:id="colStatusDepartures" text="Status"/>
+                <TableColumn fx:id="colStaDepartures" text="Sta." prefWidth="150"/>
+                <TableColumn fx:id="colEstDepartures" text="Est." prefWidth="150"/>
+                <TableColumn fx:id="colFlightDepartures" text="Flight" prefWidth="100"/>
+                <TableColumn fx:id="colToDepartures" text="To" prefWidth="100"/>
+                <TableColumn fx:id="colStatusDepartures" text="Status" prefWidth="100"/>
             </columns>
         </TableView>
     </VBox>
 </VBox>
-
-
