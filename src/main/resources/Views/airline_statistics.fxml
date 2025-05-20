@@ -34,7 +34,7 @@
                         style="-fx-background-color: lightgray; -fx-background-radius: 8; -fx-font-weight: bold;"/>
             </HBox>
 
-            
+
             <VBox alignment="TOP_CENTER" spacing="25" style="-fx-padding: 10 30 30 30;" VBox.vgrow="ALWAYS">
 
 
@@ -55,13 +55,17 @@
 
 
                 <HBox spacing="50" alignment="CENTER" VBox.vgrow="ALWAYS">
-                    <BarChart fx:id="reservationsBarChart" title="Reservations per Flight"
-                              prefHeight="350" maxWidth="Infinity" HBox.hgrow="ALWAYS">
+                    <BarChart fx:id="reservationsBarChart"
+                              prefHeight="400" maxWidth="Infinity"
+                              style="-fx-background-color: transparent; -fx-padding: 10 20 10 10;"
+                              HBox.hgrow="ALWAYS">
                         <xAxis>
-                            <CategoryAxis fx:id="xAxis" label="Flight Numbers"/>
+                            <CategoryAxis fx:id="xAxis" label="Flight Numbers"
+                                          style="-fx-tick-label-fill: #2c3e50; -fx-font-size: 14px;" />
                         </xAxis>
                         <yAxis>
-                            <NumberAxis fx:id="yAxis" label="Number of Reservations"/>
+                            <NumberAxis fx:id="yAxis" label="Reservations"
+                                        style="-fx-tick-label-fill: #2c3e50; -fx-font-size: 14px;" />
                         </yAxis>
                     </BarChart>
                 </HBox>
