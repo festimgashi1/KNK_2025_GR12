@@ -9,69 +9,55 @@
 <BorderPane xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.AirlineAllFlightsController"
-            style="-fx-background-color: #f4f6f8;">
+            style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-border-radius: 12; -fx-border-color: #dcdcdc;">
+
 
     <stylesheets>
         <URL value="@styles/manage_airlines.css"/>
     </stylesheets>
 
-    <!-- Sidebar -->
     <left>
         <fx:include source="Airline_Dash.fxml"/>
     </left>
 
-    <!-- Center Content -->
-    <center>
-        <VBox alignment="TOP_CENTER" spacing="30">
-            <padding>
-                <Insets top="30" right="30" bottom="30" left="30"/>
-            </padding>
 
-            <!-- Filter Buttons -->
+    <center>
+        <VBox alignment="TOP_CENTER" spacing="20" maxWidth="650">
+
             <HBox alignment="CENTER_LEFT" spacing="10">
-                <Label text="Display:" textFill="#3a3a3a">
+                <Label text="Display:" textFill="#a97a13">
                     <font>
-                        <Font size="22"/>
+                        <Font size="21.0"/>
                     </font>
                 </Label>
-                <Button text="Today" prefHeight="32" prefWidth="100"
+                <Button text="Today" prefHeight="27" prefWidth="82"
                         onAction="#showToday"
-                        style="-fx-background-color: #dceeff; -fx-background-radius: 10; -fx-font-size: 14;"/>
-                <Button text="All Flights" prefHeight="32" prefWidth="100"
-                        onAction="#showAllFlights"
-                        style="-fx-background-color: #dceeff; -fx-background-radius: 10; -fx-font-size: 14;"/>
+                        style="-fx-background-color: #ADD8E6; -fx-border-color: white;"/>
             </HBox>
 
-            <!-- Arrivals Section -->
-            <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);">
-                <Label text="✈ Arrivals" style="-fx-text-fill: #4a4a4a; -fx-font-size: 18; -fx-font-weight: bold;"/>
-                <TableView fx:id="tableViewArrivals" prefHeight="220" prefWidth="650">
-                    <columns>
-                        <TableColumn fx:id="colStaArrivals" text="Sta." prefWidth="140"/>
-                        <TableColumn fx:id="colEstArrivals" text="Est." prefWidth="140"/>
-                        <TableColumn fx:id="colFlightArrivals" text="Flight" prefWidth="90"/>
-                        <TableColumn fx:id="colFromArrivals" text="From" prefWidth="90"/>
-                        <TableColumn fx:id="colStatusArrivals" text="Status" prefWidth="90"/>
-                        <TableColumn fx:id="colAirlineArrivals" text="Airline" prefWidth="120"/>
-                    </columns>
-                </TableView>
-            </VBox>
 
-            <!-- Departures Section -->
-            <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 2);">
-                <Label text="✈ Departures" style="-fx-text-fill: #4a4a4a; -fx-font-size: 18; -fx-font-weight: bold;"/>
-                <TableView fx:id="tableViewDepartures" prefHeight="220" prefWidth="650">
-                    <columns>
-                        <TableColumn fx:id="colStaDepartures" text="Sta." prefWidth="140"/>
-                        <TableColumn fx:id="colEstDepartures" text="Est." prefWidth="140"/>
-                        <TableColumn fx:id="colFlightDepartures" text="Flight" prefWidth="90"/>
-                        <TableColumn fx:id="colToDepartures" text="To" prefWidth="90"/>
-                        <TableColumn fx:id="colStatusDepartures" text="Status" prefWidth="90"/>
-                        <TableColumn fx:id="colAirlineDepartures" text="Airline" prefWidth="120"/>
-                    </columns>
-                </TableView>
-            </VBox>
+            <TableView fx:id="tableViewArrivals" prefHeight="220" prefWidth="600">
+                <columns>
+                    <TableColumn fx:id="colStaArrivals" text="Sta." prefWidth="130"/>
+                    <TableColumn fx:id="colEstArrivals" text="Est." prefWidth="130"/>
+                    <TableColumn fx:id="colFlightArrivals" text="Flight" prefWidth="90"/>
+                    <TableColumn fx:id="colFromArrivals" text="From" prefWidth="90"/>
+                    <TableColumn fx:id="colStatusArrivals" text="Status" prefWidth="90"/>
+                    <TableColumn fx:id="colAirlineDepartures" text="Airline" prefWidth="120"/>
+                    <TableColumn fx:id="colAirlineArrivals" text="Airline" prefWidth="120"/>
+                </columns>
+            </TableView>
 
+
+            <TableView fx:id="tableViewDepartures" prefHeight="220" prefWidth="600">
+                <columns>
+                    <TableColumn fx:id="colStaDepartures" text="Sta." prefWidth="130"/>
+                    <TableColumn fx:id="colEstDepartures" text="Est." prefWidth="130"/>
+                    <TableColumn fx:id="colFlightDepartures" text="Flight" prefWidth="90"/>
+                    <TableColumn fx:id="colToDepartures" text="To" prefWidth="90"/>
+                    <TableColumn fx:id="colStatusDepartures" text="Status" prefWidth="90"/>
+                </columns>
+            </TableView>
         </VBox>
     </center>
 </BorderPane>
