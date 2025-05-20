@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
@@ -73,6 +74,14 @@ public class AirlineStatisticsController {
         }
 
         reservationsBarChart.getData().add(series);
+        for (XYChart.Data<String, Number> data : series.getData()) {
+            data.getNode().setStyle("-fx-bar-fill: #001f3f;");
+        }
 
+        Platform.runLater(() -> {
+            for (Node node : reservationsBarChart.lookupAll(".chart-legend-item-symbol")) {
+                node.setStyle("-fx-background-color: #001f3f; -fx-background-radius: 3px;");
+            }
+        });
     }
 }
