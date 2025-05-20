@@ -2,8 +2,11 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import model.Tickets;
 import services.SceneManager;
 import session.CustomerSession;
+import session.TicketSession;
 
 public class CustomerNavbarController {
 
@@ -15,9 +18,19 @@ public class CustomerNavbarController {
     @FXML
     public void showReservation(ActionEvent event) {
 
-        SceneManager.getInstance().switchScene("/Views/CheckInView.fxml");
-        SceneManager.getInstance().switchScene("/Views/BoardingPass.fxml");
+        Tickets ticket = TicketSession.getInstance().getSelectedTicket();
 
+        if (ticket == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("No Ticket");
+            alert.setHeaderText("You need to buy a ticket first.");
+            alert.setContentText("Please search and buy a flight ticket before accessing reservations.");
+            alert.showAndWait();
+            return;
+        }
+
+        // Nëse ekziston biletë, vazhdo në Check-In view
+        SceneManager.getInstance().switchScene("/Views/CheckInView.fxml");
     }
 
     @FXML
@@ -33,9 +46,10 @@ public class CustomerNavbarController {
             SceneManager.getInstance().switchScene("/Views/login.fxml");
         }
     }
+
     @FXML
     public void handleSignOut(ActionEvent event) {
-        session.CustomerSession.getInstance().clear();  // remove session
+        CustomerSession.getInstance().clear();
         SceneManager.getInstance().switchScene("/Views/login.fxml");
     }
 
