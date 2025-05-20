@@ -265,3 +265,6 @@ SELECT t.ticketid, t.flightNumber, t.bookingdate, t.ticketprice, t.passengers,
    AND t.passengers >= ?;
 
    ALTER TABLE feedback DROP COLUMN flightnumber;
+
+   Drop table Refunds;
+   Drop table Delays;
