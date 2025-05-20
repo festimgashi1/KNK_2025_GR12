@@ -13,16 +13,17 @@
            style="-fx-background-color: #f4f6f8;">
 
     <HBox alignment="TOP_LEFT">
-
-        <VBox alignment="TOP_LEFT" spacing="0" prefWidth="200" minWidth="200" maxWidth="200" style="-fx-background-color: #f4f8fc;">
+        <!-- Sidebar -->
+        <VBox alignment="TOP_LEFT" spacing="0" prefWidth="200" minWidth="200" maxWidth="200"
+              style="-fx-background-color: #f4f8fc;">
             <fx:include source="Airline_Dash.fxml"/>
         </VBox>
 
+        <!-- Main Content -->
+        <VBox spacing="0" alignment="TOP_LEFT" HBox.hgrow="ALWAYS">
+            <!-- Header -->
 
-        <VBox spacing="0" alignment="TOP_LEFT">
-
-            <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10 30 10 30;">
-                <Region HBox.hgrow="ALWAYS"/>
+            <HBox alignment="CENTER" spacing="10" style="-fx-padding: 10 30 10 30;" VBox.vgrow="NEVER">
                 <Label text="📊 Airline Statistics"
                        style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2b2b2b;" />
                 <DatePicker fx:id="dpStart" promptText="Start Date"/>
@@ -33,9 +34,10 @@
                         style="-fx-background-color: lightgray; -fx-background-radius: 8; -fx-font-weight: bold;"/>
             </HBox>
 
+            <!-- Content Box -->
+            <VBox alignment="TOP_CENTER" spacing="25" style="-fx-padding: 10 30 30 30;" VBox.vgrow="ALWAYS">
 
-            <VBox alignment="TOP_CENTER" spacing="25" style="-fx-padding: 10 30 30 30;">
-
+                <!-- Stats Info -->
                 <VBox spacing="10"
                       style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
                     <GridPane hgap="20" vgap="15">
@@ -48,12 +50,13 @@
                                style="-fx-font-size: 16px;"/>
                         <Label fx:id="lblTotalReservations" GridPane.rowIndex="1" GridPane.columnIndex="1"
                                style="-fx-font-weight: bold;"/>
-
                     </GridPane>
                 </VBox>
-                
-                <HBox spacing="50" alignment="CENTER">
-                    <BarChart fx:id="reservationsBarChart" prefWidth="700" prefHeight="350" title="Reservations per Flight">
+
+                <!-- Chart Section -->
+                <HBox spacing="50" alignment="CENTER" VBox.vgrow="ALWAYS">
+                    <BarChart fx:id="reservationsBarChart" title="Reservations per Flight"
+                              prefHeight="350" maxWidth="Infinity" HBox.hgrow="ALWAYS">
                         <xAxis>
                             <CategoryAxis fx:id="xAxis" label="Flight Numbers"/>
                         </xAxis>
@@ -66,3 +69,4 @@
         </VBox>
     </HBox>
 </StackPane>
+
