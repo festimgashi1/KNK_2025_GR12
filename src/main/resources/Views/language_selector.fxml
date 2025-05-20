@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.LanguageSelectorController"
+            prefWidth="120" prefHeight="40">
+
+    <MenuButton fx:id="languageMenu" text="Gjuha" layoutX="10" layoutY="5">
+        <items>
+            <MenuItem fx:id="albanianItem" text="Shqip"/>
+            <MenuItem fx:id="englishItem" text="English"/>
+        </items>
+    </MenuButton>
+</AnchorPane>

@@ -2,35 +2,60 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import model.Admin;
 import model.Airline;
 import model.Costumer;
+import services.LanguageManager;
 import services.LoginService;
 import services.SceneManager;
 import session.AdminSession;
 import session.CustomerSession;
 import session.AirlineSession;
 
+import java.util.ResourceBundle;
+
 public class LogInController {
 
-    @FXML
-    private Label errorLabel;
+    @FXML private Label errorLabel;
+    @FXML private TextField emailTxt;
+    @FXML private PasswordField pwId;
+    @FXML private ImageView bgImageView;
+    @FXML private StackPane rootPane;
+
+    @FXML private Label welcomeLabel;
+    @FXML private Label forgotPasswordLabel;
+    @FXML private Label guestLabel;
+    @FXML private Hyperlink guestLink;
+    @FXML private Button loginButton;
+    @FXML private Button signUpButton;
+    @FXML private Label noAccountLabel;
+
+    private final LoginService loginService = new LoginService();
 
     @FXML
-    private TextField emailTxt;
+    public void initialize() {
+        bgImageView.fitWidthProperty().bind(rootPane.widthProperty());
+        bgImageView.fitHeightProperty().bind(rootPane.heightProperty());
 
-    @FXML
-    private PasswordField pwId;
+        LanguageManager.getInstance().addListener(this::applyTranslations);
+        applyTranslations();
+    }
 
-    private final LoginService loginService;
+    private void applyTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
 
-    public LogInController() {
-        this.loginService = new LoginService();
+        welcomeLabel.setText(bundle.getString("login.title"));
+        emailTxt.setPromptText(bundle.getString("login.email"));
+        pwId.setPromptText(bundle.getString("login.password"));
+        forgotPasswordLabel.setText(bundle.getString("forgot.password"));
+        loginButton.setText(bundle.getString("login.button"));
+        signUpButton.setText(bundle.getString("signup.button"));
+        guestLabel.setText(bundle.getString("guest.label"));
+        guestLink.setText(bundle.getString("guest.button"));
+        noAccountLabel.setText(bundle.getString("no.account"));
     }
 
     @FXML
@@ -42,40 +67,33 @@ public class LogInController {
             Object user = this.loginService.login(email, password);
 
             if (user instanceof Admin) {
-                Admin admin = (Admin) user;
-                AdminSession.getInstance().setCurrentAdmin(admin);
+                AdminSession.getInstance().setCurrentAdmin((Admin) user);
                 errorLabel.setText("");
                 SceneManager.getInstance().switchScene("/Views/admin_home.fxml");
-
             } else if (user instanceof Airline) {
                 Airline airline = (Airline) user;
                 AirlineSession.setAirlineId(airline.getAirlineid());
                 AirlineSession.setAirlineName(airline.getAirlinename());
                 errorLabel.setText("");
                 SceneManager.getInstance().switchScene("/Views/add_flight.fxml");
-
             } else if (user instanceof Costumer) {
-                Costumer costumer = (Costumer) user;
-                CustomerSession.getInstance().setCurrentCostumer(costumer);
-                System.out.println("Customer logged in: " + costumer.getFirstName());
+                CustomerSession.getInstance().setCurrentCostumer((Costumer) user);
                 errorLabel.setText("");
                 SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
-
             } else {
-                errorLabel.setText("Unknown user type.");
+                errorLabel.setText(LanguageManager.getInstance().getResourceBundle().getString("error.unknown_user"));
             }
 
             cleanFields();
 
         } catch (Exception e) {
-            errorLabel.setText("Email or password is incorrect.");
-            e.printStackTrace(); // ✅ për debug
+            errorLabel.setText(LanguageManager.getInstance().getResourceBundle().getString("error.invalid_credentials"));
         }
     }
 
     private void cleanFields() {
-        this.emailTxt.setText("");
-        this.pwId.setText("");
+        emailTxt.setText("");
+        pwId.setText("");
     }
 
     @FXML
@@ -90,20 +108,6 @@ public class LogInController {
 
     @FXML
     public void handleGuest(ActionEvent event) {
-        System.out.println("Guest mode is disabled. Please log in with a valid account.");
         SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
-    }
-
-    @FXML
-    private ImageView bgImageView;
-
-    @FXML
-    private StackPane rootPane; // lidhe me fx:id="rootPane" te StackPane në FXML
-
-    @FXML
-    public void initialize() {
-        // Bëje background image të ndjekë madhësinë e dritares
-        bgImageView.fitWidthProperty().bind(rootPane.widthProperty());
-        bgImageView.fitHeightProperty().bind(rootPane.heightProperty());
     }
 }

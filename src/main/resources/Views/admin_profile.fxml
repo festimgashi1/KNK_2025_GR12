@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-
 <?import javafx.scene.control.Button?>
+
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.AdminProfileController"
@@ -23,7 +23,7 @@
                 <Insets top="40" left="40" right="40" bottom="40" />
             </padding>
 
-            <Label text="🛡️ Admin Profile" style="-fx-text-fill: #2c3e50;">
+            <Label fx:id="lblTitle" style="-fx-text-fill: #2c3e50;">
                 <font>
                     <Font name="Arial Black" size="24" />
                 </font>
@@ -43,22 +43,20 @@
                     </DropShadow>
                 </effect>
 
-                <Label text="First Name" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+                <Label fx:id="lblFirstNameTitle" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
                 <Label fx:id="lblFirstName" style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
 
-                <Label text="Last Name" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+                <Label fx:id="lblLastNameTitle" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
                 <Label fx:id="lblLastName" style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
 
-                <Label text="Email Address" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+                <Label fx:id="lblEmailTitle" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
                 <Label fx:id="lblEmail" style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
 
-                <Label text="Change Password:" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
-                <Button text="Change Password"
+                <Label fx:id="lblChangePassword" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+                <Button fx:id="btnChangePassword"
                         onAction="#goToChangePassword"
                         style="-fx-background-color: #1e3d59; -fx-text-fill: white; -fx-background-radius: 8px; -fx-padding: 8 16;" />
             </VBox>
-
         </VBox>
     </center>
-
 </BorderPane>

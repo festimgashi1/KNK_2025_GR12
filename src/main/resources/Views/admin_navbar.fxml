@@ -4,28 +4,49 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.fxml.FXML?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<VBox alignment="TOP_CENTER" prefHeight="265.0" prefWidth="202.0" spacing="15" style="-fx-background-color: #F0FAFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminDashboardController">
+<VBox alignment="TOP_CENTER" prefHeight="265.0" prefWidth="202.0" spacing="15"
+      style="-fx-background-color: #F0FAFF;" xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.AdminDashboardController">
+
     <children>
+        <fx:include source="language_selector.fxml" />
 
         <Label fx:id="lblAdminName"
                prefHeight="35.0" prefWidth="85.0"
                style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 20 0 10 0;"
                text="✈ Admin"
                textFill="#2c3e50" />
-        <Separator prefWidth="160" />
-
-        <Button onAction="#showStatistics" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="📊 Dashboard" />
-
-        <Button onAction="#showAirlines" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="🛫 Manage Airline's" />
-
-        <Button onAction="#showFlights" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="🗓 Flights" />
 
         <Separator prefWidth="160" />
 
-        <Button onAction="#goLogIn" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="👤 Profile" />
+        <Button fx:id="btnDashboard" onAction="#showStatistics" prefWidth="160"
+                style="-fx-background-color: transparent; -fx-border-color: transparent;
+                       -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;"
+                text="📊 Dashboard" />
 
-        <Button text="🚪 Sign Out" onAction="#handleSignOut" style="-fx-background-color: transparent; -fx-text-fill: #c0392b;" />
+        <Button fx:id="btnAirlines" onAction="#showAirlines" prefWidth="160"
+                style="-fx-background-color: transparent; -fx-border-color: transparent;
+                       -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;"
+                text="🛫 Manage Airline's" />
+
+        <Button fx:id="btnFlights" onAction="#showFlights" prefWidth="160"
+                style="-fx-background-color: transparent; -fx-border-color: transparent;
+                       -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;"
+                text="🗓 Flights" />
+
+        <Separator prefWidth="160" />
+
+        <Button fx:id="btnProfile" onAction="#goLogIn" prefWidth="160"
+                style="-fx-background-color: transparent; -fx-border-color: transparent;
+                       -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;"
+                text="👤 Profile" />
+
+        <Button fx:id="btnSignOut" text="🚪 Sign Out" onAction="#handleSignOut"
+                style="-fx-background-color: transparent; -fx-text-fill: #c0392b;" />
 
     </children>
 </VBox>

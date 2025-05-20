@@ -7,9 +7,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import model.Costumer;
 import model.dto.CreateCostumerDto;
+import services.LanguageManager;
 import services.SceneManager;
 import services.SignupService;
 import session.CustomerSession;
+
+import java.util.ResourceBundle;
 
 public class CostumerSignUpController {
 
@@ -17,12 +20,44 @@ public class CostumerSignUpController {
     @FXML private PasswordField pwdPassword, pwdConfirmPass;
     @FXML private DatePicker dtBirthDate;
     @FXML private Label errorLabel;
+    @FXML private Button btnAirline, btnCostumer, btnSignUp;
+    @FXML private Label lblTitle, lblAlreadyAccount;
+    @FXML private Hyperlink linkLogIn;
+    @FXML private StackPane rootPane;
+    @FXML private ImageView bgImageView;
 
     private final SignupService signupService = new SignupService();
 
     @FXML
+    public void initialize() {
+        bgImageView.fitWidthProperty().bind(rootPane.widthProperty());
+        bgImageView.fitHeightProperty().bind(rootPane.heightProperty());
+
+        LanguageManager.getInstance().addListener(this::applyTranslations);
+        applyTranslations();
+    }
+
+    private void applyTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+
+        lblTitle.setText(bundle.getString("signup.title"));
+        txtFirstName.setPromptText(bundle.getString("signup.firstname"));
+        txtLastName.setPromptText(bundle.getString("signup.lastname"));
+        txtEmail.setPromptText(bundle.getString("signup.email"));
+        txtPhoneNumber.setPromptText(bundle.getString("signup.phone"));
+        txtAddress.setPromptText(bundle.getString("signup.address"));
+        dtBirthDate.setPromptText(bundle.getString("signup.birthdate"));
+        pwdPassword.setPromptText(bundle.getString("signup.password"));
+        pwdConfirmPass.setPromptText(bundle.getString("signup.confirmpassword"));
+        btnAirline.setText(bundle.getString("signup.airline"));
+        btnCostumer.setText(bundle.getString("signup.customer"));
+        btnSignUp.setText(bundle.getString("signup.button"));
+        lblAlreadyAccount.setText(bundle.getString("already.account"));
+        linkLogIn.setText(bundle.getString("login.link"));
+    }
+
+    @FXML
     public void handleSignUpButton(ActionEvent event) {
-        // Marrja e të dhënave
         String firstName = txtFirstName.getText();
         String lastName = txtLastName.getText();
         String email = txtEmail.getText();
@@ -31,15 +66,17 @@ public class CostumerSignUpController {
         String password = pwdPassword.getText();
         String confirmPass = pwdConfirmPass.getText();
 
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || phone.isEmpty()
                 || address.isEmpty() || password.isEmpty() || confirmPass.isEmpty()
                 || dtBirthDate.getValue() == null) {
-            errorLabel.setText("Please fill in all fields.");
+            errorLabel.setText(bundle.getString("error.fill_fields"));
             return;
         }
 
         if (!password.equals(confirmPass)) {
-            errorLabel.setText("Passwords do not match.");
+            errorLabel.setText(bundle.getString("error.password_mismatch"));
             return;
         }
 
@@ -49,15 +86,12 @@ public class CostumerSignUpController {
             );
 
             Costumer user = signupService.create(dto);
-
             CustomerSession.getInstance().setCurrentCostumer(user);
-
-            System.out.println("Customer registered: " + user.getFirstName());
             errorLabel.setText("");
-
             SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
+
         } catch (Exception e) {
-            errorLabel.setText("Signup failed: " + e.getMessage());
+            errorLabel.setText(bundle.getString("error.signup_failed") + ": " + e.getMessage());
             System.out.println("Signup failed: " + e.getMessage());
         }
     }
@@ -74,17 +108,7 @@ public class CostumerSignUpController {
         SceneManager.getInstance().switchScene("/Views/airlinesignup.fxml");
     }
 
-    @FXML
-    public void handleGuest(ActionEvent event) {
+    @FXML public void handleGuest(ActionEvent event) {
         SceneManager.getInstance().switchScene("/Views/customer_flights.fxml");
     }
-    @FXML private StackPane rootPane;
-    @FXML private ImageView bgImageView;
-
-    @FXML
-    public void initialize() {
-        bgImageView.fitWidthProperty().bind(rootPane.widthProperty());
-        bgImageView.fitHeightProperty().bind(rootPane.heightProperty());
-    }
-
 }

@@ -7,18 +7,45 @@ import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import model.Admin;
+import services.LanguageManager;
 import services.SceneManager;
 import session.AdminSession;
+import javafx.scene.control.Button;
+
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class AdminDashboardController {
 
-    @FXML
-    private StackPane contentPane;
+    @FXML private StackPane contentPane;
+    @FXML private Label lblAdminName;
+    @FXML private Button btnDashboard, btnAirlines, btnFlights, btnProfile, btnSignOut;
 
     private Node loadFXML(String fxml) throws IOException {
         return FXMLLoader.load(getClass().getResource(fxml));
+    }
+
+    @FXML
+    public void initialize() {
+        Admin admin = AdminSession.getInstance().getCurrentAdmin();
+        if (admin != null) {
+            lblAdminName.setText("✈ " + admin.getFirstName());
+        } else {
+            lblAdminName.setText("✈ Admin");
+        }
+
+        LanguageManager.getInstance().addListener(this::applyTranslations);
+        applyTranslations();
+    }
+
+    private void applyTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+        btnDashboard.setText("📊 " + bundle.getString("admin.dashboard"));
+        btnAirlines.setText("🛫 " + bundle.getString("admin.airlines"));
+        btnFlights.setText("🗓 " + bundle.getString("admin.flights"));
+        btnProfile.setText("👤 " + bundle.getString("admin.profile"));
+        btnSignOut.setText("🚪 " + bundle.getString("admin.logout"));
     }
 
     @FXML
@@ -37,19 +64,6 @@ public class AdminDashboardController {
     }
 
     @FXML
-    private Label lblAdminName;
-
-    @FXML
-    public void initialize() {
-        Admin admin = session.AdminSession.getInstance().getCurrentAdmin();
-        if (admin != null) {
-            lblAdminName.setText("✈ " + admin.getFirstName());
-        } else {
-            lblAdminName.setText("✈ Admin");
-        }
-    }
-
-    @FXML
     public void goLogIn(ActionEvent event) {
         if (AdminSession.getInstance().getCurrentAdmin() != null) {
             SceneManager.getInstance().switchScene("/Views/admin_profile.fxml");
@@ -58,10 +72,9 @@ public class AdminDashboardController {
         }
     }
 
-    // 🚪 Sign Out
     @FXML
     public void handleSignOut(ActionEvent event) {
-        AdminSession.getInstance().clear(); // remove session
+        AdminSession.getInstance().clear();
         SceneManager.getInstance().switchScene("/Views/login.fxml");
     }
 }

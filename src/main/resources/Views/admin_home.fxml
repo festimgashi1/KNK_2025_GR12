@@ -13,7 +13,8 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminHomeController" style="-fx-background-color:white;">
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.AdminHomeController" style="-fx-background-color:white;">
     <left>
         <fx:include source="admin_navbar.fxml" />
     </left>
@@ -29,14 +30,14 @@
         <VBox prefHeight="600.0" prefWidth="800.0" spacing="10">
             <children>
 
-                <PieChart fx:id="reservationPieChart" prefHeight="250" prefWidth="600" title="Reservation Status Distribution" />
+                <PieChart fx:id="reservationPieChart" prefHeight="250" prefWidth="600" />
 
-                <BarChart fx:id="flightsBarChart" prefHeight="300" prefWidth="600" title="Flights per Airline">
+                <BarChart fx:id="flightsBarChart" prefHeight="300" prefWidth="600">
                     <xAxis>
-                        <CategoryAxis label="Airline" />
+                        <CategoryAxis />
                     </xAxis>
                     <yAxis>
-                        <NumberAxis label="Number of Flights" />
+                        <NumberAxis />
                     </yAxis>
                 </BarChart>
 

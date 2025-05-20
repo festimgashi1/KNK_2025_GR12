@@ -6,6 +6,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import repository.StatisticsRepository;
+import services.LanguageManager;
 
 import java.net.URL;
 import java.util.Map;
@@ -20,8 +21,10 @@ public class AdminHomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        LanguageManager.getInstance().addListener(this::applyTranslations);
         loadReservationStats();
         loadFlightStats();
+        applyTranslations();
     }
 
     private void loadReservationStats() {
@@ -43,5 +46,13 @@ public class AdminHomeController implements Initializable {
 
         flightsBarChart.getData().clear();
         flightsBarChart.getData().add(series);
+    }
+
+    private void applyTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+        reservationPieChart.setTitle(bundle.getString("admin.piechart.title"));
+        flightsBarChart.setTitle(bundle.getString("admin.barchart.title"));
+        flightsBarChart.getXAxis().setLabel(bundle.getString("admin.barchart.xaxis"));
+        flightsBarChart.getYAxis().setLabel(bundle.getString("admin.barchart.yaxis"));
     }
 }
