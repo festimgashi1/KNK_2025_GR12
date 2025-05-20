@@ -17,18 +17,16 @@
 
     <center>
         <StackPane>
-            <!-- Background image -->
+
             <ImageView fitWidth="1100" fitHeight="800" preserveRatio="false" pickOnBounds="true">
                 <image>
                     <Image url="@../Photos/airplane.jpg"/>
                 </image>
             </ImageView>
 
-            <!-- Form Container -->
             <VBox alignment="CENTER" spacing="18" maxWidth="650"
                   style="-fx-background-color: rgba(255,255,255,0.85); -fx-background-radius: 12; -fx-padding: 20;">
 
-                <!-- Route Input -->
                 <HBox alignment="CENTER" spacing="20">
                     <TextField fx:id="txtFromCode" promptText="FROM (e.g. LTN)" />
                     <Label style="-fx-font-size: 24px;" text="✈" />
@@ -37,14 +35,12 @@
 
                 <Separator/>
 
-                <!-- Passenger Info -->
                 <TextField fx:id="txtName" promptText="Passenger Name" />
                 <HBox spacing="20">
                     <TextField fx:id="txtSeat" promptText="Seat (auto-generated)" />
                     <TextField fx:id="txtGate" promptText="Gate (auto-generated)" />
                 </HBox>
 
-                <!-- Payment -->
                 <Label text="Select Payment Method" style="-fx-font-weight: bold;" />
                 <HBox spacing="20">
                     <VBox spacing="5" alignment="CENTER">
@@ -67,7 +63,6 @@
                     </VBox>
                 </HBox>
 
-                <!-- Flight Info -->
                 <HBox spacing="20">
                     <VBox spacing="3">
                         <Label text="Flight Date" />
@@ -85,7 +80,6 @@
 
                 <Separator/>
 
-                <!-- Travel Documents -->
                 <Label text="Travel Document Details" style="-fx-font-weight: bold;"/>
 
                 <HBox spacing="20">
@@ -94,15 +88,15 @@
                 </HBox>
 
                 <HBox spacing="20">
-                    <TextField fx:id="txtBookingId" promptText="Booking ID"/>
                     <DatePicker fx:id="dpIssueDate" promptText="Issue Date"/>
                     <DatePicker fx:id="dpExpiryDate" promptText="Expiry Date"/>
                 </HBox>
 
                 <Separator/>
 
-                <!-- Confirm Button -->
+
                 <Button fx:id="btnConfirmCheckIn" text="Confirm Check-In"
+                        onAction="#handleConfirmCheckIn"
                         style="-fx-background-color: #2b5797; -fx-text-fill: white; -fx-font-size: 16px; -fx-padding: 10 40; -fx-background-radius: 6;"
                         maxWidth="300" />
             </VBox>

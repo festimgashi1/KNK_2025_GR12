@@ -16,13 +16,13 @@
     <center>
         <VBox alignment="TOP_CENTER" spacing="30" style="-fx-padding: 40;">
 
-            <!-- TITULLI ME IKONË -->
+
             <HBox alignment="CENTER" spacing="10">
                 <Label text="✈" style="-fx-font-size: 28px; -fx-text-fill: #2c3e50;" />
                 <Label text="Flights" style="-fx-font-size: 28px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
             </HBox>
 
-            <!-- CONTAINER E BARDHË -->
+
             <VBox spacing="20"
                   alignment="TOP_CENTER"
                   style="-fx-background-color: white;
@@ -39,16 +39,16 @@
                         style="-fx-background-color: #2b5797; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 6;"
                         onAction="#handleGoToAllFlights"/>
 
-                <!-- Trip Type -->
+
                 <HBox spacing="10" alignment="CENTER_LEFT">
                     <RadioButton fx:id="returnRadio" text="Return" toggleGroup="$tripTypeGroup"/>
                     <RadioButton fx:id="oneWayRadio" text="One way" selected="true" toggleGroup="$tripTypeGroup"/>
                 </HBox>
 
-                <!-- FILTERS -->
+
                 <HBox spacing="15" alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
 
-                    <!-- Departure -->
+
                     <VBox spacing="5" HBox.hgrow="ALWAYS">
                         <Label text="Departure"/>
                         <TextField fx:id="txtDeparture"
@@ -56,7 +56,7 @@
                                    style="-fx-background-radius: 6; -fx-border-radius: 6;" />
                     </VBox>
 
-                    <!-- Destination -->
+
                     <VBox spacing="5" HBox.hgrow="ALWAYS">
                         <Label text="Destination"/>
                         <TextField fx:id="txtDestination"
@@ -64,7 +64,7 @@
                                    style="-fx-background-radius: 6; -fx-border-radius: 6;" />
                     </VBox>
 
-                    <!-- Departure Date -->
+
                     <VBox spacing="5">
                         <Label text="Departure date"/>
                         <DatePicker fx:id="dpDepartureDate"
@@ -72,7 +72,7 @@
                                     style="-fx-background-radius: 6; -fx-border-radius: 6;" />
                     </VBox>
 
-                    <!-- Return Date -->
+
                     <VBox spacing="5">
                         <Label text="Return date"/>
                         <DatePicker fx:id="dpReturnDate"
@@ -80,7 +80,7 @@
                                     style="-fx-background-radius: 6; -fx-border-radius: 6;" />
                     </VBox>
 
-                    <!-- Passengers -->
+
                     <VBox spacing="5">
                         <Label text="Passengers"/>
                         <HBox spacing="5" alignment="CENTER">
@@ -92,9 +92,9 @@
                         </HBox>
                     </VBox>
 
-                    <!-- Search Button -->
+
                     <VBox spacing="5" alignment="BOTTOM_CENTER">
-                        <Label text=" "/> <!-- Spacer -->
+                        <Label text=" "/>
                         <Button fx:id="btnSearch"
                                 text="🔍"
                                 style="-fx-background-color: #e5007d; -fx-text-fill: white; -fx-background-radius: 30;"

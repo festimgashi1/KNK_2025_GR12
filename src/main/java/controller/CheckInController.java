@@ -1,13 +1,14 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import model.Tickets;
 import model.BoardingPass;
 import model.TravelDocuments;
 import repository.BoardingPassRepository;
 import repository.TravelDocumentsRepository;
+import services.SceneManager;
 import session.CustomerSession;
 import session.TicketSession;
 
@@ -32,11 +33,8 @@ public class CheckInController {
     @FXML private TextField txtFlightCode;
 
     @FXML private TextField txtClientId;
-    @FXML private TextField txtBookingId;
     @FXML private DatePicker dpIssueDate;
     @FXML private DatePicker dpExpiryDate;
-
-    @FXML private Button btnConfirmCheckIn;
 
     private final BoardingPassRepository boardingPassRepo = new BoardingPassRepository();
     private final TravelDocumentsRepository travelDocumentsRepo = new TravelDocumentsRepository();
@@ -48,11 +46,14 @@ public class CheckInController {
         rbMasterCard.setToggleGroup(paymentGroup);
         rbPaypal.setToggleGroup(paymentGroup);
 
-
         Tickets ticket = TicketSession.getInstance().getSelectedTicket();
         String seatNumber = TicketSession.getInstance().getSeatNumber();
 
         if (ticket != null && seatNumber != null) {
+            txtBoardingTime.setText(ticket.getDepartureTime().toInstant()
+                    .atZone(java.time.ZoneId.systemDefault())
+                    .toLocalTime()
+                    .toString());
             txtFromCode.setText(ticket.getDepartureAirport());
             txtToCode.setText(ticket.getArrivalAirport());
             txtFlightCode.setText(String.valueOf(ticket.getFlightNumber()));
@@ -69,8 +70,9 @@ public class CheckInController {
     }
 
     @FXML
-    private void handleConfirmCheckIn(MouseEvent event) {
+    private void handleConfirmCheckIn(ActionEvent event) {
         try {
+
             String name = txtName.getText();
             String from = txtFromCode.getText();
             String to = txtToCode.getText();
@@ -79,27 +81,46 @@ public class CheckInController {
             LocalDate flightDate = dpFlightDate.getValue();
             String boardingTime = txtBoardingTime.getText();
             String flightCode = txtFlightCode.getText();
-
-            RadioButton selectedPayment = (RadioButton) paymentGroup.getSelectedToggle();
-            String paymentMethod = selectedPayment != null ? selectedPayment.getText() : "";
-
-
-            BoardingPass pass = new BoardingPass(0, name, from, to, flightDate, flightCode, gate, boardingTime, seat);
-            boardingPassRepo.save(pass);
-
-
-            int clientId = Integer.parseInt(txtClientId.getText());
-            int bookingId = Integer.parseInt(txtBookingId.getText());
             LocalDate issueDate = dpIssueDate.getValue();
             LocalDate expiryDate = dpExpiryDate.getValue();
 
-            TravelDocuments doc = new TravelDocuments(0, clientId, bookingId,
+            if (flightDate == null || issueDate == null || expiryDate == null) {
+                showError("Please fill all the required dates.");
+                return;
+            }
+
+
+            int clientId = Integer.parseInt(txtClientId.getText());
+
+
+            BoardingPass pass = new BoardingPass(
+                    0,
+                    name,
+                    from,
+                    to,
+                    flightDate,
+                    flightCode,
+                    gate,
+                    boardingTime,
+                    seat
+            );
+            boardingPassRepo.save(pass);
+
+            // Ruaj dokument udhëtimi (pa bookingId)
+            TravelDocuments doc = new TravelDocuments(
+                    0,
+                    clientId,
+                    null,
                     java.sql.Date.valueOf(issueDate),
                     java.sql.Date.valueOf(expiryDate),
-                    null, null);
+                    null,
+                    null
+            );
             travelDocumentsRepo.save(doc);
 
-            showSuccess("Check-In and Boarding Pass generated successfully!");
+            SceneManager.getInstance().setData("boardingPass", pass);
+
+            SceneManager.getInstance().switchScene("/Views/BoardingPass.fxml");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -107,13 +128,15 @@ public class CheckInController {
         }
     }
 
+
     private String generateGate() {
         return "G" + (new Random().nextInt(10) + 1);
     }
 
     private void showSuccess(String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText("Success");
+        alert.setTitle("Success");
+        alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }

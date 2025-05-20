@@ -16,6 +16,7 @@ public class CustomerNavbarController {
     public void showReservation(ActionEvent event) {
 
         SceneManager.getInstance().switchScene("/Views/CheckInView.fxml");
+        SceneManager.getInstance().switchScene("/Views/BoardingPass.fxml");
 
     }
 

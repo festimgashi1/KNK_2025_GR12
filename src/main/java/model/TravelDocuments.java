@@ -4,16 +4,17 @@ import java.util.Date;
 
 public class TravelDocuments {
     private int documentId;
-    private int clientId;
-    private int bookingId;
+    private int costumerId;
+    private Integer bookingId; // E lejojme si nullable
     private Date issueDate;
     private Date expiryDate;
     private String isValid;
     private String fileAttachment;
 
-    public TravelDocuments(int documentId, int clientId, int bookingId, Date issueDate, Date expiryDate, String isValid, String fileAttachment) {
+    public TravelDocuments(int documentId, int costumerId, Integer bookingId,
+                           Date issueDate, Date expiryDate, String isValid, String fileAttachment) {
         this.documentId = documentId;
-        this.clientId = clientId;
+        this.costumerId = costumerId;
         this.bookingId = bookingId;
         this.issueDate = issueDate;
         this.expiryDate = expiryDate;
@@ -25,11 +26,11 @@ public class TravelDocuments {
         return documentId;
     }
 
-    public int getKlientId() {
-        return clientId;
+    public int getCostumerId() {
+        return costumerId;
     }
 
-    public int getBookingId() {
+    public Integer getBookingId() {
         return bookingId;
     }
 
@@ -47,5 +48,18 @@ public class TravelDocuments {
 
     public String getFileAttachment() {
         return fileAttachment;
+    }
+
+
+    public void setBookingId(Integer bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    public void setIsValid(String isValid) {
+        this.isValid = isValid;
+    }
+
+    public void setFileAttachment(String fileAttachment) {
+        this.fileAttachment = fileAttachment;
     }
 }

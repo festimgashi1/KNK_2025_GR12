@@ -44,7 +44,7 @@ public class TicketCardController {
     private void handleBuyClick() {
         System.out.println("BUY CLICKED – ticket = " + ticket);
 
-        // 🔐 Kontroll nëse klienti është i loguar
+
         if (CustomerSession.getInstance().getCurrentCostumer() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Authentication Required");

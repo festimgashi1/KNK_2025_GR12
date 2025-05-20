@@ -25,11 +25,11 @@ public class TicketRepository {
         try {
             PreparedStatement statement = connection.prepareStatement(query);
 
-            // Vendosim të dhënat për flightNumber, ticketPrice dhe passengers
-            statement.setInt(1, ticket.getFlightNumber());  // flightnumber
-            statement.setDouble(2, ticket.getTicketPrice());  // ticketprice
-            statement.setInt(3, ticket.getPassengers());  // passengers
-            statement.setDate(4, new java.sql.Date(ticket.getBookingdate().getTime()));  // bookingdate
+
+            statement.setInt(1, ticket.getFlightNumber());
+            statement.setDouble(2, ticket.getTicketPrice());
+            statement.setInt(3, ticket.getPassengers());
+            statement.setDate(4, new java.sql.Date(ticket.getBookingdate().getTime()));
 
 
             statement.executeUpdate();
@@ -66,7 +66,7 @@ public class TicketRepository {
                         rs.getInt("passengers")
                 );
 
-                // Mbush fushat shtesë nga flights
+
                 ticket.setDepartureAirport(rs.getString("departureairport"));
                 ticket.setArrivalAirport(rs.getString("arrivalairport"));
                 ticket.setDepartureTime(rs.getTimestamp("departuretime"));
