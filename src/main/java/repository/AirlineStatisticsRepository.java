@@ -58,11 +58,13 @@ public class AirlineStatisticsRepository {
         return 0;
     }
 
-    public int countTotalPassengers(int airlineId, LocalDate start, LocalDate end) {
-        String query = "SELECT COALESCE(SUM(passengers), 0) FROM tickets " +
-                "WHERE flightnumber IN (" +
-                "SELECT flightnumber FROM flights WHERE airlineid = ? AND DATE(departuretime) BETWEEN ? AND ?)";
+    public Map<String, Integer> getReservationsGroupedByFlight(int airlineId, LocalDate start, LocalDate end) {
+        String query = "SELECT f.flightnumber, COUNT(b.id) AS reservation_count " +
+                "FROM flights f LEFT JOIN booking b ON f.flightnumber = b.flightnumber " +
+                "WHERE f.airlineid = ? AND DATE(f.departuretime) BETWEEN ? AND ? " +
+                "GROUP BY f.flightnumber";
 
+        Map<String, Integer> data = new HashMap<>();
         try (Connection conn = DBConnector.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
@@ -70,15 +72,19 @@ public class AirlineStatisticsRepository {
             stmt.setTimestamp(2, Timestamp.valueOf(safeStart(start).atStartOfDay()));
             stmt.setTimestamp(3, Timestamp.valueOf(safeEnd(end).atTime(23, 59, 59)));
 
-
             ResultSet rs = stmt.executeQuery();
-            if (rs.next()) return rs.getInt(1);
+            while (rs.next()) {
+                String flight = "FL-" + rs.getInt("flightnumber");
+                int count = rs.getInt("reservation_count");
+                data.put(flight, count);
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return 0;
+        return data;
     }
+
 
     public Map<String, Integer> getReservationStatusCounts(int airlineId, LocalDate start, LocalDate end) {
         String query = "SELECT status, COUNT(*) FROM booking " +

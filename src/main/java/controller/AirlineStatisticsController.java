@@ -14,15 +14,22 @@ import session.AirlineSession;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Map;
 
 public class AirlineStatisticsController {
 
-    @FXML private Label lblTotalFlights, lblTotalReservations, lblTotalPassengers;
-    @FXML private DatePicker dpStart, dpEnd;
-    @FXML private PieChart reservationPieChart;
-    @FXML private BarChart<String, Number> flightsBarChart;
+    @FXML
+    private Label lblTotalFlights, lblTotalReservations, lblTotalPassengers;
+    @FXML
+    private DatePicker dpStart, dpEnd;
+    @FXML
+    private PieChart reservationPieChart;
+    @FXML
+    private BarChart<String, Number> flightsBarChart;
 
     private final AirlineStatisticsService statisticsService = new AirlineStatisticsService();
+
+    @FXML private BarChart<String, Number> reservationsBarChart;
 
     @FXML
     public void initialize() {
@@ -52,14 +59,21 @@ public class AirlineStatisticsController {
 
         int totalFlights = statisticsService.getTotalFlights(airlineId, start, end);
         lblTotalFlights.setText(String.valueOf(totalFlights));
+
         int totalReservations = statisticsService.getTotalReservations(airlineId, start, end);
         lblTotalReservations.setText(String.valueOf(totalReservations));
 
-        int totalPassengers = statisticsService.getTotalPassengers(airlineId, start, end);
-        lblTotalPassengers.setText(String.valueOf(totalPassengers));
+        reservationsBarChart.getData().clear();
 
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("Reservations per Flight");
 
-        reservationPieChart.getData().clear();
-        flightsBarChart.getData().clear();
+        Map<String, Integer> reservationsPerFlight = statisticsService.getReservationsGroupedByFlight(airlineId, start, end);
+        for (Map.Entry<String, Integer> entry : reservationsPerFlight.entrySet()) {
+            series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue()));
+        }
+
+        reservationsBarChart.getData().add(series);
+
     }
 }
