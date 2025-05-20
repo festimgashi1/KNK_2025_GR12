@@ -11,9 +11,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.AirportStaff;
 import services.AirportStaffService;
+import services.LanguageManager;
 import services.SceneManager;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class AirportStaffController {
 
@@ -28,12 +30,19 @@ public class AirportStaffController {
     @FXML private TableColumn<AirportStaff, String> colStartedAt;
     @FXML private TableColumn<AirportStaff, Void> colDelete;
     @FXML private ComboBox<String> filterCombo;
+    @FXML private Label lblTitle;
+    @FXML private Label lblFilter;
+
+    @FXML private Button btnAddStaff;
 
     private final AirportStaffService staffService = new AirportStaffService();
     private ObservableList<AirportStaff> staffList;
 
     @FXML
     public void initialize() {
+        LanguageManager.getInstance().addListener(this::applyTranslations);
+        applyTranslations();
+
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colFirstName.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         colLastName.setCellValueFactory(new PropertyValueFactory<>("lastName"));
@@ -52,6 +61,24 @@ public class AirportStaffController {
         loadFilteredData();
     }
 
+    private void applyTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+
+        lblTitle.setText(bundle.getString("staff.title"));
+        lblFilter.setText(bundle.getString("staff.filter"));
+        btnAddStaff.setText(bundle.getString("staff.add"));
+
+        colId.setText(bundle.getString("staff.id"));
+        colFirstName.setText(bundle.getString("staff.firstname"));
+        colLastName.setText(bundle.getString("staff.lastname"));
+        colPhone.setText(bundle.getString("staff.phone"));
+        colRole.setText(bundle.getString("staff.role"));
+        colAddress.setText(bundle.getString("staff.address"));
+        colShift.setText(bundle.getString("staff.shift"));
+        colStartedAt.setText(bundle.getString("staff.start"));
+        colDelete.setText(bundle.getString("staff.delete"));
+    }
+
     private void loadFilteredData() {
         String shift = filterCombo.getValue();
         staffList = FXCollections.observableArrayList(
@@ -62,20 +89,22 @@ public class AirportStaffController {
 
     private void addDeleteButton() {
         colDelete.setCellFactory(col -> new TableCell<>() {
-            private final Button btn = new Button("Delete");
+            private final Button btn = new Button();
+
             {
                 btn.setStyle("-fx-background-color: #dc3545; -fx-text-fill: white; -fx-background-radius: 6;");
                 btn.setOnAction(e -> {
                     AirportStaff staff = getTableView().getItems().get(getIndex());
 
+                    ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
                     Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
-                    confirmation.setTitle("Confirm Deletion");
+                    confirmation.setTitle(bundle.getString("staff.confirm.title"));
                     confirmation.setHeaderText(null);
-                    confirmation.setContentText("Are you sure you want to delete this staff member?\n\n"
-                            + staff.getFirstName() + " " + staff.getLastName());
+                    confirmation.setContentText(bundle.getString("staff.confirm.message") + "\n\n" +
+                            staff.getFirstName() + " " + staff.getLastName());
 
-                    ButtonType yesBtn = new ButtonType("Yes", ButtonBar.ButtonData.YES);
-                    ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.NO);
+                    ButtonType yesBtn = new ButtonType(bundle.getString("yes"), ButtonBar.ButtonData.YES);
+                    ButtonType noBtn = new ButtonType(bundle.getString("no"), ButtonBar.ButtonData.NO);
                     confirmation.getButtonTypes().setAll(yesBtn, noBtn);
 
                     confirmation.showAndWait().ifPresent(response -> {
@@ -90,11 +119,11 @@ public class AirportStaffController {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
+                btn.setText(LanguageManager.getInstance().getResourceBundle().getString("staff.delete"));
                 setGraphic(empty ? null : btn);
             }
         });
     }
-
 
     @FXML
     public void onAddStaff() {
@@ -103,19 +132,16 @@ public class AirportStaffController {
             Parent root = loader.load();
 
             Stage dialog = new Stage();
-            dialog.setTitle("Add Staff");
+            dialog.setTitle(LanguageManager.getInstance().getResourceBundle().getString("staff.add"));
             dialog.setScene(new Scene(root));
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.setResizable(false);
             dialog.showAndWait();
 
             loadFilteredData();
-
         } catch (IOException e) {
             e.printStackTrace();
             new Alert(Alert.AlertType.ERROR, "Failed to open Add Staff window").showAndWait();
         }
     }
-
-
 }

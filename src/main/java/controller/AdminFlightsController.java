@@ -5,8 +5,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.Flights;
 import repository.AdminFlightsRepository;
+import services.LanguageManager;
 
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class AdminFlightsController {
 
@@ -22,6 +24,8 @@ public class AdminFlightsController {
     @FXML private TableColumn<Flights, String> colStatus;
 
     @FXML private Label statusLabel;
+    @FXML private Label lblTitle;
+    @FXML private Button deleteButton;
 
     private final AdminFlightsRepository flightsRepository = new AdminFlightsRepository();
 
@@ -37,7 +41,26 @@ public class AdminFlightsController {
         colDuration.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getDuration()));
         colStatus.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getStatus()));
 
+        LanguageManager.getInstance().addListener(this::applyTranslations);
+        applyTranslations();
+
         loadFlights();
+    }
+
+    private void applyTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+        lblTitle.setText(bundle.getString("admin.flights")); // Reuse nav translation
+        deleteButton.setText("🗑 " + bundle.getString("admin.flights.delete")); // Add this key in .properties
+
+        colFlightNumber.setText(bundle.getString("admin.flights.flightNumber"));
+        colAirlineId.setText(bundle.getString("admin.flights.airlineId"));
+        colPlaneId.setText(bundle.getString("admin.flights.planeId"));
+        colDepartureAirport.setText(bundle.getString("admin.flights.departure"));
+        colArrivalAirport.setText(bundle.getString("admin.flights.arrival"));
+        colDepartureTime.setText(bundle.getString("admin.flights.departureTime"));
+        colArrivalTime.setText(bundle.getString("admin.flights.arrivalTime"));
+        colDuration.setText(bundle.getString("admin.flights.duration"));
+        colStatus.setText(bundle.getString("admin.flights.status"));
     }
 
     private void loadFlights() {
@@ -48,22 +71,23 @@ public class AdminFlightsController {
     @FXML
     public void handleDeleteFlight() {
         Flights selectedFlight = flightsTable.getSelectionModel().getSelectedItem();
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+
         if (selectedFlight != null) {
             boolean deleted = flightsRepository.deleteByFlightNumber(selectedFlight.getFlightNumber());
             if (deleted) {
                 flightsTable.getItems().remove(selectedFlight);
-                showStatusMessage("Flight deleted successfully.", "success");
+                showStatusMessage(bundle.getString("admin.flights.delete.success"), "success");
             } else {
-                showStatusMessage("Failed to delete flight.", "error");
+                showStatusMessage(bundle.getString("admin.flights.delete.error"), "error");
             }
         } else {
-            showStatusMessage("Please select a flight to delete.", "warning");
+            showStatusMessage(bundle.getString("admin.flights.delete.select"), "warning");
         }
     }
 
     private void showStatusMessage(String message, String type) {
         statusLabel.setText(message);
-
         switch (type.toLowerCase()) {
             case "success" -> statusLabel.setStyle("-fx-text-fill: #27ae60; -fx-font-weight: bold;");
             case "error" -> statusLabel.setStyle("-fx-text-fill: #e74c3c; -fx-font-weight: bold;");

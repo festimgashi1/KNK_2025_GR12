@@ -13,7 +13,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane style="-fx-background-color: #f8fbfd;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminAirlinesRequestController">
+<BorderPane style="-fx-background-color: #f8fbfd;" xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminAirlinesRequestController">
     <left>
         <fx:include source="admin_navbar.fxml" />
     </left>
@@ -26,11 +27,7 @@
                 <Insets bottom="20" left="20" right="20" top="20" />
             </padding>
 
-            <Text style="-fx-fill: #2c3e50;" text="✈ Pending Airlines">
-                <font>
-                    <Font name="Arial Bold" size="20.0" />
-                </font>
-            </Text>
+            <Label fx:id="lblPendingTitle" style="-fx-font-size: 20px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
 
             <TableView fx:id="pendingAirlinesTable" VBox.vgrow="ALWAYS">
                 <columns>
@@ -42,11 +39,7 @@
             </TableView>
          <Separator prefHeight="10.0" prefWidth="608.0" />
 
-            <Text style="-fx-fill: #2c3e50;" text="✔ Registered Airlines">
-                <font>
-                    <Font name="Arial Bold" size="20.0" />
-                </font>
-            </Text>
+            <Label fx:id="lblRegisteredTitle" style="-fx-font-size: 20px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
 
             <TableView fx:id="registeredAirlinesTable" VBox.vgrow="ALWAYS">
                 <columns>
@@ -57,9 +50,9 @@
                 </columns>
             </TableView>
 
-            <!-- Butoni Delete -->
             <HBox alignment="CENTER_RIGHT" spacing="10">
-                <Button onAction="#handleDelete" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" text="🗑 Delete Airline" />
+                <Button fx:id="btnDelete" onAction="#handleDelete"
+                        style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;" />
             </HBox>
 
             <Label fx:id="statusLabel" style="-fx-text-fill: #2ecc71; -fx-font-size: 14px;" text="" />

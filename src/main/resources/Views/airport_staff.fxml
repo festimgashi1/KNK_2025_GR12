@@ -6,6 +6,7 @@
 <?import java.net.URL?>
 
 <BorderPane xmlns:fx="http://javafx.com/fxml"
+            xmlns="http://javafx.com/javafx/23.0.1"
             fx:controller="controller.AirportStaffController"
             prefWidth="900" prefHeight="600"
             style="-fx-background-color: #f9fcff;">
@@ -14,37 +15,32 @@
         <fx:include source="admin_navbar.fxml"/>
     </left>
 
-    <stylesheets>
-        <URL value="@styles/manage_airlines.css"/>
-    </stylesheets>
-
     <center>
-        <VBox spacing="20" >
+        <VBox spacing="20">
             <padding>
                 <Insets top="20" right="24" bottom="20" left="24"/>
             </padding>
-            <Label text="Airport Staff Management"
-                   style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
+
+            <Label fx:id="lblTitle" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
 
             <HBox spacing="10" alignment="CENTER_LEFT">
-                <Label text="Filter by shift:"
-                       style="-fx-font-size: 14px; -fx-text-fill: #333;"/>
+                <Label fx:id="lblFilter" style="-fx-font-size: 14px; -fx-text-fill: #333;" />
                 <ComboBox fx:id="filterCombo" prefWidth="140"/>
-                <Button text="Add Staff" onAction="#onAddStaff"
-                        style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-background-radius: 6;"/>
+                <Button fx:id="btnAddStaff" onAction="#onAddStaff"
+                        style="-fx-background-color: #007bff; -fx-text-fill: white; -fx-background-radius: 6;" />
             </HBox>
 
             <TableView fx:id="staffTable" prefHeight="500" style="-fx-background-radius: 8;">
                 <columns>
-                    <TableColumn text="ID" fx:id="colId"/>
-                    <TableColumn text="First Name" fx:id="colFirstName"/>
-                    <TableColumn text="Last Name" fx:id="colLastName"/>
-                    <TableColumn text="Phone" fx:id="colPhone"/>
-                    <TableColumn text="Role" fx:id="colRole"/>
-                    <TableColumn text="Address" fx:id="colAddress"/>
-                    <TableColumn text="Start Date" fx:id="colStartedAt"/>
-                    <TableColumn text="Shift" fx:id="colShift"/>
-                    <TableColumn text="Delete" fx:id="colDelete"/>
+                    <TableColumn fx:id="colId"/>
+                    <TableColumn fx:id="colFirstName"/>
+                    <TableColumn fx:id="colLastName"/>
+                    <TableColumn fx:id="colPhone"/>
+                    <TableColumn fx:id="colRole"/>
+                    <TableColumn fx:id="colAddress"/>
+                    <TableColumn fx:id="colStartedAt"/>
+                    <TableColumn fx:id="colShift"/>
+                    <TableColumn fx:id="colDelete"/>
                 </columns>
             </TableView>
         </VBox>

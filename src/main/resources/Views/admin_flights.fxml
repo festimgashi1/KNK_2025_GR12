@@ -5,49 +5,46 @@
 <?import javafx.scene.layout.*?>
 
 <?import java.net.URL?>
-<BorderPane style="-fx-background-color:white;" xmlns="http://javafx.com/javafx/23.0.1"
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="controller.AdminFlightsController">
+            fx:controller="controller.AdminFlightsController"
+            style="-fx-background-color:white;">
 
     <left>
         <fx:include source="admin_navbar.fxml"/>
     </left>
-    <stylesheets>
-        <URL value="@styles/manage_airlines.css"/>
-    </stylesheets>
+
     <center>
         <VBox spacing="15">
             <padding>
                 <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>
 
-            <Label text="Flight Management"
+            <Label fx:id="lblTitle"
                    style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
 
             <TableView fx:id="flightsTable" VBox.vgrow="ALWAYS">
                 <columns>
-                    <TableColumn fx:id="colFlightNumber" text="Flight #" prefWidth="80"/>
-                    <TableColumn fx:id="colAirlineId" text="Airline ID" prefWidth="100"/>
-                    <TableColumn fx:id="colPlaneId" text="Plane ID" prefWidth="100"/>
-                    <TableColumn fx:id="colDepartureAirport" text="From" prefWidth="100"/>
-                    <TableColumn fx:id="colArrivalAirport" text="To" prefWidth="100"/>
-                    <TableColumn fx:id="colDepartureTime" text="Departure Time" prefWidth="150"/>
-                    <TableColumn fx:id="colArrivalTime" text="Arrival Time" prefWidth="150"/>
-                    <TableColumn fx:id="colDuration" text="Duration" prefWidth="100"/>
-                    <TableColumn fx:id="colStatus" text="Status" prefWidth="100"/>
+                    <TableColumn fx:id="colFlightNumber" prefWidth="80"/>
+                    <TableColumn fx:id="colAirlineId" prefWidth="100"/>
+                    <TableColumn fx:id="colPlaneId" prefWidth="100"/>
+                    <TableColumn fx:id="colDepartureAirport" prefWidth="100"/>
+                    <TableColumn fx:id="colArrivalAirport" prefWidth="100"/>
+                    <TableColumn fx:id="colDepartureTime" prefWidth="150"/>
+                    <TableColumn fx:id="colArrivalTime" prefWidth="150"/>
+                    <TableColumn fx:id="colDuration" prefWidth="100"/>
+                    <TableColumn fx:id="colStatus" prefWidth="100"/>
                 </columns>
             </TableView>
 
             <HBox spacing="10" alignment="CENTER_RIGHT">
-                <Button text="🗑 Delete Flight"
+                <Button fx:id="deleteButton"
                         onAction="#handleDeleteFlight"
                         style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 14px; -fx-cursor: hand; -fx-background-radius: 5;" />
             </HBox>
 
             <Label fx:id="statusLabel"
-                   text=""
                    style="-fx-font-size: 14px; -fx-padding: 5 0 0 5;" />
-
         </VBox>
     </center>
 </BorderPane>

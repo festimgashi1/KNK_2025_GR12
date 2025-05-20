@@ -4,7 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.AirportStaff;
 import services.AirportStaffService;
+import services.LanguageManager;
 import services.SceneManager;
+
+import java.util.ResourceBundle;
 
 public class AddAirportStaffController {
 
@@ -15,6 +18,8 @@ public class AddAirportStaffController {
     @FXML private TextField txtAddress;
     @FXML private DatePicker dateStartedAt;
     @FXML private ComboBox<String> comboShift;
+    @FXML private Label lblTitle;
+    @FXML private Button btnSave;
 
     private final AirportStaffService service = new AirportStaffService();
 
@@ -25,7 +30,30 @@ public class AddAirportStaffController {
     }
 
     @FXML
+    public void initialize() {
+        comboShift.getItems().addAll("AM", "PM"); // ose përkthime nëse ke specifike
+        applyTranslations();
+
+        LanguageManager.getInstance().addListener(this::applyTranslations);
+    }
+
+    private void applyTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+
+        lblTitle.setText(bundle.getString("staff.add"));
+        txtFirstName.setPromptText(bundle.getString("staff.firstname"));
+        txtLastName.setPromptText(bundle.getString("staff.lastname"));
+        txtPhone.setPromptText(bundle.getString("staff.phone"));
+        txtRole.setPromptText(bundle.getString("staff.role"));
+        txtAddress.setPromptText(bundle.getString("staff.address"));
+        dateStartedAt.setPromptText(bundle.getString("staff.start"));
+        comboShift.setPromptText(bundle.getString("staff.shift"));
+        btnSave.setText(bundle.getString("save"));
+    }
+
+    @FXML
     public void onSave() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
         try {
             if (txtFirstName.getText().isEmpty() ||
                     txtLastName.getText().isEmpty() ||
@@ -35,16 +63,17 @@ public class AddAirportStaffController {
                     dateStartedAt.getValue() == null ||
                     comboShift.getValue() == null) {
 
-                new Alert(Alert.AlertType.WARNING, "Please fill in all fields.").showAndWait();
+                new Alert(Alert.AlertType.WARNING, bundle.getString("error.fill_fields")).showAndWait();
                 return;
             }
 
             Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION);
-            confirmation.setTitle("Confirm Save");
+            confirmation.setTitle(bundle.getString("staff.confirm.title"));
             confirmation.setHeaderText(null);
-            confirmation.setContentText("Are you sure you want to add this staff member?");
-            ButtonType yes = new ButtonType("Yes", ButtonBar.ButtonData.YES);
-            ButtonType no = new ButtonType("No", ButtonBar.ButtonData.NO);
+            confirmation.setContentText(bundle.getString("staff.confirm.message"));
+
+            ButtonType yes = new ButtonType(bundle.getString("yes"), ButtonBar.ButtonData.YES);
+            ButtonType no = new ButtonType(bundle.getString("no"), ButtonBar.ButtonData.NO);
             confirmation.getButtonTypes().setAll(yes, no);
 
             confirmation.showAndWait().ifPresent(response -> {
@@ -62,27 +91,17 @@ public class AddAirportStaffController {
                     boolean success = service.insertStaff(staff);
 
                     if (success) {
-                        new Alert(Alert.AlertType.INFORMATION, "Staff member added successfully.").showAndWait();
+                        new Alert(Alert.AlertType.INFORMATION, bundle.getString("staff.success")).showAndWait();
                         SceneManager.getInstance().switchScene("/Views/airport_staff.fxml");
                     } else {
-                        new Alert(Alert.AlertType.ERROR, "Failed to save staff.").showAndWait();
+                        new Alert(Alert.AlertType.ERROR, bundle.getString("staff.error.save")).showAndWait();
                     }
                 }
             });
 
         } catch (Exception e) {
             e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "Unexpected error occurred.").showAndWait();
+            new Alert(Alert.AlertType.ERROR, bundle.getString("staff.error.unexpected")).showAndWait();
         }
-    }
-
-    private void clearFields() {
-        txtFirstName.clear();
-        txtLastName.clear();
-        txtPhone.clear();
-        txtRole.clear();
-        txtAddress.clear();
-        dateStartedAt.setValue(null);
-        comboShift.setValue(null);
     }
 }
