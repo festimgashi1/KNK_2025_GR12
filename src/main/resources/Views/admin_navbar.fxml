@@ -38,6 +38,11 @@
                        -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;"
                 text="🗓 Flights" />
 
+        <Button fx:id="airportStaff" onAction="#showStaff" prefWidth="160"
+                style="-fx-background-color: transparent; -fx-border-color: transparent;
+                       -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;"
+                text="➕ Airport Staff" />
+
         <Separator prefWidth="160" />
 
         <Button fx:id="btnProfile" onAction="#goLogIn" prefWidth="160"

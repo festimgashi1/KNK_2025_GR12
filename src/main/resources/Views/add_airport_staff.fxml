@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.AddAirportStaffController"
+            prefWidth="800" prefHeight="500"
+            style="-fx-background-color: #f7fbff;">
+    <center>
+        <VBox spacing="12" alignment="CENTER_LEFT" style="-fx-padding: 30;">
+            <Label text="Add Airport Staff"
+                   style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <TextField fx:id="txtFirstName" promptText="First Name"/>
+            <TextField fx:id="txtLastName" promptText="Last Name"/>
+            <TextField fx:id="txtPhone" promptText="Phone Number"/>
+            <TextField fx:id="txtRole" promptText="Role"/>
+            <TextField fx:id="txtAddress" promptText="Address"/>
+            <DatePicker fx:id="dateStartedAt" promptText="Started At"/>
+            <ComboBox fx:id="comboShift" promptText="Select Shift">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="AM"/>
+                        <String fx:value="PM"/>
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <Button text="Save"
+                    onAction="#onSave"
+                    style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 6;"/>
+        </VBox>
+    </center>
+</BorderPane>

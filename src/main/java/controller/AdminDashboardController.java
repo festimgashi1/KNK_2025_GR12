@@ -64,6 +64,11 @@ public class AdminDashboardController {
     }
 
     @FXML
+    private void showStaff() throws IOException {
+        SceneManager.getInstance().switchScene("/Views/airport_staff.fxml");
+    }
+
+    @FXML
     public void goLogIn(ActionEvent event) {
         if (AdminSession.getInstance().getCurrentAdmin() != null) {
             SceneManager.getInstance().switchScene("/Views/admin_profile.fxml");
