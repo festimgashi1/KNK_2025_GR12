@@ -2,6 +2,7 @@ package controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -25,6 +26,10 @@ public class AirlineNav {
     @FXML
     public void initialize() {
         lblAirlineName.setText(AirlineSession.getAirlineName()); // ➕ vendos emrin
+
+        // ✅ Siguron që VBox navBox të ngjitet komplet lart sapo të jetë ngarkuar
+        navBox.setTranslateY(0);
+        navBox.setPadding(new Insets(0, 10, 20, 10));
     }
 
     @FXML
@@ -67,4 +72,4 @@ public class AirlineNav {
         AirlineSession.clear();
         SceneManager.getInstance().switchScene("/Views/login.fxml");    }
 
-}
+    }
