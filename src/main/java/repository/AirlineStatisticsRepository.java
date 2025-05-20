@@ -59,7 +59,7 @@ public class AirlineStatisticsRepository {
     }
 
     public Map<String, Integer> getReservationsGroupedByFlight(int airlineId, LocalDate start, LocalDate end) {
-        String query = "SELECT f.flightnumber, COUNT(b.id) AS reservation_count " +
+        String query = "SELECT f.flightnumber, COUNT(b.bookingid) AS reservation_count " +
                 "FROM flights f LEFT JOIN booking b ON f.flightnumber = b.flightnumber " +
                 "WHERE f.airlineid = ? AND DATE(f.departuretime) BETWEEN ? AND ? " +
                 "GROUP BY f.flightnumber";
