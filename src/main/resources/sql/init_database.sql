@@ -263,3 +263,5 @@ SELECT t.ticketid, t.flightNumber, t.bookingdate, t.ticketprice, t.passengers,
    AND f.arrivalAirport = ?
    AND DATE(f.departureTime) = ?
    AND t.passengers >= ?;
+
+   ALTER TABLE feedback DROP COLUMN flightnumber;
