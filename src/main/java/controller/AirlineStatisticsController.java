@@ -18,6 +18,8 @@ import java.util.Map;
 
 public class AirlineStatisticsController {
 
+    @FXML private CategoryAxis xAxis;
+    @FXML private NumberAxis yAxis;
     @FXML
     private Label lblTotalFlights, lblTotalReservations, lblTotalPassengers;
     @FXML
@@ -45,14 +47,11 @@ public class AirlineStatisticsController {
 
     @FXML
     private void handleBack(ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("/Views/airline_dashboard.fxml")); // ose skena jote
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(root));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        dpStart.setValue(null);
+        dpEnd.setValue(null);
+        loadData(null, null);
     }
+
 
     private void loadData(LocalDate start, LocalDate end) {
         int airlineId = AirlineSession.getAirlineId();
