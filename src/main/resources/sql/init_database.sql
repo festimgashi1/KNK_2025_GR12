@@ -268,3 +268,7 @@ SELECT t.ticketid, t.flightNumber, t.bookingdate, t.ticketprice, t.passengers,
 
    Drop table Refunds;
    Drop table Delays;
+
+   ALTER TABLE TravelDocuments
+   ALTER COLUMN bookingId DROP NOT NULL;
+
