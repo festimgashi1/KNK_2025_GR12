@@ -7,25 +7,18 @@ import java.util.Map;
 
 public class AirlineStatisticsService {
 
-    private final AirlineStatisticsRepository repo = new AirlineStatisticsRepository();
+    private final AirlineStatisticsRepository statisticsRepository = new AirlineStatisticsRepository();
+
+    public Map<String, Integer> getReservationsGroupedByFlight(int airlineId, LocalDate start, LocalDate end) {
+        return statisticsRepository.getReservationsGroupedByFlight(airlineId, start, end);
+    }
+
 
     public int getTotalFlights(int airlineId, LocalDate start, LocalDate end) {
-        return repo.countTotalFlights(airlineId, start, end);
+        return statisticsRepository.countTotalFlights(airlineId, start, end);
     }
 
     public int getTotalReservations(int airlineId, LocalDate start, LocalDate end) {
-        return repo.countTotalReservations(airlineId, start, end);
-    }
-
-    public int getTotalPassengers(int airlineId, LocalDate start, LocalDate end) {
-        return repo.countTotalPassengers(airlineId, start, end);
-    }
-
-    public Map<String, Integer> getReservationDistribution(int airlineId, LocalDate start, LocalDate end) {
-        return repo.getReservationStatusCounts(airlineId, start, end);
-    }
-
-    public Map<String, Integer> getPassengersPerFlight(int airlineId, LocalDate start, LocalDate end) {
-        return repo.getPassengersGroupedByFlight(airlineId, start, end);
+        return statisticsRepository.countTotalReservations(airlineId, start, end);
     }
 }
