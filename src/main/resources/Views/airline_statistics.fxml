@@ -53,12 +53,12 @@
                 </VBox>
                 
                 <HBox spacing="50" alignment="CENTER">
-                    <BarChart fx:id="reservationsBarChart" prefWidth="700" prefHeight="350">
+                    <BarChart fx:id="reservationsBarChart" prefWidth="700" prefHeight="350" title="Reservations per Flight">
                         <xAxis>
-                            <CategoryAxis label="Flight"/>
+                            <CategoryAxis fx:id="xAxis" label="Flight Numbers"/>
                         </xAxis>
                         <yAxis>
-                            <NumberAxis label="Reservations"/>
+                            <NumberAxis fx:id="yAxis" label="Number of Reservations"/>
                         </yAxis>
                     </BarChart>
                 </HBox>
