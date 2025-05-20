@@ -47,12 +47,12 @@
                <TextField fx:id="emailTxt"
                           promptText="Email"
                           style="-fx-background-radius: 10; -fx-background-color: #f6f8fa; -fx-border-color: #d0d7de;"
-                          prefHeight="36" prefWidth="300"/>
+                          prefHeight="36" prefWidth="330"/>
 
                <PasswordField fx:id="pwId"
                               promptText="Password"
                               style="-fx-background-radius: 10; -fx-background-color: #f6f8fa; -fx-border-color: #d0d7de;"
-                              prefHeight="36" prefWidth="300"/>
+                              prefHeight="36" prefWidth="330"/>
 
                <Label fx:id="forgotPasswordLabel"
                       text="Forgot Password?"
