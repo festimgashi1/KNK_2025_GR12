@@ -17,7 +17,7 @@ public class FeedbackService {
             return false;
         }
 
-        if (feedback.getComments() == null || feedback.getComments().isBlank()) {
+        if (feedback.getComment() == null || feedback.getComment().isBlank()) {
             return false;
         }
 

@@ -5,6 +5,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Alert.AlertType;
 import model.Feedback;
 import repository.FeedbackRepository;
+import session.CustomerSession;
 
 public class FeedbackController {
 
@@ -31,21 +32,24 @@ public class FeedbackController {
 
     @FXML
     private void handleSendFeedback() {
-        Toggle selected = ratingGroup.getSelectedToggle();
 
+        if (CustomerSession.getInstance().getCurrentCostumer() == null) {
+            showAlert(Alert.AlertType.ERROR, "You must be logged in to submit feedback.");
+            return;
+        }
+
+        Toggle selected = ratingGroup.getSelectedToggle();
         if (selected == null) {
-            showAlert(AlertType.WARNING, "Please select a rating.");
+            showAlert(Alert.AlertType.WARNING, "Please select a rating.");
             return;
         }
 
         String rating = ((ToggleButton) selected).getText();
         String comment = txtComment.getText();
 
+        int costumerId = CustomerSession.getInstance().getCurrentCostumer().getCostumerId();
 
-        int costumerId = 1;
-        int flightNumber = 1002;
-
-        Feedback feedback = new Feedback(costumerId, flightNumber, rating, comment);
+        Feedback feedback = new Feedback(costumerId, rating, comment);
         boolean inserted = feedbackRepo.saveFeedback(feedback);
 
         if (inserted) {
@@ -56,6 +60,8 @@ public class FeedbackController {
             showAlert(AlertType.ERROR, "Failed to submit feedback.");
         }
     }
+
+
 
     private void showAlert(AlertType type, String message) {
         Alert alert = new Alert(type);
