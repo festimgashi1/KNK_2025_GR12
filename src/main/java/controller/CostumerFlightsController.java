@@ -1,4 +1,3 @@
-
 package controller;
 
 import javafx.event.ActionEvent;
@@ -20,37 +19,20 @@ import java.util.List;
 
 public class CostumerFlightsController {
 
-    @FXML private ToggleGroup tripTypeGroup;
-    @FXML private RadioButton returnRadio;
-    @FXML private RadioButton oneWayRadio;
     @FXML private TextField txtDeparture;
     @FXML private TextField txtDestination;
     @FXML private DatePicker dpDepartureDate;
-    @FXML private DatePicker dpReturnDate;
     @FXML private Button btnAddPassenger;
     @FXML private Button btnRemovePassenger;
     @FXML private Text passengerText;
     @FXML private Button btnSearch;
     @FXML private VBox ticketListContainer;
 
-
     private int passengerCount = 1;
     private final CostumerFlightService ticketFlightService = new CostumerFlightService();
 
     @FXML
     private void initialize() {
-        tripTypeGroup = new ToggleGroup();
-        returnRadio.setToggleGroup(tripTypeGroup);
-        oneWayRadio.setToggleGroup(tripTypeGroup);
-
-        tripTypeGroup.selectedToggleProperty().addListener((obs, oldToggle, newToggle) -> {
-            if (tripTypeGroup.getSelectedToggle() != null) {
-                String trip = ((RadioButton) tripTypeGroup.getSelectedToggle()).getText();
-                dpReturnDate.setDisable(trip.equalsIgnoreCase("One way"));
-            }
-        });
-
-        dpReturnDate.setDisable(oneWayRadio.isSelected());
         passengerText.setText(String.valueOf(passengerCount));
     }
 
@@ -86,9 +68,7 @@ public class CostumerFlightsController {
 
         if (!matchingTickets.isEmpty()) {
             try {
-
                 SceneManager.getInstance().setData("matchingTickets", matchingTickets);
-
 
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/TicketList.fxml"));
                 Parent root = loader.load();
@@ -104,8 +84,6 @@ public class CostumerFlightsController {
         }
     }
 
-
-
     private void showAlert(Alert.AlertType type, String title, String message) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
@@ -113,6 +91,7 @@ public class CostumerFlightsController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
     @FXML
     private void handleGoToAllFlights(ActionEvent event) {
         try {
