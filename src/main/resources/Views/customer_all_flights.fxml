@@ -3,8 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <?import java.net.URL?>
+
 <BorderPane style="-fx-background-color:white;" xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="controller.CustomerAllFlightsController">
@@ -12,16 +12,19 @@
     <left>
         <fx:include source="customer_navbar.fxml"/>
     </left>
+
     <stylesheets>
         <URL value="@styles/manage_airlines.css"/>
     </stylesheets>
+
     <center>
         <VBox spacing="15">
             <padding>
                 <Insets top="20" right="20" bottom="20" left="20"/>
             </padding>
 
-            <Label text="Flight Table"
+            <Label fx:id="lblTitle"
+                   text="Flight Table"
                    style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
 
             <TableView fx:id="flightsTable" VBox.vgrow="ALWAYS">

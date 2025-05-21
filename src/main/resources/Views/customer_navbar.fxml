@@ -5,25 +5,51 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" prefHeight="265.0" prefWidth="202.0" spacing="15" style="-fx-background-color: #F0FAFF;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomerNavbarController">
+<VBox alignment="TOP_CENTER" prefHeight="265.0" prefWidth="202.0" spacing="15" style="-fx-background-color: #F0FAFF;"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.CustomerNavbarController">
+
     <children>
 
-        <Label prefHeight="35.0" prefWidth="85.0" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 20 0 10 0;" text="Welcome to Pristina's Airport" textFill="#2c3e50" />
+        <fx:include source="language_selector.fxml"/>
+
+        <Label fx:id="lblWelcome" prefHeight="35.0" prefWidth="85.0"
+               style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-padding: 20 0 10 0;"
+               text="Welcome to Pristina's Airport" textFill="#2c3e50" />
         <Separator prefWidth="160" />
 
-        <Button onAction="#showFlights" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="🛫 Find Flights" />
+        <Button fx:id="btnFindFlights" onAction="#showFlights" prefWidth="160"
+                style="-fx-background-color: transparent; -fx-border-color: transparent;
+                       -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;"
+                text="🛫 Find Flights" />
 
-        <Button layoutX="31.0" layoutY="101.0" onAction="#showAllFlights" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="🛫 All Flights" />
+        <Button fx:id="btnAllFlights" layoutX="31.0" layoutY="101.0" onAction="#showAllFlights" prefWidth="160"
+                style="-fx-background-color: transparent; -fx-border-color: transparent;
+                       -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;"
+                text="🛫 All Flights" />
 
-        <Button onAction="#showReservation" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="📝 CheckIn" />
+        <Button fx:id="btnCheckIn" onAction="#showReservation" prefWidth="160"
+                style="-fx-background-color: transparent; -fx-border-color: transparent;
+                       -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;"
+                text="📝 CheckIn" />
 
-        <Button onAction="#showFeedback" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text=" 💬 Feedback " />
+        <Button fx:id="btnFeedback" onAction="#showFeedback" prefWidth="160"
+                style="-fx-background-color: transparent; -fx-border-color: transparent;
+                       -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;"
+                text="💬 Feedback" />
 
         <Separator prefWidth="160" />
 
-        <Button onAction="#goLogIn" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;" text="👤 Profile" />
+        <Button fx:id="btnProfile" onAction="#goLogIn" prefWidth="160"
+                style="-fx-background-color: transparent; -fx-border-color: transparent;
+                       -fx-font-size: 14px; -fx-text-fill: #2c3e50; -fx-cursor: hand;"
+                text="👤 Profile" />
 
-        <Button onAction="#handleSignOut" prefWidth="160" style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-font-size: 14px; -fx-text-fill: #c0392b; -fx-cursor: hand;" text="🚪 Sign Out" />
+        <Button fx:id="btnSignOut" onAction="#handleSignOut" prefWidth="160"
+                style="-fx-background-color: transparent; -fx-border-color: transparent;
+                       -fx-font-size: 14px; -fx-text-fill: #c0392b; -fx-cursor: hand;"
+                text="🚪 Sign Out" />
 
     </children>
 </VBox>
