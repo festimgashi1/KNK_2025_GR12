@@ -19,40 +19,35 @@
             <fx:include source="Airline_Dash.fxml"/>
         </VBox>
 
-
         <VBox spacing="0" alignment="TOP_LEFT" HBox.hgrow="ALWAYS">
 
-
             <HBox alignment="CENTER" spacing="10" style="-fx-padding: 10 30 10 30;" VBox.vgrow="NEVER">
-                <Label text="📊 Airline Statistics"
+                <Label fx:id="lblHeader" text="📊 Airline Statistics"
                        style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2b2b2b;" />
                 <DatePicker fx:id="dpStart" promptText="Start Date"/>
                 <DatePicker fx:id="dpEnd" promptText="End Date"/>
-                <Button text="Filter" onAction="#handleFilter"
+                <Button fx:id="btnFilter" text="Filter" onAction="#handleFilter"
                         style="-fx-background-color: #dceeff; -fx-background-radius: 8;"/>
-                <Button text="Back" onAction="#handleBack"
+                <Button fx:id="btnBack" text="Back" onAction="#handleBack"
                         style="-fx-background-color: lightgray; -fx-background-radius: 8; -fx-font-weight: bold;"/>
             </HBox>
 
-
             <VBox alignment="TOP_CENTER" spacing="25" style="-fx-padding: 10 30 30 30;" VBox.vgrow="ALWAYS">
-
 
                 <VBox spacing="10"
                       style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 2);">
                     <GridPane hgap="20" vgap="15">
-                        <Label text="Total Flights:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                        <Label fx:id="lblTotalFlightsText" text="Total Flights:" GridPane.rowIndex="0" GridPane.columnIndex="0"
                                style="-fx-font-size: 16px;"/>
                         <Label fx:id="lblTotalFlights" GridPane.rowIndex="0" GridPane.columnIndex="1"
                                style="-fx-font-weight: bold;"/>
 
-                        <Label text="Total Reservations:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                        <Label fx:id="lblTotalReservationsText" text="Total Reservations:" GridPane.rowIndex="1" GridPane.columnIndex="0"
                                style="-fx-font-size: 16px;"/>
                         <Label fx:id="lblTotalReservations" GridPane.rowIndex="1" GridPane.columnIndex="1"
                                style="-fx-font-weight: bold;"/>
                     </GridPane>
                 </VBox>
-
 
                 <HBox spacing="50" alignment="CENTER" VBox.vgrow="ALWAYS">
                     <BarChart fx:id="reservationsBarChart"
@@ -73,4 +68,3 @@
         </VBox>
     </HBox>
 </StackPane>
-

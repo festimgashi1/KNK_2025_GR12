@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
-<?import javafx.fxml.FXMLLoader?>
 <?import javafx.scene.control.Button?>
 
 <BorderPane xmlns="http://javafx.com/javafx"
@@ -25,7 +24,7 @@
                 <Insets top="40" left="40" right="40" bottom="40" />
             </padding>
 
-            <Label text="✈ Airline Profile" style="-fx-text-fill: #2c3e50;">
+            <Label fx:id="lblHeader" text="✈ Airline Profile" style="-fx-text-fill: #2c3e50;">
                 <font>
                     <Font name="Arial Black" size="24" />
                 </font>
@@ -45,19 +44,20 @@
                     </DropShadow>
                 </effect>
 
-                <Label text="Airline Name" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+                <Label fx:id="lblTitleAirline" text="Airline Name" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
                 <Label fx:id="lblAirlineName" style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
 
-                <Label text="Company Email" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+                <Label fx:id="lblTitleEmail" text="Company Email" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
                 <Label fx:id="lblEmail" style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
 
-                <Label text="Contact Number" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+                <Label fx:id="lblTitlePhone" text="Contact Number" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
                 <Label fx:id="lblPhone" style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
 
-                <Label text="Address" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
+                <Label fx:id="lblTitleAddress" text="Address" style="-fx-font-size: 14px; -fx-text-fill: #888;" />
                 <Label fx:id="lblAddress" style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
 
-                <Button text="Change Password"
+                <Button fx:id="btnChangePassword"
+                        text="Change Password"
                         onAction="#goToChangePassword"
                         style="-fx-background-color: #1e3d59; -fx-text-fill: white; -fx-background-radius: 8px; -fx-padding: 8 16;" />
 
