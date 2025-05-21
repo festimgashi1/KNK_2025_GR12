@@ -33,28 +33,28 @@
                     </columnConstraints>
 
                     <Label text="From:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                    <TextField fx:id="txtFromCode" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                    <TextField fx:id="txtFromCode" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 
                     <Label text="To:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                    <TextField fx:id="txtToCode" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                    <TextField fx:id="txtToCode" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
                     <Label text="Passenger Name:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                    <TextField fx:id="txtName" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                    <TextField fx:id="txtName" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 
                     <Label text="Seat:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                    <TextField fx:id="txtSeat" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                    <TextField fx:id="txtSeat" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 
                     <Label text="Gate:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-                    <TextField fx:id="txtGate" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                    <TextField fx:id="txtGate" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
 
                     <Label text="Flight Code:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-                    <TextField fx:id="txtFlightCode" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+                    <TextField fx:id="txtFlightCode" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
 
                     <Label text="Boarding Time:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-                    <TextField fx:id="txtBoardingTime" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+                    <TextField fx:id="txtBoardingTime" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
 
                     <Label text="Flight Date:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
-                    <TextField fx:id="txtFlightDate" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                    <TextField fx:id="txtFlightDate" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
                 </GridPane>
 
                 <VBox spacing="5">
