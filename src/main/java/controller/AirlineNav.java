@@ -37,7 +37,7 @@ public class AirlineNav {
         btnStatistics.setText(bundle.getString("airline.nav.statistics"));
         btnProfile.setText(bundle.getString("airline.nav.profile"));
         btnLogout.setText(bundle.getString("airline.nav.logout"));
-        // btnLang kontrollohet nga vetë LanguageSelectorController përmes fx:include
+
     }
 
     private void setActiveButton(Button clickedButton) {

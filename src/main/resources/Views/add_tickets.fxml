@@ -19,11 +19,11 @@
                 <Insets top="40" left="50" right="50" bottom="40"/>
             </padding>
 
-            <!-- Title -->
+
             <Label fx:id="lblTitleAdd" text="Add New Ticket"
                    style="-fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" />
 
-            <!-- Form for adding tickets -->
+
             <GridPane hgap="20" vgap="20">
                 <columnConstraints>
                     <ColumnConstraints percentWidth="30"/>
@@ -58,7 +58,7 @@
                 </children>
             </GridPane>
 
-            <!-- Ticket Table -->
+
             <Label fx:id="lblTitleManage" text="Manage Tickets"
                    style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
 

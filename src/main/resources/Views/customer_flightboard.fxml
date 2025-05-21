@@ -17,7 +17,7 @@
         <URL value="@styles/manage_airlines.css"/>
     </stylesheets>
 
-    <!-- Filter Buttons -->
+
     <HBox alignment="CENTER_LEFT" spacing="10">
         <Label fx:id="lblDisplay" text="Display:" textFill="#a97a13">
             <font>
@@ -32,7 +32,7 @@
                 style="-fx-background-color: #ADD8E6; -fx-border-color: white;"/>
     </HBox>
 
-    <!-- ARRIVALS -->
+
     <VBox spacing="10" alignment="CENTER">
         <Label fx:id="lblArrivals" text="ARRIVALS ✈" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2b5797;" />
         <TableView fx:id="tableViewArrivals" prefHeight="220" prefWidth="600">
@@ -48,7 +48,7 @@
 
     <Separator/>
 
-    <!-- DEPARTURES -->
+
     <VBox spacing="10" alignment="CENTER">
         <Label fx:id="lblDepartures" text="DEPARTURES ✈" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #2b5797;" />
         <TableView fx:id="tableViewDepartures" prefHeight="220" prefWidth="600">
