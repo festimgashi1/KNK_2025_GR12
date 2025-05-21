@@ -11,11 +11,13 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.Tickets;
 import services.TicketService;
+import services.LanguageManager;
 import session.AirlineSession;
 
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class AddTicketController {
 
@@ -25,6 +27,14 @@ public class AddTicketController {
 
     @FXML private Label lblError;
     @FXML private Label lblSuccess;
+    @FXML private Label lblTitleAdd;
+    @FXML private Label lblTitleManage;
+
+    @FXML private Label lblFlight;
+    @FXML private Label lblPrice;
+    @FXML private Label lblPassengers;
+
+    @FXML private Button btnAddTicket;
 
     @FXML private TableView<Tickets> ticketTable;
     @FXML private TableColumn<Tickets, Integer> colFlightNumber;
@@ -43,6 +53,29 @@ public class AddTicketController {
     public void initialize() {
         setupTableColumns();
         loadTickets();
+        loadTranslations();
+        LanguageManager.getInstance().addListener(this::loadTranslations);
+    }
+
+    private void loadTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+
+        lblTitleAdd.setText(bundle.getString("ticket.add.title"));
+        lblTitleManage.setText(bundle.getString("ticket.manage.title"));
+        lblFlight.setText(bundle.getString("ticket.flight"));
+        lblPrice.setText(bundle.getString("ticket.price"));
+        lblPassengers.setText(bundle.getString("ticket.passengers"));
+        btnAddTicket.setText(bundle.getString("ticket.add.button"));
+
+        colFlightNumber.setText(bundle.getString("col.flight"));
+        colTicketPrice.setText(bundle.getString("col.price"));
+        colMaxPassengers.setText(bundle.getString("col.passengers"));
+        colDepartureAirport.setText(bundle.getString("col.from"));
+        colArrivalAirport.setText(bundle.getString("col.to"));
+        colDepartureTime.setText(bundle.getString("col.departure"));
+        colArrivalTime.setText(bundle.getString("col.arrival"));
+        colStatus.setText(bundle.getString("col.status"));
+        colActions.setText(bundle.getString("col.actions"));
     }
 
     private void setupTableColumns() {
@@ -79,8 +112,10 @@ public class AddTicketController {
         String price = txtTicketPrice.getText();
         String maxPassengers = txtMaxPassengers.getText();
 
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+
         if (flightNumber.isEmpty() || price.isEmpty() || maxPassengers.isEmpty()) {
-            lblError.setText("All fields are required!");
+            lblError.setText(bundle.getString("ticket.error.required"));
             lblError.setVisible(true);
             lblSuccess.setVisible(false);
             return;
@@ -92,17 +127,16 @@ public class AddTicketController {
             int flightNum = Integer.parseInt(flightNumber);
 
             Tickets ticket = new Tickets(0, flightNum, 0, new Date(), ticketPrice, "", passengers);
-
             ticketService.addTicket(ticket);
 
-            lblSuccess.setText("Ticket added successfully.");
+            lblSuccess.setText(bundle.getString("ticket.success"));
             lblSuccess.setVisible(true);
             lblError.setVisible(false);
 
             loadTickets();
 
         } catch (NumberFormatException e) {
-            lblError.setText("Invalid input format.");
+            lblError.setText(bundle.getString("ticket.error.format"));
             lblError.setVisible(true);
             lblSuccess.setVisible(false);
         }
@@ -139,7 +173,7 @@ public class AddTicketController {
                         stage.setScene(new Scene(root));
                         stage.showAndWait();
 
-                        loadTickets(); // rifresko tabelën pas editimit
+                        loadTickets();
 
                     } catch (IOException ex) {
                         ex.printStackTrace();
@@ -148,15 +182,17 @@ public class AddTicketController {
 
                 btnDelete.setOnAction(e -> {
                     Tickets ticket = getTableView().getItems().get(getIndex());
+                    ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-                    alert.setTitle("Delete Ticket");
-                    alert.setHeaderText("Are you sure you want to delete this ticket?");
+                    alert.setTitle(bundle.getString("ticket.delete.title"));
+                    alert.setHeaderText(bundle.getString("ticket.delete.confirm"));
                     alert.setContentText("Ticket ID: " + ticket.getTicketid());
 
                     alert.showAndWait().ifPresent(result -> {
                         if (result == ButtonType.OK) {
                             ticketService.deleteTicket(ticket.getTicketid());
-                            loadTickets(); // Rifresko tabelën pas fshirjes
+                            loadTickets();
                         }
                     });
                 });
