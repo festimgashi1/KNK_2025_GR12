@@ -13,9 +13,11 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Flights;
 import services.FlightService;
+import services.LanguageManager;
 import session.AirlineSession;
 
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class ManageFlightsController {
 
@@ -29,12 +31,15 @@ public class ManageFlightsController {
     @FXML private TableColumn<Flights, Void> colActions;
 
     @FXML private Label lblMessage;
+    @FXML private Label lblTitle;
 
     private final FlightService flightService = new FlightService();
     private final ObservableList<Flights> flightsData = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
+        LanguageManager.getInstance().addListener(this::applyTranslations);
+        applyTranslations();
         loadFlights();
     }
 
@@ -55,29 +60,13 @@ public class ManageFlightsController {
     }
 
     private void addActionButtons() {
-        colActions.setCellFactory(col -> new TableCell<Flights, Void>() {
+        colActions.setCellFactory(col -> new TableCell<>() {
             private final Button btnEdit = new Button("✎");
             private final Button btnDelete = new Button("🗑");
 
             {
-                btnEdit.setStyle("""
-                -fx-background-color: #3498db;
-                -fx-text-fill: white;
-                -fx-font-weight: bold;
-                -fx-background-radius: 8;
-                -fx-padding: 4 10;
-                -fx-cursor: hand;
-            """);
-
-                btnDelete.setStyle("""
-                -fx-background-color: #e74c3c;
-                -fx-text-fill: white;
-                -fx-font-weight: bold;
-                -fx-background-radius: 8;
-                -fx-padding: 4 10;
-                -fx-cursor: hand;
-            """);
-
+                btnEdit.setStyle("-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 4 10; -fx-cursor: hand;");
+                btnDelete.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 4 10; -fx-cursor: hand;");
                 btnEdit.setOnAction(e -> handleEdit(getTableView().getItems().get(getIndex())));
                 btnDelete.setOnAction(e -> handleDelete(getTableView().getItems().get(getIndex())));
             }
@@ -85,13 +74,7 @@ public class ManageFlightsController {
             @Override
             protected void updateItem(Void item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    HBox box = new HBox(8, btnEdit, btnDelete);
-                    box.setStyle("-fx-alignment: center;");
-                    setGraphic(box);
-                }
+                setGraphic(empty ? null : new HBox(8, btnEdit, btnDelete));
             }
         });
     }
@@ -108,24 +91,24 @@ public class ManageFlightsController {
             stage.setTitle("Edit Flight");
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(new Scene(root));
-            stage.showAndWait(); // wait until edit window closes
+            stage.showAndWait();
 
-            // rifresko listen pas editimit
             loadFlights();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     private void handleDelete(Flights flight) {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirm Delete");
-        alert.setHeaderText("Are you sure?");
-        alert.setContentText("Are you sure you want to delete this flight?");
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
 
-        ButtonType confirmBtn = new ButtonType("Yes", ButtonBar.ButtonData.OK_DONE);
-        ButtonType cancelBtn = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle(bundle.getString("delete.confirm.title"));
+        alert.setHeaderText(bundle.getString("delete.confirm.header"));
+        alert.setContentText(bundle.getString("delete.confirm.text"));
+
+        ButtonType confirmBtn = new ButtonType(bundle.getString("yes"), ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancelBtn = new ButtonType(bundle.getString("cancel"), ButtonBar.ButtonData.CANCEL_CLOSE);
         alert.getButtonTypes().setAll(confirmBtn, cancelBtn);
 
         alert.showAndWait().ifPresent(response -> {
@@ -133,14 +116,27 @@ public class ManageFlightsController {
                 boolean success = flightService.deleteFlightById(flight.getFlightNumber());
                 if (success) {
                     flightsData.remove(flight);
-                    lblMessage.setText("Fluturimi u fshi me sukses.");
+                    lblMessage.setText(bundle.getString("delete.success"));
                     lblMessage.setStyle("-fx-text-fill: green;");
                 } else {
-                    lblMessage.setText("Fshirja deshtoi. Provo përsëri.");
+                    lblMessage.setText(bundle.getString("delete.failed"));
                     lblMessage.setStyle("-fx-text-fill: red;");
                 }
                 lblMessage.setVisible(true);
             }
         });
+    }
+
+    private void applyTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+        lblTitle.setText(bundle.getString("flight.manage.title"));
+        colFlightNumber.setText(bundle.getString("flight.number"));
+        colDeparture.setText(bundle.getString("departure.airport"));
+        colArrival.setText(bundle.getString("arrival.airport"));
+        colDepartureTime.setText(bundle.getString("departure.time"));
+        colArrivalTime.setText(bundle.getString("arrival.time"));
+        colStatus.setText(bundle.getString("flight.status"));
+        colActions.setText(bundle.getString("actions"));
+        lblMessage.setText(bundle.getString("flight.select_message"));
     }
 }

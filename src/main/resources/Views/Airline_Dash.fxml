@@ -15,10 +15,12 @@
       stylesheets="@styles/navAirline.css"
       fx:id="navBox">
 
-
     <padding>
         <Insets top="0" bottom="0" left="0" right="0"/>
     </padding>
+
+    <!-- Përfshi butonin për gjuhën -->
+    <fx:include source="language_selector.fxml"/>
 
     <HBox spacing="10" alignment="CENTER_LEFT" style="-fx-padding: 10 10 10 10;">
         <Label style="-fx-font-size: 36px; -fx-text-fill: #4098d7;" text="✈ "/>
@@ -27,17 +29,16 @@
                text="Airline Name"/>
     </HBox>
 
-    <Button onAction="#goToAddFlight" prefWidth="180" text="Add Flight" styleClass="nav-button"/>
-    <Button onAction="#goToManageFlights" prefWidth="180" text="Manage Flights" styleClass="nav-button"/>
-    <Button onAction="#goToAllFlights" prefWidth="180" text="All Flights" styleClass="nav-button"/>
-    <Button onAction="#goToTickets" prefWidth="180" text="Tickets" styleClass="nav-button"/>
-    <Button onAction="#goToStatistics" prefWidth="180" text="Statistics" styleClass="nav-button"/>
+    <Button fx:id="btnAddFlight" onAction="#goToAddFlight" prefWidth="180" styleClass="nav-button"/>
+    <Button fx:id="btnManageFlights" onAction="#goToManageFlights" prefWidth="180" styleClass="nav-button"/>
+    <Button fx:id="btnAllFlights" onAction="#goToAllFlights" prefWidth="180" styleClass="nav-button"/>
+    <Button fx:id="btnTickets" onAction="#goToTickets" prefWidth="180" styleClass="nav-button"/>
+    <Button fx:id="btnStatistics" onAction="#goToStatistics" prefWidth="180" styleClass="nav-button"/>
 
     <Separator prefWidth="160"/>
 
-    <Button onAction="#goToProfile" prefWidth="180" text="Profile" styleClass="nav-button"/>
-    <Button onAction="#handleSignOut"
+    <Button fx:id="btnProfile" onAction="#goToProfile" prefWidth="180" styleClass="nav-button"/>
+    <Button fx:id="btnLogout" onAction="#handleSignOut"
             prefWidth="180"
-            text="Sign Out"
             style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold;"/>
 </VBox>
