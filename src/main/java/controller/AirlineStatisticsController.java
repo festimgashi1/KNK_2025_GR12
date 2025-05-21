@@ -2,41 +2,52 @@ package controller;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.chart.*;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
 import services.AirlineStatisticsService;
 import session.AirlineSession;
+import services.LanguageManager;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.ResourceBundle;
 
 public class AirlineStatisticsController {
 
     @FXML private CategoryAxis xAxis;
     @FXML private NumberAxis yAxis;
-    @FXML
-    private Label lblTotalFlights, lblTotalReservations, lblTotalPassengers;
-    @FXML
-    private DatePicker dpStart, dpEnd;
-    @FXML
-    private PieChart reservationPieChart;
-    @FXML
-    private BarChart<String, Number> flightsBarChart;
+
+    @FXML private Label lblHeader;
+    @FXML private Label lblTotalFlightsText;
+    @FXML private Label lblTotalReservationsText;
+    @FXML private Label lblTotalFlights;
+    @FXML private Label lblTotalReservations;
+
+    @FXML private DatePicker dpStart, dpEnd;
+    @FXML private Button btnFilter, btnBack;
+    @FXML private BarChart<String, Number> reservationsBarChart;
 
     private final AirlineStatisticsService statisticsService = new AirlineStatisticsService();
 
-    @FXML private BarChart<String, Number> reservationsBarChart;
-
     @FXML
     public void initialize() {
+        loadTranslations();
+        LanguageManager.getInstance().addListener(this::loadTranslations);
         loadData(null, null);
+    }
+
+    private void loadTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+
+        lblHeader.setText("📊 " + bundle.getString("airline.statistics.header"));
+        lblTotalFlightsText.setText(bundle.getString("label.total.flights"));
+        lblTotalReservationsText.setText(bundle.getString("label.total.reservations"));
+        btnFilter.setText(bundle.getString("button.filter"));
+        btnBack.setText(bundle.getString("button.back"));
+        xAxis.setLabel(bundle.getString("chart.xaxis"));
+        yAxis.setLabel(bundle.getString("chart.yaxis"));
     }
 
     @FXML
@@ -53,7 +64,6 @@ public class AirlineStatisticsController {
         loadData(null, null);
     }
 
-
     private void loadData(LocalDate start, LocalDate end) {
         int airlineId = AirlineSession.getAirlineId();
 
@@ -65,8 +75,9 @@ public class AirlineStatisticsController {
 
         reservationsBarChart.getData().clear();
 
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("Reservations per Flight");
+        series.setName(bundle.getString("chart.series.reservations")); // 🔁 përkthim i legjendës
 
         Map<String, Integer> reservationsPerFlight = statisticsService.getReservationsGroupedByFlight(airlineId, start, end);
         for (Map.Entry<String, Integer> entry : reservationsPerFlight.entrySet()) {
