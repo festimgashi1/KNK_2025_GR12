@@ -17,15 +17,11 @@ import java.util.ResourceBundle;
 
 public class TicketCardController {
 
-    @FXML private TextField txtPrice;
-    @FXML private TextField txtFrom;
-    @FXML private TextField txtTo;
-    @FXML private TextField txtStatus;
-    @FXML private TextField txtDepartureTime;
-    @FXML private TextField txtArrivalTime;
-    @FXML private TextField txtDuration;
-    @FXML private TextField txtAirline;
+    @FXML private TextField txtPrice, txtFrom, txtTo, txtStatus, txtDepartureTime, txtArrivalTime, txtDuration, txtAirline;
+    @FXML private Label lblFrom, lblTo, lblStatus, lblDeparture, lblArrival, lblDuration, lblAirline;
     @FXML private Button btnBuy;
+    @FXML private Label lblChoiceTitle;
+    @FXML private Label lblChoiceSubtitle;
 
     private Tickets ticket;
     private final BookingService bookingService = new BookingService();
@@ -38,18 +34,20 @@ public class TicketCardController {
 
     private void applyTranslations() {
         ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+
+        lblFrom.setText(bundle.getString("from"));
+        lblTo.setText(bundle.getString("to"));
+        lblStatus.setText(bundle.getString("status"));
+        lblDeparture.setText(bundle.getString("departure"));
+        lblArrival.setText(bundle.getString("arrival"));
+        lblDuration.setText(bundle.getString("duration"));
+        lblAirline.setText(bundle.getString("airline"));
         btnBuy.setText(bundle.getString("buy"));
 
-        if (txtFrom.getScene() != null) {
-            ((Label) txtFrom.getScene().lookup("#lblFrom")).setText(bundle.getString("from"));
-            ((Label) txtTo.getScene().lookup("#lblTo")).setText(bundle.getString("to"));
-            ((Label) txtStatus.getScene().lookup("#lblStatus")).setText(bundle.getString("status"));
-            ((Label) txtDepartureTime.getScene().lookup("#lblDeparture")).setText(bundle.getString("departure"));
-            ((Label) txtArrivalTime.getScene().lookup("#lblArrival")).setText(bundle.getString("arrival"));
-            ((Label) txtDuration.getScene().lookup("#lblDuration")).setText(bundle.getString("duration"));
-            ((Label) txtAirline.getScene().lookup("#lblAirline")).setText(bundle.getString("airline"));
-        }
+        lblChoiceTitle.setText(bundle.getString("choice.title"));
+        lblChoiceSubtitle.setText(bundle.getString("choice.subtitle"));
     }
+
 
     public void setTicketData(Tickets ticket) {
         this.ticket = ticket;

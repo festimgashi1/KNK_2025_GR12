@@ -13,8 +13,8 @@
           style="-fx-padding: 20;">
 
         <HBox style="-fx-background-color: #3498db; -fx-background-radius: 10; -fx-padding: 10;" alignment="CENTER_LEFT" spacing="15">
-            <Label text="✔ The right choice!" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" />
-            <Label text="The best compromise between price and comfort" style="-fx-text-fill: white;" />
+            <Label fx:id="lblChoiceTitle" text="✔ The right choice!" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" />
+            <Label fx:id="lblChoiceSubtitle" text="The best compromise between price and comfort" style="-fx-text-fill: white;" />
         </HBox>
 
         <HBox spacing="10" alignment="CENTER_LEFT">

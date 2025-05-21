@@ -26,6 +26,7 @@ public class CheckInController {
     @FXML private TextField txtBoardingTime, txtFlightCode;
     @FXML private TextField txtClientId;
     @FXML private DatePicker dpIssueDate, dpExpiryDate;
+    @FXML private Button btnConfirmCheckIn;
 
     @FXML private Label lblPaymentMethod, lblFlightDate, lblBoardingTime, lblFlightCode;
     @FXML private Label lblDocumentDetails, lblError;
@@ -65,6 +66,7 @@ public class CheckInController {
 
     private void applyTranslations() {
         ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+
         rbVisa.setText("Visa");
         rbMasterCard.setText("MasterCard");
         rbPaypal.setText("PayPal");
@@ -74,7 +76,9 @@ public class CheckInController {
         lblBoardingTime.setText(bundle.getString("boarding.time"));
         lblFlightCode.setText(bundle.getString("flight.code"));
         lblDocumentDetails.setText(bundle.getString("travel.document.details"));
+        btnConfirmCheckIn.setText(bundle.getString("confirm.checkin"));
     }
+
 
     @FXML
     private void handleConfirmCheckIn(ActionEvent event) {
