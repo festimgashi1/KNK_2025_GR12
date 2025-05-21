@@ -6,51 +6,67 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import model.BoardingPass;
 import services.BoardingPassService;
-import java.time.LocalDate;
-
+import services.LanguageManager;
 import services.SceneManager;
 import session.AirlineSession;
 
+import java.time.LocalDate;
+import java.util.ResourceBundle;
+
 public class BoardingPassController {
 
+    @FXML private TextField txtFromCode;
+    @FXML private TextField txtToCode;
+    @FXML private TextField txtName;
+    @FXML private TextField txtSeat;
+    @FXML private TextField txtGate;
+    @FXML private TextField txtFlightCode;
+    @FXML private TextField txtBoardingTime;
+    @FXML private TextField txtFlightDate;
+    @FXML private DatePicker datePicker;
+    @FXML private TextField txtGateCloses;
+    @FXML private TextField txtDepartureTime;
+    @FXML private Label lblAirlinePriority;
 
-    @FXML
-    private TextField txtFromCode;
-    @FXML
-    private TextField txtToCode;
-    @FXML
-    private TextField txtName;
-    @FXML
-    private TextField txtSeat;
-    @FXML
-    private TextField txtGate;
-    @FXML
-    private TextField txtFlightCode;
-    @FXML
-    private TextField txtBoardingTime;
-    @FXML
-    private TextField txtFlightDate;
-    @FXML
-    private DatePicker datePicker;
-    @FXML
-    private TextField txtGateCloses;
-    @FXML
-    private TextField txtDepartureTime;
-    @FXML
-    private Label lblAirlinePriority;
+    @FXML private Label lblDate;
+    @FXML private Label lblGateCloses;
+    @FXML private Label lblDeparture;
+    @FXML private Label lblBaggage;
+    @FXML private Label lblNoteTitle;
+    @FXML private Label lblNoteBody;
 
     private final BoardingPassService passService = new BoardingPassService();
 
     @FXML
     public void initialize() {
-        BoardingPass pass = (BoardingPass) SceneManager.getInstance().getData("boardingPass");
-        System.out.println("BOARDING PASS RECEIVED: " + pass);
+        applyTranslations();
+        LanguageManager.getInstance().addListener(this::applyTranslations);
 
+        BoardingPass pass = (BoardingPass) SceneManager.getInstance().getData("boardingPass");
         if (pass != null) {
             populateBoardingPass(pass);
-        } else {
-            System.out.println("BoardingPass not found!");
         }
+    }
+
+    private void applyTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+
+        txtFromCode.setPromptText(bundle.getString("from"));
+        txtToCode.setPromptText(bundle.getString("to"));
+        txtName.setPromptText(bundle.getString("passenger.name"));
+        txtSeat.setPromptText(bundle.getString("seat"));
+        txtGate.setPromptText(bundle.getString("gate"));
+        txtFlightCode.setPromptText(bundle.getString("flight.code"));
+        txtBoardingTime.setPromptText(bundle.getString("boarding.time"));
+        txtFlightDate.setPromptText(bundle.getString("flight.date"));
+
+        lblDate.setText(bundle.getString("date"));
+        lblGateCloses.setText(bundle.getString("gate.closes"));
+        lblDeparture.setText(bundle.getString("departure"));
+
+        lblBaggage.setText(bundle.getString("baggage"));
+        lblNoteTitle.setText(bundle.getString("important.read"));
+        lblNoteBody.setText(bundle.getString("boarding.info"));
     }
 
     private void populateBoardingPass(BoardingPass pass) {

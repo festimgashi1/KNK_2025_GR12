@@ -41,7 +41,7 @@
                     <TextField fx:id="txtGate" promptText="Gate (auto-generated)" />
                 </HBox>
 
-                <Label text="Select Payment Method" style="-fx-font-weight: bold;" />
+                <Label fx:id="lblPaymentMethod" text="Select Payment Method" style="-fx-font-weight: bold;" />
                 <HBox spacing="20">
                     <VBox spacing="5" alignment="CENTER">
                         <ImageView fitWidth="60" fitHeight="40">
@@ -65,22 +65,22 @@
 
                 <HBox spacing="20">
                     <VBox spacing="3">
-                        <Label text="Flight Date" />
+                        <Label  fx:id="lblFlightDate" text="Flight Date" />
                         <DatePicker fx:id="dpFlightDate" prefWidth="160"/>
                     </VBox>
                     <VBox spacing="3">
-                        <Label text="Boarding Time" />
+                        <Label fx:id="lblBoardingTime" text="Boarding Time" />
                         <TextField fx:id="txtBoardingTime" prefWidth="140"/>
                     </VBox>
                     <VBox spacing="3">
-                        <Label text="Flight Code" />
+                        <Label fx:id="lblFlightCode" text="Flight Code" />
                         <TextField fx:id="txtFlightCode" prefWidth="140"/>
                     </VBox>
                 </HBox>
 
                 <Separator/>
 
-                <Label text="Travel Document Details" style="-fx-font-weight: bold;"/>
+                <Label fx:id="lblDocumentDetails" text="Travel Document Details" style="-fx-font-weight: bold;"/>
 
                 <HBox spacing="20">
                     <TextField fx:id="txtDocumentId" promptText="Document ID"/>
