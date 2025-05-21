@@ -15,29 +15,28 @@
         <Insets top="30" right="30" bottom="30" left="30"/>
     </padding>
 
-    <Label text="Edit Ticket"
+    <Label fx:id="lblHeader" text="Edit Ticket"
            style="-fx-font-size: 24px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;" />
 
     <VBox spacing="10" prefWidth="250">
 
-        <Label text="🎫 Ticket Price:" style="-fx-text-fill: #555;" />
+        <Label fx:id="lblTicketPrice" text="🎫 Ticket Price:" style="-fx-text-fill: #555;" />
         <TextField fx:id="txtPrice"
                    promptText="Enter new price"
-                   style="-fx-background-radius: 8; -fx-padding: 8;"/>
+                   style="-fx-background-radius: 8; -fx-padding: 8;" />
 
-        <Label text="👥 Max Passengers:" style="-fx-text-fill: #555;" />
+        <Label fx:id="lblMaxPassengers" text="👥 Max Passengers:" style="-fx-text-fill: #555;" />
         <TextField fx:id="txtPassengers"
                    promptText="Enter new max passengers"
-                   style="-fx-background-radius: 8; -fx-padding: 8;"/>
-
+                   style="-fx-background-radius: 8; -fx-padding: 8;" />
     </VBox>
 
     <HBox spacing="15" alignment="CENTER">
-        <Button text="💾 Save"
+        <Button fx:id="btnSave" text="💾 Save"
                 onAction="#handleSave"
                 style="-fx-background-color: #28a745; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16;" />
 
-        <Button text="❌ Cancel"
+        <Button fx:id="btnCancel" text="❌ Cancel"
                 onAction="#handleCancel"
                 style="-fx-background-color: #dc3545; -fx-text-fill: white; -fx-background-radius: 8; -fx-padding: 8 16;" />
     </HBox>
