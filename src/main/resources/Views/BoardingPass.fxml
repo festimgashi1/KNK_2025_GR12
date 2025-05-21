@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
@@ -23,29 +22,66 @@
                 </image>
             </ImageView>
 
-            <VBox spacing="5">
-                <Label fx:id="lblDate" text="Date" style="-fx-text-fill: white;" />
-                <DatePicker fx:id="datePicker" editable="false" focusTraversable="false"/>
-            </VBox>
-            <VBox spacing="5">
-                <Label fx:id="lblGateCloses" text="Gate Closes" textFill="WHITE"/>
-                <TextField fx:id="txtGateCloses" editable="false" focusTraversable="false"/>
-            </VBox>
-            <VBox spacing="5">
-                <Label fx:id="lblDeparture" text="Departures" textFill="WHITE"/>
-                <TextField fx:id="txtDepartureTime" editable="false" focusTraversable="false"/>
-            </VBox>
+            <VBox spacing="20" alignment="TOP_CENTER" style="-fx-padding: 30;" maxWidth="600">
 
-            <VBox spacing="5" style="-fx-background-color: #f3f3f3; -fx-padding: 12; -fx-background-radius: 10;" maxWidth="600">
-                <Label fx:id="lblBaggage" style="-fx-font-weight: bold;" text="Baggage:"/>
-                <Label text="• Free carry-on bag (max. 40x30x20cm)"/>
-                <Label text="• 1x 32kg Checked-in baggage"/>
-                <Label text="• Trolley bag (max. 55x40x23cm)"/>
+                <Label fx:id="lblAirlinePriority" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Airline"/>
+
+                <GridPane hgap="10" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="50"/>
+                        <ColumnConstraints percentWidth="50"/>
+                    </columnConstraints>
+
+                    <Label text="From:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                    <TextField fx:id="txtFromCode" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                    <Label text="To:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <TextField fx:id="txtToCode" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label text="Passenger Name:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="txtName" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+                    <Label text="Seat:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <TextField fx:id="txtSeat" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+                    <Label text="Gate:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <TextField fx:id="txtGate" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+                    <Label text="Flight Code:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <TextField fx:id="txtFlightCode" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                    <Label text="Boarding Time:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <TextField fx:id="txtBoardingTime" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                    <Label text="Flight Date:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                    <TextField fx:id="txtFlightDate" GridPane.columnIndex="1" GridPane.rowIndex="7"/>
+                </GridPane>
+
+                <VBox spacing="5">
+                    <Label fx:id="lblDate" text="Date" style="-fx-text-fill: white;" />
+                    <DatePicker fx:id="datePicker" editable="false" focusTraversable="false"/>
+                </VBox>
+
+                <VBox spacing="5">
+                    <Label fx:id="lblGateCloses" text="Gate Closes" textFill="WHITE"/>
+                    <TextField fx:id="txtGateCloses" editable="false" focusTraversable="false"/>
+                </VBox>
+
+                <VBox spacing="5">
+                    <Label fx:id="lblDeparture" text="Departures" textFill="WHITE"/>
+                    <TextField fx:id="txtDepartureTime" editable="false" focusTraversable="false"/>
+                </VBox>
+
+                <VBox spacing="5" style="-fx-background-color: #f3f3f3; -fx-padding: 12; -fx-background-radius: 10;">
+                    <Label fx:id="lblBaggage" style="-fx-font-weight: bold;" text="Baggage:"/>
+                    <Label text="• Free carry-on bag (max. 40x30x20cm)"/>
+                    <Label text="• 1x 32kg Checked-in baggage"/>
+                    <Label text="• Trolley bag (max. 55x40x23cm)"/>
+                </VBox>
+
+                <Label fx:id="lblNoteTitle" style="-fx-text-fill: red; -fx-font-weight: bold;" text="Important, please read!"/>
+                <Label fx:id="lblNoteBody" text="Show this boarding pass when boarding. Screenshots are accepted." wrapText="true"/>
             </VBox>
-
-            <Label fx:id="lblNoteTitle" style="-fx-text-fill: red; -fx-font-weight: bold;" text="Important, please read!"/>
-            <Label fx:id="lblNoteBody" text="Show this boarding pass when boarding. Screenshots are accepted." wrapText="true"/>
-
         </StackPane>
     </center>
 </BorderPane>
