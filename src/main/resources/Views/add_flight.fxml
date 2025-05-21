@@ -34,7 +34,7 @@
                     <children>
                         <Label fx:id="lblFlightNumber" text="🔢 Flight Number:" GridPane.rowIndex="0" GridPane.columnIndex="0"
                                style="-fx-text-fill: #444;" />
-                        <TextField fx:id="txtFlightNumber" promptText="e.g. W62001"
+                        <TextField fx:id="txtFlightNumber" promptText="e.g. 62001"
                                    GridPane.rowIndex="0" GridPane.columnIndex="1"
                                    style="-fx-background-radius: 6; -fx-padding: 6;" />
 

@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e1da4bd5-fb8f-4222-85cb-387229416fb6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddFlightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddFlightController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AirlineNav.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AirlineNav.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ManageFlightsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ManageFlightsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/Airline_Dash.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/Airline_Dash.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Views/add_flight.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/add_flight.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/airport_staff.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/airport_staff.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/manage_flights.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/manage_flights.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/messages_en.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/messages_sq.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/messages_sq.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Views/add_tickets.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Views/add_tickets.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
