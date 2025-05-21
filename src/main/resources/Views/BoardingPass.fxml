@@ -17,77 +17,35 @@
 
     <center>
         <StackPane>
-            <!-- Background image -->
             <ImageView fitWidth="1200.0" fitHeight="800.0" preserveRatio="false" pickOnBounds="true">
                 <image>
-                    <Image url="@../Photos/airplane.jpg"/> <!-- Vendos imazhin që përdor edhe CheckIn -->
+                    <Image url="@../Photos/airplane.jpg"/>
                 </image>
             </ImageView>
 
-            <!-- Main content box -->
-            <VBox alignment="CENTER" spacing="20" maxWidth="750"
-                  style="-fx-background-color: rgba(255,255,255,0.9); -fx-background-radius: 16; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.25), 18, 0, 0, 5);">
-
-                <HBox alignment="CENTER" spacing="20">
-                    <TextField fx:id="txtFromCode" promptText="FROM" editable="false" focusTraversable="false"/>
-                    <Label style="-fx-font-size: 24px;" text="✈"/>
-                    <TextField fx:id="txtToCode" promptText="TO" editable="false" focusTraversable="false"/>
-                </HBox>
-
-                <TextField fx:id="txtName" promptText="Passenger Name" maxWidth="400"
-                           editable="false" focusTraversable="false"/>
-
-                <HBox spacing="20" alignment="CENTER">
-                    <TextField fx:id="txtSeat" promptText="Seat" maxWidth="100"
-                               editable="false" focusTraversable="false"/>
-                    <TextField fx:id="txtGate" promptText="Gate" maxWidth="100"
-                               editable="false" focusTraversable="false"/>
-                </HBox>
-
-                <!-- Highlight section -->
-                <HBox spacing="20" alignment="CENTER"
-                      style="-fx-background-color: linear-gradient(to right, #e10098, #ff4081); -fx-padding: 14; -fx-background-radius: 12;">
-                    <VBox spacing="5">
-                        <Label style="-fx-text-fill: white;" text="Date"/>
-                        <DatePicker fx:id="datePicker" editable="false" focusTraversable="false"/>
-                    </VBox>
-                    <VBox spacing="5">
-                        <Label text="Gate Closes" textFill="WHITE"/>
-                        <TextField fx:id="txtGateCloses" editable="false" focusTraversable="false"/>
-                    </VBox>
-                    <VBox spacing="5">
-                        <Label text="Departures" textFill="WHITE"/>
-                        <TextField fx:id="txtDepartureTime" editable="false" focusTraversable="false"/>
-                    </VBox>
-                </HBox>
-
-                <TextField fx:id="txtFlightCode" promptText="Flight Code" maxWidth="400"
-                           editable="false" focusTraversable="false"/>
-                <TextField fx:id="txtBoardingTime" promptText="Boarding Time" maxWidth="400"
-                           editable="false" focusTraversable="false"/>
-                <TextField fx:id="txtFlightDate" promptText="Flight Date" maxWidth="400"
-                           editable="false" focusTraversable="false"/>
-
-                <Label fx:id="lblAirlinePriority"
-                       style="-fx-text-fill: #003366; -fx-font-weight: bold; -fx-font-size: 16px;"/>
-
-                <!-- Baggage info -->
-                <VBox spacing="5" style="-fx-background-color: #f3f3f3; -fx-padding: 12; -fx-background-radius: 10;" maxWidth="600">
-                    <Label style="-fx-font-weight: bold;" text="Baggage:"/>
-                    <Label text="• Free carry-on bag (max. 40x30x20cm)"/>
-                    <Label text="• 1x 32kg Checked-in baggage"/>
-                    <Label text="• Trolley bag (max. 55x40x23cm)"/>
-                </VBox>
-
-                <Label style="-fx-text-fill: red; -fx-font-weight: bold;" text="Important, please read!"/>
-                <Label text="Show this boarding pass when boarding. Screenshots are accepted." wrapText="true"/>
-
-                <ImageView fitHeight="130" fitWidth="130" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../Photos/qrcode.png"/>
-                    </image>
-                </ImageView>
+            <VBox spacing="5">
+                <Label fx:id="lblDate" text="Date" style="-fx-text-fill: white;" />
+                <DatePicker fx:id="datePicker" editable="false" focusTraversable="false"/>
             </VBox>
+            <VBox spacing="5">
+                <Label fx:id="lblGateCloses" text="Gate Closes" textFill="WHITE"/>
+                <TextField fx:id="txtGateCloses" editable="false" focusTraversable="false"/>
+            </VBox>
+            <VBox spacing="5">
+                <Label fx:id="lblDeparture" text="Departures" textFill="WHITE"/>
+                <TextField fx:id="txtDepartureTime" editable="false" focusTraversable="false"/>
+            </VBox>
+
+            <VBox spacing="5" style="-fx-background-color: #f3f3f3; -fx-padding: 12; -fx-background-radius: 10;" maxWidth="600">
+                <Label fx:id="lblBaggage" style="-fx-font-weight: bold;" text="Baggage:"/>
+                <Label text="• Free carry-on bag (max. 40x30x20cm)"/>
+                <Label text="• 1x 32kg Checked-in baggage"/>
+                <Label text="• Trolley bag (max. 55x40x23cm)"/>
+            </VBox>
+
+            <Label fx:id="lblNoteTitle" style="-fx-text-fill: red; -fx-font-weight: bold;" text="Important, please read!"/>
+            <Label fx:id="lblNoteBody" text="Show this boarding pass when boarding. Screenshots are accepted." wrapText="true"/>
+
         </StackPane>
     </center>
 </BorderPane>

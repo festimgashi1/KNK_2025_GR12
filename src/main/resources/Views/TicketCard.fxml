@@ -12,13 +12,11 @@
     <VBox spacing="20" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0"
           style="-fx-padding: 20;">
 
-        <!-- Header -->
         <HBox style="-fx-background-color: #3498db; -fx-background-radius: 10; -fx-padding: 10;" alignment="CENTER_LEFT" spacing="15">
             <Label text="✔ The right choice!" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: white;" />
             <Label text="The best compromise between price and comfort" style="-fx-text-fill: white;" />
         </HBox>
 
-        <!-- Price -->
         <HBox spacing="10" alignment="CENTER_LEFT">
             <Label text="€" style="-fx-font-size: 24px; -fx-text-fill: #2c3e50;" />
             <TextField fx:id="txtPrice"
@@ -27,41 +25,39 @@
                        HBox.hgrow="ALWAYS"/>
         </HBox>
 
-        <!-- Inline input fields -->
         <HBox spacing="10" alignment="CENTER_LEFT">
             <VBox spacing="5" HBox.hgrow="ALWAYS">
-                <Label text="From" style="-fx-text-fill: gray;" />
+                <Label fx:id="lblFrom" text="From" style="-fx-text-fill: gray;" />
                 <TextField fx:id="txtFrom" editable="false" />
             </VBox>
             <VBox spacing="5" HBox.hgrow="ALWAYS">
-                <Label text="To" style="-fx-text-fill: gray;" />
+                <Label fx:id="lblTo" text="To" style="-fx-text-fill: gray;" />
                 <TextField fx:id="txtTo" editable="false" />
             </VBox>
             <VBox spacing="5" HBox.hgrow="ALWAYS">
-                <Label text="Status" style="-fx-text-fill: gray;" />
+                <Label fx:id="lblStatus" text="Status" style="-fx-text-fill: gray;" />
                 <TextField fx:id="txtStatus" editable="false" />
             </VBox>
             <VBox spacing="5" HBox.hgrow="ALWAYS">
-                <Label text="Departure" style="-fx-text-fill: gray;" />
+                <Label fx:id="lblDeparture" text="Departure" style="-fx-text-fill: gray;" />
                 <TextField fx:id="txtDepartureTime" editable="false" />
             </VBox>
             <VBox spacing="5" HBox.hgrow="ALWAYS">
-                <Label text="Arrival" style="-fx-text-fill: gray;" />
+                <Label fx:id="lblArrival" text="Arrival" style="-fx-text-fill: gray;" />
                 <TextField fx:id="txtArrivalTime" editable="false" />
             </VBox>
             <VBox spacing="5" HBox.hgrow="ALWAYS">
-                <Label text="Duration" style="-fx-text-fill: gray;" />
+                <Label fx:id="lblDuration" text="Duration" style="-fx-text-fill: gray;" />
                 <TextField fx:id="txtDuration" editable="false" />
             </VBox>
             <VBox spacing="5" HBox.hgrow="ALWAYS">
-                <Label text="Airline" style="-fx-text-fill: gray;" />
+                <Label fx:id="lblAirline" text="Airline" style="-fx-text-fill: gray;" />
                 <TextField fx:id="txtAirline" editable="false" />
             </VBox>
         </HBox>
 
         <Separator />
 
-        <!-- Button -->
         <HBox alignment="CENTER_RIGHT">
             <Button fx:id="btnBuy"
                     text="Buy"

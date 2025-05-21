@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import model.Tickets;
 import model.dto.CreateBookingDto;
+import services.LanguageManager;
 import services.SceneManager;
 import session.CustomerSession;
 import services.BookingService;
@@ -12,6 +13,7 @@ import repository.SeatRepository;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ResourceBundle;
 
 public class TicketCardController {
 
@@ -28,6 +30,27 @@ public class TicketCardController {
     private Tickets ticket;
     private final BookingService bookingService = new BookingService();
 
+    @FXML
+    public void initialize() {
+        applyTranslations();
+        LanguageManager.getInstance().addListener(this::applyTranslations);
+    }
+
+    private void applyTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+        btnBuy.setText(bundle.getString("buy"));
+
+        if (txtFrom.getScene() != null) {
+            ((Label) txtFrom.getScene().lookup("#lblFrom")).setText(bundle.getString("from"));
+            ((Label) txtTo.getScene().lookup("#lblTo")).setText(bundle.getString("to"));
+            ((Label) txtStatus.getScene().lookup("#lblStatus")).setText(bundle.getString("status"));
+            ((Label) txtDepartureTime.getScene().lookup("#lblDeparture")).setText(bundle.getString("departure"));
+            ((Label) txtArrivalTime.getScene().lookup("#lblArrival")).setText(bundle.getString("arrival"));
+            ((Label) txtDuration.getScene().lookup("#lblDuration")).setText(bundle.getString("duration"));
+            ((Label) txtAirline.getScene().lookup("#lblAirline")).setText(bundle.getString("airline"));
+        }
+    }
+
     public void setTicketData(Tickets ticket) {
         this.ticket = ticket;
         txtPrice.setText(String.valueOf(ticket.getTicketPrice()));
@@ -42,16 +65,15 @@ public class TicketCardController {
 
     @FXML
     private void handleBuyClick() {
-        System.out.println("BUY CLICKED – ticket = " + ticket);
-
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
 
         if (CustomerSession.getInstance().getCurrentCostumer() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Authentication Required");
-            alert.setHeaderText("You must be logged in to purchase a ticket.");
-            alert.setContentText("Please log in to continue.");
+            alert.setTitle(bundle.getString("auth.required"));
+            alert.setHeaderText(bundle.getString("login.required"));
+            alert.setContentText(bundle.getString("login.to.continue"));
 
-            ButtonType loginButton = new ButtonType("Go to Login", ButtonBar.ButtonData.OK_DONE);
+            ButtonType loginButton = new ButtonType(bundle.getString("go.to.login"), ButtonBar.ButtonData.OK_DONE);
             alert.getButtonTypes().setAll(loginButton, ButtonType.CANCEL);
 
             alert.showAndWait().ifPresent(response -> {
@@ -63,7 +85,7 @@ public class TicketCardController {
         }
 
         if (ticket == null) {
-            showAlert(Alert.AlertType.ERROR, "Error", "No ticket selected.");
+            showAlert(Alert.AlertType.ERROR, bundle.getString("error"), bundle.getString("no.ticket.selected"));
             return;
         }
 
@@ -90,7 +112,7 @@ public class TicketCardController {
             TicketSession.getInstance().setSeatNumber(seatNumber);
             SceneManager.getInstance().switchScene("/Views/CheckInView.fxml");
         } else {
-            showAlert(Alert.AlertType.ERROR, "Failure", "Reservation failed. Please try again.");
+            showAlert(Alert.AlertType.ERROR, bundle.getString("failure"), bundle.getString("reservation.failed"));
         }
     }
 
