@@ -3,11 +3,13 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.beans.property.SimpleStringProperty;
 import model.Flights;
 import repository.AirlineAllFlightsRepository;
-import javafx.beans.property.SimpleStringProperty;
+import services.LanguageManager;
 
 import java.util.List;
+import java.util.ResourceBundle;
 
 public class AirlineAllFlightsController {
 
@@ -27,6 +29,12 @@ public class AirlineAllFlightsController {
     @FXML private TableColumn<Flights, String> colStatusDepartures;
     @FXML private TableColumn<Flights, String> colAirlineDepartures;
 
+    @FXML private Button btnToday;
+    @FXML private Button btnAllFlights;
+    @FXML private Label lblDisplay;
+    @FXML private Label lblArrivals;
+    @FXML private Label lblDepartures;
+
     private final AirlineAllFlightsRepository flightRepo = new AirlineAllFlightsRepository();
     private final String CURRENT_AIRPORT = "Prishtina";
 
@@ -34,7 +42,32 @@ public class AirlineAllFlightsController {
     public void initialize() {
         setupArrivalTable();
         setupDepartureTable();
+        loadTranslations();
+        LanguageManager.getInstance().addListener(this::loadTranslations);
         showToday();
+    }
+
+    private void loadTranslations() {
+        ResourceBundle bundle = LanguageManager.getInstance().getResourceBundle();
+        btnToday.setText(bundle.getString("flights.today"));
+        btnAllFlights.setText(bundle.getString("flights.all"));
+        lblDisplay.setText(bundle.getString("flights.display"));
+        lblArrivals.setText("✈ " + bundle.getString("flights.arrivals"));
+        lblDepartures.setText("✈ " + bundle.getString("flights.departures"));
+
+        colStaArrivals.setText(bundle.getString("col.sta"));
+        colEstArrivals.setText(bundle.getString("col.est"));
+        colFlightArrivals.setText(bundle.getString("col.flight"));
+        colFromArrivals.setText(bundle.getString("col.from"));
+        colStatusArrivals.setText(bundle.getString("col.status"));
+        colAirlineArrivals.setText(bundle.getString("col.airline"));
+
+        colStaDepartures.setText(bundle.getString("col.sta"));
+        colEstDepartures.setText(bundle.getString("col.est"));
+        colFlightDepartures.setText(bundle.getString("col.flight"));
+        colToDepartures.setText(bundle.getString("col.to"));
+        colStatusDepartures.setText(bundle.getString("col.status"));
+        colAirlineDepartures.setText(bundle.getString("col.airline"));
     }
 
     private void setupArrivalTable() {
